@@ -25,9 +25,8 @@ L.OSM.share = function (options) {
       .attr("class", "sidebar_heading")
       .appendTo($ui)
       .append(
-        $("<span>")
-          .text(I18n.t("javascripts.close"))
-          .attr("class", "icon close")
+        $("<button type='button' class='btn-close float-end mt-1'>")
+          .attr("aria-label", I18n.t("javascripts.close"))
           .bind("click", toggle))
       .append(
         $("<h4>")
@@ -47,7 +46,7 @@ L.OSM.share = function (options) {
       .appendTo($linkSection);
 
     $("<div>")
-      .attr("class", "form-check form-group")
+      .attr("class", "form-check mb-3")
       .appendTo($form)
       .append(
         $("<label>")
@@ -159,7 +158,7 @@ L.OSM.share = function (options) {
       .appendTo($imageSection);
 
     $("<div>")
-      .attr("class", "form-group form-check")
+      .attr("class", "mb-3 form-check")
       .appendTo($form)
       .append(
         $("<label>")

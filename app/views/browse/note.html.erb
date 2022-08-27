@@ -30,10 +30,6 @@
     <p class='alert alert-warning'><%= t "javascripts.notes.show.anonymous_warning" %></p>
   <% end -%>
 
-  <% if current_user && current_user != @note.all_comments.first.author %>
-    <p class="text-muted"><%= report_link(t(".report"), @note) %></p>
-  <% end %>
-
   <% if @note_comments.length > @note_description_comments_count %>
     <div class='note-comments'>
       <ul class="list-unstyled">
@@ -49,8 +45,8 @@
 
   <% if @note.status == "open" %>
     <% if current_user -%>
-      <form action="#">
-        <div class="form-group">
+      <form class="mb-3" action="#">
+        <div class="mb-3">
           <textarea class="form-control" name="text" cols="40" rows="5" maxlength="2000"></textarea>
         </div>
         <div class="btn-wrapper">
@@ -63,7 +59,7 @@
       </form>
     <% end -%>
   <% else %>
-    <form action="#">
+    <form class="mb-3" action="#">
       <input type="hidden" name="text" value="" autocomplete="off">
       <div class="btn-wrapper">
         <% if current_user and current_user.moderator? -%>
@@ -75,4 +71,9 @@
       </div>
     </form>
   <% end %>
+
+  <% if current_user && current_user != @note.all_comments.first.author %>
+    <p><small class="text-muted"><%= t "javascripts.notes.show.report_link_html", :link => report_link(t(".report"), @note) %></small></p>
+  <% end %>
+
 </div>
