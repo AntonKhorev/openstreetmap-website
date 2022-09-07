@@ -72,7 +72,6 @@ OSM.Export = function (map) {
     $(".export_form").on("submit", checkSubmit);
 
     update();
-    return map.getState();
   };
 
   page.unload = function () {

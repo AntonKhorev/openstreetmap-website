@@ -157,8 +157,6 @@ OSM.NewNote = function (map) {
       e.preventDefault();
       createNote(newNote, e.target.form, "/api/0.6/notes.json");
     });
-
-    return map.getState();
   };
 
   page.unload = function () {

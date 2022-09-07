@@ -96,14 +96,12 @@ OSM.Router = function (map, rts) {
   };
 
   var currentPath = window.location.pathname.replace(/(.)\/$/, "$1") + window.location.search,
-      currentRoute = routes.recognize(currentPath),
-      currentHash = location.hash || OSM.formatHash(map);
+      currentRoute = routes.recognize(currentPath);
 
   var router = {};
 
   if (window.history && window.history.pushState) {
-    $(window).on("popstate", function (e) {
-      if (!e.originalEvent.state) return; // Is it a real popstate event or just a hash change?
+    $(window).on("popstate", function () {
       var path = window.location.pathname + window.location.search,
           route = routes.recognize(path);
       if (path === currentPath) return;
@@ -111,7 +109,8 @@ OSM.Router = function (map, rts) {
       currentPath = path;
       currentRoute = route;
       currentRoute.run("popstate", currentPath);
-      map.setState(e.originalEvent.state, { animate: false });
+      var mapState = OSM.parseHash(window.location.hash);
+      map.setState(mapState, { animate: false });
     });
 
     router.route = function (url) {
@@ -119,9 +118,9 @@ OSM.Router = function (map, rts) {
           route = routes.recognize(path);
       if (!route) return false;
       currentRoute.run("unload", null, route === currentRoute);
-      var state = OSM.parseHash(url);
-      map.setState(state);
-      window.history.pushState(state, document.title, url);
+      var mapState = OSM.parseHash(url);
+      map.setState(mapState);
+      window.history.pushState(null, document.title, url);
       currentPath = path;
       currentRoute = route;
       currentRoute.run("pushstate", currentPath);
@@ -129,47 +128,32 @@ OSM.Router = function (map, rts) {
     };
 
     router.replace = function (url) {
-      window.history.replaceState(OSM.parseHash(url), document.title, url);
-    };
-
-    router.stateChange = function (state) {
-      if (state.center) {
-        window.history.replaceState(state, document.title, OSM.formatHash(state));
-      } else {
-        window.history.replaceState(state, document.title, window.location);
-      }
+      window.history.replaceState(window.history.state, document.title, url);
     };
   } else {
     router.route = router.replace = function (url) {
       window.location.assign(url);
     };
-
-    router.stateChange = function (state) {
-      if (state.center) window.location.replace(OSM.formatHash(state));
-    };
   }
 
-  router.updateHash = function () {
-    var hash = OSM.formatHash(map);
-    if (hash === currentHash) return;
-    currentHash = hash;
-    router.stateChange(OSM.parseHash(hash));
+  router.updateHashFromMap = function () {
+    router.replace(OSM.formatHash(map));
   };
 
   router.hashUpdated = function () {
-    var hash = location.hash;
-    if (hash === currentHash) return;
-    currentHash = hash;
-    var state = OSM.parseHash(hash);
-    map.setState(state);
-    router.stateChange(state, hash);
+    if (!location.hash) return;
+    var newMapState = OSM.parseHash(location.hash);
+    var newHash = OSM.formatHash(newMapState);
+    if (location.hash !== newHash) router.replace(newHash);
+    var oldHash = OSM.formatHash(map);
+    if (oldHash !== newHash) map.setState(newMapState);
   };
 
   router.withoutMoveListener = function (callback) {
     function disableMoveListener() {
-      map.off("moveend", router.updateHash);
+      map.off("moveend", router.updateHashFromMap);
       map.once("moveend", function () {
-        map.on("moveend", router.updateHash);
+        map.on("moveend", router.updateHashFromMap);
       });
     }
 
@@ -179,8 +163,8 @@ OSM.Router = function (map, rts) {
   };
 
   router.load = function () {
-    var loadState = currentRoute.run("load", currentPath);
-    router.stateChange(loadState || {});
+    currentRoute.run("load", currentPath);
+    router.hashUpdated();
   };
 
   router.setCurrentPath = function (path) {
@@ -188,7 +172,7 @@ OSM.Router = function (map, rts) {
     currentRoute = routes.recognize(currentPath);
   };
 
-  map.on("moveend baselayerchange overlaylayerchange", router.updateHash);
+  map.on("moveend baselayerchange overlaylayerchange", router.updateHashFromMap);
   $(window).on("hashchange", router.hashUpdated);
 
   return router;

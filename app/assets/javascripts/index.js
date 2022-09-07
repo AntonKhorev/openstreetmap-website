@@ -314,7 +314,6 @@ $(document).ready(function () {
       if (!("autofocus" in document.createElement("input"))) {
         $("#sidebar .search_form input[name=query]").focus();
       }
-      return map.getState();
     };
 
     return page;
