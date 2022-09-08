@@ -103,6 +103,18 @@ OSM.History = function (map) {
     return storeItem;
   }
 
+  function displayFirstChangesets(html) {
+    $("#sidebar_content .changesets").html(html);
+  }
+
+  function displayMoreChangesets(html) {
+    $("#sidebar_content .changeset_more").replaceWith(html);
+    var oldList = $("#sidebar_content .changesets ol").first();
+    var newList = oldList.next("ol");
+    newList.children().appendTo(oldList);
+    newList.remove();
+  }
+
   function saveDataToStore(html, rewrite) {
     var storeNameAndKey = getStoreNameAndKey();
     if (!storeNameAndKey) return;
@@ -126,10 +138,9 @@ OSM.History = function (map) {
     for (var i = 0; i < storeItem.lists.length; i++) {
       var html = storeItem.lists[i];
       if (i === 0) {
-        $("#sidebar_content .changesets").html(html);
+        displayFirstChangesets(html);
       } else {
-        var div = $("#sidebar_content .changeset_more").first();
-        div.replaceWith(html);
+        displayMoreChangesets(html);
       }
     }
     return true;
@@ -150,7 +161,7 @@ OSM.History = function (map) {
         data: data,
         success: function (html) {
           saveDataToStore(html, true);
-          $("#sidebar_content .changesets").html(html);
+          displayFirstChangesets(html);
           updateMap();
         }
       });
@@ -173,7 +184,7 @@ OSM.History = function (map) {
 
     $.get($(this).attr("href"), function (html) {
       saveDataToStore(html, false);
-      div.replaceWith(html);
+      displayMoreChangesets(html);
       updateMap();
     });
   }
