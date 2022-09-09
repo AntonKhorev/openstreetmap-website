@@ -42,6 +42,7 @@ $(document).ready(function () {
     $("#flash").empty();
 
     var content = $(html);
+    content.find("img.loader").attr("src", OSM.SEARCHING);
 
     if (title) {
       document.title = decodeURIComponent(title);
@@ -58,7 +59,9 @@ $(document).ready(function () {
   };
 
   OSM.getSidebarContent = function () {
-    var html = $("#sidebar_content").html();
+    var clonedContent = $("#sidebar_content").clone();
+    clonedContent.find("img.loader").removeAttr("src");
+    var html = clonedContent.html();
     var link = $("head link[type=\"application/atom+xml\"]").prop("outerHTML");
     if (link) html = link + html;
     return [document.title, html];
