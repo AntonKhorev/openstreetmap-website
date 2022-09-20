@@ -510,23 +510,6 @@ body.small-nav {
       border-bottom: 1px solid $grey;
       padding: 10px 20px;
     }
-
-    a.close-button {
-      float: right;
-      padding:5px;
-      font-size:20px;
-      line-height:10px;
-      color:#222;
-      border:1px solid $grey;
-    }
-
-    .tooltip {
-      opacity: 1;
-      border: 1px solid $grey;
-      .tooltip-arrow {
-        border-top-color: $grey;
-      }
-    }
   }
 }
 
@@ -1257,16 +1240,6 @@ tr.turn:hover {
   display: inline !important;
 }
 
-/* Rules for the oauth settings page */
-
-.oauth_clients .buttons .oauth-edit {
-  border-radius: 2px 0 0 2px;
-}
-
-.oauth_clients .buttons .oauth-delete {
-  border-radius: 0 2px 2px 0;
-}
-
 /* Rules for the oauth authorization page */
 
 .oauth-authorize ul {
@@ -1428,7 +1401,7 @@ abbr.geo {
   border-bottom: none;
 }
 
-/* General styles for action lists / subnavs / pager navs */
+/* General styles for action lists / subnavs */
 
 
 nav.secondary-actions {
@@ -1441,10 +1414,6 @@ nav.secondary-actions {
     margin-bottom: 0;
     margin-left: -1px;
     padding: 0;
-    &.pager {
-      display: inline-block;
-      margin-right: 60px;
-    }
     > li {
       flex-basis: auto;
       list-style: none;
@@ -1459,60 +1428,6 @@ nav.secondary-actions {
 div.secondary-actions {
   padding: 10px;
   text-align: center;
-}
-
-.buttons {
-  min-width: 200px;
-  input[type="submit"],
-  input[type="button"],
-  input[type="reset"],
-  .button,
-  .button_to {
-    box-sizing: border-box;
-    float: left;
-    border-radius: 0;
-    margin:0;
-    min-width: 75px;
-    max-width: 180px;
-    border-right:1px solid white;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  input:first-child,
-  .button:first-child,
-  .button_to:first-child {
-    border-radius:2px 0 0 2px;
-  }
-  input:last-child,
-  .button:last-child,
-  .button_to:last-child {
-    border-radius:0 2px 2px 0;
-    border-right-width: 0;
-  }
-  input:only-child,
-  .button:only-child,
-  .button_to:only-child,
-  *[value="Hide"] + input:last-child,
-  *[value="Hide"] + .button:last-child,
-  *[value="Hide"] + .button_to:last-child {
-    border-radius:2px;
-    border-right-width: 0;
-  }
-    /* if a 3-button set has a hidden middle button */
-  *[value="Hide"] + input:nth-child(3),
-  *[value="Hide"] + .button:nth-child(3),
-  *[value="Hide"] + .button_to:nth-child(3) {
-    border-radius:0 2px 2px 0;
-    border-right-width: 0;
-  }
-  /* if a 3-button set starts with a hidden button */
-  *[value="Hide"] + input:nth-child(2):not(:last-child),
-  *[value="Hide"] + .button:nth-child(2):not(:last-child),
-  *[value="Hide"] + .button_to:nth-child(2):not(:last-child) {
-    border-radius:2px 0 0 2px;
-    border-right-width: 1px;
-  }
 }
 
 /* Create a single-line dl */
@@ -1591,15 +1506,6 @@ dl.dl-inline {
     display: block;
   }
 
-  .icon-list {
-    padding-bottom: 20px;
-    div {
-      margin-bottom: 10px;
-      p {
-        padding-top: 10px;
-      }
-    }
-  }
   .sprite.small {
     width: 50px;
     height: 50px;
@@ -1646,10 +1552,6 @@ dl.dl-inline {
 
 .site-about #content {
   background-color: $lightgrey;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
 
   .content-inner {
     max-width: 760px;
@@ -1687,8 +1589,6 @@ dl.dl-inline {
   .icon {
     width: 30px;
     height: 30px;
-    margin-right: 10px;
-    vertical-align: middle;
     background: 40px 40px image-url('about/sprite.png') no-repeat;
 
     &.local {
