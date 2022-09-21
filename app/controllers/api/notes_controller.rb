@@ -268,7 +268,7 @@ module Api
 
       raise OSM::APIBadUserInput, "No notes were given to search for" if ids.empty?
 
-      @notes = Note.find(ids)
+      @notes = Note.visible.find(ids)
 
       # Render the result
       respond_to do |format|

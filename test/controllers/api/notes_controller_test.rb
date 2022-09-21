@@ -829,6 +829,47 @@ module Api
       assert_response :bad_request
     end
 
+    def test_fetch_success
+      note1 = create(:note)
+      note2 = create(:note)
+      note4 = create(:note)
+      note5 = create(:note)
+
+      get fetch_notes_path(:notes => "#{note4.id},#{note2.id},#{note1.id},#{note5.id}", :format => "json")
+      assert_response :success
+      assert_equal "application/json", @response.media_type
+      js = ActiveSupport::JSON.decode(@response.body)
+      assert_not_nil js
+      assert_equal "FeatureCollection", js["type"]
+      assert_equal 4, js["features"].count
+      assert_equal note4.id, js["features"][0]["properties"]["id"]
+      assert_equal note2.id, js["features"][1]["properties"]["id"]
+      assert_equal note1.id, js["features"][2]["properties"]["id"]
+      assert_equal note5.id, js["features"][3]["properties"]["id"]
+    end
+
+    def test_fetch_bad_params
+      get fetch_notes_path
+      assert_response :bad_request
+
+      get fetch_notes_path, :params => { :notes => "" }
+      assert_response :bad_request
+    end
+
+    def test_fetch_not_found
+      note1 = create(:note)
+      note2 = create(:note)
+      note3 = create(:note, :status => "hidden")
+      note4 = create(:note)
+      note5 = create(:note)
+
+      get fetch_notes_path(:notes => "#{note4.id},#{note2.id},#{note1.id},0,#{note5.id}")
+      assert_response :not_found
+
+      get fetch_notes_path(:notes => "#{note4.id},#{note2.id},#{note1.id},#{note3.id},#{note5.id}")
+      assert_response :not_found
+    end
+
     def test_search_success
       create(:note_with_comments)
 
