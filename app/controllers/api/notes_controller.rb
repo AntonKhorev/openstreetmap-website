@@ -260,6 +260,26 @@ module Api
     end
 
     ##
+    # Return a list of notes with given ids
+    def fetch
+      raise OSM::APIBadUserInput, "The parameter notes is required, and must be of the form notes=id[,id[,id...]]" unless params["notes"]
+
+      ids = params["notes"].split(",").collect(&:to_i)
+
+      raise OSM::APIBadUserInput, "No notes were given to search for" if ids.empty?
+
+      @notes = Note.find(ids)
+
+      # Render the result
+      respond_to do |format|
+        format.rss { render :action => :index }
+        format.xml { render :action => :index }
+        format.json { render :action => :index }
+        format.gpx { render :action => :index }
+      end
+    end
+
+    ##
     # Return a list of notes matching a given string
     def search
       # Get the initial set of notes

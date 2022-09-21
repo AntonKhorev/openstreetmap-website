@@ -86,6 +86,7 @@ OpenStreetMap::Application.routes.draw do
     # Map notes API
     resources :notes, :except => [:new, :edit, :update], :constraints => { :id => /\d+/ }, :controller => "api/notes" do
       collection do
+        get "fetch"
         get "search"
         get "feed", :defaults => { :format => "rss" }
       end
