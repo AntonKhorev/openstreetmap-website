@@ -12,7 +12,7 @@ class ApiAbility
 
     if Settings.status != "database_offline"
       can [:show, :download, :query], Changeset
-      can [:index, :create, :comment, :feed, :show, :search], Note
+      can [:index, :create, :comment, :feed, :show, :fetch, :search], Note
       can :index, Tracepoint
       can [:index, :show], User
       can [:index, :show], Node

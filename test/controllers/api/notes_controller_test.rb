@@ -96,6 +96,27 @@ module Api
       )
 
       assert_routing(
+        { :path => "/api/0.6/notes/fetch", :method => :get },
+        { :controller => "api/notes", :action => "fetch", :format => "xml" }
+      )
+      assert_recognizes(
+        { :controller => "api/notes", :action => "fetch", :format => "xml" },
+        { :path => "/api/0.6/notes/fetch.xml", :method => :get }
+      )
+      assert_routing(
+        { :path => "/api/0.6/notes/fetch.rss", :method => :get },
+        { :controller => "api/notes", :action => "fetch", :format => "rss" }
+      )
+      assert_routing(
+        { :path => "/api/0.6/notes/fetch.json", :method => :get },
+        { :controller => "api/notes", :action => "fetch", :format => "json" }
+      )
+      assert_routing(
+        { :path => "/api/0.6/notes/fetch.gpx", :method => :get },
+        { :controller => "api/notes", :action => "fetch", :format => "gpx" }
+      )
+
+      assert_routing(
         { :path => "/api/0.6/notes/feed", :method => :get },
         { :controller => "api/notes", :action => "feed", :format => "rss" }
       )
