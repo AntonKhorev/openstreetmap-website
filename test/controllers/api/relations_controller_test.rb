@@ -115,6 +115,20 @@ module Api
       assert_response :not_found
     end
 
+    def test_index_with_and_without_versions
+      relation1 = create(:relation)
+      relation2 = create(:relation, :with_history, :version => 2)
+
+      get api_relations_path(:relations => "#{relation1.id},#{relation2.id}v1,#{relation2.id}v2")
+      assert_response :success
+      assert_dom "osm" do
+        assert_dom "relation", :count => 3
+        assert_dom "relation[id='#{relation1.id}'][version='1']", :count => 1
+        assert_dom "relation[id='#{relation2.id}'][version='1']", :count => 1
+        assert_dom "relation[id='#{relation2.id}'][version='2']", :count => 1
+      end
+    end
+
     # -------------------------------------
     # Test showing relations.
     # -------------------------------------

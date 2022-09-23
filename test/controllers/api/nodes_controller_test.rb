@@ -109,6 +109,21 @@ module Api
       assert_response :not_found
     end
 
+    def test_index_with_and_without_versions
+      node1 = create(:node)
+      node2 = create(:node, :with_history, :version => 2)
+
+      get api_nodes_path(:nodes => "#{node1.id},#{node2.id}v1,#{node2.id}v2")
+
+      assert_response :success
+      assert_dom "osm" do
+        assert_dom "node", :count => 3
+        assert_dom "node[id='#{node1.id}'][version='1']", :count => 1
+        assert_dom "node[id='#{node2.id}'][version='1']", :count => 1
+        assert_dom "node[id='#{node2.id}'][version='2']", :count => 1
+      end
+    end
+
     def test_create
       private_user = create(:user, :data_public => false)
       private_changeset = create(:changeset, :user => private_user)
