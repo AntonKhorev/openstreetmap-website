@@ -1,7 +1,7 @@
 # The NodeController is the RESTful interface to Node objects
 
 module Api
-  class NodesController < ApiController
+  class NodesController < ElementsController
     before_action :check_api_writable, :only => [:create, :update, :delete]
     before_action :check_api_readable, :except => [:create, :update, :delete]
     before_action :authorize, :only => [:create, :update, :delete]
@@ -13,35 +13,6 @@ module Api
 
     before_action :set_request_formats, :except => [:create, :update, :delete]
     before_action :check_rate_limit, :only => [:create, :update, :delete]
-
-    # Dump the details on many nodes whose ids and optionally verions are given in the "nodes" parameter.
-    def index
-      raise OSM::APIBadUserInput, "The parameter nodes is required, and must be of the form nodes=ID[vVER][,ID[vVER][,ID[vVER]...]]" unless params["nodes"]
-
-      id_ver_strings, id_strings = params["nodes"].split(",").partition { |iv| iv.include? "v" }
-      id_vers = id_ver_strings.map { |iv| iv.split("v", 2).map(&:to_i) }
-      ids = id_strings.map(&:to_i)
-
-      raise OSM::APIBadUserInput, "No nodes were given to search for" if ids.empty?
-
-      @nodes = Node.find(ids)
-      unless id_vers.empty?
-        @nodes += OldNode.find(id_vers)
-        @nodes.uniq! do |node|
-          if node.id.is_a?(Array)
-            node.id
-          else
-            [node.id, node.version]
-          end
-        end
-      end
-
-      # Render the result
-      respond_to do |format|
-        format.xml
-        format.json
-      end
-    end
 
     # Dump the details on a node given in params[:id]
     def show
