@@ -15,6 +15,13 @@ module Api
       unless id_vers.empty?
         old_model = "Old#{controller_name.classify}".constantize
         result += old_model.find(id_vers)
+        result.uniq! do |element|
+          if element.id.is_a?(Array)
+            element.id
+          else
+            [element.id, element.version]
+          end
+        end
       end
       instance_variable_set :"@#{controller_name}", result
 
