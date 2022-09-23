@@ -1,5 +1,5 @@
 module Api
-  class WaysController < ApiController
+  class WaysController < ElementsController
     before_action :check_api_writable, :only => [:create, :update, :delete]
     before_action :check_api_readable, :except => [:create, :update, :delete]
     before_action :authorize, :only => [:create, :update, :delete]
@@ -11,22 +11,6 @@ module Api
 
     before_action :set_request_formats, :except => [:create, :update, :delete]
     before_action :check_rate_limit, :only => [:create, :update, :delete]
-
-    def index
-      raise OSM::APIBadUserInput, "The parameter ways is required, and must be of the form ways=id[,id[,id...]]" unless params["ways"]
-
-      ids = params["ways"].split(",").collect(&:to_i)
-
-      raise OSM::APIBadUserInput, "No ways were given to search for" if ids.empty?
-
-      @ways = Way.find(ids)
-
-      # Render the result
-      respond_to do |format|
-        format.xml
-        format.json
-      end
-    end
 
     def show
       @way = Way.find(params[:id])
