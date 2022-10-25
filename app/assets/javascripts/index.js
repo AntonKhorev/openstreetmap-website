@@ -254,25 +254,27 @@ $(document).ready(function () {
           bottom: bbox.getSouth() - 0.0001
         };
 
-    if (object && object.type !== "note") query.select = object.type + object.id; // can't select notes
-    sendRemoteEditCommand(remoteEditHost + "/load_and_zoom?" + Qs.stringify(query), function () {
+    if (object && object.type !== "note") query.select = object.type + object.id; // It's not possible to select notes with this parameter.
+    sendRemoteEditCommand(remoteEditHost + "/load_and_zoom?" + Qs.stringify(query), true, function () {
       if (object && object.type === "note") {
         var noteQuery = { url: osmHost + OSM.apiUrl(object) };
-        sendRemoteEditCommand(remoteEditHost + "/import?" + Qs.stringify(noteQuery));
+        sendRemoteEditCommand(remoteEditHost + "/import?" + Qs.stringify(noteQuery), false); // This is an enhancement, don't display an error if it fails.
       }
     });
 
-    function sendRemoteEditCommand(url, callback) {
+    function sendRemoteEditCommand(url, displayError, callback) {
       var iframe = $("<iframe>");
       var timeoutId = setTimeout(function () {
-        alert(I18n.t("site.index.remote_failed"));
+        if (displayError) {
+          alert(I18n.t("site.index.remote_failed"));
+        }
         iframe.remove();
       }, 5000);
 
       iframe
         .hide()
         .appendTo("body")
-        .attr("src", url)
+        .attr("src", url) // Open url without having to worry about CORS because we never read the response. This is for editors like Potlatch that don't send Access-Control-Allow-Origin header.
         .on("load", function () {
           clearTimeout(timeoutId);
           iframe.remove();
