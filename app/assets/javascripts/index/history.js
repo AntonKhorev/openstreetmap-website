@@ -43,8 +43,16 @@ OSM.History = function (map) {
     $("#changeset_" + id).find("a.changeset_id").simulate("click", e);
   }
 
+  function displayFirstSpinner() {
+    $("#sidebar_content .changesets").html(OSM.getSpinnerHTML());
+  }
+
   function displayFirstChangesets(html) {
     $("#sidebar_content .changesets").html(html);
+  }
+
+  function displayMoreSpinner(html) {
+    $("#sidebar_content .changeset_more").html(OSM.getSpinnerHTML());
   }
 
   function displayMoreChangesets(html) {
@@ -65,6 +73,7 @@ OSM.History = function (map) {
       feedLink.attr("href", feedHref + "?bbox=" + data.bbox);
     }
 
+    displayFirstSpinner();
     $.ajax({
       url: window.location.pathname,
       method: "GET",
@@ -80,10 +89,7 @@ OSM.History = function (map) {
     e.preventDefault();
     e.stopPropagation();
 
-    var div = $(this).parents(".changeset_more");
-
-    $(this).hide();
-    div.find(".loader").show();
+    displayMoreSpinner();
 
     $.get($(this).attr("href"), function (html) {
       displayMoreChangesets(html);

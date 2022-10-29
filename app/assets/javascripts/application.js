@@ -146,3 +146,13 @@ $(document).ready(function () {
     OSM.location = application_data.location;
   }
 });
+
+OSM.getSpinnerHTML = function () {
+  return (
+    "<div class='text-center'>"+
+      "<div class='spinner-border' role='status'>"+
+        "<span class='visually-hidden'>"+I18n.t("browse.start_rjs.loading")+"</span>"+
+      "</div>"+
+    "</div>"
+  )
+}

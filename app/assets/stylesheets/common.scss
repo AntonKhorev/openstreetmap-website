@@ -735,10 +735,6 @@ header .search_forms,
     cursor: pointer;
     &.selected { background: $list-highlight; }
   }
-
-  .search_more .loader {
-    display: none;
-  }
 }
 
 .search_results_error {
@@ -809,11 +805,6 @@ tr.turn:hover {
 
   .comments-0 {
     opacity: 0.5;
-  }
-
-  .changeset_more .loader {
-    display: none;
-    width: 100%;
   }
 }
 
