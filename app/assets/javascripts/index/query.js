@@ -1,4 +1,3 @@
-//= require jquery-simulate/jquery.simulate
 //= require qs/dist/qs
 
 OSM.Query = function (map) {
@@ -62,7 +61,7 @@ OSM.Query = function (map) {
           if (geometry) map.removeLayer(geometry);
 
           if (!$(e.target).is("a")) {
-            $(this).find("a").simulate("click", e);
+            $(this).find("a").click();
           }
         }
       }).one("mousemove", function () {
