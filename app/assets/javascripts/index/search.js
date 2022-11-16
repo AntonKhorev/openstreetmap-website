@@ -1,4 +1,3 @@
-//= require jquery-simulate/jquery.simulate
 //= require qs/dist/qs
 
 OSM.Search = function (map) {
@@ -49,7 +48,7 @@ OSM.Search = function (map) {
       var moved = false;
       $(this).one("click", function (e) {
         if (!moved && !$(e.target).is("a")) {
-          $(this).find("a.set_position").simulate("click", e);
+          $(this).find("a.set_position").click();
         }
       }).one("mousemove", function () {
         moved = true;
