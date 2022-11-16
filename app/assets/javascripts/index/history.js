@@ -1,5 +1,3 @@
-//= require jquery-simulate/jquery.simulate
-
 OSM.History = function (map) {
   var page = {};
 
@@ -20,7 +18,7 @@ OSM.History = function (map) {
       unHighlightChangeset(e.layer.id);
     })
     .on("click", function (e) {
-      clickChangeset(e.layer.id, e);
+      clickChangeset(e.layer.id);
     });
 
   group.getLayerId = function (layer) {
@@ -39,8 +37,8 @@ OSM.History = function (map) {
     $("#changeset_" + id).removeClass("selected");
   }
 
-  function clickChangeset(id, e) {
-    $("#changeset_" + id).find("a.changeset_id").simulate("click", e);
+  function clickChangeset(id) {
+    $("#changeset_" + id).find("a.changeset_id").click();
   }
 
   function displayFirstChangesets(html) {
