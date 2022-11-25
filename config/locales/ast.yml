@@ -1,6 +1,7 @@
 # Messages for Asturian (asturianu)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Amire80
 # Author: Danieldegroot2
 # Author: Enolp
 # Author: Fitoschido
@@ -220,12 +221,10 @@ ast:
       current email address: Direición de corréu electrónicu actual
       external auth: Autenticación esterna
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: ¿qué ye esto?
       public editing:
         heading: Edición pública
         enabled: Activaes. Nun yes anónimu y puedes editar los datos.
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: ¿qué ye esto?
         disabled: Desactivaes y nun puedes editar los datos; toles ediciones anteriores
           son anónimes.
@@ -248,7 +247,6 @@ ast:
           nuevos términos de collaboración.
         agreed_with_pd: Tamién declarasti que consideres que les tos ediciones pertenecen
           al Dominiu Públicu.
-        link: https://www.osmfoundation.org/wiki/License/Contributor_Terms
         link text: ¿qué ye esto?
       save changes button: Guardar los cambios
       make edits public button: Facer públiques toles mios ediciones
@@ -1484,7 +1482,7 @@ ast:
       image: Imaxe
       gravatar:
         gravatar: Usar Gravatar
-        link: http://wiki.openstreetmap.org/wiki/Gravatar
+        link: https://wiki.openstreetmap.org/wiki/Gravatar
         disabled: Desactivóse Gravatar.
         enabled: Activóse la vista del to Gravatar.
       new image: Amestar una imaxe
@@ -1516,9 +1514,6 @@ ast:
       account not active: Sentímoslo, la to cuenta inda nun ta activada.<br />Usa
         l'enllaz del corréu de confirmación de la cuenta p'activala o <a href="%{reconfirm}">pidi
         otru corréu de confirmación</a>.
-      account is suspended: Sentímoslo, la to cuenta ta torgada a causa d'actividaes
-        sospechoses.<br />Ponte en contautu col <a href="%{webmaster}">webmaster</a>
-        si quies discutilo.
       auth failure: Sentímoslo, nun se pudo coneutar al sistema con esos datos.
       openid_logo_alt: Coneutar con una OpenID
       auth_providers:
@@ -1816,7 +1811,6 @@ ast:
         title: Guía del principiante
         description: Guía pa principiantes, mantenida pola comunidá.
       help:
-        url: https://help.openstreetmap.org/
         title: Foru d'ayuda
         description: Entrugar o buscar respuestes nel sitiu d'entrugues y respuestes
           d'OpenStreetMap.
@@ -1837,7 +1831,6 @@ ast:
         description: Ayuda pa les empreses y organizaciones que cambien a mapes y
           otros servicios, basaos n'OpenStreetMap.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Pa organizaciones
         description: ¿Con una organización que fai planes pa OpenStreetMap? Atopa
           lo que tienes de saber nel Felpudu de Bienvenida.
@@ -1990,7 +1983,6 @@ ast:
     new:
       upload_trace: Xubir traza GPS
       visibility_help: ¿qué ye esto?
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
       help: Ayuda
       help_url: https://wiki.openstreetmap.org/wiki/Upload
     create:
@@ -2210,7 +2202,6 @@ ast:
       guidance_html: 'Información p''ayudar a entender estos términos: un <a href="%{summary}">resume</a>
         y delles <a href="%{translations}">traducciones non oficiales</a>'
       continue: Siguir
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Refugar
       you need to accept or decline: Por favor, llei y aceuta o refuga les nueves
         Condiciones de Collaboración pa siguir.
@@ -2219,8 +2210,6 @@ ast:
         france: Francia
         italy: Italia
         rest_of_world: Restu del mundu
-    terms_declined_flash:
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: Nun esiste l'usuariu
       heading: L'usuariu %{user} nun esiste

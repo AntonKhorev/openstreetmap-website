@@ -358,8 +358,6 @@ body.small-nav {
   width: 40px;
   background-color: #333;
   background-color: rgba(0,0,0,.6);
-  border-radius: 4px 0 0 4px;
-  margin-bottom: 10px;
   outline: none;
 
   &:hover,
@@ -378,26 +376,18 @@ body.small-nav {
     background-color: $vibrant-green;
   }
 
+  &-first {
+    border-start-start-radius: 4px;
+  }
+
+  &-last {
+    border-end-start-radius: 4px;
+    margin-bottom: 10px;
+  }
+
   .icon {
     margin: 10px;
   }
-}
-
-.leaflet-control .zoomin,
-.control-layers .control-button {
-  margin-bottom: 0px;
-  border-radius: 4px 0 0 0;
-}
-
-.leaflet-control .zoomout,
-.control-key .control-button {
-  margin-bottom: 0;
-  border-radius: 0;
-}
-
-.control-locate .control-button,
-.control-share .control-button {
-  border-radius: 0 0 0 4px;
 }
 
 /* Rules for the sidebar and main map area */
@@ -522,6 +512,13 @@ body.small-nav {
       height: 50%;
     }
 
+    #map-ui {
+      z-index: 9999;
+      width: 100%;
+      height: 50%;
+      overflow-y: scroll;
+    }
+
     .overlay-sidebar {
       #sidebar {
         position: absolute;
@@ -530,15 +527,9 @@ body.small-nav {
         overflow: hidden;
       }
 
-      #map {
+      #map, #map-ui {
         height: 100%;
       }
-    }
-
-    #map-ui {
-      z-index: 9999;
-      width: 100%;
-      overflow-y: scroll;
     }
   }
 }
@@ -601,31 +592,6 @@ body.small-nav {
 }
 
 .share-ui {
-  .share-tabs {
-    margin-bottom: 10px;
-
-    a {
-      color: #fff;
-      text-decoration: none;
-      background-color: $lightblue;
-      padding: 5px 10px;
-      border-right: 1px solid #fff;
-    }
-
-    a:first-child {
-      border-right: 1px solid #fff;
-      border-radius: 4px 0 0 4px;
-    }
-
-    a:last-child {
-      border-radius: 0 4px 4px 0;
-    }
-
-    a.active {
-      background-color: $blue;
-    }
-  }
-
   .share-tab {
     display: none;
   }
@@ -715,21 +681,6 @@ body.small-nav {
   }
 }
 
-#sidebar {
-  #sidebar_loader,
-  .search_more {
-    width: 100%;
-    margin: $lineheight auto;
-  }
-
-  .loader {
-    text-align: center;
-    margin: auto;
-    width: 40px;
-    display: block;
-  }
-}
-
 /* Temporary label size override until we remove site-wide font customisation */
 
 form {
@@ -787,7 +738,6 @@ header .search_forms,
 
   .search_more .loader {
     display: none;
-    width: 100%;
   }
 }
 
@@ -1090,6 +1040,10 @@ tr.turn:hover {
 
 [dir=rtl] .header-illustration {
   transform: scaleX(-1);
+
+  h1 {
+    transform: scaleX(-1);
+  }
 }
 
 #content.maximised {
@@ -1127,7 +1081,7 @@ tr.turn:hover {
   min-width: 200px;
   p {
     padding: 0 0 5px 0;
-    margin-top: 0 0 0 60px;
+    margin: 0 0 0 60px;
     font-size: 12px;
   }
 }
@@ -1366,14 +1320,6 @@ tr.turn:hover {
 
 .directions_form {
   background-color: $lightgrey;
-
-  .loader_copy {
-    display: none;
-
-    img {
-      vertical-align: middle;
-    }
-  }
 }
 
 /* Rules for user images */

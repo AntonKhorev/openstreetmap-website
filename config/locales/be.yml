@@ -253,16 +253,14 @@ be:
   accounts:
     edit:
       title: Правіць рахунак
-      my settings: Мае настройкі
+      my settings: Мае налады
       current email address: Бягучы адрас электроннай пошты
       external auth: Знешняя Аўтэнтыфікацыя
       openid:
-        link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: што гэта?
       public editing:
         heading: Агульнае рэдагаванне
         enabled: Уключана. Вы - не ананімны і можаце рэдагаваць дадзеныя.
-        enabled link: http://wiki.openstreetmap.org/wiki/Disabling_anonymous_edits
         enabled link text: што гэта?
         disabled: Адключана. Вы не можаце больш рэдагаваць, але ўсе ранейшыя змены
           ананімныя.
@@ -284,7 +282,6 @@ be:
           каб разгледзець і прыняць новыя ўмовы ўдзелу.
         agreed_with_pd: Вы таксама заявілі, што лічыце, што змены павінны знаходзіцца
           ў агульнай уласнасці.
-        link: https://www.osmfoundation.org/wiki/License/Contributor_Terms
         link text: што гэта?
       save changes button: Запісаць змены
       make edits public button: Зрабіць усе мае змены публічнымі
@@ -1149,7 +1146,7 @@ be:
       not_updated: Не абнаўлялася
       search: Пошук
       search_guidance: 'Пошук праблем:'
-      user_not_found: Карыстальнік не існуе
+      user_not_found: Такога карыстальніка няма
       issues_not_found: Няма такіх пытанняў
       status: Статус
       reports: Скаргі
@@ -1537,9 +1534,6 @@ be:
         ласка, націсніце на адпаведную спасылку ў лісце пацвярджэння рахунка, каб
         актывізаваць яго, ці <a href="%{reconfirm}">запытаць новы ліст-пацвярджэнне
         на электронную пошту</a>.
-      account is suspended: Прабачце, але Ваш рахунак быў заблакаваны з-за падазронай
-        актыўнасці.<br />Калі ласка, звяжыцеся з <a href="%{webmaster}">вэбмайстрам</a>
-        калі Вы жадаеце гэта аспрэчыць.
       auth failure: Прабачце, немагчыма увайсці з такім адрасам і паролем.
       openid_logo_alt: Увайсці з дапамогай OpenID
       auth_providers:
@@ -1794,7 +1788,7 @@ be:
         other:
           title: Іншыя крыніцы
           description: Дадатковыя крыніцы, пералічаныя на Вікі OpenStreetMap
-      options: Настройкі
+      options: Параметры
       format: Фармат
       scale: Маштаб
       max: макс
@@ -1839,11 +1833,9 @@ be:
         description: Пачніце з гэтага кароткага кіраўніцтва, што ахоплівае асновы
           OpenStreetMap.
       beginners_guide:
-        url: http://wiki.openstreetmap.org/wiki/Beginners%27_guide
         title: Дапаможнік для пачаткоўцаў
         description: Супольнасць падтрымлівае дапаможнік для пачаткоўцаў.
       help:
-        url: https://help.openstreetmap.org/
         title: Пытанні і адказы
         description: Задайце пытанне або шукайце адказы на сайце пытанняў і адказаў
           OSM.
@@ -1863,12 +1855,10 @@ be:
         description: Дапамога кампаніям і арганізацыям у пераходзе на карты OpenStreetMap
           і іншыя паслугі.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Для арганізацый
         description: Вы з арганізацыі, якая хоча працаваць з OpenStreetMap? Азнаёмцеся
           з інфармацыяй у раздзеле Welcome Mat.
       wiki:
-        url: http://wiki.openstreetmap.org/
         title: Вікі OpenStreetMap
         description: Паглядзець вікі з падрабязнай дакументацыяй па OpenStreetMap
     sidebar:
@@ -2018,7 +2008,6 @@ be:
     new:
       upload_trace: Адаслаць GPS-след
       visibility_help: што гэта значыць?
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
       help: Даведка
       help_url: http://wiki.openstreetmap.org/wiki/RU:Upload
     create:
@@ -2204,7 +2193,7 @@ be:
       confirm email address: 'Пацвердзіце электронны адрас:'
       display name: 'Бачнае імя:'
       display name description: Ваша імя, якое будзе бачнае ўсім. Вы можаце змяніць
-        яго потым ў Вашых настройках.
+        яго потым ў вашых параметрах.
       external auth: 'Аўтэнтыфікацыя праз:'
       use external auth: 'Для альтэрнатыўнага ўваходу, залагіньцеся цераз:'
       auth no password: Пры выкарыстанні знешняй аўтэнтыфікацыі пароль не патрэбны,
@@ -2231,7 +2220,6 @@ be:
       guidance_html: 'Інфармацыя, якая дапаможа зразумець гэтыя ўмовы: <a href="%{summary}">кароткае
         апісанне</a> і некалькі <a href="%{translations}">неафіцыйных перакладаў</a>'
       continue: Працягнуць
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Адхіліць
       you need to accept or decline: Калі ласка, прачытайце, а потым згадзіцеся ці
         адхіліце новыя ўмовы супрацоўніцтва для працягу.
@@ -2240,8 +2228,6 @@ be:
         france: Францыя
         italy: Італія
         rest_of_world: Астатні свет
-    terms_declined_flash:
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: Няма такога карыстальніка
       heading: Карыстальнік %{user} не існуе
@@ -2256,7 +2242,7 @@ be:
       my notes: Мае заўвагі
       my messages: Паведамленні
       my profile: Мой профіль
-      my settings: Мае настройкі
+      my settings: Мае налады
       my comments: Мае каментары
       blocks on me: Мае блакіроўкі
       blocks by me: Заблакавана мною

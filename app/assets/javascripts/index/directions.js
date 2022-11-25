@@ -265,15 +265,15 @@ OSM.Directions = function (map) {
       }
 
       var turnByTurnTable = $("<table class='mb-3'>");
-      var directionsCloseButton = $("<button type='button' class='btn-close'>");
+      var directionsCloseButton = $("<button type='button' class='btn-close'>")
+        .attr("aria-label", I18n.t("javascripts.close"));
 
       $("#sidebar_content")
         .empty()
         .append(
           $("<div class='d-flex'>").append(
-            $("<div class='flex-grow-1 text-break'>").append(
-              $("<h2>")
-                .text(I18n.t("javascripts.directions.directions"))),
+            $("<h2 class='flex-grow-1 text-break'>")
+              .text(I18n.t("javascripts.directions.directions")),
             $("<div>").append(directionsCloseButton)),
           distanceText,
           turnByTurnTable

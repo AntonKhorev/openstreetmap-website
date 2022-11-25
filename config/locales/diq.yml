@@ -169,11 +169,9 @@ diq:
       my settings: Eyarê mı
       current email address: 'E-postay şımaya newki:'
       openid:
-        link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: no çıko?
       public editing:
         heading: 'Pêron rê akerde vurnayış:'
-        enabled link: http://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: no çıko?
         disabled link text: Ezo çı nêşena bıvurna?
       public editing note:
@@ -888,6 +886,8 @@ diq:
       title: Veciyayış
       heading: OpenStreetMap ra vıcyayış
       logout_button: Veciyayış
+    suspended_flash:
+      support: peşti
   site:
     copyright:
       native:
@@ -973,7 +973,7 @@ diq:
       uploaded: 'Bar biyo:'
       points: 'Dawte:'
       start_coordinates: 'Pêkerden koordinat:'
-      map: xerite
+      map: xerita
       edit: bıvırne
       owner: 'Wayir:'
       description: 'Şınasnayış:'

@@ -87,7 +87,7 @@ fa:
     models:
       acl: فهرست کنترل دسترسی
       changeset: بستهٔ تغییر
-      changeset_tag: تگ بستهٔ تغییر
+      changeset_tag: برچسب بستهٔ تغییر
       country: کشور
       diary_comment: نظر بر روزنوشت
       diary_entry: روزنوشت
@@ -96,19 +96,19 @@ fa:
       language: زبان
       message: پیام
       node: گره
-      node_tag: تگ گره
+      node_tag: برچسب گره
       notifier: اطلاع‌رسان
       old_node: گره قدیمی
-      old_node_tag: تگ گره قدیمی
+      old_node_tag: برچسب گره قدیمی
       old_relation: رابطهٔ قدیمی
       old_relation_member: عضو قدیمی رابطه
-      old_relation_tag: تگ رابطهٔ قدیمی
+      old_relation_tag: برچسب رابطهٔ قدیمی
       old_way: راه قدیمی
       old_way_node: گره قدیمی راه
-      old_way_tag: تگ راه قدیمی
+      old_way_tag: برچسب راه قدیمی
       relation: رابطه
       relation_member: عضو رابطه
-      relation_tag: تگ رابطه
+      relation_tag: برچسب رابطه
       report: گزارش
       session: جلسه
       trace: رد
@@ -119,7 +119,7 @@ fa:
       user_token: توکن کاربر
       way: راه
       way_node: گره راه
-      way_tag: تگ راه
+      way_tag: برچسب راه
     attributes:
       client_application:
         name: نام (الزامی)
@@ -189,8 +189,8 @@ fa:
         pass_crypt_confirmation: تأیید رمز عبور
     help:
       doorkeeper/application:
-        confidential: برنامه در جایی که بتوان کلید مخفی کارخواه را محرمانه نگه داشت،
-          استفاده خواهد شد (کاره‌های بومی تلفن همراه و کاره‌های تک‌صفحه‌ای محرمانه
+        confidential: برنامه در جایی استفاده خواهد شد که بتوان کلید مخفی کارخواه را
+          محرمانه نگه داشت (کاره‌های بومی تلفن همراه و کاره‌های تک‌صفحه‌ای محرمانه
           نیستند)
         redirect_uri: در هر سطر یک URI بنویسید
       trace:
@@ -315,12 +315,10 @@ fa:
       current email address: رایانامهٔ کنونی
       external auth: احراز هویت خارجی
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: این چیست؟
       public editing:
         heading: ویرایش عمومی
         enabled: فعال. گمنام نیستید و می‌توانید داده را ویرایش کنید.
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: این چیست؟
         disabled: غیرفعال شده و نمی‌توان داده را ویرایش کرد، همهٔ ویرایش‌های قبلی
           گمنام هستند.
@@ -342,7 +340,6 @@ fa:
           شرایط جدید مشارکت‌کننده، موافقت خود را با آن اعلام کنید.
         agreed_with_pd: شما همچنین اعلام کرده‌اید که ویرایش‌هایتان در مالکیت عمومی
           باشد.
-        link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms
         link text: این چیست؟
       save changes button: ذخیره‌کردن تغییرات
       make edits public button: همهٔ ویرایش‌های من را عمومی کن
@@ -418,7 +415,6 @@ fa:
         one: 1 عضو
         other: '%{count} عضو'
     relation_member:
-      entry_html: '%{type} %{name}'
       entry_role_html: '%{type} %{name} با نقش %{role}'
       type:
         node: گره
@@ -460,10 +456,10 @@ fa:
       load_data: بارگیری داده
       loading: در حال بارکردن...
     tag_details:
-      tags: تگ‌ها
+      tags: برچسب‌ها
       wiki_link:
-        key: صفحهٔ توضیحات ویکی برای تگ %{key}
-        tag: صفحهٔ توضیحات ویکی برای تگ %{key}=%{value}
+        key: صفحهٔ توضیحات ویکی برای برچسب %{key}
+        tag: صفحهٔ توضیحات ویکی برای برچسب %{key}=%{value}
       wikidata_link: آیتم %{page} در ویکی‌داده
       wikipedia_link: مقالۀ %{page} در ویکی‌پدیا
       wikimedia_commons_link: آیتم %{page} در ویکی‌انبار
@@ -847,7 +843,7 @@ fa:
           office: ساختمان اداری
           public: ساختمان عمومی
           residential: ساختمان مسکونی
-          retail: معاملات املاک
+          retail: ساختمان فروشگاه خرده‌فروشی
           roof: سقف
           ruins: ساختمان ویران
           school: ساختمان مدرسه
@@ -1477,7 +1473,6 @@ fa:
       provide_details: لطفاً جزئیات لازم را ارائه دهید
   layouts:
     project_name:
-      title: OpenStreetMap
       h1: اوپن‌استریت‌مپ
     logo:
       alt_text: لوگوی OpenStreetMap
@@ -1518,6 +1513,7 @@ fa:
     help: راهنما
     about: درباره
     copyright: حق نشر
+    communities: جوامع
     community: جامعه
     community_blogs: بلاگ‌های جامعه
     community_blogs_title: بلاگ‌هایی از اعضای جامعهٔ OpenStreetMap
@@ -1862,9 +1858,6 @@ fa:
       account not active: پوزش می‌خواهیم، حسابتان هنوز فعال نشده‌است.<br />لطفاً از
         پیوندی که در رایانامهٔ تأیید وجود دارد برای فعال‌سازی حساب خود استفاده کنید،
         یا <a href="%{reconfirm}"> یک رایانامهٔ تأیید دیگر درخواست دهید</a>.
-      account is suspended: با عرض پوزش، حساب شما به دلیل فعالیت‌های مشکوک مسدود شده‌است.
-        <br />برای گفت‌وگو دربارهٔ این مسئله لطفاً با <a href="%{webmaster}">پشتیبانی</a>
-        تماس بگیرید.
       auth failure: متأسفانه با این اطلاعات نمی‌توان وارد شد.
       openid_logo_alt: ورود با OpenID
       auth_providers:
@@ -2093,7 +2086,6 @@ fa:
         کار را انجام دهید. در %{user_page} خود می‌توانید ویرایش‌هایتان را به‌عنوان
         عمومی تنظیم کنید.
       user_page_link: صفحهٔ کاربری
-      anon_edits_html: (%{link})
       anon_edits_link_text: بفهمید چرا این‌طور است.
       id_not_configured: iD پیکربندی نشده است
       no_iframe_support: مرورگر شما فریم‌های HTML را، که برای این ویژگی لازم است،
@@ -2176,7 +2168,6 @@ fa:
         title: راهنمای مبتدیان
         description: راهنمایی برای تازه‌واردان که اعضای جامعه آماده کرده‌اند.
       help:
-        url: https://help.openstreetmap.org/
         title: انجمن کمک
         description: در وبگاه پرسش‌وپاسخ OSM سؤال بپرسید یا بین پاسخ‌ها بگردید.
       mailing_lists:
@@ -2194,12 +2185,10 @@ fa:
         description: راهنمای شرکت‌ها و سازمان‌هایی که می‌خواهند به نقشه و سایر خدمات
           مبتنی بر OpenStreetMap مهاجرت کنند.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: برای سازمان‌ها
         description: در سازمان خود طرحی دربارهٔ OpenStreetMap دارید؟ صفحهٔ خوش‌آمدگویی
           را ببینید.
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: ویکی OpenStreetMap
         description: مستندات پرجزئیات را در ویکی OpenStreetMap مرور کنید.
     sidebar:
@@ -2288,9 +2277,8 @@ fa:
     welcome:
       title: خوش آمدید!
       introduction_html: به OpenStreetMap، نقشهٔ آزاد و قابل ویرایش جهان، خوش آمدید.
-        اکنون که نام‌نویسی‌تان کامل شده، می‌توانید یکراست نقشه‌کشی را آغاز کنید. در
-        ادامه، راهنمای کوتاهی دربارهٔ مهم‌ترین چیزهایی که به دانستن‌شان نیاز دارید،
-        آمده است.
+        اکنون که نام‌نویسی‌تان کامل شده، می‌توانید یکراست نقشه‌کشی را آغاز کنید. این
+        راهنمای سریع دربارهٔ مهم‌ترین چیزهایی است که به دانستنشان نیاز دارید.
       whats_on_the_map:
         title: چیزهایی که روی نقشه می‌آید
         on_html: در OpenStreetMap چیزهایی را نقشه‌کشی می‌کنیم که <em>هم واقعی و هم
@@ -2311,9 +2299,8 @@ fa:
           است، مثل یک رستوران یا یک درخت.
         way_html: <strong>راه</strong> یا <strong>way</strong> یک خط یا محدوده است؛
           مثل یک رود، نهر آب، برکه یا ساختمان.
-        tag_html: <strong>تگ</strong> یا <strong>tag</strong> دادهٔ کوچکی دربارهٔ
-          یک گره یا راه است، مثل نام یک رستوران یا محدودیت سرعت یک جاده. به آن برچسب
-          هم می‌گویند.
+        tag_html: <strong>برچسب</strong> یا <strong>tag</strong> دادهٔ کوچکی دربارهٔ
+          یک گره یا راه است، مثل نام یک رستوران یا محدودیت سرعت یک جاده.
       rules:
         title: قوانین!
         paragraph_1_html: قوانین رسمی OpenStreetMap تنها چند مورد است، اما از همهٔ
@@ -2338,6 +2325,8 @@ fa:
         paragraph_2_html: |-
           کافی است <a href='%{map_url}'>نقشه</a> را بیاورید و روی آیکون یادداشت کلیک کنید:
           <span class='icon note'></span>. با این کار یک نشانه‌گذار به نقشه اضافه می‌شود که می‌توانید با کشیدن جابه‌جایش کنید. پیامتان را بنویسید و سپس روی ذخیره کلیک کنید. سایر نقشه‌کش‌ها آن را بررسی خواهند کرد.
+    communities:
+      title: جوامع
   traces:
     visibility:
       private: خصوصی (همرسانی فقط به‌صورت گمنام، نقاط نامرتب)
@@ -2545,7 +2534,6 @@ fa:
       no_applications_html: آیا برنامه‌ای دارید که می‌خواهید به‌وسیلهٔ استاندارد %{oauth2}
         ثبتش کنید تا با ما از آن استفاده کنید؟ قبل از اینکه برنامه‌تان بتواند درخواست‌های
         OAuth را انجام دهد باید آن را ثبت کنید.
-      oauth_2: OAuth 2
       new: ثبت برنامهٔ جدید
       name: نام
       permissions: اجازه‌ها
@@ -2627,11 +2615,9 @@ fa:
       read_tou: شرایط استفاده را خوانده‌ام و آن را می‌پذیرم
       consider_pd: علاوه بر موارد بالا، می‌پذیرم که مشارکت‌هایم در مالکیت عمومی باشد.
       consider_pd_why: این چیست؟
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 'اطلاعاتی برای کمک به درک شرایط مشارکت‌کننده: <a href="%{summary}">خلاصهٔ
         خوانا برای انسان</a> و <a href="%{translations}">ترجمه‌های غیررسمی</a>'
       continue: ادامه
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: نمی‌پذیرم
       you need to accept or decline: برای ادامه لطفاً بخوانید و سپس شرایط جدید مشارکت‌کننده
         را بپذیرید یا رد کنید.
@@ -2644,7 +2630,6 @@ fa:
       terms_declined_html: از اینکه تصمیم گرفته‌اید شرایط جدید مشارکت‌کننده را نپذیرید،
         متأسف هستیم. برای اطلاعات بیشتر، لطفاً %{terms_declined_link} را ببینید.
       terms_declined_link: این صفحهٔ ویکی
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: چنین کاربری وجود ندارد
       heading: کاربر %{user} وجود ندارد

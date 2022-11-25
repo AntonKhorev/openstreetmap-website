@@ -10,6 +10,7 @@
 # Author: VASANTH S.N.
 # Author: Xor
 # Author: Yogesh
+# Author: ~aanzx
 # Author: ಮಲ್ನಾಡಾಚ್ ಕೊಂಕ್ಣೊ
 ---
 kn:
@@ -251,7 +252,7 @@ kn:
       load_data: ಮಾಹಿತಿಯನ್ನು ತುಂಬಿರಿ
       loading: ತುಂಬಿಸಲಾಗುತ್ತಿದೆ....
     tag_details:
-      tags: ಅಂಕಿತಗಳು
+      tags: ಟ್ಯಾಗ್‌ಗಳು
       telephone_link: '%{phone_number} ಕರೆಮಾಡಿ'
     note:
       title: 'ಟಿಪ್ಪಣಿ: %{id}'
@@ -746,12 +747,10 @@ kn:
         url: /welcome
         title: ಒಪನ್ ಸ್ಟ್ರೀಟ್ ಮ್ಯಾಪ್ ಗೆ  ಸುಸ್ವಾಗತ
       help:
-        url: https://help.openstreetmap.org/
         title: help.openstreetmap.org
       irc:
         title: ಐ ಆರ್ ಸಿ
       wiki:
-        url: http://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
     sidebar:
       close: ಮುಚ್ಚಿ

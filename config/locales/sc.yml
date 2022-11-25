@@ -286,12 +286,11 @@ sc:
       current email address: Indiritzu de posta eletrònica atuale
       external auth: Autenticatzione esterna
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: ite est custu?
       public editing:
         heading: Modificatzione pùblica
         enabled: Abilitada. No anònimu e podet modificare datos.
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
+        enabled link: https://wiki.openstreetmap.org/wiki/Sc:Anonymous_edits
         enabled link text: ite est custu?
         disabled: Inabilitadu e chene permissu de mudare sos datos; totu sas modìficas
           antepostas sunt anònimas.
@@ -315,7 +314,7 @@ sc:
           e atzetare sas cunditziones noas pro sa contributzione.
         agreed_with_pd: As fintzas decraradu chi cunsìderas sas modìficas tuas de
           domìniu pùblicu.
-        link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms
+        link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms&uselang=sc
         link text: ite est custu?
       save changes button: Sarva sas modìficas
       make edits public button: Faghe totu sas modìficas meas pùblicas
@@ -444,6 +443,7 @@ sc:
       wikimedia_commons_link: S'elementu %{page} in Wikimedia Commons
       telephone_link: Muti a su %{phone_number}
       colour_preview: Anteprima de su colore %{colour_value}
+      email_link: Posta eletrònica %{email}
     note:
       title: 'Nota: %{id}'
       new_note: Nota noa
@@ -484,6 +484,7 @@ sc:
     index:
       title: Annantos de modìficas
       title_user: Annantos de modìficas de %{user}
+      title_user_link_html: Annantos de modìficas de %{user_link}
       title_friend: Annantos de modìficas de sos amigos meos
       title_nearby: Annantos de modìficas de utentes a curtzu
       empty: Perunu annantu de modìficas agatadu.
@@ -568,6 +569,9 @@ sc:
       updated_at_html: Ùrtimu agiornamentu su %{updated}.
       comment_link: Cummenta custa intrada
       reply_link: Imbia unu messàgiu a s'autore
+      comment_count:
+        one: '%{count} cummentu'
+        other: '%{count} cummentos'
       edit_link: Modìfica custa intrada
       hide_link: Cua custa intrada
       unhide_link: Ammustra custa intrada
@@ -1446,6 +1450,9 @@ sc:
       provide_details: Fruni sos detàllios pedidos
     show:
       title: '%{status} Problema #%{issue_id}'
+      reports:
+        one: 1 sinnalatzione
+        other: '%{count} sinnalatziones'
       report_created_at: Sinnaladu pro sa prima borta su %{datetime}
       last_resolved_at: Risoltu pro s'ùrtima borta su %{datetime}
       last_updated_at: Ùrtima atualizatzione de %{displayname} su %{datetime}
@@ -1607,7 +1614,6 @@ sc:
       failed_to_import: 'non si podet importare. Sa faddina est istada:'
       more_info_html: Podes agatare àteras informatzione subra sos fallimentos de
         importatzione de sos GPX e de comente los evitare in %{url}.
-      import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       subject: '[OpenStreetMap] Faddina de importatzione de GPX'
     gpx_success:
       hi: Salude %{to_user},
@@ -1892,9 +1898,6 @@ sc:
       account not active: Su contu tuo no est galu ativu.<br />Imprea su ligàmene
         in sa lìtera eletrònica de cunfirma pro ativare su contu tuo, o <a href="%{reconfirm}">pedi
         una lìtera de cunfirma noa</a>.
-      account is suspended: Su contu tuo est istadu suspèndidu pro neghe de atividades
-        suspetas.<br />Cuntata <a href="%{webmaster}">s'assistèntzia</a> si nde cheres
-        chistionare.
       auth failure: Non podes intrare cun custos detàllios.
       openid_logo_alt: Intra cun un'OpenID
       auth_providers:
@@ -1926,6 +1929,12 @@ sc:
       title: Essi
       heading: Essi dae OpenStreetMap
       logout_button: Essi
+    suspended_flash:
+      suspended: Perdona, su contu tuo est istadu suspèndidu pro neghe de un'atividade
+        suspeta.
+      contact_support_html: Pro praghere cuntata a s'%{support_link} si cheres dibatere
+        custa cosa.
+      support: assistèntzia
   shared:
     markdown_help:
       title_html: Analizadu cun <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
@@ -2225,11 +2234,9 @@ sc:
         description: Incumintza cun custa ghia lestra subra de sos aspetos fundamentales
           de OpenStreetMap.
       beginners_guide:
-        url: https://wiki.openstreetmap.org/wiki/Beginners%27_guide
         title: Ghia pro printzipiantes
         description: Ghia pro printzipiante mantenta dae sa comunidade.
       help:
-        url: https://help.openstreetmap.org/
         title: Fòrum de agiudu
         description: Faghe una pregunta o chirca rispostas in sa pàgina de preguntas
           e rispostas de OpenStreetMap.
@@ -2243,7 +2250,6 @@ sc:
         description: Preguntas e discussiones pro sos chi preferint un'istile de interfache
           a tipu bacheca de annùntzios.
       community:
-        url: https://community.openstreetmap.org/
         title: Forum de sa comunidade
         description: Unu logu cumpartzidu pro sos arresonos subra de OpenStreetMap.
       irc:
@@ -2255,12 +2261,10 @@ sc:
         description: Agiudu pro aziendas e organizatziones chi cherent colare a sas
           mapas e a sos àteros servìtzios fundados supra de OpenStreetMap.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Pro organizatziones
         description: Ses cun un'organizatzione chi cheret impreare OpenStreetMap?
           Agata su chi ti bisòngiat a ischire in sa pàgina de benebènnidu nostra.
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: Wiki de OpenStreetMap
         description: Esplora sa wiki pro agatare documentatzione a sa minuda subra
           de OpenStreetMap.
@@ -2422,7 +2426,6 @@ sc:
     new:
       upload_trace: Càrriga sa rasta GPS
       visibility_help: ite cheret nàrrere?
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
       help: Agiudu
       help_url: https://wiki.openstreetmap.org/wiki/Upload
     create:
@@ -2714,12 +2717,10 @@ sc:
       consider_pd: Paris a totu su chi b'at inoghe in subra, atzeto chi sos contributos
         meos siant de domìniu pùblicu
       consider_pd_why: ite est custu?
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 'Informatziones pro t''agiudare a cumprèndere custas cunditziones:
         unu <a href="%{summary}">resumu fàtzile de lèghere pro umanos</a> e unas cantas
         <a href="%{translations}">tradutziones informales</a>'
       continue: Sighi
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Refuda
       you need to accept or decline: Pro pòdere sighire leghe e a pustis atzeta o
         refuda sos tèrmines noos de collaboratzione.
@@ -2732,7 +2733,6 @@ sc:
       terms_declined_html: Nos dipraghet chi apas isseberadu de no atzetare sos tèrmines
         de contributzione noos. Pro àteras informatziones pòmpia·ti %{terms_declined_link}.
       terms_declined_link: custa pàgina wiki
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: Custu utente no esistet
       heading: S'utente %{user} no esistet

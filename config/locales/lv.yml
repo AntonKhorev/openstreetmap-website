@@ -183,12 +183,10 @@ lv:
       current email address: 'Pašreizējā e-pasta adrese:'
       external auth: 'Ārējā autentifikācija:'
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: Kas tas ir?
       public editing:
         heading: Publiska rediģēšana
         enabled: Ieslēgts. Nav anonīms, un var rediģēt datus.
-        enabled link: https://wiki.OpenStreetMap.org/wiki/Anonymous_edits
         enabled link text: Kas tas ir?
         disabled: Atspējots un nevar labot datus, visi iepriekšējie labojumi ir anonīmi.
         disabled link text: Kāpēc nevar rediģēt?
@@ -1340,9 +1338,6 @@ lv:
       account not active: Atvainojiet, tavs lietotājs vēl nav aktīvs.<br />Lūdzu izmanto
         saiti lietotāja pārbaudes e-pastā, lai aktivizētu savu lietotāju, vai <a href="%{reconfirm}">pieprasi
         jaunu pārbaudes e-pastu</a>.
-      account is suspended: Atvainojiet, tavs lietotājs ir bloķētā stāvoklī apšaubāmas
-        aktivitātes dēļ.<br />Lūdzu kontaktējies ar <a href="%{webmaster}">tīmekļa
-        pārzini</a>, ja tu vēlies šo diskutēt.
       auth failure: Diemžēl nevarēja ieiet ar šiem datiem
       openid_logo_alt: Pieteikties ar OpenID
       auth_providers:
@@ -1647,7 +1642,6 @@ lv:
       welcomemat:
         title: Organizācijām
       wiki:
-        url: http://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
         description: Caurlūko wiki priekš padziļinātas OSM dokumentācijas.
     sidebar:

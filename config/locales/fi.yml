@@ -311,7 +311,6 @@ fi:
       public editing:
         heading: Julkinen muokkaus
         enabled: Kyllä. Karttatietojen muokkaus sallittu.
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: Mitä tämä tarkoittaa?
         disabled: Ei. Karttatietojen muokkaus estetty. Aiemmat karttamuutokset anonyymejä.
         disabled link text: Miksen voi enää muokata karttaa?
@@ -333,7 +332,6 @@ fi:
           tätä linkkiä.
         agreed_with_pd: Olet myös ilmaissut muokkaustesi olevan tekijänoikeudesta
           vapaita (Public Domain).
-        link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms
         link text: Mitä tämä tarkoittaa?
       save changes button: Tallenna muutokset
       make edits public button: Tee muokkauksistani julkisia
@@ -461,6 +459,7 @@ fi:
       wikimedia_commons_link: '%{page} Wikimedia Commonsissa'
       telephone_link: Soita %{phone_number}
       colour_preview: Värin %{colour_value} esikatselu
+      email_link: Sähköposti %{email}
     note:
       title: 'Karttailmoitus: %{id}'
       new_note: Uusi karttailmoitus
@@ -501,6 +500,7 @@ fi:
     index:
       title: Muutoskokoelmat
       title_user: Käyttäjän %{user} muutoskokoelmat
+      title_user_link_html: Käyttäjän %{user_link} muutoskokoelmat
       title_friend: Kaverien muutoskokoelmat
       title_nearby: Lähellä olevien käyttäjien muutoskokoelmat
       empty: Muutosryhmiä ei löytynyt.
@@ -1846,9 +1846,6 @@ fi:
       account not active: Käyttäjätunnustasi ei ole vielä aktivoitu.<br />Aktivoi
         käyttäjätunnuksesi napsauttamalla sähköpostitse saamaasi vahvistuslinkkiä,
         tai <a href="%{reconfirm}">pyydä uusi varmistusviesti</a>.
-      account is suspended: Valitettavasti käyttäjätilisi on estetty epäilyttävän
-        toiminnan seurauksena.<br />Mikäli haluat keskustella asiasta, voit ottaa
-        yhteyttä <a href="%{webmaster}">ylläpitoon</a>.
       auth failure: Kirjautuminen epäonnistui.
       openid_logo_alt: Kirjaudu sisään OpenID-tunnuksella
       auth_providers:
@@ -1880,6 +1877,8 @@ fi:
       title: Kirjaudu ulos
       heading: Kirjaudu ulos OpenStreetMapista
       logout_button: Kirjaudu ulos
+    suspended_flash:
+      support: tuki
   shared:
     markdown_help:
       title_html: Jäsennä <a href="https://daringfireball.net/projects/markdown/">Wikitekstinä</a>
@@ -2149,7 +2148,6 @@ fi:
         title: Aloitusopas
         description: Yhteisön ylläpitämä opas aloittelijoille.
       help:
-        url: https://help.openstreetmap.org/
         title: Apufoorumi
         description: Etsi vastauksia tai esitä oma kysymyksesi OpenStreetMapin kysy-
           ja vastaa -sivustolla. (englanninkielinen)
@@ -2169,7 +2167,6 @@ fi:
         description: Auta yrityksiä ja organisaatioita vaihtamaan OpenStreetMapiin
           pohjautuviin karttoihin ja muihin palveluihin.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Järjestöille
         description: Edustatko järjestöä, joka harkitsee OpenStreetMapin hyödyntämistä?
           Tutustu ohjeistukseemme.

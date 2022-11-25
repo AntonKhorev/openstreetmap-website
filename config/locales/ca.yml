@@ -32,6 +32,7 @@
 # Author: Netol
 # Author: PerroVerd
 # Author: Pitort
+# Author: Qllach
 # Author: Quel.soler
 # Author: Rbndev
 # Author: Ruila
@@ -47,8 +48,6 @@
 # Author: 아라
 ---
 ca:
-  html:
-    dir: ltr
   time:
     formats:
       friendly: '%e %B %Y a les %H.%M'
@@ -247,8 +246,6 @@ ca:
         other: fa %{count} mesos
       x_years:
         other: un=fa 1 any
-  printable_name:
-    with_version: '%{id}, v%{version}'
   editor:
     default: Predeterminat (actualment %{name})
     id:
@@ -301,8 +298,14 @@ ca:
           vostre avatar, descripció i ubicació del vostre domicili.
         delete_display_name: S'eliminarà el vostre nom en pantalla i podrà ser utilitzat
           per altres comptes.
+        retain_caveats: 'Tanmateix, alguna informació vostra romandrà a OpenStreetMap,
+          fins i tot després de suprimir el compte:'
         retain_edits: Les vostres edicions a la base de dades de mapes, si en teniu
           cap, seran conservades.
+        retain_traces: Si hi heu penjat cap traça, hi romandran.
+        retain_diary_entries: Si teniu cap entrada o comentari de diari, hi romandran
+          però s'ocultaran.
+        retain_notes: Si teniu cap nota o comentari de mapes, hi romandran però s'ocultaran.
         retain_changeset_discussions: Les vostres discussions del conjunt de canvis,
           si n'hi ha cap, es conservaran.
         retain_email: Es conservarà la vostra adreça de correu electrònic.
@@ -315,12 +318,10 @@ ca:
       current email address: Adreça electrònica actual
       external auth: Autenticació externa
       openid:
-        link: https://wiki.OpenStreetMap.org/wiki/OpenID
         link text: què és això?
       public editing:
         heading: Modificació pública
         enabled: Activades. No anònim i amb permís per editar dades.
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: què és això?
         disabled: Desactivades i sense permís per a editar; les modificacions anteriors
           són anònimes.
@@ -343,7 +344,6 @@ ca:
           de col·laboració.
         agreed_with_pd: També declareu que considereu que les vostres modificacions
           són de domini públic.
-        link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms
         link text: què és això?
       save changes button: Desa els canvis
       make edits public button: Fes totes les meves modificacions públiques
@@ -488,7 +488,7 @@ ca:
       reopened_by_html: Reactivat per %{user} a <abbr title='%{exact_time}'>%{when}</abbr>
       reopened_by_anonymous_html: Reactivat per un anònim a <abbr title='%{exact_time}'>%{when}</abbr>
       hidden_by_html: Ocultat per %{user} a <abbr title='%{exact_time}'>%{when}</abbr>
-      report: Reportar aquesta nota
+      report: informa d'aquesta nota
     query:
       title: Consultar objectes
       introduction: Feu clic al mapa per a trobar objectes propers.
@@ -952,6 +952,7 @@ ca:
           trailhead: Cap de pista
           trunk: Via ràpida
           trunk_link: Via ràpida
+          turning_circle: Atzucac
           turning_loop: Canvi de sentit final
           unclassified: Carretera sense classificar
           "yes": Carretera
@@ -1232,6 +1233,7 @@ ca:
           "yes": Lloc
         railway:
           abandoned: Ferrocarril abandonat
+          buffer_stop: Topall
           construction: Ferrocarril en construcció
           disused: Ferrocarril en desús
           funicular: Funicular
@@ -1254,6 +1256,7 @@ ca:
           switch: Canvi d'agulles
           tram: Tramvia
           tram_stop: Parada de tramvia
+          turntable: Placa giratòria
           yard: Pati de ferrocarril
         shop:
           agrarian: Botiga agrària
@@ -1504,6 +1507,7 @@ ca:
   issue_comments:
     create:
       comment_created: S’ha creat el comentari correctament
+      issue_reassigned: S'ha creat el vostre comentari i la incidència s'ha reassignat
   reports:
     new:
       title_html: Denunciar %{link}
@@ -1541,9 +1545,6 @@ ca:
       successful_report: S’ha registrat la vostra denúncia correctament
       provide_details: Proporcioneu els detalls demanats
   layouts:
-    project_name:
-      title: OpenStreetMap
-      h1: OpenStreetMap
     logo:
       alt_text: Logotip de l'OpenStreetMap
     home: Ves a la ubicació d'inici
@@ -1635,7 +1636,6 @@ ca:
       failed_to_import: 'no es pot importar. L''error ha estat:'
       more_info_html: Podeu trobar més informació sobre les fallades d'importació
         de GPX i com evitar-les a %{url}.
-      import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       subject: '[OpenStreetMap] Error d''importació de GPX'
     gpx_success:
       hi: Hola %{to_user},
@@ -1911,8 +1911,6 @@ ca:
       account not active: El vostre compte encara no és actiu.<br />Utilitzeu l'enllaç
         al correu de confirmació per activar el vostre compte o <a href="%{reconfirm}">demaneu
         un nou correu electrònic de confirmació</a>.
-      account is suspended: S'ha suspès el vostre compte a causa d'activitat sospitosa.<br/>Contacteu
-        amb <a href="%{webmaster}">assistència</a> per parlar-ne.
       auth failure: No podeu iniciar la sessió amb aquesta informació.
       openid_logo_alt: Inicia sessió amb un compte OpenID
       auth_providers:
@@ -2028,25 +2026,22 @@ ca:
         intro_3_1_html: La nostra documentació és disponible sota llicència <a href="http://creativecommons.org/licenses/by-sa/2.0/">Text
           de la llicència de Creative Commons Reconeixement-Compartir Igual 2.0</a>(CC-BY-SA).
         credit_title_html: Com atribuir autoria a OpenStreetMap
-        credit_1_html: Demanem que es reconegui &ldquo;&copy; Col·laboradors d'OpenStreetMap&rdquo;
-          com a autors.
-        credit_2_1_html: També heu de deixar clar que les dades són disponibles sota
-          llicència de base de dades oberta i, si utilitzeu els nostres mapes, que
-          la cartografia té llicència CC-BY-SA. Podeu fer-ho enllaçant a <a href="http://www.openstreetmap.org/copyright">aquesta
-          pàgina de copyright</a>. De manera alternativa, però com a requisit obligatori
-          si distribuïu OSM en forma de dades en brut, podeu citar i enllaçar directament
-          a la llicència. En el cas d'utilitzar suports on els enllaços d'hipertext
-          no són possibles (per exemple, obres impreses), us suggerim d'adreçar els
-          lectors a openstreetmap.org (potser indicant l'adreça completa d'OpenStreetMap),
-          a opendatacommons.org i, si s'escau, a creativecommons.org.
-        credit_3_1_html: |-
-          Les tessel·les de mapa en &ldquo;standard style&rdquo; a www.openstreetmap.org són un
-          producte de la Fundació OpenStreetMap usant dades de l'OpenStreetMap  sota llicència Open
-          Database License. Quan s'utilitza aquest estil de mapa, la mateixa atribució és requerit quant a
-          les dades del mapa.
+        credit_1_html: 'Allà on utilitzeu les dades de l''OpenStreetMap, cal que feu
+          les dues coses següents:'
+        credit_2_1_html: |-
+          <ul>
+            <li>Doneu crèdit a OpenStreetMap mostrant-ne l'avís de copyright.</li>
+            <li>Deixeu clar que les dades són disponibles sota l'Open Database License.</li>
+          </ul>
+        credit_3_1_html: Per a l'avís de copyright, tenim diferents requisits sobre
+          com cal mostrar-lo depenent de com feu servir les nostres dades. Per exemple,
+          s'apliquen diferents regles depenent de si heu creat un mapa navegable,
+          un mapa imprès o una imatge estàtica. Per a més detalls, podeu consultar
+          les <a href="https://wiki.osmfoundation.org/wiki/Licence/Attribution_Guidelines">directrius
+          d'atribució</a>.
         credit_4_html: |-
-          En el cas d'un mapa electrònic navegable, els crèdits han d'aparèixer a la cantonada del mapa.
-          Per exemple:
+          Per tal de fer patent que les dades es troben sota l'Open
+          Database License, podeu enllaçar <a href="https://www.openstreetmap.org/copyright">aquesta pàgina de copyright</a>. Alternativament, i com a requisit si esteu distribuint l'OSM en un formulari de dades, podeu anomenar i enllaçar directament les llicències. En aquells llocs on els enllaços no siguin possibles (p. ex., en material imprès), us suggerim que dirigiu als lectors a openstreetmap.org (possible estenent 'OpenStreetMap' a aquesta adreça sencera) i a opendatacommons.org. En aquest exemple, l'atribució apareix a la cantonada del mapa.
         attribution_example:
           alt: Exemple de com atribuir l'autoria a OpenStreetMap en una pàgina web
           title: Exemple d'atribució d'autoria
@@ -2225,7 +2220,6 @@ ca:
         title: Guia per a principiants
         description: Guia per a principiants mantinguda per la comunitat.
       help:
-        url: https://help.openstreetmap.org/
         title: Fòrum d'ajuda
         description: Feu una pregunta o cerqueu respostes a la pàgina de preguntes
           i respostes d'OpenStreetMap.
@@ -2234,9 +2228,12 @@ ca:
         description: Pregunta o debat sobre qüestions interessants en un ampli ventall
           de llistes de correu temàtiques i regionals.
       forums:
-        title: Fòrums
+        title: Fòrums (obsolet)
         description: Preguntes i debats per als qui prefereixen un estil d'interfície
           de tauler d'anuncis.
+      community:
+        title: Fòrum comunitari
+        description: Un espai compartit per a les converses d'OpenStreetMap.
       irc:
         title: IRC
         description: Xat interactiu en llengües diferents i sobre diferents temes.
@@ -2245,12 +2242,10 @@ ca:
         description: Ajuda per a empreses i organitzacions que volen migrar als mapes
           i altres serveis basats en OpenStreetMap.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Per a organitzacions
         description: Ets amb una organització que vol usar OpenStreetMap? Troba el
           que et cal saber al nostre espai de benvinguda.
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: Wiki d'OpenStreetMap
         description: Navegueu per la wiki per a trobar documentació detallada d'OpenStreetMap.
     potlatch:
@@ -2693,11 +2688,9 @@ ca:
       consider_pd: A més de tot l'anterior, accepto que les meves contribucions siguin
         de domini públic
       consider_pd_why: què és això?
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 'Informació per ajudar a entendre aquests termes: un <a href="%{summary}">resum
         llegible per humans</a> i algunes <a href="%{translations}">traduccions informals</a>'
       continue: Continua
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Rebutja
       you need to accept or decline: Per a poder continuar, llegiu i després accepteu
         o rebutgeu els nous termes de col·laboració .
@@ -2710,7 +2703,6 @@ ca:
       terms_declined_html: Ens sap greu que hàgiu decidit no acceptar els nous termes
         de les contribucions. Per més informació, vegeu %{terms_declined_link}.
       terms_declined_link: aquesta pàgina wiki
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: Aquest usuari no existeix
       heading: L'usuari %{user} no existeix
@@ -3052,6 +3044,9 @@ ca:
         reactivate: Reactivar
         comment_and_resolve: Comenta i resol
         comment: Comenta
+        report_link_html: Si aquesta nota conté informació delicada que cal eliminar,
+          podeu %{link}. Per a altres problemes amb la nota, solucioneu-ho amb un
+          comentari.
     edit_help: Moveu el mapa i feu zoom sobre una ubicació que vulgueu editar, i a
       continuació, feu clic aquí.
     directions:

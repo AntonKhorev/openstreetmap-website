@@ -5,6 +5,7 @@
 # Author: 500000000006城
 # Author: A Chinese Wikipedian
 # Author: A Retired User
+# Author: Amire80
 # Author: Anakmalaysia
 # Author: Angrydog001
 # Author: Assoc
@@ -77,8 +78,6 @@
 # Author: 아라
 ---
 zh-CN:
-  html:
-    dir: ltr
   time:
     formats:
       friendly: '%Y年%B%e日 %H:%M'
@@ -273,7 +272,6 @@ zh-CN:
         other: '%{count}年前'
   printable_name:
     with_version: '%{id}，版本 %{version}'
-    with_name_html: '%{name} (%{id})'
   editor:
     default: 默认（目前为 %{name}）
     id:
@@ -339,7 +337,6 @@ zh-CN:
       current email address: 当前电子邮件地址
       external auth: 外部身份验证
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: 这是什么？
       public editing:
         heading: 公开编辑
@@ -392,8 +389,6 @@ zh-CN:
     view_history: 查看历史
     view_details: 查看详情
     location: 位置：
-    common_details:
-      coordinates_html: '%{latitude}, %{longitude}'
     changeset:
       title: 变更集：%{id}
       belongs_to: 作者
@@ -407,7 +402,7 @@ zh-CN:
       hidden_commented_by_html: <abbr title='%{exact_time}'>%{when}</abbr>来自%{user}的隐藏评论
       commented_by_html: <abbr title='%{exact_time}'>%{when}</abbr>来自%{user}的评论
       changesetxml: 变更集 XML
-      osmchangexml: osm 修改 XML
+      osmchangexml: osmChange XML
       feed:
         title: 变更集 %{id}
         title_comment: 变更集 %{id} - %{comment}
@@ -434,7 +429,6 @@ zh-CN:
         one: 1 member
         other: '%{count} 位成员'
     relation_member:
-      entry_html: '%{type} %{name}'
       entry_role_html: '%{type} %{name} 作为%{role}'
       type:
         node: 节点
@@ -482,6 +476,7 @@ zh-CN:
       wikimedia_commons_link: 在维基共享资源上的%{page}项目
       telephone_link: 请拨打 %{phone_number}
       colour_preview: '%{colour_value}的颜色预览'
+      email_link: 电子邮件 %{email}
     note:
       title: 注记：%{id}
       new_note: 新注记
@@ -499,7 +494,6 @@ zh-CN:
       reopened_by_anonymous_html: 匿名用户重新激活于<abbr title='%{exact_time}'>%{when}</abbr>
       hidden_by_html: '%{user}隐藏于<abbr title=''%{exact_time}''>%{when}</abbr>'
       report: 举报此注记
-      coordinates_html: '%{latitude}, %{longitude}'
     query:
       title: 查询要素
       introduction: 点击地图以查找附近要素。
@@ -523,6 +517,7 @@ zh-CN:
     index:
       title: 变更集
       title_user: '%{user}的变更集'
+      title_user_link_html: '%{user_link}的变更集'
       title_friend: 由我的朋友所做的变更集
       title_nearby: 附近用户的变更集
       empty: 未找到变更集。
@@ -621,7 +616,6 @@ zh-CN:
       location: 位置：
       view: 查看
       edit: 编辑
-      coordinates: '%{latitude}; %{longitude}'
     feed:
       user:
         title: '%{user} 的 OpenStreetMap 日记文章'
@@ -673,7 +667,6 @@ zh-CN:
         geonames_reverse_html: 来自 <a href="http://www.geonames.org/">GeoNames</a>
           的结果
     search_osm_nominatim:
-      prefix_format: '%{name}'
       prefix:
         aerialway:
           cable_car: 缆车
@@ -1552,9 +1545,6 @@ zh-CN:
       successful_report: 您的举报已成功提交
       provide_details: 请提供所需详情
   layouts:
-    project_name:
-      title: OpenStreetMap
-      h1: OpenStreetMap
     logo:
       alt_text: OpenStreetMap 标志
     home: 返回家位置
@@ -1591,6 +1581,7 @@ zh-CN:
     help: 帮助
     about: 关于
     copyright: 著作权
+    communities: 社区
     community: 社区
     community_blogs: 社区博客
     community_blogs_title: OpenStreetMap 社区成员的博客
@@ -1632,7 +1623,6 @@ zh-CN:
       hi: 您好，%{to_user}：
       failed_to_import: 导入失败。下面是错误信息：
       more_info_html: 更多关于 GPX 导入失败的信息，以及如何避免失败可在%{url}找到。
-      import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       subject: '[OpenStreetMap] GPX 导入失败'
     gpx_success:
       hi: 您好，%{to_user}：
@@ -1820,7 +1810,7 @@ zh-CN:
       image: 图像
       gravatar:
         gravatar: 使用 Gravatar
-        link: http://wiki.openstreetmap.org/wiki/Gravatar
+        link: https://wiki.openstreetmap.org/wiki/Gravatar
         what_is_gravatar: 什么是Gravatar？
         disabled: Gravatar已禁用。
         enabled: 您的Gravatar显示已启用。
@@ -1853,7 +1843,6 @@ zh-CN:
       create account minute: 创建账户。只需花费一分钟。
       no account: 没有账户？
       account not active: 对不起，您的账户尚未激活。<br />请点击在账户确认邮件中的链接来激活您的账户，或<a href="%{reconfirm}">请求新的确认电子邮件</a>。
-      account is suspended: 对不起，您的帐户因可疑活动已被暂停。<br />如果您想讨论这个，请联系<a href="%{webmaster}">支持人员</a>。
       auth failure: 对不起，凭这些信息您无法登录。
       openid_logo_alt: 使用 OpenID 登录
       auth_providers:
@@ -1885,6 +1874,10 @@ zh-CN:
       title: 退出
       heading: 退出登录OpenStreetMap
       logout_button: 退出
+    suspended_flash:
+      suspended: 抱歉，由于异常活动，您的帐户已被暂停使用。
+      contact_support_html: 如果您想就此讨论，请联系%{support_link}。
+      support: 支持
   shared:
     markdown_help:
       title_html: 使用 <a href="https://daringfireball.net/projects/markdown/">kramdown</a>
@@ -2027,7 +2020,6 @@ zh-CN:
       not_public: 您尚未公开您的编辑。
       not_public_description_html: 您将无法再编辑此地图，直到您做到如上所述。您可以通过您的%{user_page}公开您的编辑。
       user_page_link: 用户页面
-      anon_edits_html: (%{link})
       anon_edits_link_text: 了解为什么这很重要。
       id_not_configured: iD 尚未配置
       no_iframe_support: 您的浏览器不支持 HTML 嵌入式框架，这是此功能所需要的。
@@ -2098,7 +2090,6 @@ zh-CN:
         title: 新手指南
         description: 社群维护的新手指南。
       help:
-        url: https://help.openstreetmap.org/
         title: 帮助论坛
         description: 在OpenStreetMap的问答网站提问或查找回答。
       mailing_lists:
@@ -2108,7 +2099,6 @@ zh-CN:
         title: 论坛（旧版）
         description: 面向更喜欢电子公告栏样式界面的用户的问题和讨论。
       community:
-        url: https://community.openstreetmap.org/
         title: 社区论坛
         description: 用于讨论 OpenStreetMap 的共享场所。
       irc:
@@ -2118,11 +2108,9 @@ zh-CN:
         title: switch2osm
         description: 协助公司与组织改用 OpenStreetMap 为基础的地图与相关服务。
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: 对于组织
         description: 想跟一个组织为OpenStreetMap制订计划？在欢迎席上找到你需要知道的东西。
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: OpenStreetMap Wiki
         description: 浏览 wiki 深入了解 OpenStreetMap 文档。
     potlatch:
@@ -2241,6 +2229,22 @@ zh-CN:
         paragraph_1_html: 如果您这是想做一些微小改动而没有时间登录来学习如何编辑，那添加注记是非常容易的。
         paragraph_2_html: 只要去<a href='%{map_url}'>地图</a>并单击注记图标：<span class='icon
           note'></span>。这将在地图上添加一个标记，您可以拖动它，并添加您的备注，然后单击保存，其他人绘图者将确认其是否正确。
+    communities:
+      title: 社区
+      lede_text: |-
+        来自世界各地的人们都在贡献或使用 OpenStreetMap。
+        虽然许多人以个人身份参与，但其他人则组成了社群。
+        这些团体的规模各不相同，代表了小到城镇大到大型多国地区的地域。
+        它们也可以是正式的或非正式的。
+      local_chapters:
+        title: 地区分会
+        about_text: 地方分会是已采取正式步骤建立非营利法人实体的国家级或地区级团体。在与地方政府、企业和媒体打交道时，他们代表该地区的地图和制图者。他们还与OpenStreetMap基金会(OSMF)缔结联系，使他们能够与法律和版权管理机构建立联系。
+        list_text: 以下社区正式成立为地方分会：
+      other_groups:
+        title: 其他团体
+        about_html: |-
+          没有必要正式建立一个与地方分会同等规模的团体。
+          事实上，许多团体作为非正式的聚会或社区团体非常成功地存在。任何人都可以创设或加入这些团体。在<a href="https://wiki.openstreetmap.org/wiki/User_group">社区wiki页面</a>上阅读更多内容。
   traces:
     visibility:
       private: 私有 (只以匿名分享，无顺序的点)
@@ -2250,7 +2254,6 @@ zh-CN:
     new:
       upload_trace: 上传GPS轨迹
       visibility_help: 这是什么意思？
-      visibility_help_url: http://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
       help: 帮助
       help_url: http://wiki.openstreetmap.org/wiki/Upload
     create:
@@ -2263,7 +2266,6 @@ zh-CN:
       title: 编辑轨迹%{name}
       heading: 编辑轨迹%{name}
       visibility_help: 这是什么意思？
-      visibility_help_url: http://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
     update:
       updated: 地点已更新！
     trace_optionals:
@@ -2430,7 +2432,6 @@ zh-CN:
     index:
       title: 我的客户应用程序
       no_applications_html: 您是否有想要使用%{oauth2}标准注册的应用程序？您必须先注册您的应用程序才能对此服务发出OAuth请求。
-      oauth_2: OAuth 2
       new: 注册新应用程序
       name: 名称
       permissions: 权限
@@ -2502,10 +2503,8 @@ zh-CN:
       read_tou: 我已阅读并同意使用条款
       consider_pd: 除了上述协议，我同意将我的贡献释于公有领域
       consider_pd_why: 这是什么？
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 帮助理解这些条款的信息：一个<a href="%{summary}">可读的摘要</a>和一些<a href="%{translations}">非正式翻译</a>
       continue: 继续
-      declined: http://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: 拒绝
       you need to accept or decline: 请先阅读，然后接受或拒绝新的贡献者条款，再继续。
       legale_select: 请选择您居住的国家：
@@ -2516,7 +2515,6 @@ zh-CN:
     terms_declined_flash:
       terms_declined_html: 我们很遗憾您已决定不接受新的贡献者条款。有关详细信息，请参阅%{terms_declined_link}。
       terms_declined_link: 此wiki页面
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: 无此用户
       heading: 用户 %{user} 不存在
@@ -2836,7 +2834,10 @@ zh-CN:
         reactivate: 重启
         comment_and_resolve: 评论与解决
         comment: 评论
-        report_link_html: 如果此注记包含需要被移除的敏感信息，您可以%{link}。对于注记的所有其他问题，您可以依据评论内容来自行处理。
+        report_link_html: 如果此注记包含需要被删除的敏感信息，您可以%{link}。
+        other_problems_resolve: 对于注记的所有其他问题，请通过评论自行解决。
+        other_problems_resolved: 对于所有其他问题，解决就足够了。
+        disappear_date_html: 此已解决的注记将在%{disappear_in}后从地图中消失。
     edit_help: 移动地图并在您想编辑的位置放大，然后点击这里。
     directions:
       ascend: 上升

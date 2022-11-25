@@ -84,8 +84,8 @@ ko:
         email_address_not_routable: 경로를 잡을 수 없음
     models:
       acl: 접근 제어 목록
-      changeset: 변경 집합
-      changeset_tag: 변경 집합 태그
+      changeset: 바뀜집합
+      changeset_tag: 바뀜집합 태그
       country: 나라
       diary_comment: 일기 의견
       diary_entry: 일기 항목
@@ -265,12 +265,10 @@ ko:
       current email address: 현재 이메일 주소
       external auth: 외부 인증
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: 무엇인가요?
       public editing:
         heading: 공개 편집
         enabled: 활성화했습니다. 익명이 아니며 데이터를 편집할 수 있습니다.
-        enabled link: http://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: 무엇인가요?
         disabled: 바활성화되어 데이터를 편집할 수 없으며, 모든 이전 편집은 익명입니다.
         disabled link text: 왜 편집할 수 없나요?
@@ -287,7 +285,6 @@ ko:
         not yet agreed: 아직 새 기여자 약관에 동의하지 않았습니다.
         review link text: 검토할 사용자의 편의에 이 링크를 따르고 새 기여자 약관에 동의하세요.
         agreed_with_pd: 또한 자신의 편집이 퍼블릭 도메인에 있어야 한다고 생각하는 것도 선언하고 있습니다.
-        link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms
         link text: 무엇인가요?
       save changes button: 변경사항 저장
       make edits public button: 내 편집을 공개하기
@@ -307,7 +304,7 @@ ko:
     edited_by_html: <abbr title='%{title}'>%{time}</abbr>에 %{user}님이 편집함
     closed_by_html: <abbr title='%{title}'>%{time}</abbr>에 %{user}님이 닫음
     version: 버전
-    in_changeset: 변경 집합
+    in_changeset: 바뀜집합
     anonymous: 익명
     no_comment: (댓글 없음)
     part_of: '다음의 일부:'
@@ -319,7 +316,7 @@ ko:
     view_details: 자세한 내용 보기
     location: '위치:'
     changeset:
-      title: '변경 집합: %{id}'
+      title: '바뀜집합: %{id}'
       belongs_to: 저자
       node: 교점(%{count})
       node_paginated: 교점(%{count}개 중 %{x}-%{y})
@@ -331,11 +328,11 @@ ko:
       hidden_commented_by_html: '%{user}님의 <abbr title=''%{exact_time}''>%{when}</abbr>
         숨겨진 의견'
       commented_by_html: '%{user}님의 <abbr title=''%{exact_time}''>%{when}</abbr> 의견'
-      changesetxml: 변경 집합 XML
+      changesetxml: 바뀜집합 XML
       osmchangexml: osmChange XML
       feed:
-        title: 변경 집합 %{id}
-        title_comment: 변경 집합 %{id} - %{comment}
+        title: 바뀜집합 %{id}
+        title_comment: 바뀜집합 %{id} - %{comment}
       join_discussion: 토론에 참여하려면 로그인하세요
       discussion: 토론
       still_open: 바뀜집합이 아직 열려 있습니다 - 토론은 바뀜집합이 닫히면 시작됩니다.
@@ -374,7 +371,7 @@ ko:
         node: 교점
         way: 길
         relation: 관계
-        changeset: 변경 집합
+        changeset: 바뀜집합
         note: 참고
     timeout:
       title: 시간 초과 오류
@@ -441,7 +438,7 @@ ko:
     changeset:
       anonymous: 익명
       no_edits: (편집 없음)
-      view_changeset_details: 변경 집합의 자세한 사항 보기
+      view_changeset_details: 바뀜집합의 자세한 사항 보기
     changesets:
       id: ID
       saved_at: 저장된 시간
@@ -450,29 +447,29 @@ ko:
       area: 구역
     index:
       title: 바뀜집합
-      title_user: '%{user}님의 변경 집합'
-      title_friend: 내 친구의 변경 집합
-      title_nearby: 근처 사용자의 변경 집합
-      empty: 찾는 변경 집합이 없습니다.
-      empty_area: 이 지역에 변경 집합이 없습니다.
-      empty_user: 이 사용자의 변경 집합이 없습니다.
-      no_more: 찾은 변경 집합이 더 없습니다.
-      no_more_area: 이 지역에서 변경 집합이 더 없습니다.
-      no_more_user: 이 사용자의 변경 집합이 더 없습니다.
+      title_user: '%{user}님의 바뀜집합'
+      title_friend: 내 친구의 바뀜집합
+      title_nearby: 근처 사용자의 바뀜집합
+      empty: 찾는 바뀜집합이 없습니다.
+      empty_area: 이 지역에 바뀜집합이 없습니다.
+      empty_user: 이 사용자의 바뀜집합이 없습니다.
+      no_more: 찾은 바뀜집합이 더 없습니다.
+      no_more_area: 이 지역에서 바뀜집합이 더 없습니다.
+      no_more_user: 이 사용자의 바뀜집합이 더 없습니다.
       load_more: 더 불러오기
     timeout:
-      sorry: 죄송합니다, 요청하는 변경 집합 목록을 얻는데 너무 오래 걸렸습니다.
+      sorry: 죄송합니다, 요청하는 바뀜집합 목록을 가져오는 데 너무 오래 걸렸습니다.
   changeset_comments:
     comment:
-      comment: '변경 집합 #%{changeset_id}에 %{author}님이 새 댓글을 남김'
+      comment: '바뀜집합 #%{changeset_id}에 %{author}님이 새 댓글을 남김'
       commented_at_by_html: '%{user}님이 %{when}에 업데이트함'
     comments:
-      comment: '변경 집합 #%{changeset_id}에 %{author}님이 새 댓글을 남김'
+      comment: '바뀜집합 #%{changeset_id}에 %{author}님이 새 댓글을 남김'
     index:
-      title_all: OpenStreetMap 변경 집합 토론
-      title_particular: 'OpenStreetMap 변경 집합 #%{changeset_id} 토론'
+      title_all: OpenStreetMap 바뀜집합 토론
+      title_particular: 'OpenStreetMap 바뀜집합 #%{changeset_id} 토론'
     timeout:
-      sorry: 죄송합니다, 요청하는 변경 집합 댓글을 불러오는데 너무 오래 걸렸습니다.
+      sorry: 죄송합니다, 요청하는 바뀜집합 댓글을 불러오는 데 너무 오래 걸렸습니다.
   dashboards:
     contact:
       km away: '%{count}km 거리'
@@ -1563,7 +1560,7 @@ ko:
       old_messages:
         one: 오래된 메시지 %{count}개
         other: 오래된 메시지 %{count}개
-      from: 보낸이
+      from: 보낸 사람
       subject: 제목
       date: 날짜
       no_messages_yet_html: 아직 메시지가 없습니다. %{people_mapping_nearby_link}에서 마음에 드는 친구를
@@ -1605,7 +1602,7 @@ ko:
         하려면 올바른 사용자로 로그인하세요.'
     show:
       title: 메시지 읽기
-      from: 보낸이
+      from: 보낸 사람
       subject: 제목
       date: 날짜
       reply_button: 답글
@@ -1693,8 +1690,6 @@ ko:
       no account: 계정이 없나요?
       account not active: 죄송합니다, 계정을 아직 활성화하지 않았습니다.<br />계정을 활성화하려면 계정 확인 이메일에 있는
         링크를 사용하거나 <a href="%{reconfirm}">새 확인 이메일을 요청하세요</a>.
-      account is suspended: 죄송합니다, 의심스러운 활동으로 인해 계정이 일시 중지되었습니다.<br />이 문제를 토론하려면
-        <a href="%{webmaster}">웹마스터</a>에게 문의하세요.
       auth failure: 죄송합니다, 입력한 정보로 로그인할 수 없습니다.
       openid_logo_alt: OpenID로 로그인
       auth_providers:
@@ -1726,6 +1721,8 @@ ko:
       title: 로그아웃
       heading: OpenStreetMap에서 로그아웃
       logout_button: 로그아웃
+    suspended_flash:
+      support: 지원
   shared:
     markdown_help:
       title_html: <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>으로
@@ -1989,7 +1986,6 @@ ko:
         title: 초보자 가이드
         description: 커뮤니티에서 유지하는 초보자 가이드
       help:
-        url: https://help.openstreetmap.org/
         title: 도움말 포럼
         description: OpenStreetMap의 질문 및 답변 사이트에서 질문하거나 답변을 찾아보세요.
       mailing_lists:
@@ -1999,7 +1995,6 @@ ko:
         title: 포럼 (레거시)
         description: 게시판 스타일 인터페이스를 선호하는 것에 대한 질문과 토론입니다.
       community:
-        url: https://community.openstreetmap.org/
         title: 공동체 포럼
       irc:
         title: IRC
@@ -2008,11 +2003,9 @@ ko:
         title: switch2osm
         description: 회사나 단체가 OpenStreetMap와 다른 서비스를 기반으로 전환하는 것에 도움을 주십시오.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: 조직에 대해
         description: 단체와의 오픈스트리트맵에 제작 계획이 있습니까? 환영판에서 알아야 할 것을 찾아보세요.
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: OpenStreetMap 위키
         description: 깊이 있는 OpenStreetMap 설명문서에 대해서는 위키를 찾아보세요.
     sidebar:
@@ -2155,7 +2148,6 @@ ko:
     new:
       upload_trace: GPS 궤적 올리기
       visibility_help: 이게 무슨 뜻입니까?
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
       help: 도움말
       help_url: https://wiki.openstreetmap.org/wiki/Upload
     create:
@@ -2400,11 +2392,9 @@ ko:
       read_tou: 이용약관을 읽었으며 동의합니다
       consider_pd: 위의 내용 외에도 내 기여가 퍼블릭 도메인에 있다고 간주합니다
       consider_pd_why: 무엇인가요?
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: '약관을 이해하는 데 유용한 정보: <a href="%{summary}">사람이 읽을 수 있는 요약</a>과
         일부 <a href="%{translations}">비공식 번역</a>'
       continue: 계속
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: 거부
       you need to accept or decline: 계속하려면 새 기여자 약관을 읽고 나서 동의나 거부하세요.
       legale_select: '거주 국가:'
@@ -2414,7 +2404,6 @@ ko:
         rest_of_world: 나머지 국가
     terms_declined_flash:
       terms_declined_link: 이 위키 문서
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: 이러한 사용자는 없습니다
       heading: '%{user} 사용자는 존재하지 않습니다'
@@ -2442,7 +2431,7 @@ ko:
       notes: 지도 참고
       remove as friend: 친구 제거
       add as friend: 친구 추가
-      mapper since: '이후 매퍼:'
+      mapper since: '가입일:'
       ct status: '기여자 약관:'
       ct undecided: 정의되지 않음
       ct declined: 거부됨

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: phpyaml
 # Author: Aitolos
+# Author: Alexstam
 # Author: Auslaender
 # Author: Babispan
 # Author: Consta
@@ -19,10 +20,12 @@
 # Author: Logictheo
 # Author: Macofe
 # Author: Michail Angelos Georgoulas
+# Author: Mixasgr
 # Author: NikosLikomitros
 # Author: Nikosgranturismogt
 # Author: Norhorn
 # Author: Omnipaedista
+# Author: Opensavk
 # Author: Panos78
 # Author: Protnet
 # Author: Ruila
@@ -36,8 +39,6 @@
 # Author: 아라
 ---
 el:
-  html:
-    dir: ltr
   time:
     formats:
       friendly: '%e %B %Y στις %H:%M'
@@ -239,8 +240,6 @@ el:
       x_years:
         one: ένα χρόνο πριν
         other: '%{count} χρόνια πριν'
-  printable_name:
-    with_version: '%{id}, v%{version}'
   editor:
     default: Προεπιλογή (τώρα είναι %{name})
     id:
@@ -315,7 +314,6 @@ el:
       current email address: Τρέχουσα διεύθυνση ηλεκτρονικού ταχυδρομείου
       external auth: Εξωτερική επαλήθευση ταυτότητας
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: τι είναι αυτό;
       public editing:
         heading: Δημόσια επεξεργασία
@@ -423,7 +421,6 @@ el:
         one: 1 μέλος
         other: '%{count} μέλη'
     relation_member:
-      entry_html: '%{type} %{name}'
       entry_role_html: '%{type} %{name} ως %{role}'
       type:
         node: Κόμβος
@@ -475,6 +472,7 @@ el:
       wikimedia_commons_link: Το αντικείμενο %{page} στο Wikimedia Commons
       telephone_link: Καλέστε %{phone_number}
       colour_preview: Προεπισκόπηση χρώματος %{colour_value}
+      email_link: Email %{email}
     note:
       title: 'Σημείωση: %{id}'
       new_note: Νέα σημείωση
@@ -491,7 +489,7 @@ el:
       reopened_by_html: Επανενεργοποιήθηκε από τον %{user} <abbr title='%{exact_time}'>%{when}</abbr>
       reopened_by_anonymous_html: Επανενεργοποιήθηκε από ανώνυμο χρήστη <abbr title='%{exact_time}'>%{when}</abbr>
       hidden_by_html: Έγινε κρυφό από τον %{user} <abbr title='%{exact_time}'>%{when}</abbr>
-      report: Αναφορά αυτής της σημείωσης
+      report: αναφορά αυτής της σημείωσης
     query:
       title: Πληροφορίες χαρακτηριστικών
       introduction: Κάντε κλικ στον χάρτη για να βρείτε κοντινά χαρακτηριστικά.
@@ -515,6 +513,7 @@ el:
     index:
       title: Αλλαγές
       title_user: Αλλαγές από τον %{user}
+      title_user_link_html: Ομάδες αλλαγών από %{user_link}
       title_friend: Αλλαγές από τους φίλους μου
       title_nearby: Αλλαγές από κοντινούς χρήστες
       empty: Δε βρέθηκαν αλλαγές.
@@ -631,7 +630,9 @@ el:
         title: Καταχωρήσεις ημερολογίου OpenStreetMap
         description: Πρόσφατες καταχωρήσεις ημερολογίου από χρήστες του OpenStreetMap
     comments:
+      title: Προστέθηκαν σχόλια ημερολογίου από τον χρήστη %{user}
       heading: Σχόλια Ημερολογίου %{user}
+      subheading_html: Προστέθηκαν σχόλια ημερολογίου από τον χρήστη %{user}
       no_comments: Χωρίς σχόλια ημερολογίου
       post: Καταχώρηση
       when: Πότε
@@ -670,32 +671,35 @@ el:
           Nominatim</a>
         geonames_reverse_html: Αποτελέσματα από το <a href="http://www.geonames.org/">GeoNames</a>
     search_osm_nominatim:
-      prefix_format: '%{name}'
       prefix:
         aerialway:
           cable_car: Τελεφερίκ
           chair_lift: Αναβατήρας με κάθισμα
           drag_lift: Συρόμενος αναβατήρας
           gondola: Τελεφερίκ-Γόνδολα
+          magic_carpet: Ανελκυστήρας για σκι/σνόουμπορντ
           platter: Πιατέλα ανύψωσης
           pylon: Πυλώνας
           station: Σταθμός εναέριου δρόμου
           t-bar: T-Bar Ασανσέρ
+          "yes": Τελεφερίκ
         aeroway:
           aerodrome: Αεροδρόμιο
           airstrip: Διάδρομος προσγειώσεως
-          apron: Χώρος ελιγμών
-          gate: Πύλη
+          apron: Χώρος Ανεφοδιασμού
+          gate: Πύλη Αεροδρομίου
           hangar: Υπόστεγο για αεροπλάνα
           helipad: Ελικοδρόμιο
           holding_position: κράτηση θέσης
+          navigationaid: Βοήθημα πλοήγησης αεροναυτιλίας
           parking_position: Θέση στάθμευσης
           runway: Διάδρομος
           taxilane: Λωρίδα ταξί
           taxiway: Τροχιόδρομος
-          terminal: Τερματικός σταθμός
+          terminal: Τερματικός σταθμός αεροδρομίου
           windsock: Ανεμούριο
         amenity:
+          animal_boarding: Επιβίβαση Ζώων
           animal_shelter: Καταφύγιο ζώων
           arts_centre: Κέντρο τεχνών
           atm: ΑΤΜ
@@ -732,12 +736,13 @@ el:
           drinking_water: Πόσιμο νερό
           driving_school: Σχολή οδηγών
           embassy: Πρεσβεία
+          events_venue: Χώρος Διεξαγωγής Εκδηλώσεων
           fast_food: Ταχυφαγείο
           ferry_terminal: Σταθμός πορθμείων
           fire_station: Πυροσβεστικός σταθμός
           food_court: Προαύλιο φαγητού
           fountain: Συντριβάνι
-          fuel: Καύσιμα
+          fuel: Σταθμός Ανεφοδιασμού
           gambling: Τυχερά παιχνίδια
           grave_yard: Νεκροταφείο
           grit_bin: Κάδος Χαλικιού
@@ -748,7 +753,10 @@ el:
           kindergarten: Νηπιαγωγείο
           language_school: Σχολείο γλώσσας
           library: Βιβλιοθήκη
+          loading_dock: Ράμπα Φόρτωσης-Εκφόρτωσης
+          love_hotel: Ξενοδοχείο Έρωτα
           marketplace: Αγορά
+          mobile_money_agent: Πρακτορείο Κινητών Χρημάτων
           monastery: Μοναστήρι
           money_transfer: Μεταφορά χρημάτων
           motorcycle_parking: Χώρος στάθμευσης μοτοσικλετών
@@ -769,8 +777,10 @@ el:
           public_bath: Δημόσιο λουτρό
           public_bookcase: Δημόσια βιβλιοθήκη
           public_building: Δημόσιο κτήριο
+          ranger_station: Δασαρχείο
           recycling: Σημείο ανακύκλωσης
           restaurant: Εστιατόριο
+          sanitary_dump_station: Υγειονομικός Σταθμός Αποχέτευσης
           school: Σχολείο
           shelter: Καταφύγιο
           shower: Ντους
@@ -783,6 +793,7 @@ el:
           theatre: Θέατρο
           toilets: Τουαλέτες
           townhall: Δημαρχείο
+          training: Εκπαιδευτήριο
           university: Πανεπιστήμιο
           vehicle_inspection: Επιθεώρηση οχήματος
           vending_machine: Μηχάνημα αυτόματης πώλησης
@@ -791,8 +802,12 @@ el:
           waste_basket: Καλάθι απορριμμάτων
           waste_disposal: Διάθεση αποβλήτων
           waste_dump_site: Χώρος απόρριψης απορριμάτων
+          watering_place: Γούρνα
           water_point: Σημείο ανεφοδιασμού νερού
+          weighbridge: Γέφυρα ζυγοστάθμισης
+          "yes": Υποδομή
         boundary:
+          aboriginal_lands: Περιοχή Αβορίγινων
           administrative: Διοικητικό όριο
           census: Όριο απογραφής
           national_park: Εθνικό πάρκο
@@ -818,7 +833,9 @@ el:
           college: Πανεπιστημιακό κτήριο
           commercial: Εμπορικό κτήριο
           construction: Κτήριο υπό κατασκευή
+          detached: Μεζονέτα
           dormitory: Κοιτώνας
+          duplex: Μεζονέτα
           farm: Αγροικία
           farm_auxiliary: Βοηθητική αγροικία
           garage: Γκαράζ
@@ -828,9 +845,11 @@ el:
           hospital: Κτήριο Νοσοκομείου
           hotel: Ξενοδοχείο
           house: Σπίτι
+          houseboat: Πλωτή κατοικία
           hut: Καλύβα
           industrial: Βιομηχανικό Κτήριο
           kindergarten: Κτήριο νηπιαγωγείου
+          manufacture: Εργοστάσιο Κατασκευής
           office: Κτήριο Γραφείων
           public: Δημόσιο κτήριο
           residential: Πολυκατοικία
@@ -838,10 +857,13 @@ el:
           roof: Οροφή
           ruins: Ερειπωμένο Κτήριο
           school: Σχολικό Κτήριο
+          semidetached_house: Ημιμονοκατοικία
+          service: Κτήριο Υπηρεσιών
           shed: Υπόστεγο
           stable: Στάβλος
           static_caravan: Τροχόσπιτο
           temple: Κτήριο ναού
+          terrace: Σειρά όμοιων σπιτιών
           train_station: Κτήριο Σιδηροδρομικού Σταθμού
           university: Κτήριο Πανεπιστημίου
           warehouse: Αποθήκη
@@ -849,21 +871,30 @@ el:
         club:
           scout: Βάση Ομάδας Προσκόπων
           sport: Αθλητικός σύλλογος
+          "yes": Λέσχη
         craft:
           beekeeper: Μελισσοκόμος
           blacksmith: Σιδηρουργός
           brewery: Ζυθοποιείο
           carpenter: Ξυλουργός
+          caterer: Εστιάτορας
+          confectionery: Εργαστήριο Ζαχαροπλαστικής
+          dressmaker: Μοδίστρα
           electrician: Ηλεκτρολόγος
           electronics_repair: Επισκευή ηλεκτρονικών
           gardener: Κηπουρός
+          glaziery: Υαλουργείο
           handicraft: Χειροκατασκευές
           metal_construction: Κατασκευαστής Μετάλλων
           painter: Ζωγράφος
           photographer: Φωτογράφος
           plumber: Υδραυλικός
+          roofer: Στεγαστής
+          sawmill: Πριονιστήριο ξυλείας
           shoemaker: Τσαγκάρης
+          stonemason: Λιθοξόος
           tailor: Ράφτης
+          window_construction: Εργαστήριο Κατασκευής Παραθύρων
           winery: Οινοποιείο
           "yes": Κατάστημα τεχνών
         emergency:
@@ -872,8 +903,12 @@ el:
           assembly_point: Σημείο συγκέντρωσης
           defibrillator: Απινιδωτής
           fire_extinguisher: Πυροσβεστήρας
+          fire_water_pond: Πυροσβεστική Λίμνη Νερού
           landing_site: Τοποθεσία έκτακτης προσγείωσης
+          life_ring: Σωσίβιο Έκτακτης Ανάγκης
           phone: Τηλέφωνο έκτακτης ανάγκης
+          siren: Σειρήνα έκτακτης ανάγκης
+          suction_point: Σημείο Άντλησης Έκτακτης Ανάγκης
           water_tank: Δεξαμενή νερού έκτακτης ανάγκης
         highway:
           abandoned: Εγκαταλελειμμένος αυτοκινητόδρομος
@@ -890,7 +925,7 @@ el:
           ford: Κοιτόστρωση
           give_way: Δώστε το σήμα
           living_street: Μεικτός δρόμος
-          milestone: Ορόσημο
+          milestone: Χιλιομετρικό Σημείο
           motorway: Αυτοκινητόδρομος
           motorway_junction: Διασταύρωση αυτοκινητόδρομου
           motorway_link: Αυτοκινητόδρομος
@@ -918,8 +953,10 @@ el:
           track: Χωματόδρομος
           traffic_mirror: Καθρέφτης κυκλοφορίας
           traffic_signals: Σήματα κυκλοφορίας
+          trailhead: Άκρη μονοπατιού
           trunk: Εθνική οδός
           trunk_link: Εθνική οδός
+          turning_circle: Κύκλος Αναστροφής
           turning_loop: Κυκλικός Κόμβος
           unclassified: Αταξινόμητη οδός
           "yes": Δρόμος
@@ -941,14 +978,17 @@ el:
           house: Σπίτι
           manor: Έπαυλη
           memorial: Μνημείο
+          milestone: Ιστορικό Χιλιομετρικό Σημείο
           mine: Ορυχείο
           mine_shaft: Φρεάτιο ορυχείου
           monument: Μνημείο
+          railway: Ιστορικός Σιδηρόδρομος
           roman_road: Ρωμαϊκός δρόμος
           ruins: Ερείπιο
           stone: Πέτρα
           tomb: Τάφος
           tower: Πύργος
+          wayside_chapel: Παρεκκλήσι δίπλα στο δρόμο
           wayside_cross: Σταυρός στην άκρη του δρόμου
           wayside_shrine: Εικονοστάσιο στην άκρη του δρόμου
           wreck: Ναυάγιο
@@ -957,12 +997,13 @@ el:
           "yes": Διασταύρωση
         landuse:
           allotments: Λαχανόκηποι
+          aquaculture: Υδατοκαλλιέργεια
           basin: Λεκανοπέδιο
           brownfield: Πρώην βιομηχανική περιοχή
           cemetery: Κοιμητήριο
           commercial: Εμπορική περιοχή
-          conservation: Διατήρηση
-          construction: Κατασκευή
+          conservation: Περιοχή Διατήρησης
+          construction: Χώρος Κατασκευής
           farmland: Γεωργική γη
           farmyard: Αγρόκτημα
           forest: Δάσος
@@ -975,6 +1016,7 @@ el:
           military: Στρατιωτική περιοχή
           mine: Ορυχείο
           orchard: Περιβόλι
+          plant_nursery: Φυτώριο
           quarry: Λατομείο
           railway: Σιδηρόδρομος
           recreation_ground: Χώρος αναψυχής
@@ -982,11 +1024,14 @@ el:
           reservoir: Ταμιευτήρας
           reservoir_watershed: Δεξαμενή απορροής υδάτων
           residential: Κατοικημένη περιοχή
-          retail: Κατάστημα λιανικής
+          retail: Περιοχή Λιανικής
           village_green: Πράσινο χωριό
           vineyard: Αμπελώνας
           "yes": Χρήση γης
         leisure:
+          adult_gaming_centre: Κέντρο Παιχνιδιών για Ενήλικες
+          amusement_arcade: Ψυχαγωγικά παιχνίδια
+          bandstand: Εξέδρα Συναυλιών
           beach_resort: Παραθαλάσσιο θέρετρο
           bird_hide: Καταφύγιο πουλιών
           bleachers: Εξέδρα χωρίς στέγαστρο
@@ -1031,6 +1076,7 @@ el:
           bridge: Γέφυρα
           bunker_silo: Οχυρό
           chimney: Καμινάδα
+          communications_tower: Πύργος Επικοινωνιών
           crane: Γερανός
           cross: Σταυρός
           dolphin: Δέστρα
@@ -1050,13 +1096,16 @@ el:
           pier: Αποβάθρα
           pipeline: Αγωγός
           pumping_station: Αντλιοστάσιο
+          reservoir_covered: Σκεπαστή Δεξαμενή
           silo: Σιλό
           snow_cannon: Κανόνι χιονιού
           snow_fence: Χιονοφράχτης
           storage_tank: Δεξαμενή αποθήκευσης
+          street_cabinet: Καμπίνα δρόμου (καφάο)
           surveillance: Επιτήρηση
           telescope: Τηλεσκόπιο
           tower: Πύργος
+          utility_pole: Στύλος (ρεύματος, τηλεφώνου)
           wastewater_plant: Μονάδα επεξεργασίας λυμάτων
           watermill: Νερόμυλος
           water_tap: Βρύση
@@ -1071,10 +1120,13 @@ el:
           barracks: Στρατώνας
           bunker: Οχυρό
           checkpoint: Σημείο ελέγχου
+          trench: Χαράκωμα
           "yes": Στρατός
         mountain_pass:
           "yes": Ορεινό πέρασμα
         natural:
+          atoll: Κοραλλιογενές νησί
+          bare_rock: Γυμνός Βράχος
           bay: Κόλπος
           beach: Παραλία
           cape: Ακρωτήριο
@@ -1091,6 +1143,7 @@ el:
           grassland: Λιβάδι
           heath: Ακαλλιέργητη γη
           hill: Λόφος
+          hot_spring: Θερμές Πηγές
           island: Νησί
           isthmus: Ισθμός
           land: Ξηρά
@@ -1118,9 +1171,11 @@ el:
           water: Νερό
           wetland: Υγρότοπος
           wood: Δάσος
+          "yes": Φυσικό χαρακτηριστικό
         office:
           accountant: Λογιστής
           administrative: Διαχείριση
+          advertising_agency: Διαφημιστική Εταιρεία
           architect: Αρχιτέκτονας
           association: Σύλλογος
           company: Εταιρεία
@@ -1135,6 +1190,7 @@ el:
           it: Γραφείο πληροφορικής
           lawyer: Δικηγόρος
           logistics: Λογιστικό γραφείο
+          newspaper: Γραφείο εφημερίδας
           ngo: Γραφείο ΜΚΟ
           notary: Συμβολαιογράφος
           religion: Θρησκευτικό γραφείο
@@ -1174,6 +1230,7 @@ el:
           "yes": Μέρος
         railway:
           abandoned: Εγκαταλελειμμένος σιδηρόδρομος
+          buffer_stop: Ταμπονιέρα
           construction: Σιδηρόδρομος υπό κατασκευή
           disused: Σιδηρόδρομος εκτός χρήσης
           funicular: Τελεφερίκ σε ράγες
@@ -1187,6 +1244,7 @@ el:
           platform: Πλατφόρμα σιδηροδρόμου
           preserved: Διατηρητέος σιδηρόδρομος
           proposed: Προτεινόμενος σιδηρόδρομος
+          rail: Ράγες
           spur: Παρακλάδι σιδηροδρόμου
           station: Σιδηροδρομικός σταθμός
           stop: Σιδηροδρομική στάση
@@ -1197,13 +1255,17 @@ el:
           tram_stop: Στάση τραμ
           yard: Σιδηροδρομικός Σταθμός Διαλογής
         shop:
+          agrarian: Κατάστημα Αγροτικών Προμηθειών
           alcohol: Εκτός άδειας
           antiques: Αντίκες
+          appliance: Κατάστημα Λευκών Συσκευών
           art: Κατάστημα τέχνης
           baby_goods: Βρεφικά είδη
+          bag: Κατάστημα με Τσάντες
           bakery: Φούρνος
           bathroom_furnishing: Εξοπλισμός μπάνιου
           beauty: Σαλόνι ομορφιάς
+          bed: Κατάστημα Κλινοσκεπασμάτων
           beverages: Κατάστημα ποτών
           bicycle: Κατάστημα ποδηλάτων
           bookmaker: Πράκτορας στοιχημάτων
@@ -1219,17 +1281,19 @@ el:
           chemist: Χημικός
           chocolate: Σοκολατερί
           clothes: Κατάστημα ρούχων
+          coffee: Καφετέρια
           computer: Κατάστημα υπολογιστών
           confectionery: Ζαχαροπλαστική
           convenience: Παντοπωλείο
           copyshop: Κατάστημα φωτοαντιγράφων
           cosmetics: Κατάστημα καλλυντικών
+          craft: Κατάστημα Ειδών Χειροτεχνίας
           curtain: Κατάστημα κουρτίνων
           dairy: Κατάστημα γαλακτοκομικών
           deli: Ντελικατέσεν
           department_store: Πολυκατάστημα
           discount: Εκπτωτικό κατάστημα
-          doityourself: Ιδιοκατασκευές
+          doityourself: Κατάστημα Φτιάξτο μόνος σου
           dry_cleaning: Στεγνό καθάρισμα
           e-cigarette: Κατάστημα ηλεκτρονικών τσιγάρων
           electronics: Κατάστημα ηλεκτρονικών
@@ -1241,17 +1305,21 @@ el:
           fishing: Κατάστημα ειδών αλιείας
           florist: Ανθοπώλης
           food: Κατάστημα τροφίμων
+          frame: Κατάστημα Κορνίζων
           funeral_directors: Γραφείο κηδειών
           furniture: Έπιπλα
           garden_centre: Κέντρο κήπου
+          gas: Κατάστημα Υγραερίου
           general: Παντοπωλείο
           gift: Κατάστημα δώρων
           greengrocer: Μανάβης
           grocery: Οπωροπωλείο
           hairdresser: Κομμωτήριο
           hardware: Κατάστημα με χρώματα-σιδηρικά
+          health_food: Κατάστημα Υγιεινών Τροφίμων
           hearing_aids: Βοηθήματα ακοής
-          hifi: Hi-Fi
+          herbalist: Βοτανολόγος
+          hifi: Κατάστημα Hi-Fi
           houseware: Μαγαζί με οικιακά είδη
           ice_cream: Παγωτατζίδικο
           interior_decoration: Διακόσμηση εσωτερικού χώρου
@@ -1265,6 +1333,7 @@ el:
           massage: Μασάζ
           medical_supply: Κατάστημα ιατρικών προμηθειών
           mobile_phone: Κατάστημα κινητής τηλεφωνίας
+          money_lender: Τοκογλύφος
           motorcycle: Κατάστημα μοτοσικλετών
           motorcycle_repair: Κατάστημα επισκευής μοτοσυκλετών
           music: Κατάστημα μουσικής
@@ -1279,14 +1348,19 @@ el:
           pawnbroker: Ενεχυροδανειστής
           perfumery: Αρωματοπωλείο
           pet: Κατάστημα κατοικίδιων
+          pet_grooming: Περιποίηση κατοικίδιων ζώων
           photo: Φωτογραφείο
           seafood: Θαλασσινό φαγητό
           second_hand: Κατάστημα μεταχειρισμένων
+          sewing: Ραπτοπωλείο
           shoes: Κατάστημα υποδημάτων
           sports: Κατάστημα αθλητικών
           stationery: Κατάστημα χαρτικών/ειδών γραφείου
+          storage_rental: Ενοικιαζόμενος Χώρος Αποθήκευσης
           supermarket: Σουπερμάρκετ
           tailor: Ράφτης
+          tattoo: Κατάστημα Τατουάζ
+          tea: Κατάστημα για τσάι
           ticket: Μαγαζί εισιτηρίων
           tobacco: Μαγαζί προϊόντων καπνού
           toys: Κατάστημα παιχνιδιών
@@ -1295,6 +1369,7 @@ el:
           vacant: Κενό κατάστημα
           variety_store: Κατάστημα ποικιλιών
           video: Κατάστημα βίντεο
+          video_games: Κατάστημα βιντεοπαιχνιδιών
           wholesale: Κατάστημα χονδρικής
           wine: Κατάστημα κρασιών
           "yes": Κατάστημα
@@ -1304,7 +1379,7 @@ el:
           artwork: Έργο τέχνης
           attraction: Αξιοθέατο
           bed_and_breakfast: Ενοικιαζόμενα δωμάτια
-          cabin: Καμπίνα
+          cabin: Τουριστική καμπίνα
           camp_site: Χώρος κατασκήνωσης
           caravan_site: Χώρος τροχόσπιτων
           chalet: Σαλέ
@@ -1426,6 +1501,7 @@ el:
   issue_comments:
     create:
       comment_created: Το σχόλιο σας δημιουργήθηκε επιτυχώς
+      issue_reassigned: Το σχόλιό σας δημιουργήθηκε και το ζήτημα ανατέθηκε εκ νέου
   reports:
     new:
       title_html: Αναφορά %{link}
@@ -1464,9 +1540,6 @@ el:
       successful_report: Η αναφορά σας έχει καταγραφεί επιτυχώς
       provide_details: Παρακαλούμε δώστε τις απαιτούμενες λεπτομέρειες
   layouts:
-    project_name:
-      title: OpenStreetMap
-      h1: OpenStreetMap
     logo:
       alt_text: Λογότυπο OpenStreetMap
     home: Μετάβαση στο Σπίτι
@@ -1507,6 +1580,7 @@ el:
     help: Βοήθεια
     about: Σχετικά
     copyright: Πνευματικά δικαιώματα
+    communities: Κοινότητες
     community: Κοινότητα
     community_blogs: Ιστολόγια της κοινότητας
     community_blogs_title: Ιστολόγια μελών της κοινότητας του OpenStreetMap
@@ -1551,7 +1625,8 @@ el:
     gpx_failure:
       hi: Γεια σας %{to_user},
       failed_to_import: 'Απέτυχε η εισαγωγή. Το σφάλμα είναι:'
-      import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
+      more_info_html: Περισσότερες πληροφορίες σχετικά με τις αποτυχίες εισαγωγής
+        GPX και τον τρόπο αποφυγής τους μπορείτε να βρείτε στη διεύθυνση %{url}.
       subject: '[OpenStreetMap] Η εισαγωγή GPX απέτυχε'
     gpx_success:
       hi: Γεια σας %{to_user},
@@ -1592,8 +1667,13 @@ el:
         subject_other: '[OpenStreetMap] Ο %{commenter} σχολίασε μια σημείωση που σας
           ενδιαφέρει'
         your_note: Ο %{commenter} σχολίασε μία από τις σημειώσεις σας κοντά στο %{place}.
+        your_note_html: Ο χρήστης %{commenter} έχει σχολιάσει σε μία σημείωση σας
+          στον χάρτη κοντά στο %{place}.
         commented_note: Ο %{commenter} σχολίασε μια σημείωση που έχετε σχολιάσει.
           Η σημείωση είναι κοντά σε %{place}.
+        commented_note_html: Ο χρήστης %{commenter} έχει σχολιάσει σε μία σημείωση
+          στον χάρτη στην οποία έχετε αφήσει ένα σχόλιο. Η σημείωση είναι κοντά στο
+          %{place}.
       closed:
         subject_own: '[OpenStreetMap] Ο %{commenter} επίλυσε μια από τις σημειώσεις
           σας'
@@ -1609,9 +1689,15 @@ el:
           που σας ενδιαφέρει'
         your_note: Ο %{commenter} επανενεργοποίησε μια από τις σημειώσεις σας κοντά
           στο %{place}.
+        your_note_html: Ο χρήστης %{commenter} έχει επαναενεργοποιήσει τις σημειώσεις
+          στον χάρτη σας κόντα στο %{place}.
         commented_note: Ο %{commenter} επανενεργοποίησε μια σημείωση που έχετε σχολιάσει.
           Η σημείωση είναι κοντά σε %{place}.
+        commented_note_html: ο χρήστης %{commenter} έχει επαναενεργοποιήσει μία σημείωση
+          στον χάρτη την οποία έχετε σχολιάσει. Η σημείωση είναι κοντά στο %{place}.
       details: Περισσότερες λεπτομέρειες σχετικά με τη σημείωση μπορούν να βρεθούν
+        στο %{url}.
+      details_html: Περισσότερες λεπτομέρειες σχετικά με τη σημείωση μπορούν να βρεθούν
         στο %{url}.
     changeset_comment_notification:
       hi: Γεια σας, %{to_user},
@@ -1623,15 +1709,24 @@ el:
           μια ομάδα αλλαγών που σας ενδιαφέρει.'
         your_changeset: '{{GENDER:%{commenter}|Ο|Η}} %{commenter} άφησε ένα σχόλιο
           στις %{time} σε μία από τις ομάδες αλλαγών σας.'
+        your_changeset_html: Ο/Η %{commenter} άφησε ένα σχόλιο στις %{time} σε μια
+          από τις ομάδες αλλαγών σας
         commented_changeset: '{{GENDER:%{commenter}|Ο|Η}} %{commenter} άφησε ένα σχόλιο
           στις %{time}, σε μία ομάδα αλλαγών που παρακολουθείτε, δημιουργημένη από
           {{GENDER:%{changeset_author}|τον|την}} %{changeset_author}.'
+        commented_changeset_html: Ο/Η %{commenter} άφησε ένα σχόλιο στις %{time} σε
+          ένα σύνολο αλλαγών που παρακολουθείτε που δημιουργήθηκε από τον %{changeset_author}
         partial_changeset_with_comment: με το σχόλιο «%{changeset_comment}»
+        partial_changeset_with_comment_html: με σχόλιο '%{changeset_comment}'
         partial_changeset_without_comment: χωρίς σχόλιο
       details: Περισσότερες λεπτομέρειες για την ομάδα αλλαγών μπορούν να βρεθούν
         στο %{url}.
+      details_html: Περισσότερες λεπτομέρειες για την ομάδα αλλαγών μπορούν να βρεθούν
+        στο %{url}.
       unsubscribe: Για να διαγραφείτε από τις ενημερώσεις αυτής της ομάδας αλλαγών,
         επισκεφθείτε το %{url} και πατήστε "Διαγραφή".
+      unsubscribe_html: Για να καταργήσετε την εγγραφή σας από ενημερώσεις σε αυτό
+        το σύνολο αλλαγών, επισκεφτείτε το %{url} και κάντε κλικ στην "Κατάργηση εγγραφής".
   confirmations:
     confirm:
       heading: Ελέγξτε το ηλεκτρονικό ταχυδρομείο σας!
@@ -1813,9 +1908,6 @@ el:
       account not active: Λυπούμαστε, ο λογαριασμός σας δεν είναι ενεργός ακόμα.<br
         />Παρακαλούμε χρησιμοποιήστε το σύνδεσμο στο email επιβεβαίωσης για να ενεργοποιήσετε
         τον λογαριασμό σας, ή <a href="%{reconfirm}">κάντε αίτηση νέου μηνύματος επιβεβαίωσης</a>.
-      account is suspended: Λυπούμαστε, ο λογαριασμός σας έχει ανασταλεί λόγω ύποπτης
-        δραστηριότητας.<br>Παρακαλούμε επικοινωνήστε με την <a href="%{webmaster}">υποστήριξη</a>
-        εάν θέλετε να το συζητήσετε.
       auth failure: Λυπούμαστε, δεν μπορείτε να συνδεθείτε με αυτές τις λεπτομέρειες.
       openid_logo_alt: Σύνδεση με ένα OpenID
       auth_providers:
@@ -1847,10 +1939,18 @@ el:
       title: Αποσύνδεση
       heading: Αποσύνδεση από το OpenStreetMap
       logout_button: Αποσύνδεση
+    suspended_flash:
+      suspended: Λυπούμαστε, ο λογαριασμός σας έχει τεθεί σε αναστολή λόγω ύποπτης
+        δραστηριότητας.
+      contact_support_html: Παρακαλώ επικοινωνήστε με το %{support_link} εάν θέλετε
+        να το συζητήσετε.
+      support: υποστήριξη
   shared:
     markdown_help:
       title_html: Αναλύεται με το <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
       headings: Επικεφαλίδες
+      heading: Καφαλίδα
+      subheading: Υποκεφαλίδα
       unordered: Αταξινόμητη λίστα
       ordered: Ταξινομημένη λίστα
       first: Πρώτο στοιχείο
@@ -2133,7 +2233,6 @@ el:
         title: Οδηγός Αρχαρίων
         description: Οδηγός αρχαρίων διατηρούμενος από την κοινότητα.
       help:
-        url: https://help.openstreetmap.org/
         title: Κοινότητα βοήθειας
         description: Κάντε μία ερώτηση ή αναζητήσετε απαντήσεις στην ιστοσελίδα ερωτήσεων
           και απαντήσεων του OpenStreetMap.
@@ -2142,9 +2241,12 @@ el:
         description: Κάντε μία ερώτηση ή συζητήστε ενδιαφέροντα θέματα σε ένα ευρύ
           φάσμα τοπικών ή περιφερειακών λιστών αλληλογραφίας.
       forums:
-        title: Φόρουμ
+        title: Φόρουμ (παλιό)
         description: Ερωτήσεις και συζητήσεις για όσους προτιμούν μία διεπαφή με στιλ
           διάρθρωσης κουκκίδων.
+      community:
+        title: Φόρουμ κοινότητας
+        description: Ένα κοινόχρηστο μέρος για συνομιλίες σχετικά με το OpenStreetMap.
       irc:
         title: IRC
         description: Διαδραστική συνομιλία σε πολλές διαφορετικές γλώσσες και για
@@ -2154,12 +2256,10 @@ el:
         description: Βοήθεια για εταιρείες και οργανισμούς για μετάβαση σε χάρτες
           που βασίζονται στο OpenStreetMap και άλλες υπηρεσίες.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Για τις Οργανώσεις
         description: Για μια οργάνωση που κάνει σχέδια για το OpenStreetMap? Βρείτε
           ότι χρειάζεται στο Welcome Mat.
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: OpenStreetMap Wiki
         description: Περιηγηθείτε το wiki για επιμελής τεκμηρίωση του OpenStreetMap.
     potlatch:
@@ -2223,6 +2323,7 @@ el:
           common:
           - Κοινόχρηστο
           - λιβάδι
+          - κήπος
           retail: Περιοχή λιανικού εμπορίου
           industrial: Βιομηχανική περιοχή
           commercial: Εμπορική περιοχή
@@ -2306,6 +2407,28 @@ el:
         paragraph_2_html: |-
           Απλά επισκεφτείτε <a href='%{map_url}'>τον χάρτη</a> και πατήστε το εικονίδιο σημείωσης:
           <span class='icon note'></span>. Αυτό θα προσθέσει έναν δείκτη στο χάρτη, τον οποίο μπορείτε να μετακινήσετε τραβώντας τον. Προσθέστε το μήνυμά σας, κατόπιν πατήστε αποθήκευση και άλλοι χαρτογράφοι θα το διερευνήσουν.
+    communities:
+      title: Κοινότητες
+      lede_text: "Άνθρωποι από όλο τον κόσμο συνεισφέρουν ή χρησιμοποιούν το OpenStreetMap.\nΕνώ
+        πολλοί συμμετέχουν ως μεμονωμένα άτομα, άλλοι έχουν σχηματίσει κοινότητες.\nΑυτές
+        οι ομάδες έχουν διάφορα μεγέθη και αντιπροσωπεύουν γεωγραφίες από μικρές πόλεις
+        έως μεγάλες περιοχές πολλών χωρών. \nΜπορούν επίσης να είναι επίσημες ή ανεπίσημες."
+      local_chapters:
+        title: Τοπικά Παραρτήματα
+        about_text: Τα Τοπικά Παραρτήματα είναι ομάδες σε επίπεδο χώρας ή περιφέρειας
+          που έχουν κάνει το επίσημο βήμα της εγκαθίδρυσης μη κερδοσκοπικών νομικών
+          οντοτήτων. Αντιπροσωπεύουν τον χάρτη και τους χαρτογράφους της περιοχής
+          όταν ασχολείται με την τοπική κυβέρνηση, τις επιχειρήσεις και τα μέσα ενημέρωσης.
+          Έχουν επίσης δημιουργήσει μια σχέση με το Ίδρυμα OpenStreetMap (OSMF), δίνοντάς
+          τους έναν σύνδεσμο με το νομικό και πνευματικών δικαιωμάτων όργανο.
+        list_text: 'Οι ακόλουθες κοινότητες έχουν συσταθεί επίσημα ως Τοπικά Παραρτήματα:'
+      other_groups:
+        title: Άλλες Ομάδες
+        about_html: Δεν υπάρχει ανάγκη να δημιουργηθεί επίσημα μια ομάδα στον ίδιο
+          βαθμό με τα Τοπικά Παραρτήματα. Πράγματι πολλές ομάδες υπάρχουν με μεγάλη
+          επιτυχία ως μια άτυπη συγκέντρωση ανθρώπων ή ως μια κοινοτική ομάδα. Οποιοσδήποτε
+          μπορεί να στήσει ή να συμμετάσχει σε αυτές. Διαβάστε περισσότερα στη <a
+          href="https://wiki.openstreetmap.org/wiki/User_group">Wiki σελίδα Κοινοτήτων</a>.
   traces:
     visibility:
       private: Προσωπικό (διαμοιρασμός μόνο σαν ανώνυμος, μη χρονοσημασμένα σημεία)
@@ -2317,7 +2440,6 @@ el:
     new:
       upload_trace: Μεταφόρτωση ίχνους GPS
       visibility_help: τι σημαίνει αυτό;
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
       help: Βοήθεια
       help_url: https://wiki.openstreetmap.org/wiki/Upload?uselang=el
     create:
@@ -2339,7 +2461,6 @@ el:
       title: Επεξεργασία ίχνους %{name}
       heading: Επεξεργασία ίχνους %{name}
       visibility_help: τι σημαίνει αυτό;
-      visibility_help_url: http://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
     update:
       updated: Το ίχνος ενημερώθηκε
     trace_optionals:
@@ -2353,6 +2474,7 @@ el:
       uploaded: 'Μεταφορτώθηκε:'
       points: 'Σημεία:'
       start_coordinates: 'Συντεταγμένες αρχής:'
+      coordinates_html: '%{latitude}; %{longitude}'
       map: χάρτης
       edit: επεξεργασία
       owner: 'Ιδιοκτήτης:'
@@ -2385,6 +2507,7 @@ el:
       in: σε
     index:
       public_traces: Δημόσια ίχνη GPS
+      my_gps_traces: Τα ίχνη GPS μου
       public_traces_from: Δημόσια ίχνη GPS από τον %{user}
       description: Προβολή πρόσφατων μεταφορτωμένων ιχνών GPS
       tagged_with: χαρακτηρίστηκαν με %{tags}
@@ -2394,6 +2517,7 @@ el:
       upload_trace: Αποστολή ίχνους
       all_traces: Όλα τα ίχνη
       my_traces: Τα ίχνη μου
+      traces_from: Δημόσια ίχνη από %{user}
     destroy:
       scheduled_for_deletion: Το ίχνος προγραμματίστηκε για διαγραφή
     make_public:
@@ -2464,10 +2588,14 @@ el:
     permissions:
       missing: Δεν έχετε επιτρέψει την πρόσβαση εφαρμογής σε αυτήν την λειτουργία
     scopes:
+      read_prefs: Διαβάζει τις προτιμήσεις χρήστη
+      write_prefs: Τροποποιεί τις προτιμήσεις χρήστη
+      write_diary: Δημιουργήστε καταχωρήσεις ημερολογίου, σχόλια και κάντε φίλους
       write_api: Τροποποίηση του χάρτη
       read_gpx: Ανάγνωση προσωπικών ιχνών GPS
       write_gpx: Μεταφόρτωση ιχνών GPS
       write_notes: Τροποποίηση σημειώσεων
+      read_email: Διαβάζει τη διεύθυνση email χρήστη
       skip_authorization: Αυτόματη έγκριση εφαρμογής
   oauth_clients:
     new:
@@ -2512,6 +2640,7 @@ el:
       flash: Η εγγραφή της εφαρμογής πελάτη καταστράφηκε
   oauth2_applications:
     index:
+      title: Οι Εφαρμογές Πελάτη μου
       no_applications_html: Έχετε μια εφαρμογή που θέλετε να καταχωρήσετε για χρήση
         μαζί μας χρησιμοποιώντας το πρότυπο %{oauth2}; Πρέπει να δηλώσετε την εφαρμογή
         σας πριν μπορέσει να υποβάλει αιτήματα OAuth σε αυτήν την υπηρεσία.
@@ -2543,11 +2672,15 @@ el:
       introduction: Εξουσιοδότηση %{application} για πρόσβαση στον λογαριασμό σας
         με τις ακόλουθες άδειες;
       authorize: Εξουσιοδότηση
+      deny: Άρνηση
+    error:
+      title: Παρουσιάστηκε ένα σφάλμα
     show:
       title: Κωδικός εξουσιοδότησης
   oauth2_authorized_applications:
     index:
       title: Οι Εξουσιοδοτημένες Εφαρμογές μου
+      application: Εφαρμογές
       permissions: Άδειες
       no_applications_html: Δεν έχετε εξουσιοδοτήσει ακόμη %{oauth2} εφαρμογές.
     application:
@@ -2595,12 +2728,10 @@ el:
       consider_pd: Και επιπρόσθετα στην παραπάνω συμφωνία, καταστώ τις συνεισφορές
         μου στο κοινό κτήμα (για ελεύθερη χρήση)
       consider_pd_why: τι είναι αυτό;
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: Πληροφορίες για να καταλάβετε αυτούς τους όρους:μία <href="%{summary}">
         αναγνώσιμη περίληψη</a>και μερικές <a href=''%{translations}''>ανεπίσημες
         μεταφράσεις </a>
       continue: Συνέχεια
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Διαφωνώ
       you need to accept or decline: Παρακαλούμε διαβάστε και αποδεχτείτε ή απορρίψτε
         τους νέους Όρους Συνεισφοράς για να συνεχίσετε.
@@ -2610,7 +2741,9 @@ el:
         italy: Ιταλία
         rest_of_world: Υπόλοιπος κόσμος
     terms_declined_flash:
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
+      terms_declined_html: Λυπούμαστε που αποφασίσατε να μην αποδεχτείτε τους νέους
+        Όρους Συνεισφοράς. Για περισσότερες πληροφορίες, ανατρέξτε στο %{terms_declined_link}.
+      terms_declined_link: αυτή η σελίδα wiki
     no_such_user:
       title: Άγνωστος χρήστης
       heading: Ο χρήστης %{user} δεν υπάρχει
@@ -2667,6 +2800,8 @@ el:
       activate_user: Ενεργοποίηση αυτού του λογαριασμού Χρήστη
       deactivate_user: Απενεργοποίηση αυτού του λογαριασμού Χρήστη
       confirm_user: Επιβεβαίωση αυτού του λογαριασμού Χρήστη
+      unconfirm_user: Καταργήση της επιβεβαίωσης αυτού του χρήστη
+      unsuspend_user: Κατάργηση αναστολής αυτού του χρήστη
       hide_user: Απόκρυψη αυτού του λογαριασμού Χρήστη
       unhide_user: Επανεμφάνιση αυτού του λογαριασμού Χρήστη
       delete_user: Διαγραφή αυτού του Χρήστη
@@ -2708,6 +2843,7 @@ el:
       no_authorization_code: Δεν υπάρχει κωδικός πιστοποίησης
       unknown_signature_algorithm: Άγνωστος αλγόριθμος υπογραφής
       invalid_scope: Μη έγκυρο φάσμα
+      unknown_error: Η ταυτοποίηση απέτυχε
     auth_association:
       heading: Το ID σας δεν σχετίζεται ακόμα με λογαριασμό στο OpenStreetMap.
       option_1: |-
@@ -2821,6 +2957,7 @@ el:
       title: Ο %{block_on} έχει φραχτεί από τον %{block_by}
       heading_html: Ο %{block_on} έχει φραχτεί από τον %{block_by}
       created: 'Δημιουργήθηκε:'
+      duration: 'Διάρκεια:'
       status: 'Κατάσταση:'
       show: Εμφάνιση
       edit: Επεξεργασία
@@ -2869,6 +3006,7 @@ el:
       custom_dimensions: Ορισμός προσαρμοσμένων διαστάσεων
       format: 'Μορφή:'
       scale: 'Κλίμακα:'
+      image_dimensions: Η εικόνα θα εμφανίζει το τυπικό στρώμα στο %{width} x %{height}
       download: Λήψη
       short_url: Σύντομος Σύνδεμος
       include_marker: Συμπερίληψη δείκτη
@@ -2896,6 +3034,7 @@ el:
           other: Είστε μεταξύ %{count} ποδιών από το σημείο
       base:
         standard: Κανονικός
+        cyclosm: CyclOSM
         cycle_map: Χάρτης Ποδηλασίας
         transport_map: Συγκοινωνιακός Χάρτης
         hot: Ανθρωπιστικός
@@ -2910,6 +3049,9 @@ el:
       copyright: © <a href='%{copyright_url}'>Συνεισφέροντες του OpenStreetMap</a>
       donate_link_text: <a class='donate-attr' href='%{donate_url}'>Κάνετε Δωρεά</a>
       terms: <a href='%{terms_url}' target='_blank'>Όροι ιστότοπου και API</a>
+      cyclosm: Στυλ πλακιδίων από το <a href='%{cyclosm_url}' target='_blank'>CyclOSM</a>
+        φιλοξενούνται από το <a href='%{osmfrance_url}' target='_blank'>OpenStreetMap
+        Γαλλίας</a>
       thunderforest: Ευγενική χορηγεία πλακιδίων από τον <a href='%{thunderforest_url}'
         target='_blank'>Andy Allan</a>
       opnvkarte: Ευγενική χορηγία πλακιδίων από <a href='%{memomaps_url}' target='_blank'>MeMoMaps</a>
@@ -2951,6 +3093,9 @@ el:
         reactivate: Επανενεργοποίηση
         comment_and_resolve: Σχολιάστε και Επιλύστε
         comment: Σχολιάζω
+        report_link_html: Εάν αυτή η σημείωση περιέχει ευαίσθητες πληροφορίες που
+          πρέπει να αφαιρεθούν, μπορείτε %{link}. Για οποιοδήποτε άλλο προβλήμα με
+          τη σημείωση, παρακαλώ επιλύστε το μόνοι σας με ένα σχόλιο.
     edit_help: Μετακινήστε το χάρτη και να κάνετε ζουμ σε μια τοποθεσία που θέλετε
       να επεξεργαστείτε, στη συνέχεια, κάντε κλικ εδώ.
     directions:

@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Require rails
-gem "rails", "7.0.4"
+gem "rails", "~> 7.0.0"
 
 # Require json for multi_json
 gem "json"
@@ -49,6 +49,7 @@ gem "cancancan"
 gem "composite_primary_keys", "~> 14.0.0"
 gem "config"
 gem "delayed_job_active_record"
+gem "frozen_record"
 gem "http_accept_language", "~> 2.1.1"
 gem "i18n-js", "~> 3.9.2"
 gem "oauth-plugin", ">= 0.5.1"

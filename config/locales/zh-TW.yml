@@ -46,8 +46,6 @@
 # Author: 아라
 ---
 zh-TW:
-  html:
-    dir: ltr
   time:
     formats:
       friendly: '%Y 年 %B %e 日 %H 時 %M 分'
@@ -242,7 +240,6 @@ zh-TW:
         other: '%{count}年前'
   printable_name:
     with_version: '%{id}，版本%{version}'
-    with_name_html: '%{name} (%{id})'
   editor:
     default: 預設 (目前為 %{name})
     id:
@@ -307,7 +304,6 @@ zh-TW:
       current email address: 目前的電子郵件地址
       external auth: 外部認證
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: 這是什麼？
       public editing:
         heading: 公開編輯
@@ -361,8 +357,6 @@ zh-TW:
     view_history: 檢視歷史
     view_details: 檢視詳細資料
     location: 位置：
-    common_details:
-      coordinates_html: '%{latitude}, %{longitude}'
     changeset:
       title: 變更集：%{id}
       belongs_to: 作者
@@ -403,7 +397,6 @@ zh-TW:
         one: 1 個成員
         other: '%{count} 個成員'
     relation_member:
-      entry_html: '%{type} %{name}'
       entry_role_html: '%{type} %{name} 作為 %{role}'
       type:
         node: 節點
@@ -451,6 +444,7 @@ zh-TW:
       wikimedia_commons_link: 在維基共享資源上的%{page}項目
       telephone_link: 致電 %{phone_number}
       colour_preview: 色彩%{colour_value}預覽
+      email_link: 電子郵件 %{email}
     note:
       title: 註記：%{id}
       new_note: 新增註記
@@ -468,7 +462,6 @@ zh-TW:
       reopened_by_anonymous_html: 於<abbr title='%{exact_time}'>%{when}</abbr>由匿名使用者重新開啟
       hidden_by_html: 於<abbr title='%{exact_time}'>%{when}</abbr>由%{user}隱藏
       report: 回報此註記
-      coordinates_html: '%{latitude}, %{longitude}'
     query:
       title: 查詢圖徵
       introduction: 點選地圖以尋找附近的圖徵
@@ -492,6 +485,7 @@ zh-TW:
     index:
       title: 變更集
       title_user: '%{user} 的變更集'
+      title_user_link_html: '%{user_link} 的變更集'
       title_friend: 好友的變更集
       title_nearby: 附近使用者的變更集
       empty: 查無變更集。
@@ -590,7 +584,6 @@ zh-TW:
       location: 位置：
       view: 檢視
       edit: 編輯
-      coordinates: '%{latitude}; %{longitude}'
     feed:
       user:
         title: '%{user} 的 OpenStreetMap 日記項目'
@@ -641,7 +634,6 @@ zh-TW:
           Nominatim</a> 的結果
         geonames_reverse_html: 來自<a href="http://www.geonames.org/">GeoNames</a>的結果
     search_osm_nominatim:
-      prefix_format: '%{name}'
       prefix:
         aerialway:
           cable_car: 大型纜車
@@ -748,7 +740,7 @@ zh-TW:
           public_bath: 公共浴場
           public_bookcase: 公共書櫃
           public_building: 公共建築
-          ranger_station: 護林員站
+          ranger_station: 巡山員站
           recycling: 回收點
           restaurant: 餐廳
           sanitary_dump_station: 衛生排污站
@@ -1159,7 +1151,7 @@ zh-TW:
           architect: 建築師事務所
           association: 協會
           company: 公司
-          diplomatic: 外交部
+          diplomatic: 使館
           educational_institution: 教育機構
           employment_agency: 人力仲介
           energy_supplier: 能源供應辦公處
@@ -1520,9 +1512,6 @@ zh-TW:
       successful_report: 已成功登記您的回報
       provide_details: 請提供所需的詳情
   layouts:
-    project_name:
-      title: OpenStreetMap
-      h1: OpenStreetMap
     logo:
       alt_text: OpenStreetMap 標誌
     home: 移至家的位置
@@ -1559,6 +1548,7 @@ zh-TW:
     help: 說明
     about: 關於
     copyright: 版權
+    communities: 社群
     community: 社群
     community_blogs: 社群部落格
     community_blogs_title: OpenStreetMap 社群成員的部落格
@@ -1599,7 +1589,6 @@ zh-TW:
       hi: '%{to_user} 您好，'
       failed_to_import: 看來匯入失敗。錯誤訊息為：
       more_info_html: 更多關於 GPX 匯入失敗的資訊與如何避免，可在 %{url} 查詢。
-      import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       subject: '[OpenStreetMap] GPX 匯入失敗'
     gpx_success:
       hi: '%{to_user} 您好，'
@@ -1830,7 +1819,6 @@ zh-TW:
       create account minute: 建立一個帳號。只需要一分鐘。
       no account: 還沒有帳號嗎？
       account not active: 抱歉，您的帳號尚未開啟。<br />請點選帳號確認電子郵件中的連結來開啟您的帳號，或<a href="%{reconfirm}">要求發出新的確認電子郵件</a>。
-      account is suspended: 很抱歉，您的帳號已經因可疑活動被暫停。<br>請如果您想要討論這個問題，請與<a href="%{webmaster}">支援人員</a>聯繫。
       auth failure: 很抱歉，無法以這些資料登入。
       openid_logo_alt: 使用 OpenID 登入
       auth_providers:
@@ -1862,6 +1850,10 @@ zh-TW:
       title: 登出
       heading: 從 OpenStreetMap 登出
       logout_button: 登出
+    suspended_flash:
+      suspended: 抱歉，由於可疑活動，您的帳戶已被暫停。
+      contact_support_html: 如果您想商討此事，請聯繫 %{support_link}。
+      support: 支援
   shared:
     markdown_help:
       title_html: 使用 <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
@@ -1912,7 +1904,7 @@ zh-TW:
       partners_title: 合作夥伴
     copyright:
       foreign:
-        title: 關於這個翻譯
+        title: 關於本翻譯
         html: 這個翻譯頁面和 %{english_original_link} 若有衝突，會以英文頁面為準
         english_link: 英文原文
       native:
@@ -2027,7 +2019,6 @@ zh-TW:
       not_public: 您尚未將您的編輯設為公開。
       not_public_description_html: 在您這麼做之前將無法再編輯地圖。您可以在您的 %{user_page} 將自己的編輯設定為公開。
       user_page_link: 使用者頁面
-      anon_edits_html: (%{link})
       anon_edits_link_text: 瞭解為什麼這很重要。
       id_not_configured: iD 尚未設定
       no_iframe_support: 您的瀏覽器不支援 HTML 嵌入式框架，這是這項功能所必要的。
@@ -2100,7 +2091,6 @@ zh-TW:
         title: 新手指南
         description: 社群維護的新手指南
       help:
-        url: https://help.openstreetmap.org/
         title: 協助論壇
         description: 在開放街圖的問答網站提出問題或搜尋答案。
       mailing_lists:
@@ -2110,7 +2100,6 @@ zh-TW:
         title: 論壇（舊版）
         description: 給習慣論壇型式的地方問問題和討論
       community:
-        url: https://community.openstreetmap.org/
         title: 社群論壇
         description: 討論有關 OpenStreetMap 的分享場所。
       irc:
@@ -2120,11 +2109,9 @@ zh-TW:
         title: switch2osm
         description: 協助公司與組織改用 OpenStreetMap 為基礎的地圖與相關服務。
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: 對於組織
         description: 想要以組織來對 OpenStreetMap 製作計劃嗎？請在 Welcome Mat 查找您所需要的事項。
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: 開放街圖 Wiki
         description: 瀏覽 wiki，取得詳盡的開放街圖文件。
     potlatch:
@@ -2249,6 +2236,23 @@ zh-TW:
         paragraph_1_html: 如果你只想做一些微小改動，而沒有時間登入來學習如何編輯，那麼加入一項註記還是非常容易的。
         paragraph_2_html: 只要到<a href='%{map_url}'>地圖</a>並點選註記圖示： <span class='icon
           note'></span>。這將在地圖上加入一個標記，你可以拖動它，並新增你的註記，然後點選儲存，其他製圖者會作出查證。
+    communities:
+      title: 社群
+      lede_text: |-
+        來自世界各地的人們都在貢獻或使用 OpenStreetMap。
+        雖然許多人以個人身份參與，但其他人則組成了社群。
+        這些團體的規模各不相同，代表了小到城鎮大到大型多國地區的地域。
+        它們也可以是正式的或非正式的。
+      local_chapters:
+        title: 地方分會
+        about_text: 地方分會是已採取正式步驟建立非營利法人實體的國家級或地區級團體。在與地方政府、企業和媒體打交道時，他們代表該地區的地圖和製圖者。他們還與
+          OpenStreetMap 基金會 (OSMF) 締結聯繫，使他們能夠與法律和版權管理機構建立聯繫。
+        list_text: 以下社群已經正式成立地方分會：
+      other_groups:
+        title: 其他團體
+        about_html: |-
+          沒有必要正式建立一個與地方分會同等規模的團體。
+          事實上，許多團體作爲人們的非正式聚會或社區團體非常成功地存在。任何人都可以創設或加入這些團體。在<a href="https://wiki.openstreetmap.org/wiki/User_group">社區維基頁面</a>上閱讀更多內容。
   traces:
     visibility:
       private: 私人 (以匿名方式分享，節點無順序)
@@ -2258,7 +2262,6 @@ zh-TW:
     new:
       upload_trace: 上傳 GPS 軌跡
       visibility_help: 這是什麼意思？
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
       help: 說明
       help_url: https://wiki.openstreetmap.org/wiki/Upload
     create:
@@ -2271,7 +2274,6 @@ zh-TW:
       title: 編輯軌跡 %{name}
       heading: 編輯軌跡 %{name}
       visibility_help: 這是什麼意思？
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
     update:
       updated: 軌跡已更新
     trace_optionals:
@@ -2439,7 +2441,6 @@ zh-TW:
       title: 我的客戶端應用程式
       no_applications_html: 您是否有想要註冊以使用於 %{oauth2} 標準的應用程式？您必須先註冊您的網頁應用程式，才能對這個服務進行
         OAuth 要求。
-      oauth_2: OAuth 2
       new: 註冊新的應用程式
       name: 名稱
       permissions: 權限
@@ -2511,10 +2512,8 @@ zh-TW:
       read_tou: 我已經閱讀過並同意使用條款
       consider_pd: 除上述內容之外，我同意將我的貢獻放到公共領域
       consider_pd_why: 這是什麼？
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 幫助理解這些條款的資料：一個<a href="%{summary}">供普通人閱讀的摘要</a>和一些<a href="%{translations}">非正式翻譯</a>
       continue: 繼續
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: 拒絕
       you need to accept or decline: 請先閱讀，然後選擇接受或拒絕新的貢獻者條款，再繼續。
       legale_select: 請選擇您的居住地：
@@ -2525,7 +2524,6 @@ zh-TW:
     terms_declined_flash:
       terms_declined_html: 我們很遺憾你已決定不接受新的貢獻者條款。有關詳細資訊，請參閱 %{terms_declined_link}。
       terms_declined_link: 此 Wiki 頁面
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: 沒有這個使用者
       heading: 使用者 %{user} 不存在
@@ -2839,7 +2837,10 @@ zh-TW:
         reactivate: 重新開啟
         comment_and_resolve: 評論並解決
         comment: 評論
-        report_link_html: 如果此註記含有需要移除的敏感資訊，您可以%{link}。對於註記的所有其他問題，您可以依據評論內容來自行處理。
+        report_link_html: 如果此註記含有需要移除的敏感資訊，您可以%{link}。
+        other_problems_resolve: 對於註記的所有其他問題，您可以依據評論內容來自行處理。
+        other_problems_resolved: 對於其他類型回報，解決已經足夠了。
+        disappear_date_html: 已經解決的註記會從地圖的 %{disappear_in} 消失
     edit_help: 將地圖移至你想編輯的位置並放大，然後按這裡。
     directions:
       ascend: 上升

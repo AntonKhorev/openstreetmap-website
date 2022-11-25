@@ -23,8 +23,6 @@
 # Author: 神樂坂秀吉
 ---
 vi:
-  html:
-    dir: ltr
   time:
     formats:
       friendly: '%e tháng %m năm %Y lúc %H:%M'
@@ -297,7 +295,6 @@ vi:
       current email address: Địa chỉ Thư điện tử Hiện tại
       external auth: Xác minh Bên ngoài
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: đây là gì?
       public editing:
         heading: Sửa đổi công khai
@@ -358,8 +355,6 @@ vi:
     view_history: Xem Lịch sử
     view_details: Xem Chi tiết
     location: 'Vị trí:'
-    common_details:
-      coordinates_html: '%{latitude}, %{longitude}'
     changeset:
       title: 'Bộ thay đổi: %{id}'
       belongs_to: Tác giả
@@ -451,6 +446,7 @@ vi:
       wikimedia_commons_link: Mục %{page} tại Wikimedia Commons
       telephone_link: Gọi %{phone_number}
       colour_preview: Xem trước màu %{colour_value}
+      email_link: Gửi thư cho %{email}
     note:
       title: 'Ghi chú: %{id}'
       new_note: Ghi chú Mới
@@ -468,7 +464,6 @@ vi:
       reopened_by_anonymous_html: Mở lại vô danh <abbr title='%{exact_time}'>%{when}</abbr>
       hidden_by_html: Ẩn bởi %{user} <abbr title='%{exact_time}'>%{when}</abbr>
       report: báo cáo ghi chú này
-      coordinates_html: '%{latitude}, %{longitude}'
     query:
       title: Thăm dò Yếu tố
       introduction: Nhấn chuột vào bản đồ để tìm những yếu tố lân cận.
@@ -492,6 +487,7 @@ vi:
     index:
       title: Bộ thay đổi
       title_user: Những bộ thay đổi bởi %{user}
+      title_user_link_html: Những bộ thay đổi bởi %{user_link}
       title_friend: Những bộ thay đổi bởi bạn bè của bạn
       title_nearby: Những bộ thay đổi bởi người dùng ở gần
       empty: Không tìm thấy bộ thay đổi.
@@ -592,7 +588,6 @@ vi:
       location: 'Vị trí:'
       view: Xem
       edit: Sửa
-      coordinates: '%{latitude}; %{longitude}'
     feed:
       user:
         title: Các mục nhật ký của %{user}
@@ -644,7 +639,6 @@ vi:
           Nominatim</a>
         geonames_reverse_html: Kết quả <a href="http://www.geonames.org/">GeoNames</a>
     search_osm_nominatim:
-      prefix_format: '%{name}'
       prefix:
         aerialway:
           cable_car: Xe Cáp treo Lớn
@@ -966,7 +960,7 @@ vi:
           railway: Đường sắt
           recreation_ground: Sân Giải trí
           religious: Đất Tôn giáo
-          reservoir: Bể nước
+          reservoir: Hồ Chứa Nước
           reservoir_watershed: Lưu vực Hồ Nhân tạo
           residential: Khu vực Nhà ở
           retail: Khu vực Buôn bán
@@ -1481,6 +1475,7 @@ vi:
     help: Trợ giúp
     about: Giới thiệu
     copyright: Bản quyền
+    communities: Cộng đồng
     community: Cộng đồng
     community_blogs: Các Blog của Cộng đồng
     community_blogs_title: Các blog của thành viên cộng đồng OpenStreetMap
@@ -1799,9 +1794,6 @@ vi:
       account not active: Rất tiếc, tài khoản của bạn chưa được kích hoạt.<br />Xin
         hãy nhấn chuột vào liên kết trong thư điện tử xác nhận tài khoản để kích hoạt
         tài khoản, hoặc <a href="%{reconfirm}">yêu cầu thư xác nhận mới</a>.
-      account is suspended: Rất tiếc, tài khoản của bạn đã bị đình chỉ vì hoạt động
-        bị nghi ngờ.<br />Xin vui lòng liên lạc với <a href="%{webmaster}">nhóm trợ
-        giúp</a> để thảo luận về điều này.
       auth failure: Rất tiếc, không thể đăng nhập với những chi tiết đó.
       openid_logo_alt: Đăng nhập dùng OpenID
       auth_providers:
@@ -1833,6 +1825,11 @@ vi:
       title: Đăng xuất
       heading: Đăng xuất OpenStreetMap
       logout_button: Đăng xuất
+    suspended_flash:
+      suspended: Đáng tiếc, tài khoản của bạn đã bị đình chỉ do hoạt động đáng ngờ.
+      contact_support_html: Nếu bạn muốn thảo luận về điều này, xin vui lòng liên
+        lạc với %{support_link}.
+      support: nhóm hỗ trợ
   shared:
     markdown_help:
       title_html: Trang trí dùng cú pháp <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
@@ -2112,7 +2109,6 @@ vi:
         title: Hướng dẫn Bắt đầu
         description: Hướng dẫn bắt đầu do cộng đồng biên tập.
       help:
-        url: https://help.openstreetmap.org/
         title: Diễn đàn Trợ giúp
         description: Hỏi hang hoặc tìm kiếm các câu trả lời tại trung tâm hỏi đáp
           của OpenStreetMap.
@@ -2121,8 +2117,11 @@ vi:
         description: Hỏi han hoặc thảo luận về các chuyện quan trọng trên nhiều danh
           sách thư được sắp xếp theo chủ đề hoặc khu vực.
       forums:
-        title: Diễn đàn
+        title: Diễn đàn (Cũ)
         description: Hỏi han và thảo luận trong một giao diện bảng tin.
+      community:
+        title: Diễn đàn cộng đồng
+        description: Trang thảo luận chung về OpenStreetMap.
       irc:
         title: IRC
         description: Trò chuyện tương tác trong nhiều ngôn ngữ về nhiều chủ đề.
@@ -2131,7 +2130,6 @@ vi:
         description: Trợ giúp cho những công ty và tổ chức muốn đổi qua các bản đồ
           và dịch vụ dựa trên OpenStreetMap.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Dành cho các tổ chức
         description: Tổ chức của bạn có tính tương tác với OpenStreetMap? Tìm hiểu
           thêm trong “Thảm Trước Cửa”.
@@ -2207,7 +2205,7 @@ vi:
           heathland: Vùng cây bụi
           lake:
           - Hồ
-          - bể nước
+          - hồ chứa nước
           farm: Ruộng
           brownfield: Cánh đồng nâu
           cemetery: Nghĩa địa
@@ -2280,6 +2278,27 @@ vi:
         paragraph_2_html: |-
           Chỉ việc <a href='%{map_url}'>mở bản đồ</a> và bấm hình ghi chú
           <span class='icon note'></span> để thả đinh ghim trên bản đồ. Kéo ghim vào đúng vị trí, ghi lời miêu tả vấn đề, và bấm “Thêm Ghi chú”. Cộng đồng sẽ cố gắng sửa theo ý của bạn.
+    communities:
+      title: Cộng đồng
+      lede_text: |-
+        Nhiều người đến với OpenStreetMap từ khắp mọi nơi để đóng góp vào dự án hoặc sử dụng bản đồ.
+        Nhiều người cũng tụ tập vào đủ loại nhóm cộng đồng chính thức hoặc không chính thức ứng với hàng xóm, thành phố, tỉnh, quốc gia, lục địa, hoặc sở thích.
+      local_chapters:
+        title: Chi nhánh Địa phương
+        about_text: Chi nhánh địa phương là nhóm toàn quốc đã chính thức sáng lập
+          một tổ chức phi lợi nhuận để biểu diễn bản đồ và những người lập bản đồ
+          trong nước khi đối xử với chính quyền, thương mại, báo chí trong nước. Các
+          chi nhánh địa phương đã chính thức ký thỏa thuận liên kết với Quỹ OpenStreetMap
+          (OSMF), là tổ chức quản lý dự án về mặt luật pháp và bản quyền.
+        list_text: 'Các nhóm cộng đồng sau đã được chính thức công nhận là chi nhánh
+          địa phương:'
+      other_groups:
+        title: Các Nhóm Khác
+        about_html: "Một nhóm cộng đồng không nhất thiết phải được công nhận là chi
+          nhánh địa phương để ủng hộ dự án OpenStreetMap. Thực ra nhiều nhóm rất thành
+          công tuy chỉ là cuộc họp mặt thoải mái. Ai có thể tổ chức một nhóm cộng
+          đồng bình thường như thế. Để biết thêm chi tiết, xem \n<a href=\"https://wiki.openstreetmap.org/wiki/User_group?uselang=vi\">trang
+          wiki về nhóm người dùng</a>."
   traces:
     visibility:
       private: Bí mật (chỉ hiển thị các điểm vô danh không có thứ tự)
@@ -2488,7 +2507,6 @@ vi:
       no_applications_html: Bạn có muốn đăng ký chương trình của bạn với chúng tôi
         dùng tiêu chuẩn %{oauth2}? Bạn cần phải đăng ký chương trình Web trước khi
         gửi yêu cầu OAuth được.
-      oauth_2: OAuth 2
       new: Đăng ký ứng dụng mới
       name: Tên
       permissions: Quyền

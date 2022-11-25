@@ -333,12 +333,10 @@ nl:
       current email address: Huidig e-mailadres
       external auth: Externe authenticatie
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: wat is dit?
       public editing:
         heading: Openbaar bewerken
         enabled: Ingeschakeld. U bent niet anoniem en u kunt bewerken.
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: wat is dit?
         disabled: Uitgeschakeld. U kunt niet bewerken en al uw eerdere bewerkingen
           zijn anoniem.
@@ -362,7 +360,6 @@ nl:
           te lezen en te accepteren.
         agreed_with_pd: U hebt ook verklaard dat uw bijdragen onderdeel zijn van het
           Publieke domein.
-        link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms
         link text: wat is dit?
       save changes button: Wijzigingen opslaan
       make edits public button: Al mijn wijzigingen  openbaar maken
@@ -449,7 +446,7 @@ nl:
       entry_role_html: Relatie %{relation_name} (als %{relation_role})
     not_found:
       title: Kon niet gevonden worden
-      sorry: 'De %{type} #%{id} kan helaas niet worden gevonden.'
+      sorry: 'De %{type} #%{id} kon helaas niet worden gevonden.'
       type:
         node: knooppunt
         way: weg
@@ -1664,7 +1661,6 @@ nl:
       failed_to_import: 'is niet geïmporteerd. Hier volgt de foutmelding:'
       more_info_html: Meer informatie over mislukte GPX-imports en hoe u ze kunt vermijden,
         kunt u vinden op %{url}.
-      import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       subject: '[OpenStreetMap] GPX-import mislukt'
     gpx_success:
       hi: Hallo %{to_user},
@@ -1859,7 +1855,7 @@ nl:
       back: Terug
       to: Aan
       wrong_user: |-
-        U bent aangemeld als "%{user}", maar het bericht dat u wilt lezen is niet aan die gebruiker gericht.
+        U bent aangemeld als "%{user}", maar het bericht dat u wilt lezen is niet door die gebruiker gestuurd of aan die gebruiker gericht.
         Meld u aan als de juiste gebruiker om het te lezen.
     sent_message_summary:
       destroy_button: Verwijderen
@@ -1879,7 +1875,7 @@ nl:
         in te stellen.
       notice email on way: Spijtig om te horen dat u het vergeten bent, maar er is
         een e-mail onderweg zodat u uw wachtwoord opnieuw kunt instellen.
-      notice email cannot find: Dat e-mailadres kon helaas niet gevonden worden.
+      notice email cannot find: Dat e-mailadres kon helaas niet worden gevonden.
     reset_password:
       title: Wachtwoord opnieuw instellen
       heading: Wachtwoord voor %{user} opnieuw instellen
@@ -1947,8 +1943,6 @@ nl:
       account not active: Uw account is helaas nog niet actief.<br />Klik op de koppeling
         in de bevestiging om deze te activeren of <a href="%{reconfirm}">vraag een
         nieuwe bevestiging per e-mail aan</a>.
-      account is suspended: Sorry, uw account is opgeschort vanwege verdachte activiteit.<br
-        /> Neem contact op met <a href="%{webmaster}">support</a> als u dit wilt bespreken.
       auth failure: Met deze gegevens kunt u helaas niet aanmelden.
       openid_logo_alt: Aanmelden met een OpenID
       auth_providers:
@@ -2282,7 +2276,6 @@ nl:
         title: Handleiding voor beginners
         description: Handleiding voor beginners, onderhouden door de gemeenschap.
       help:
-        url: https://help.openstreetmap.org/
         title: Help Forum
         description: Stel een vraag of zoek antwoorden op de vraag- en antwoordsite
           van OpenStreetMap.
@@ -2295,7 +2288,6 @@ nl:
         description: Vragen en overleg voor als u liever met een interface in bulletin
           boardstijl werkt.
       community:
-        url: https://community.openstreetmap.org/
         title: Gemeenschapsforum
         description: Een gedeelde plek voor conversaties over OpenStreetMap.
       irc:
@@ -2307,12 +2299,10 @@ nl:
         description: Hulp voor bedrijven en organisaties om over te schakelen op OpenStreetMap-gebaseerde
           kaarten en andere diensten.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Voor bedrijven
         description: Hoort u bij een organisatie die plannen maakt voor OpenStreetMap?
           Vind wat u moet weten in de welkomstmat.
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: OpenStreetMap Wiki
         description: In de wiki kijken voor diepgaande documentatie over OpenStreetMap.
     potlatch:
@@ -2653,7 +2643,7 @@ nl:
     form:
       requests: 'De volgende toegang van gebruikers vragen:'
     not_found:
-      sorry: Die %{type} kan helaas niet gevonden worden.
+      sorry: Die %{type} kon helaas niet worden gevonden.
     create:
       flash: De informatie is succesvol geregistreerd
     update:
@@ -2688,7 +2678,7 @@ nl:
       permissions: Rechten
       redirect_uris: Omleidings-URI's
     not_found:
-      sorry: Sorry, die toepassing kan niet worden gevonden.
+      sorry: Die toepassing kon helaas niet worden gevonden.
   oauth2_authorizations:
     new:
       title: Autorisatie vereist
@@ -2750,12 +2740,10 @@ nl:
       consider_pd: Met inachtneming van bovenstaande, bevinden mijn bijdragen zich
         in het publieke domein
       consider_pd_why: wat is dit?
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 'Meer informatie om de voorwaarden beter te kunnen begrijpen:
         een <a href="%{summary}">leesbare samenvatting</a> en <a href="%{translations}">informele
         vertalingen</a>'
       continue: Doorgaan
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Weigeren
       you need to accept or decline: Lees de nieuwe Bijdragersvoorwaarden en besluit
         daarna deze te accepteren of te verwerpen voordat u door kunt gaan.
@@ -2768,7 +2756,6 @@ nl:
       terms_declined_html: We vinden het jammer dat u hebt besloten de nieuwe Bijdragersvoorwaarden
         niet te accepteren. Zie %{terms_declined_link} voor meer informatie.
       terms_declined_link: deze wiki-pagina
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: Deze gebruiker bestaat niet
       heading: De gebruiker %{user} bestaat niet
@@ -2895,7 +2882,7 @@ nl:
         of bijwerken.
       non_moderator_revoke: U moet moderator zijn om een blokkade te kunnen verwijderen.
     not_found:
-      sorry: De gebruiker met het nummer %{id} is niet aangetroffen.
+      sorry: De gebruikersblokkade met het ID %{id} kon helaas niet worden gevonden.
       back: Terug naar de index
     new:
       title: Blokkade aanmaken voor %{name}
@@ -3026,7 +3013,7 @@ nl:
       short_url: Korte URL
       include_marker: Marker opnemen
       center_marker: Kaart centreren op de marker
-      paste_html: Plak de HTML om op te nemen in website
+      paste_html: Kopieer de HTML-code en voeg deze toe aan uw website
       view_larger_map: Grotere kaart weergeven
       only_standard_layer: Alleen de standaard laag kan worden geëxporteerd als afbeelding
     embed:
@@ -3123,8 +3110,8 @@ nl:
       directions: Routebeschrijving
       distance: Afstand
       errors:
-        no_route: Kon geen route vinden tussen deze twee plaatsen.
-        no_place: Kan %{place} niet vinden.
+        no_route: Kon geen route tussen deze twee plaatsen vinden.
+        no_place: Kon %{place} niet vinden.
       instructions:
         continue_without_exit: Verder op %{name}
         slight_right_without_exit: Flauwe bocht naar rechts naar %{name}
