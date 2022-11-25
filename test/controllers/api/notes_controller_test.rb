@@ -97,7 +97,7 @@ module Api
 
       assert_routing(
         { :path => "/api/0.6/notes/fetch", :method => :get },
-        { :controller => "api/notes", :action => "fetch", :format => "xml" }
+        { :controller => "api/notes", :action => "fetch" }
       )
       assert_recognizes(
         { :controller => "api/notes", :action => "fetch", :format => "xml" },
