@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: phpyaml
 # Author: AlesFiala2002
+# Author: Amire80
 # Author: Bilbo
 # Author: Bilykralik16
 # Author: Chmee2
@@ -327,7 +328,6 @@ cs:
       public editing:
         heading: Veřejné editace
         enabled: Aktivní. Není anonym, smí editovat data.
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: co to znamená?
         disabled: Deaktivováno, nemůže editovat data, všechny předchozí editace jsou
           anonymní.
@@ -388,8 +388,6 @@ cs:
     view_history: Zobrazit historii
     view_details: Zobrazit detaily
     location: 'Pozice:'
-    common_details:
-      coordinates_html: '%{latitude}, %{longitude}'
     changeset:
       title: 'Sada změn: %{id}'
       belongs_to: Autor
@@ -505,7 +503,6 @@ cs:
         anonym
       hidden_by_html: Skryl <abbr title='%{exact_time}'>%{when}</abbr> uživatel %{user}
       report: nahlásit tuto poznámku
-      coordinates_html: '%{latitude}, %{longitude}'
     query:
       title: Průzkum prvků
       introduction: Pro nalezení okolních prvků klikněte na mapu.
@@ -632,7 +629,6 @@ cs:
       location: 'Místo:'
       view: Zobrazit
       edit: Upravit
-      coordinates: '%{latitude}; %{longitude}'
     feed:
       user:
         title: Záznamy v OpenStreetMap deníku uživatele %{user}
@@ -1894,7 +1890,7 @@ cs:
       image: Obrázek
       gravatar:
         gravatar: Používat Gravatar
-        link: http://wiki.openstreetmap.org/wiki/CS:Gravatar
+        link: https://wiki.openstreetmap.org/wiki/CS:Gravatar
         what_is_gravatar: Co je Gravatar?
         disabled: Gravatar byl zakázán.
         enabled: Zobrazování vašeho Gravataru bylo povoleno.
@@ -1930,8 +1926,6 @@ cs:
       account not active: Je mi líto, ale váš uživatelský účet dosud nebyl aktivován.<br
         />Svůj účet si můžete aktivovat kliknutím na odkaz v potvrzovacím e-mailu,
         případně si <a href="%{reconfirm}">nechte poslat nový potvrzovací e-mail</a>.
-      account is suspended: Je nám líto, ale váš účet byl pozastaven kvůli podezřelé
-        aktivitě.<br />Pokud to chcete řešit, kontaktujte <a href="%{webmaster}">podporu</a>.
       auth failure: Je mi líto, ale s uvedenými údaji se nemůžete přihlásit.
       openid_logo_alt: Přihlášení pomocí OpenID
       auth_providers:
@@ -2239,7 +2233,6 @@ cs:
         title: Průvodce začátečníka
         description: Komunitou spravovaná příručka pro začátečníky.
       help:
-        url: https://help.openstreetmap.org/
         title: Fórum pomoci
         description: Položte dotaz nebo vyhledejte odpovědi na stránce otázek a odpovědí
           týkajících se OpenStreetMap.
@@ -2248,9 +2241,12 @@ cs:
         description: Položte dotaz nebo diskutujte o zajímavých věcech na některé
           ze široké nabídky tematických či regionálních e-mailových konferencí.
       forums:
-        title: Diskusní fóra
+        title: Diskusní fóra (historická)
         description: Otázky a diskuse pro ty, kteří preferují rozhraní v nástěnkovém
           stylu.
+      community:
+        title: Komunitní fórum
+        description: Sdílený prostor pro diskuse o OpenStreetMap.
       irc:
         title: IRC
         description: Interaktivní chat v mnoha jazycích a na mnoho témat.
@@ -2259,7 +2255,6 @@ cs:
         description: Pomoc společnostem a organizacím s přechodem na mapy a další
           služby založené na OpenStreetMap.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Pro organizace
         description: Jste u organizace, která má plány s OpenStreetMap? Podívejte
           se na uvítací průvodce.
@@ -2703,7 +2698,6 @@ cs:
       read_tou: Přečetl jsem si Podmínky užití a souhlasím s nimi
       consider_pd: Navíc k výše uvedenému považuji své příspěvky za volné dílo.
       consider_pd_why: co to znamená?
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 'Informace, které pomohou tyto podmínky pochopit: <a href="%{summary}">lidsky
         čitelné shrnutí</a> a nějaké <a href="%{translations}">neoficiální překlady</a>'
       continue: Pokračovat
@@ -3060,6 +3054,9 @@ cs:
         reactivate: Reaktivovat
         comment_and_resolve: Okomentovat a vyřešit
         comment: Okomentovat
+        report_link_html: Pokud tato poznámka obsahuje citlivé údaje, které je třeba
+          odstranit, můžete %{link}. Pokud má tato poznámka jakýkoli jiný problém,
+          přidejte komentář a označte ji za vyřešenou.
     edit_help: Posuňte si mapu a zvětšete si místo, které chcete editovat, a klikněte
       zde.
     directions:

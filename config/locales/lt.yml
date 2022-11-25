@@ -14,6 +14,7 @@
 # Author: Matasg
 # Author: McDutchie
 # Author: Pauliuz
+# Author: Pavel1513
 # Author: Pdxx
 # Author: Perkunas
 # Author: Ruila
@@ -249,12 +250,10 @@ lt:
       current email address: Dabartinis e-pašto adresas
       external auth: Išorinė autentikacija
       openid:
-        link: https://wiki.OpenStreetMap.org/wiki/OpenID
         link text: kas tai?
       public editing:
         heading: Viešas keitimas
         enabled: Įjungtas. Nėra anoniminis ir gali keisti duomenis.
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: kas tai?
         disabled: Išjungtas ir negali keisti duomenų, visi ankstesni pakeitimai yra
           anonimiški.
@@ -277,7 +276,6 @@ lt:
           talkininkų sąlygas.
         agreed_with_pd: Jūs taip pat pareiškėte, kad visi jūsų pakeitimai yra viešo
           naudojimo.
-        link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms
         link text: kas tai?
       save changes button: Įrašyti pakeitimus
       make edits public button: Padaryti visus mano pakeitimus viešais
@@ -1531,9 +1529,6 @@ lt:
       account not active: Atsiprašome, jūsų paskyra dar neaktyvuota.<br />Pasinaudokite
         nuoroda, kurią mes nusiuntėme į jūsų el. paštą arba <a href="%{reconfirm}">prašykite
         naujo patvirtinimo laiško</a>.
-      account is suspended: Atsiprašome, jūsų paskyra buvo sustabdyta dėl įtartinos
-        veiklos.<br />Kreipkitės į <a href="%{webmaster}">administratorių</a>, jei
-        norite apie tai aptarti.
       auth failure: Atsiprašome, negalite prisijungti su tokiais duomenimis.
       openid_logo_alt: Prisijunkite su OpenID
       auth_providers:
@@ -1642,6 +1637,11 @@ lt:
           darbuose), mes siūlome jūsų skaitytojus nukreipti į openstreetmap.org (ko
           gero išplečiant „OpenStreetMap“ iki pilno adreso), į opendatacommons.org
           ir, jei tinka, į creativecommons.org.
+        credit_3_1_html: Turime skirtingus reikalavimus kaip turėtų būti rodoma informaciją
+          apie autorių teises, ir tai priklauso nuo to, kaip naudojate mūsų duomenis.
+          Pavyzdžiui, skirtingos taisyklės taikomos tam, kaip rodyti informaciją apie
+          autorių teises, priklasomai, ar sukurėte naršomą žemėlapį, spausdinamą žemėlapį
+          ar statinį vaizdą.
         credit_4_html: |-
           Naršant po elektroninį žemėlapį, kūrėjų sąrašas turėtų pasirodyti žemėlapio kampe.
 
@@ -1830,7 +1830,6 @@ lt:
         title: Pradedančiojo vadovas
         description: Bendruomenės palaikomas vadovas pradedantiesiems.
       help:
-        url: https://help.openstreetmap.org/
         title: Pagalbos forumas
         description: Užduokite klausimą arba ieškokite atsakymų OpenStreetMap klausimų-ir-atsakymų
           svetainėje.
@@ -1850,10 +1849,8 @@ lt:
         description: Pagalba kompanijoms ir organizacijoms pereinant į OpenStreetMap
           paremtus žemėlapius ir kitas paslaugas.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Organizacijoms
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: OpenStreetMap Wiki
         description: Daugiau detalios informacijos apie OpenStreetMap rasite wiki.
     sidebar:
@@ -1998,7 +1995,6 @@ lt:
     new:
       upload_trace: Įkelti GPS pėdsaką
       visibility_help: ką tai reiškia?
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
       help: Pagalba
       help_url: https://wiki.openstreetmap.org/wiki/Upload
     create:
@@ -2212,8 +2208,6 @@ lt:
         france: Prancūzija
         italy: Italija
         rest_of_world: Likęs pasaulis
-    terms_declined_flash:
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: Nėra tokio naudotojo
       heading: Naudotojas %{user} neegzistuoja

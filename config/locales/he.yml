@@ -33,6 +33,7 @@
 # Author: Zstadler
 # Author: יאיר מן
 # Author: ישראל קלר
+# Author: מקף
 # Author: נדב ס
 # Author: תומר ט
 ---
@@ -258,8 +259,6 @@ he:
         two: לפני שנתיים
         many: לפני %{count} שנים
         other: לפני %{count} שנים
-  printable_name:
-    with_name_html: '%{name} (%{id})'
   editor:
     default: ברירת מחדל (כעת %{name})
     id:
@@ -329,12 +328,10 @@ he:
       current email address: כתובת דוא״ל נוכחית
       external auth: אימות חיצוני
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: מה זה?
       public editing:
         heading: עריכה ציבורית
         enabled: מופעלת. לא אלמוני ויכול לערוך מידע.
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: מה זה?
         disabled: לא מופעלת, אין אפשרות לערוך נתונים וכל העריכות הקודמות אלמוניות.
         disabled link text: מדוע איני יכול לערוך?
@@ -354,7 +351,6 @@ he:
         review link text: נא לעבור לקישור הזה בזמנך הפנוי כדי לסקור ולקבל את תנאי
           התרומה החדשים.
         agreed_with_pd: הצהרת גם שמבחינתך העריכות שלך יהיו בנחלת הכלל.
-        link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms
         link text: מה זה?
       save changes button: שמירת השינויים
       make edits public button: להפוך את כל עריכותיי לציבוריות
@@ -489,6 +485,7 @@ he:
       wikimedia_commons_link: הפריט %{page} בוויקישיתוף
       telephone_link: להתקשר למספר %{phone_number}
       colour_preview: תצוגה מקדימה של הצבע %{colour_value}
+      email_link: דוא״ל %{email}
     note:
       title: 'הערה: %{id}'
       new_note: הערה חדשה
@@ -529,6 +526,7 @@ he:
     index:
       title: ערכות שינויים
       title_user: ערכות שינויים מאת %{user}
+      title_user_link_html: ערכות שינויים מאת %{user_link}
       title_friend: ערכות שינויים של החברים שלי
       title_nearby: ערכות שינויים של משתמשים בסביבה
       empty: לא נמצאה אף ערכת שינויים.
@@ -1523,6 +1521,7 @@ he:
   issue_comments:
     create:
       comment_created: המודעה שלך נוצרה בהצלחה
+      issue_reassigned: ההערה שלך נוצרה והבעיה הוקצתה מחדש
   reports:
     new:
       title_html: דיווח על %{link}
@@ -1598,6 +1597,7 @@ he:
     help: עזרה
     about: אודות
     copyright: זכויות יוצרים
+    communities: קהילות
     community: קהילה
     community_blogs: בלוגים של הקהילה
     community_blogs_title: בלוגים של חברי קהילת OpenStreetMap
@@ -1643,7 +1643,6 @@ he:
       hi: שלום %{to_user},
       failed_to_import: 'לא יובא כראוי. הנה השגיאה:'
       more_info_html: מידע על תקלות בייבוא GPX וכיצד להימנע מהן נמצא תחת %{url}.
-      import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       subject: '[אופן סטריט מאפ OpenStreetMap] שגיאה בייבוא GPX'
     gpx_success:
       hi: שלום %{to_user},
@@ -1867,7 +1866,7 @@ he:
       image: תמונה
       gravatar:
         gravatar: להשתמש ב־Gravatar
-        link: http://wiki.openstreetmap.org/wiki/Gravatar
+        link: https://wiki.openstreetmap.org/wiki/Gravatar
         what_is_gravatar: מה זה Gravatar?
         disabled: הגראווטר כובה.
         enabled: הצגת הגראווטר שלך הופעלה.
@@ -1902,8 +1901,6 @@ he:
       account not active: סליחה, החשבון הזה עדיין אינו פעיל.<br />נא להשתמש בקישור
         במכתב אישור החשבון כדי להפעיל את חשבונך או or <a href="%{reconfirm}">לבקש
         מכתב אישור חדש</a>.
-      account is suspended: החשבון שלך הושעה בעקבות פעילות חשודה.<br />נא ליצור קשר
-        עם <a href="%{webmaster}">התמיכה</a> כדי לדון בזה, עמך הסליחה.
       auth failure: סליחה, לא ניתן להיכנס עם הפרטים האלה.
       openid_logo_alt: כניסה עם OpenID
       auth_providers:
@@ -1935,6 +1932,10 @@ he:
       title: יציאה
       heading: יציאה מ־OpenStreetMap
       logout_button: יציאה
+    suspended_flash:
+      suspended: החשבון שלך הושעה עקב פעילות חשודה, עמך הסליחה.
+      contact_support_html: נא ליצור קשר עם ה%{support_link} כדי לדון בהחלטה.
+      support: תמיכה
   shared:
     markdown_help:
       title_html: פוענח בעזרת <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
@@ -2086,7 +2087,11 @@ he:
         contributors_nl_html: |-
           <strong>הולנד</strong>: מכיל &copy; נתונים מ־ AND&rlm;, 2007
           (<a href="https://www.and.com">www.and.com</a>)
-        contributors_nz_html: סתם
+        contributors_nz_html: |-
+          <strong>ניו זילנד</strong>: מכיל נתונים שהגיעו במקור
+          מ־<a href="https://data.linz.govt.nz/">LINZ Data Service</a>
+          וניתן רישיון לשימוש חוזר לפי תנאי
+          <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
         contributors_si_html: |-
           <strong>סלובניה</strong>: מכיל נתונים מ<a href="http://www.gu.gov.si/en/">הרשות למדידת־קרקעות ולמיפוי</a> ומ<a href="http://www.mkgp.gov.si/en/">משרד החקלאות, היערנות והמזון</a>
           (מידע ציבורי של סלובניה).
@@ -2224,7 +2229,6 @@ he:
         title: המדריך למתחילים
         description: מדריך בתחזוקת הקהילה למתחילים.
       help:
-        url: https://help.openstreetmap.org/
         title: פורום העזרה
         description: לשאול שאלה או לחפש תשובות באתר השאלות והתשובות של OpenStreetMap.
       mailing_lists:
@@ -2232,8 +2236,11 @@ he:
         description: לשאול שאלה או לדון בדברים מעניינים ברשימות תפוצה נושאים ואזוריות
           רבות.
       forums:
-        title: פורומים
+        title: פורומים (היסטוריים)
         description: שאלות ודיונים לאנשים שמעדיפים ממשק בסגנון פורום.
+      community:
+        title: פורום קהילתי
+        description: מקום משותף לשיחות על OpenStreetMap.
       irc:
         title: IRC
         description: שיחה אינטראקטיבית בשפות שונות רבות ובנושאים רבים.
@@ -2241,12 +2248,10 @@ he:
         title: switch2osm
         description: עזרה לחברות וארגונים שעוברים למפות ושירותים אחרים של OpenStreetMap.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: לארגונים
         description: הארגון שלך מתכנן תכניות על OpenStreetMap? כל המידע הנחוץ לך נמצא
           במחצלת הכניסה.
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: הוויקי של OpenStreetMap
         description: לעיין בוויקי לתיעוד מעמיק על OpenStreetMap.
     potlatch:
@@ -2384,6 +2389,26 @@ he:
         paragraph_2_html: 'צריך פשוט ללכת אל <a href=''%{map_url}''>המפה</a> וללחוץ
           על סמל ההערה: <span class=''icon note''></span>. זה יוסיף למפה סמן, שאפשר
           לגרור. אחרי הוספת ההערה יש ללחוץ על שמירה וממפים אחרים יבדקו את זה.'
+    communities:
+      title: קהילות
+      lede_text: "אנשים מכל רחבי העולם תורמים או משתמשים ב־OpenStreetMap.\nבעוד שרבים
+        משתתפים כיחידים, אחרים יצרו קהילות.\nהקבוצות האלו מגיעות במגוון גדלים ומייצגות
+        אזורים גאוגרפיים מעיירות קטנות ועד אזורים גדולים מרובי מדינות. \nהן יכולות
+        להיות רשמיות או לא רשמיות."
+      local_chapters:
+        title: עמותות מקומיות
+        about_text: |-
+          עמותות מקומיות הן קבוצות ברמת המדינה או האזור שעשו את הצעד הרשמי של
+          הקמת ישויות משפטיות ללא מטרות רווח. הן מייצגות את המפה ואת הממפים של האזור בעת
+          התעסקות עם שלטון, עסקים, ותקשורת במקום. הן גם יצרו שותפות
+          עם OpenStreetMap Foundation (בקיצור OSMF), וזה מעניק להן זיקה לגוף המשפטי שמנהל זכויות היוצרים.
+        list_text: 'הקהילות הבאות הוקמו רשמית כעמותות מקומיו:'
+      other_groups:
+        title: קבוצות אחרות
+        about_html: |-
+          אין צורך להקים קבוצה באופן רשמי באותה מידה כמו העמותות המקומיות.
+          אומנם, קבוצות רבות קיימות בהצלחה רבה ככינוס בלתי־רשמי של אנשים או כקבוצה
+          קהילתית. כל אחד יכול להקים אותן או להצטרף אליהן. אפשר לקרוא עוד ב<a href="https://wiki.openstreetmap.org/wiki/User_group">דף הוויקי של קהילות</a> .
   traces:
     visibility:
       private: פרטי (משותף רק כאלמוני, נקודות לא ממוינות)
@@ -2394,7 +2419,6 @@ he:
     new:
       upload_trace: העלאת מסלול GPS
       visibility_help: מה זה אומר?
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
       help: עזרה
       help_url: https://wiki.openstreetmap.org/wiki/Upload
     create:
@@ -2585,7 +2609,6 @@ he:
       title: יישומי הלקוח שלי
       no_applications_html: יש לך יישום שברצונך לרשום לשימוש כשאנחנו משתמשים בתקן
         %{oauth2}? עליך לרשום את היישום שלך לפני שאפשר לשלוח בקשות OAuth לשירות הזה.
-      oauth_2: OAuth 2
       new: הוספת אפליקציה חדשה
       name: שם
       permissions: הרשאות
@@ -2679,7 +2702,7 @@ he:
     terms_declined_flash:
       terms_declined_html: מתנצלים שהחלטת לא לאשר את תנאי השימוש החדשים. למידע נוסף,
         נא לפנות אל %{terms_declined_link}
-      terms_declined_link: דף ויקי זה
+      terms_declined_link: דף הוויקי הזה
       terms_declined_url: https://wiki.openstreetmap.org/wiki/He:Contributor_Terms_Declined
     no_such_user:
       title: אין משתמש כזה
@@ -3020,8 +3043,11 @@ he:
         reactivate: הפעלה מחדש
         comment_and_resolve: להגיב ולפתור
         comment: להגיב
-        report_link_html: אם ההערה הזאת מכילה מידע רגיש שיש להסיר, אפשר %{link}. עבור
-          כל שאר הבעיות עם ההערה, נא לפתור אותה בעצמך באמצעות הערה.
+        report_link_html: אם ההערה הזאת מכילה מידע רגיש שיש להסיר, אפשר %{link}.
+        other_problems_resolve: עבור כל שאר הבעיות עם ההערה, נא לפתור אותה בעצמך באמצעות
+          הערה.
+        other_problems_resolved: עבור כל שאר הבעיות, מספיק לפתור.
+        disappear_date_html: הערה שנפתרה תיעלם מהמפה בעוד %{disappear_in}.
     edit_help: יש להזיז את המפה ולהתמקד על מיקום שברצונך לערוך ואז ללחוץ כאן.
     directions:
       ascend: מעלה

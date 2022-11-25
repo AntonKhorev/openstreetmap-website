@@ -1,6 +1,7 @@
 # Messages for Malay (Bahasa Melayu)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Amire80
 # Author: Anakmalaysia
 # Author: Izing
 # Author: Jeluang Terluang
@@ -212,12 +213,10 @@ ms:
       my settings: Tetapan saya
       current email address: 'Alamat E-Mel Sekarang:'
       openid:
-        link: http://wiki.openstreetmap.org/wiki/OpenID
         link text: apakah ini?
       public editing:
         heading: Penyuntingan umum
         enabled: Dihidupkan. Tidak tanpa nama, data boleh disunting.
-        enabled link: http://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: apakah ini?
         disabled: Dimatikan, data tidak boleh disunting, semua suntingan yang sebelumnya
           adalah tanpa nama.
@@ -1366,7 +1365,7 @@ ms:
       image: 'Imej:'
       gravatar:
         gravatar: Gunakan Gravatar
-        link: http://wiki.openstreetmap.org/wiki/Gravatar
+        link: https://wiki.openstreetmap.org/wiki/Gravatar
       new image: Tambahkan imej
       keep image: Simpan imej semasa
       delete image: Buang imej semasa
@@ -1398,9 +1397,6 @@ ms:
       account not active: Maaf, akaun anda belum aktif.<br />Sila ikuti pautan dalam
         pesanan e-mel pengesahan akaun untuk menghidupkan akaun anda, atau <a href="%{reconfirm}">pohon
         pesanan e-mel pengesahan yang baru</a>.
-      account is suspended: Maaf, akaun anda digantung disebabkan perbuatan yang mencurigakan.<br
-        />Sila hubungi <a href="%{webmaster}">pentadbir web</a> jika anda ingin membincangkan
-        perkara ini.
       auth failure: Maaf, log masuk tidak dapat dibenarkan dengan butiran-butiran
         itu.
       openid_logo_alt: Log masuk dengan OpenID
@@ -1675,7 +1671,6 @@ ms:
         description: Mulakan dengan panduan ringkas ini yang merangkumi asas-asas
           OpenStreetMap.
       help:
-        url: https://help.openstreetmap.org/
         title: help.openstreetmap.org
         description: Tanyakan soalan atau cari jawapan di tapak soal jawab OSM.
       mailing_lists:
@@ -1688,7 +1683,6 @@ ms:
       switch2osm:
         title: switch2osm
       wiki:
-        url: http://wiki.openstreetmap.org/
         title: wiki.openstreetmap.org
         description: Layari wiki untuk maklumat lanjut tentang OSM.
     sidebar:

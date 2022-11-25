@@ -56,6 +56,7 @@
 # Author: Sorcrosc
 # Author: Toa
 # Author: Tuxfuzz
+# Author: Vivbod
 # Author: Ximo17
 # Author: ZioNicco
 ---
@@ -339,7 +340,6 @@ it:
       public editing:
         heading: Modifica pubblica
         enabled: Abilitate. Non anonimo con il permesso di modificare i dati.
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: che cos'è questo?
         disabled: Disabilitate senza il permesso di modificare i dati, tutte le modifiche
           precedenti sono anonime.
@@ -362,7 +362,6 @@ it:
           accettare le nuove regole per contribuire.
         agreed_with_pd: Hai anche dichiarato di considerare le tue modifiche come
           fossero di pubblico dominio.
-        link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms
         link text: che cos'è questo?
       save changes button: Salva modifiche
       make edits public button: Rendi pubbliche tutte le mie modifiche
@@ -397,8 +396,6 @@ it:
     view_history: Visualizza cronologia
     view_details: Vedi dettagli
     location: 'Posizione:'
-    common_details:
-      coordinates_html: '%{latitude}, %{longitude}'
     changeset:
       title: 'Gruppo di modifiche: %{id}'
       belongs_to: Autore
@@ -492,6 +489,7 @@ it:
       wikimedia_commons_link: L’elemento %{page} su Wikimedia Commons
       telephone_link: Chiama %{phone_number}
       colour_preview: Anteprima colore %{colour_value}
+      email_link: Email %{email}
     note:
       title: 'Nota: %{id}'
       new_note: Nuova nota
@@ -509,12 +507,11 @@ it:
       reopened_by_anonymous_html: Riattivata da anonimo <abbr title='%{exact_time}'>%{when}</abbr>
       hidden_by_html: Nascosta da %{user} <abbr title='%{exact_time}'>%{when}</abbr>
       report: segnalare questa nota
-      coordinates_html: '%{latitude}, %{longitude}'
     query:
       title: Ricerca di elementi
       introduction: Clicca sulla cartina per disponibilità nei pressi.
       nearby: Disponibilità nei pressi
-      enclosing: Elementi interni
+      enclosing: Elementi inglobanti
   changesets:
     changeset_paging_nav:
       showing_page: Pagina %{page}
@@ -533,6 +530,7 @@ it:
     index:
       title: Gruppi di modifiche
       title_user: Gruppi di modifiche di %{user}
+      title_user_link_html: Gruppi di modifiche di %{user_link}
       title_friend: Gruppi di modifiche dei miei amici
       title_nearby: Gruppi di modifiche da parte di utenti nelle vicinanze
       empty: Nessun gruppo di modifiche trovato.
@@ -637,7 +635,6 @@ it:
       location: 'Luogo:'
       view: Visualizza
       edit: Modifica
-      coordinates: '%{latitude}; %{longitude}'
     feed:
       user:
         title: Voci del diario di OpenStreetMap per %{user}
@@ -1531,6 +1528,7 @@ it:
   issue_comments:
     create:
       comment_created: Il tuo commento è stato creato con successo
+      issue_reassigned: Il tuo commento è stato creato e il problema è stato riassegnato
   reports:
     new:
       title_html: Segnala %{link}
@@ -1660,7 +1658,6 @@ it:
       failed_to_import: 'fallito nell''importazione. Questo è l''errore:'
       more_info_html: Troverai maggiori informazioni sul fallimento dell'importazione
         di GPX e come evitarlo all'indirizzo %{url}.
-      import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       subject: '[OpenStreetMap] Importazione GPX fallita'
     gpx_success:
       hi: Ciao %{to_user},
@@ -1941,8 +1938,6 @@ it:
         di utilizzare il collegamento presente nell'email di conferma per attivare
         il proprio profilo, oppure <a href="%{reconfirm}">richiedere l'invio di una
         nuova email di conferma</a>.
-      account is suspended: Siamo spiacenti, il tuo account è stato sospeso a causa
-        di attività sospette.<br />Se desideri discuterne, puoi contattare il <a href="%{webmaster}">supporto</a>.
       auth failure: Spiacenti, non si può accedere con questi dettagli.
       openid_logo_alt: Accedi con un OpenID
       auth_providers:
@@ -1974,6 +1969,11 @@ it:
       title: Esci
       heading: Esci da OpenStreetMap
       logout_button: Esci
+    suspended_flash:
+      suspended: Siamo spiacenti, la tua utenza è stata sospesa a causa di attività
+        sospette.
+      contact_support_html: Contatta %{support_link} se vuoi discuterne.
+      support: assistenza
   shared:
     markdown_help:
       title_html: Analizzato con <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
@@ -2266,10 +2266,9 @@ it:
         description: Inizia con questa guida rapida che copre le basi di OpenStreetMap.
       beginners_guide:
         url: https://wiki.openstreetmap.org/wiki/IT:Beginners%27_guide
-        title: Guida per Principianti
-        description: Guida per i principianti gestita dalla community.
+        title: Guida per principianti
+        description: Guida per i principianti gestita dalla comunità.
       help:
-        url: https://help.openstreetmap.org/
         title: Forum di aiuto
         description: Fai una domanda o cerca risposte sul sito di domande e risposte
           di OpenStreetMap.
@@ -2278,9 +2277,12 @@ it:
         description: Poni la tua domanda o discuti questioni di interesse su una vasta
           gamma di mailing list tematiche o regionali.
       forums:
-        title: Forum
+        title: Forum (vecchio)
         description: Domande e discussioni per coloro che preferiscono un'interfaccia
           in stile bacheca (BBS).
+      community:
+        title: Forum della comunità
+        description: Un luogo condiviso per le conversazioni su OpenStreetMap.
       irc:
         title: IRC
         description: Chat interattiva in molte lingue diverse e su molti argomenti.
@@ -2289,12 +2291,10 @@ it:
         description: Aiuto per imprese e organizzazioni che intendono migrare a mappe
           e altri servizi basati su OpenStreetMap.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Per le organizzazioni
         description: Pensi che OpenStreetMap non sia utile per la tua Organizzazione?
           Consulta il Welcome Mat e scoprirai che lo è!
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: Wiki OpenStreetMap
         description: Sfoglia il wiki per la documentazione approfondita di OpenStreetMap.
     potlatch:
@@ -2440,6 +2440,9 @@ it:
         paragraph_2_html: |-
           Vai alla <a href='%{map_url}'>mappa</a> e clicca sull'icona della nota:
           <span class='icon note'></span>. Questo aggiungerà un marker alla mappa, che potrai muovere trascinandolo. Aggiungi il tuo messaggio, quindi fare clic su Salva e altri Mappers daranno un'occhiata.
+    communities:
+      other_groups:
+        title: Altri gruppi
   traces:
     visibility:
       private: Privato (condiviso solamente come anonimo, punti non ordinati)
@@ -2740,11 +2743,9 @@ it:
       consider_pd: In aggiunta a quanto sopra, considero i miei contributi come fossero
         di pubblico dominio
       consider_pd_why: cos'è questo?
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 'Informazioni utili a capire questi termini: un <a href="%{summary}">riassunto
         leggibile</a> ed alcune <a href="%{translations}">traduzioni informali</a>'
       continue: Continua
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Non accetto
       you need to accept or decline: Si prega di leggere e poi accettare o rifiutare
         i nuovi termini di contribuzione per continuare.
@@ -2757,7 +2758,6 @@ it:
       terms_declined_html: Siamo spiacenti che tu abbia deciso di non accettare i
         nuovi termini di contribuzione. Per ulteriori informazioni consultare %{terms_declined_link}.
       terms_declined_link: questa pagina wiki
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: Nessun utente
       heading: L'utente %{user} non esiste
@@ -3096,8 +3096,10 @@ it:
         comment_and_resolve: Commenta e chiudi
         comment: Commenta
         report_link_html: Se questa nota contiene informazioni sensibili che devono
-          essere rimosse, puoi %{link}. Per ogni altro tipo di problema con questa
-          nota, prova a risolverla di persona con un commento.
+          essere rimosse, puoi %{link}.
+        other_problems_resolve: Per tutti gli altri problemi con la nota, risolvilo
+          tu stesso con un commento.
+        other_problems_resolved: Per tutti gli altri problemi, la risoluzione è sufficiente.
     edit_help: Sposta la mappa e usa lo zoom sulla posizione che vuoi modificare,
       quindi clicca qui.
     directions:

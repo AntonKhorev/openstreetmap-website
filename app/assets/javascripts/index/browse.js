@@ -48,21 +48,19 @@ OSM.initializeBrowse = function (map) {
 
   function displayFeatureWarning(count, limit, add, cancel) {
     $("#browse_status").html(
-      $("<div>")
-        .append(
-          $("<button type='button' class='btn-close float-end mt-1'>")
-            .click(cancel),
-          $("<h2>")
-            .text(I18n.t("browse.start_rjs.load_data"))
-            .prepend(),
-          $("<div>")
-            .append(
-              $("<p class='alert alert-warning clearfix'></p>")
-                .text(I18n.t("browse.start_rjs.feature_warning", { num_features: count, max_features: limit })))
-            .append(
-              $("<input type='submit' class='btn btn-primary'>")
-                .val(I18n.t("browse.start_rjs.load_data"))
-                .click(add))));
+      $("<div>").append(
+        $("<div class='d-flex'>").append(
+          $("<h2 class='flex-grow-1 text-break'>")
+            .text(I18n.t("browse.start_rjs.load_data")),
+          $("<div>").append(
+            $("<button type='button' class='btn-close'>")
+              .attr("aria-label", I18n.t("javascripts.close"))
+              .click(cancel))),
+        $("<p class='alert alert-warning'>")
+          .text(I18n.t("browse.start_rjs.feature_warning", { num_features: count, max_features: limit })),
+        $("<input type='submit' class='btn btn-primary'>")
+          .val(I18n.t("browse.start_rjs.load_data"))
+          .click(add)));
   }
 
   var dataLoader;

@@ -262,11 +262,9 @@ lb:
       current email address: Aktuell E-Mail-Adress
       external auth: Extern Authentifikatioun
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: wat ass dat?
       public editing:
         heading: Ëffentlecht Beaarbechten
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: wat ass dëst?
         disabled link text: Firwat kann ech net änneren?
       public editing note:
@@ -396,6 +394,7 @@ lb:
       wikimedia_commons_link: D'%{page} Element op Wikimedia Commons
       telephone_link: '%{phone_number} uruffen'
       colour_preview: Faarw %{colour_value} Ausbléck
+      email_link: E-Mail %{email}
     note:
       title: 'Notiz: %{id}'
       new_note: Nei Notiz
@@ -1496,6 +1495,7 @@ lb:
     help: Hëllef
     about: Iwwer
     copyright: Copyright
+    communities: Communautéiten
     community: Communautéit
     community_blogs: Bloggen
     community_blogs_title: Blogge vu Matwierkenden bei OpenStreetMap
@@ -1822,9 +1822,6 @@ lb:
         muss Du e Benotzerkont hunn.
       create account minute: Maacht e Benotzerkont. Et dauert nëmmen eng Minutt.
       no account: Hutt Dir kee Benotzerkont?
-      account is suspended: Däi Benotzerkont gouf opgrond vu verdächtegen Aktivitéite
-        gespaart.<br />Wannechgelift kontaktéier de <a href="%{webmaster}">Support</a>,
-        falls du dëst kläre wëlls.
       openid_logo_alt: Alogge mat enger OpenID
       auth_providers:
         openid:
@@ -2005,23 +2002,20 @@ lb:
         url: /welcome
         title: Wëllkomm bei OpenStreetMap
       beginners_guide:
-        url: https://wiki.openstreetmap.org/wiki/Beginners%27_guide
         title: Guide fir nei Benotzer
       help:
-        url: https://help.openstreetmap.org/
         title: Hëllefs-Forum
         description: Stellt eng Fro oder kuckt no Äntwerten um OpenStreetMap-Site
           mat de Froen an Äntwerten.
       mailing_lists:
         title: Mailing-Lëschten
       forums:
-        title: Forumen
+        title: Forumen (vereelzt)
       irc:
         title: IRC
       welcomemat:
         title: Fir Organisatiounen
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: OpenStreetMap Wiki
     potlatch:
       id_html: Alternativ kanns du däi Standardediteur op iD astellen, deen an dengem
@@ -2106,6 +2100,12 @@ lb:
         title: Nach Froen?
       add_a_note:
         title: Keng Zäit fir z'änneren? Setzt eng Notiz derbäi!
+    communities:
+      title: Communautéiten
+      local_chapters:
+        title: Lokal Chapteren
+      other_groups:
+        title: Aner Gruppen
   traces:
     visibility:
       public: Ëffentlech (gëtt an der Spuerlëscht ugewisen, allerdéngs nëmmen als
@@ -2221,7 +2221,6 @@ lb:
   oauth2_applications:
     index:
       title: Meng Clients-Applikatiounen
-      oauth_2: OAuth 2
       new: Nei Applikatioun registréieren
       name: Numm
       permissions: Autorisatiounen

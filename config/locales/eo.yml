@@ -296,12 +296,10 @@ eo:
       current email address: Aktuala retpoŝta adreso
       external auth: Ekstera aŭtentigo
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: Pliaj informoj
       public editing:
         heading: Publika redaktado
         enabled: Ebligita. Ne anonima kaj rajtas redakti.
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
         enabled link text: Pliaj informoj
         disabled: Malebligita kaj ne rajtas redakti, ĉiuj antaŭaj redaktoj naŭ estas
           publikaj.
@@ -322,7 +320,6 @@ eo:
           interkonsenton pri uzado.
         agreed_with_pd: Vi ankaŭ deklaris, ke viaj kontribuaĵoj estas en la publika
           havaĵo.
-        link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms
         link text: Pliaj informoj
       save changes button: Konservi ŝanĝojn
       make edits public button: Publikigu ĉiujn miajn redaktojn.
@@ -593,7 +590,6 @@ eo:
       location: 'Pozicio:'
       view: Montri
       edit: Redakti
-      coordinates: '%{latitude}; %{longitude}'
     feed:
       user:
         title: OpenStreetMap taglibraj afiŝoj de %{user}
@@ -1486,6 +1482,7 @@ eo:
   issue_comments:
     create:
       comment_created: Vi sukcese aldonis komenton
+      issue_reassigned: Vi aldonis komenton kaj la problemo estis reasignita
   reports:
     new:
       title_html: Raporti %{link}
@@ -1611,7 +1608,6 @@ eo:
       failed_to_import: 'ne estas enportita sukcese. Eraro:'
       more_info_html: Pliaj informoj pri eraroj dum enporti GPX‑dosierojn troviĝas
         ĉe %{url}.
-      import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       subject: '[OpenStreetMap] Eraro dum enportado de GPX-dosiero'
     gpx_success:
       hi: Saluton %{to_user},
@@ -1875,9 +1871,6 @@ eo:
       account not active: Bedaŭrinde via konto ne estas ankoraŭ aktiva. Bonvolu malfermi
         la ligilon en konfirmada retletero por aktivigi vian konton, aŭ <a href="%{reconfirm}">petu
         pri sendo de nova mesaĝo</a>.
-      account is suspended: Ho ve, via konto estas haltigita pro suspektinda agado.
-        Kontaktu la <a href="%{webmaster}">subtenan teamon</a>, se vi volas pridiskuti
-        pri blokon.
       auth failure: Bedaŭrinde ne povas ensaluti kun ĉi tiuj informoj.
       openid_logo_alt: Ensaluti per OpenID
       auth_providers:
@@ -2173,11 +2166,9 @@ eo:
         title: Bonvenon al OpenStreetMap
         description: Komencu ekde ĉi tiu manlibreto ampleksanta fundamentojn de OpenStreetMap.
       beginners_guide:
-        url: https://wiki.openstreetmap.org/wiki/Beginners%27_guide
         title: Manlibro por komencantoj
         description: Manlibro por komencantoj kreata de la komunumo (en la angla).
       help:
-        url: https://help.openstreetmap.org/
         title: Helpa forumo
         description: Demandu aŭ serĉu respondojn ĉe retpaĝo de demandoj-kaj-respondoj
           pri OpenStreetMap.
@@ -2186,8 +2177,11 @@ eo:
         description: Demandu aŭ diskutu pri interesaj temoj en multaj pritemaj aŭ
           regionaj dissendolistoj.
       forums:
-        title: Forumoj
+        title: Forumoj (malnovaj)
         description: Demandoj kaj diskutoj por tiuj, kiuj preferas kutimaj diskutforumoj.
+      community:
+        title: Forumoj de komunumo
+        description: Loko por diskuti pri OpenStreetMap.
       irc:
         title: IRC
         description: Interaga babilejo en multaj diversaj lingvoj kaj pri multaj temoj.
@@ -2196,7 +2190,6 @@ eo:
         description: Helpi al firmaoj kaj organizaĵoj transiĝi al mapoj kaj aliaj
           servoj de OpenStreetMap.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Por organizaĵoj
         description: Ĉu via organizaĵo planas kunlabori kun OpenStreetMap? Trovu ĉiujn
           necesajn informojn ĉe nia Welcome Mat.
@@ -2357,7 +2350,6 @@ eo:
     new:
       upload_trace: Alŝuti GPS-spuron
       visibility_help: kion tio signifas?
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
       help: Helpo
       help_url: https://wiki.openstreetmap.org/wiki/Upload
     create:
@@ -2554,7 +2546,6 @@ eo:
       no_applications_html: Ĉu vi havas iun aplikaĵon, kiun vi volas registri uzante
         la normon %{oauth2}? Vi devas registri vian aplikaĵon, antaŭ ĝi eblos fari
         OAuth-petojn al tiu ĉi servo.
-      oauth_2: OAuth 2
       new: Registri novan aplikaĵon
       name: Nomo
       permissions: Permesoj
@@ -2638,11 +2629,9 @@ eo:
       consider_pd: Krom la ĉi-supro, mi konfirmas, ke miaj kontribuaĵoj apartenas
         al la publika havaĵo
       consider_pd_why: Pliaj informoj
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 'Informoj por helpi kompreni ĉi tiun interkonsenton: <a href="%{summary}">simpla
         mallongigo</a> kaj kelkaj <a href="%{translations}">neoficialaj tradukoj</a>'
       continue: Daŭrigi
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Malakcepti
       you need to accept or decline: Bonvolu legi kaj aŭ akcepti aŭ malakcepti la
         novan interkonsenton pri uzado por pluigi.
@@ -2655,7 +2644,6 @@ eo:
       terms_declined_html: Bedaŭrinde vi ne akceptis la novan interkonsenton pri kontribuado.
         Por pli da informoj, ekkonu kun %{terms_declined_link}.
       terms_declined_link: tiu ĉi viki‑paĝo
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: Neekzistanta uzanto
       heading: La uzanto %{user} ne ekzistas

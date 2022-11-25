@@ -13,8 +13,6 @@
 # Author: Þjarkur
 ---
 is:
-  html:
-    dir: ltr
   time:
     formats:
       friendly: '%e. %B %Y kl. %H:%M'
@@ -217,7 +215,6 @@ is:
         other: fyrir %{count} árum síðan
   printable_name:
     with_version: '%{id}, útgáfa %{version}'
-    with_name_html: '%{name} (%{id})'
   editor:
     default: Sjálfgefið (núna %{name})
     id:
@@ -292,7 +289,6 @@ is:
       current email address: Núverandi póstfang
       external auth: Ytri auðkenning
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: hvað er openID?
       public editing:
         heading: Nafngreindar breytingar
@@ -358,8 +354,6 @@ is:
     view_history: Skoða feril
     view_details: Skoða nánar
     location: 'Staðsetning:'
-    common_details:
-      coordinates_html: '%{latitude}, %{longitude}'
     changeset:
       title: 'Breytingasett: %{id}'
       belongs_to: Höfundur
@@ -402,7 +396,6 @@ is:
         one: 1 meðlimur
         other: '%{count} meðlimir'
     relation_member:
-      entry_html: '%{type} %{name}'
       entry_role_html: '%{type} %{name} sem „%{role}“'
       type:
         node: Hnútur
@@ -455,6 +448,7 @@ is:
       wikimedia_commons_link: '%{page} atriðið á Wikimedia Commons'
       telephone_link: Hringja í %{phone_number}
       colour_preview: Forskoðun á litnum %{colour_value}
+      email_link: Tölvupóstfang %{email}
     note:
       title: 'Minnispunktur: %{id}'
       new_note: Nýr minnispunktur
@@ -474,7 +468,6 @@ is:
       reopened_by_anonymous_html: Endurvirkjað af nafnlausum notanda fyrir <abbr title='%{exact_time}'>%{when}</abbr>
       hidden_by_html: Falið af %{user} <abbr title='%{exact_time}'> %{when}</abbr>
       report: tilkynnt þennan minnispunkt
-      coordinates_html: '%{latitude}, %{longitude}'
     query:
       title: Rannsaka fitjur
       introduction: Smelltu á kortið til að finna fitjur í nágrenninu.
@@ -498,6 +491,7 @@ is:
     index:
       title: Breytingasett
       title_user: Breytingar eftir %{user}
+      title_user_link_html: Breytingasett eftir %{user_link}
       title_friend: Breytingar eftir vini mína
       title_nearby: Breytingar eftir nálæga notendur
       empty: Engin breytingasett fundust.
@@ -601,7 +595,6 @@ is:
       location: 'Staðsetning:'
       view: Skoða
       edit: Breyta
-      coordinates: '%{latitude}; %{longitude}'
     feed:
       user:
         title: OpenStreetMap bloggfærslur eftir %{user}
@@ -1496,6 +1489,7 @@ is:
   issue_comments:
     create:
       comment_created: Það tókst að búa til athugasemdina þína
+      issue_reassigned: Athugasemdin þín var útbúin og málinu var endurúthlutað
   reports:
     new:
       title_html: Tilkynna %{link}
@@ -1534,9 +1528,6 @@ is:
       successful_report: Það tókst að skrá skýrsluna þína
       provide_details: Tilgreindu öll nauðsynleg atriði
   layouts:
-    project_name:
-      title: OpenStreetMap
-      h1: OpenStreetMap
     logo:
       alt_text: OpenStreetMap merkið
     home: Fara heim
@@ -1627,7 +1618,6 @@ is:
       failed_to_import: 'Lenti í villu þegar átti að flytja hana inn, hérna er villan::'
       more_info_html: Meir upplýsingar Um misheppnaðir GPX-innflutningur og hvernig
         maður forðast þau finnst á %{url}.
-      import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       subject: '[OpenStreetMap] Villa við að flytja inn GPX skrá'
     gpx_success:
       hi: Hæ %{to_user},
@@ -1652,11 +1642,11 @@ is:
       click_the_link: Ef þú óskaðir eftir þessari breytingu fylgdu tenglinum hér fyrir
         neðan til að staðfesta breytinguna.
     lost_password:
-      subject: '[OpenStreetMap] Beðni um að endurstilla lykilorð'
+      subject: '[OpenStreetMap] Beiðni um að endurstilla lykilorð'
       greeting: Hæ,
       hopefully_you: Einhver (vonandi þú) hefur beðið um að endurstilla lykilorðið
         á reikningnum með þetta netfang á openstreetmap.org
-      click_the_link: Ef þú óskaðir eftir þessari endurstillingu fylgdu tenglinum
+      click_the_link: Ef þú óskaðir eftir þessari endurstillingu, skaltu fylgja tenglinum
         hér fyrir neðan til að staðfesta breytinguna.
     note_comment_notification:
       anonymous: Nafnlaus notandi
@@ -1905,9 +1895,6 @@ is:
       account not active: Þessi reikningur er ekki virkur.<br />Vinsamlegast smelltu
         á tengilinn í staðfestingarpóstinum sem þú fékkst til að virkja reikninginn,
         eða <a href="%{reconfirm}">óskaðu eftir nýjum staðfestingarpósti</a>.
-      account is suspended: Því miður, notandaaðgangurinn þinn hefur verið lokuð vegna
-        grunsamlegrar virkni.<br />Hafðu samband við <a href="%{webmaster}">vefstjóra</a>
-        ef þú vilt ræða þetta mál.
       auth failure: Þetta notandanafn eða lykilorð er rangt.
       openid_logo_alt: Skrá inn með OpenID-aðgangi
       auth_providers:
@@ -1939,6 +1926,11 @@ is:
       title: Útskráning
       heading: Skrá út úr OpenStreetMap
       logout_button: Útskráning
+    suspended_flash:
+      suspended: Því miður hefur reikningnum þínum verið lokað vegna grunsamlegrar
+        virkni.
+      contact_support_html: Hafðu samband við %{support_link} ef þú vilt ræða þetta.
+      support: aðstoðarteymið
   shared:
     markdown_help:
       title_html: Þáttað með <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
@@ -2160,7 +2152,6 @@ is:
       not_public_description_html: Þú getur ekki lengur gert breytingar nema þær séu
         merktar opinberar, þú getur breytt þeim stillingum á %{user_page}.
       user_page_link: notandasíðunni þinni
-      anon_edits_html: (%{link})
       anon_edits_link_text: Finndu út afhverju.
       id_not_configured: Það er ekki búið að setja upp auðkenni
       no_iframe_support: Því miður styður vafrinn þinn ekki HTML-iframes, sem er nauðsynlegt
@@ -2241,11 +2232,9 @@ is:
         description: Byrjaðu með þessum fljótlega leiðarvísi með helstu grunnatriðum
           varðandi OpenStreetMap.
       beginners_guide:
-        url: https://wiki.openstreetmap.org/wiki/Beginners%27_guide
         title: Byrjenda-leiðbeiningar
         description: Leiðarvísir fyrir byrjendur sem haldið er við af samfélaginu.
       help:
-        url: https://help.openstreetmap.org/
         title: Hjálparvefur
         description: Spyrðu spurninga eða flettu upp svörum á spyrja/svara hluta OpenStreetMap-vefsvæðisins.
       mailing_lists:
@@ -2253,9 +2242,12 @@ is:
         description: Spyrðu spurninga eða spjallaðu um áhugaverð málefni á einhverjum
           af fjölmörgum póstlistum tengdum tungumálum eða viðfangsefnum.
       forums:
-        title: Spjallsvæði
+        title: Spjallsvæði (gamalt)
         description: Spurningar og umræður fyrir þá sem kunna betur við klassísk viðmót
           hefðbundinna spjallborða.
+      community:
+        title: Samfélagsgátt
+        description: Sameiginlegur staður fyrir umræður um OpenStreetMap.
       irc:
         title: IRC
         description: Gagnvirkt spjall á mörgum tungumálum og um margvísleg málefni.
@@ -2264,12 +2256,10 @@ is:
         description: Hjálp fyrir fyrirtæki, stofnanir og félagasamtök sem ætla sér
           að skipta yfir í kort byggð á OpenStreetMap og tengdum þjónustum.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Fyrir félög, stofnanir og fyrirtæki
         description: Ertu á vegum stofnunar/fyrirtækis sem hefur hug á að nota OpenStreetMap?
           Finndu það sem þú þarft að vita á kynningarsíðunni</a>.
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: Wiki-vefur OpenStreetMap
         description: Vafraðu um wiki/kvikuna til að sjá greinargóðar leiðbeiningar
           varðandi OpenStreetMap.
@@ -2429,7 +2419,6 @@ is:
     new:
       upload_trace: Senda inn GPS feril
       visibility_help: hvað þýðir þetta
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
       help: Hjálp
       help_url: https://wiki.openstreetmap.org/index.php?title=Upload&uselang=is
     create:
@@ -2449,7 +2438,6 @@ is:
       title: Breyti ferlinum %{name}
       heading: Breyti ferlinum %{name}
       visibility_help: hvað þýðir þetta?
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
     update:
       updated: Ferill uppfærður
     trace_optionals:
@@ -2633,7 +2621,6 @@ is:
       no_applications_html: Ert þú að nota forrit sem þú myndir vilja skrá til notkunar
         hjá okkur með %{oauth2} staðlinum? Þú verður að skrá vefforritið áður en það
         fer að senda OAuth-beiðnir á þessa þjónustu.
-      oauth_2: OAuth 2
       new: Skrá nýtt forrit
       name: Nafn
       permissions: Réttindi
@@ -2717,12 +2704,10 @@ is:
       consider_pd: Til viðbótar við ofangreint samkomulag, lít ég svo á að framlög
         mín verði í almenningseigu (Public Domain)
       consider_pd_why: hvað þýðir þetta?
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 'Upplýsingar sem hjálpa til við að skilja þessi hugtök: á <a
         href="%{summary}">mannamáli</a> og nokkrar <a href="%{translations}">óformlegar
         þýðingar</a>'
       continue: Halda áfram
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Hafna
       you need to accept or decline: Endilega lestu og samþykktu eða hafnaðu nýju
         skilmálunum vegna framlags þíns, áður en þú heldur áfram.
@@ -2736,7 +2721,6 @@ is:
         nýja skilmála vegna framlags (contributor terms). Til að sjá ítarlegri upplýsingar,
         geturðu skoðað %{terms_declined_link}.
       terms_declined_link: þessari wiki síðu
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: Notandi ekki til
       heading: Notandinn %{user} er ekki til

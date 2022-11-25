@@ -11,12 +11,9 @@
 # Author: Kur
 ---
 ku-Latn:
-  html:
-    dir: ltr
   time:
     formats:
       friendly: '%e %B %Y saet %H:%M'
-      blog: '%e %B %Y'
   helpers:
     file:
       prompt: Dosyeyê bibijêre
@@ -52,8 +49,8 @@ ku-Latn:
         email_address_not_routable: nikare were alîkirin
     models:
       acl: Lîsteya kontrola têketinan
-      changeset: Qeyda guhertinan
-      changeset_tag: Nîşana qeyda guhertinan
+      changeset: Qeyda guhartinan
+      changeset_tag: Nîşana qeyda guhartinan
       country: Welat
       diary_comment: Şîroveya rojane
       diary_entry: Nivîsa Rojane
@@ -275,7 +272,7 @@ ku-Latn:
           lê belê wê neyên xuyan.
         retain_notes: Notên te yên nexşeyê, ger hebin, wê bên muhafezekirin, lê wê
           neyên xuyan.
-        retain_changeset_discussions: Gotûbêjên te yên qeyda guhertinan, ger hebin,
+        retain_changeset_discussions: Gotûbêjên te yên qeyda guhartinan, ger hebin,
           wê bêne muhafezekirin.
         retain_email: Adresa te ya epeyamê wê were muhafezekirin.
         confirm_delete: Tu piştrast î?
@@ -287,7 +284,6 @@ ku-Latn:
       current email address: Navnîşana e-nameyê yê niha
       external auth: Teyîdkirina xaricî
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: Ev çi ye?
       public editing:
         heading: Guherandina ji her kesê re vekirî
@@ -341,7 +337,7 @@ ku-Latn:
     closed_by_html: Ji aliyê %{user} ve </abbr> <abbr title='%{title}'>%{time} hatiye
       girtin
     version: Guherto
-    in_changeset: Qeyda Guhertinan
+    in_changeset: Qeyda Guhartinan
     anonymous: anonîm
     no_comment: (bêşirove)
     part_of: Perçeyek ji
@@ -368,14 +364,14 @@ ku-Latn:
       hidden_commented_by_html: Şîroveya veşartî yê ji alî %{user} ve </abbr> <abbr
         title='%{exact_time}'>%{when}
       commented_by_html: Şîrove ji aliyê %{user} ve, </abbr> <abbr title='%{exact_time}'>%{when}
-      changesetxml: Desteya guhertinan a XML
+      changesetxml: Desteya guhartinan a XML
       osmchangexml: osmChange XML
       feed:
-        title: Desteya guhertinan %{id}
-        title_comment: Desteya guhertinan %{id} - %{comment}
+        title: Desteya guhartinan %{id}
+        title_comment: Desteya guhartinan %{id} - %{comment}
       join_discussion: Ji bo ku beșdarî guftûgoyan bibî têkeve
       discussion: Gotûbêj
-      still_open: Qeyda guhertinan hê jî vekirî ye - wê gotûbêj piştî ku qeyda guhertinan
+      still_open: Qeyda guhartinan hê jî vekirî ye - wê gotûbêj piştî ku qeyda guhartinan
         hate girtin vebibe.
     node:
       title_html: 'Girêk: %{name}'
@@ -412,7 +408,7 @@ ku-Latn:
         node: nuqte
         way: rê
         relation: eleqe
-        changeset: qeyda guhertinan
+        changeset: qeyda guhartinan
         note: not
     timeout:
       title: Çewtiya Demborînê
@@ -422,7 +418,7 @@ ku-Latn:
         node: nuqte
         way: rê
         relation: pêwendî
-        changeset: qeyda guhertinan
+        changeset: qeyda guhartinan
         note: not
     redacted:
       redaction: Redaksiyon %{id}
@@ -448,6 +444,7 @@ ku-Latn:
       wikimedia_commons_link: Hêmana %{page} li ser Wîkîmediya Commonsê
       telephone_link: Li %{phone_number} bigere
       colour_preview: Pêşdîtina rengê %{colour_value}
+      email_link: Epeyam bişîne %{email}
     note:
       title: 'Not: %{id}'
       new_note: Notê nû
@@ -486,8 +483,8 @@ ku-Latn:
       previous: « Yê berê
     changeset:
       anonymous: Anonîm
-      no_edits: (nehatiye guhertin)
-      view_changeset_details: Dêtayên qeyda guhertinan bibîne
+      no_edits: (nehatiye guhartin)
+      view_changeset_details: Dêtayên qeyda guhartinan bibîne
     changesets:
       id: ID
       saved_at: Dema qeydê
@@ -495,33 +492,34 @@ ku-Latn:
       comment: Şîrove
       area: Herêm
     index:
-      title: Desteya guhertinan
-      title_user: Desteyên guhertinan yên ji alî %{user} ve
-      title_friend: Desteyên guhertinan yên ji aliyê hevalên te ve
-      title_nearby: Desteyên guhertinan yên ji alî bikarhênerên nêz ve
-      empty: Desteyên guhertinan nehate dîtin.
-      empty_area: Li vê derê desteyên guhertinan tine ne.
-      empty_user: Desteyên guhertinan yên vê bikarhênerê tine.
-      no_more: Desteyên guhertinan zêdetir nehate dîtin.
-      no_more_area: Li vê derê desteyên guhertinan zêdetir tine.
-      no_more_user: Desteyên guhertinan yên vê bikarhênerê zêdetir tine.
+      title: Desteya guhartinan
+      title_user: Desteyên guhartinan yên ji alî %{user} ve
+      title_user_link_html: Desteyên guhartinan yên ji alî %{user_link} ve
+      title_friend: Desteyên guhartinan yên ji aliyê hevalên te ve
+      title_nearby: Desteyên guhartinan yên ji alî bikarhênerên nêz ve
+      empty: Desteyên guhartinan nehate dîtin.
+      empty_area: Li vê derê desteyên guhartinan tine ne.
+      empty_user: Desteyên guhartinan yên vê bikarhênerê tine.
+      no_more: Desteyên guhartinan zêdetir nehate dîtin.
+      no_more_area: Li vê derê desteyên guhartinan zêdetir tine.
+      no_more_user: Desteyên guhartinan yên vê bikarhênerê zêdetir tine.
       load_more: Zêdetir bar bike
     timeout:
-      sorry: Bibore, bidestxistina lîsteya desteyên guhertinan ê ku te xwest demeke
+      sorry: Bibore, bidestxistina lîsteya desteyên guhartinan ê ku te xwest demeke
         dirêj girt.
   changeset_comments:
     comment:
-      comment: Şîroveya nû yê li ser qeyda guhertinan a %{changeset_id} yê ji alî
+      comment: Şîroveya nû yê li ser qeyda guhartinan a %{changeset_id} yê ji alî
         %{author} ve
       commented_at_by_html: '%{when} ji aliyê %{user} ve hate rojanekirin'
     comments:
-      comment: 'Şîroveya nû li ser desteya guhertinan ya #%{changeset_id} ji aliyê
+      comment: 'Şîroveya nû li ser desteya guhartinan ya #%{changeset_id} ji aliyê
         %{author} ve'
     index:
       title_all: Gotûbêja qeyda guhartinên OpenStreetMapê
-      title_particular: Gotûbêja qeyda guhertinan a %{changeset_id} yê OpenStreetMapê
+      title_particular: Gotûbêja qeyda guhartinan a %{changeset_id} yê OpenStreetMapê
     timeout:
-      sorry: Bibore, bidestxistina lîsteya şîroveyên desteya guhertinan ê ku te xwest
+      sorry: Bibore, bidestxistina lîsteya şîroveyên desteya guhartinan ê ku te xwest
         demeke dirêj girt.
   dashboards:
     contact:
@@ -541,9 +539,9 @@ ku-Latn:
       nearby users: Bikarhênerên din ên nêz
       no nearby users: Li nêzî te bikarhênerekî din yê ku cihê xwe diyar kiribe tine
         ye.
-      friends_changesets: desteyên guhertinan yên hevalan
+      friends_changesets: desteyên guhartinan yên hevalan
       friends_diaries: nivîsên rojane yên hevalan
-      nearby_changesets: desteyên guhertinan yên bikarhênerên nêz
+      nearby_changesets: desteyên guhartinan yên bikarhênerên nêz
       nearby_diaries: nivîsên rojane yên bikarhênerên nêz
   diary_entries:
     new:
@@ -1499,6 +1497,7 @@ ku-Latn:
   issue_comments:
     create:
       comment_created: Şîroveya te bi serkeftî hat avakirin
+      issue_reassigned: Şîroveya te hate çêkirin û mijar hate cardin hate tayînkirin
   reports:
     new:
       title_html: Rapor %{link}
@@ -1631,7 +1630,6 @@ ku-Latn:
       failed_to_import: 'anîna dosyeyê bi ser neket. Çewtî ev e:'
       more_info_html: Agahiyên zêdetir ên derbarê çewtiyên împortkirinê û rêlibergirtina
         wê ji %{url} dikarî peyda bikî.
-      import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       subject: '[OpenStreetMap] Anîna GPXê bi ser neket'
     gpx_success:
       hi: Merheba %{to_user},
@@ -1855,7 +1853,7 @@ ku-Latn:
       title: Şîfreyê nû bike
       heading: Şîfreyê nû bike ji bo %{user}
       reset: Şîfreyê nû bike
-      flash changed: Şîfreya te hate guhertin.
+      flash changed: Şîfreya te hate guhartin.
       flash token bad: Eger te vê sembolê nedîtibe, belkî jî divê tu URLyê kontrol
         bikî?
   preferences:
@@ -1919,9 +1917,6 @@ ku-Latn:
       account not active: Bibore, hesabê te hêj neaktîv e.<br />Xêra xwe ji bo aktîvkirina
         hesabê bitikîne ser lînka ku di e-peyama pejirandina hesabê de ji te re hatibû,
         an jî <a href="%{reconfirm}">e-peyamek pejirandinê yê nû bixwaze</a>.
-      account is suspended: Bibore, hesabê te ji ber çalakiyên gumanbar hatiye rawestandin.<br
-        />Eger bixwazibî vê mijare mijûl bibî, xêra xwe bi <a href="%{webmaster}">piştgiriyê</a>
-        re têkiliyê deyne.
       auth failure: Bibore, bi van dêtayan re tu têneketî.
       openid_logo_alt: Têketina bi OpenID'yê
       auth_providers:
@@ -1953,6 +1948,11 @@ ku-Latn:
       title: Derkeve
       heading: Ji OpenStreetMapê derkeve
       logout_button: Derkeve
+    suspended_flash:
+      suspended: Bibore, hesaba te ji ber aktîvîteyên şibhedar hatiye rawestandin.
+      contact_support_html: Ji kerema xwe bi %{support_link} re têkiliyê deyne ger
+        bixwazî vê yekê xeber bidî.
+      support: piştgirî
   shared:
     markdown_help:
       title_html: |-
@@ -2042,21 +2042,17 @@ ku-Latn:
         credit_title_html: Em çawan wekî çavkaniyekê behsa OpenStreetMapê bikin
         credit_1_html: 'Li cihê ku daneya OpenStreetMapê bi kar bînî, divê van du
           tiştan bikî:'
-        credit_2_1_html: Herwiha divê hûn zelal bikin ku daneyên me di bin lîsansa
-          Open Database License de hatiye lîsanskirin, û eger karoyên nexşeya me were
-          emilandin, diyar bikin ku ev kartografî jî bi CC BY-SA hatiye lîsanskirin.
-          Hûn vê bi lînkdana ji <a href="https://www.openstreetmap.org/copyright">rûpela
-          mafê daneriyê</a> re dikarin bikin. Wekî alternatîv, û wekî hewcehiyek eger
-          tu OSMyê di formekî daneyan de belav bikî tu dikarî rasterast lîsansan bi
-          nav bikî an jî girê bidî lîsansê(n) rasterast. Di medyayên ku lînkkirin
-          ne mimkun bin de (wekî mînak. xebatên çapkirî), em ji we re pêşniyar dikin
-          ku hûn xwînerên xwe tewcîhê openstreetmap.org'ê, opendatacommons.org'ê,
-          û heke minasib be creativecommons.org'ê bikin.
-        credit_3_1_html: "Karoyên nexşeyê yên di &ldquo;stîla standard&rdquo; de yên
-          li www.openstreetmap.org-ê \nXebateke Çêkirî yê Weqfa OpenStreetMapê ye
-          ku \nbi bikaranîna daneyên OpenStreetMapê di bin lîsansa Open Database de
-          çêbûye. Gava vê stîla nexşeyê bi kar bînî bi daneyên nexşeyê eynî etfkirin
-          hewce dike."
+        credit_2_1_html: |-
+          <ul>
+          <li>Bi nîşandana danezana mafê telîfê heqê OpenStreetMapê nîşan bidin.</li>
+          <li>Herwiha divê hûn zelal bikin ku daneyên me di bin lîsansa Open Database License de hatiye lîsanskirin.</li>
+          </ul>
+        credit_3_1_html: Ji bo hişyariya mafê telîfê, li gor bikaranîna te ya daneyên
+          me, çend pêdiviyên şiklê nîşandana wê hene. Mîsalen li ser nîşandana hişyariya
+          mafê telîfê qaîdeyên cuda wê bên sepandin, li gor çêkirina te ya nexşeyeke
+          gerrînbar, nexşeyeke çapkirî an wêneyeke statîk. Temamiya detayên li ser
+          pêdiviyan dikarî ji ser <a href="https://wiki.osmfoundation.org/wiki/Licence/Attribution_Guidelines">Rêbernameyên
+          Atfkirinê</a> peyda bikî.
         credit_4_html: "Ji bo nexşeyekî elektronîk yê gerrînbar, çavkanî divê li jêra
           goşeya alî rastê were xuyan. \nWek nimûne:"
         attribution_example:
@@ -2077,7 +2073,7 @@ ku-Latn:
           dikin, hinek ji wan ev in:'
         contributors_at_html: |-
           <strong>Awistirya</strong>: Daneyên ji <a href="https://data.wien.gv.at/">Stadt Wien</a> (di bin
-          <a href="https://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a> de), <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land Vorarlberg</a> û Land Tirol (tevî guhertinan di bin lîsansa <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC BY AT de</a>) dihundirrîne.
+          <a href="https://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a> de), <a href="https://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land Vorarlberg</a> û Land Tirol (tevî guhartinan di bin lîsansa <a href="https://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC BY AT de</a>) dihundirrîne.
         contributors_au_html: |-
           <strong>Awistralya</strong>: Bi bikaranîna Sînorên Îdarî tê berfirehkirin an bipêşxistin &copy;
           <a href="https://geoscape.com.au/legal/data-copyright-and-disclaimer/">Geoscape Australia</a> yên ku ji aliyê Commonwealth of Australia ve li bin
@@ -2239,11 +2235,9 @@ ku-Latn:
         description: Bi vê rêbernameya kurt ê ku tê de esasên OpenStreetMapê heye
           dest pê bike.
       beginners_guide:
-        url: https://wiki.openstreetmap.org/wiki/Beginners%27_guide
         title: Rêbera ji bo kesên ku nû dest pê kirine
         description: Civata me, ji bo kesên ku nû dest pê kirine rêbertî dike.
       help:
-        url: https://help.openstreetmap.org/
         title: Foruma Alîkariyê
         description: Pirsek bipirsin an binêrin cewabên li ser malpera OpenStreetMapê
           ya pirs-û-bersivê.
@@ -2252,9 +2246,12 @@ ku-Latn:
         description: Di lîsteyên e-nameyan yên deverî an jî herêmî yên cur bi cur
           de hûn dikarin pirsan bipirsin an jî mijarên balkêş nîqaş bikin.
       forums:
-        title: Forum
+        title: Forum (Kevinbûyî)
         description: Pirs û gotûbêjên ji bo kesên ku înterfeysên bi şêweya panoya
           daxuyaniyê tercîh dikin.
+      community:
+        title: Foruma civatê
+        description: Cihê hevpar ji bo sohbetên di derbarê OpenStreetMapê de.
       irc:
         title: IRC
         description: Sohbeta înteraktîv yê bi gelek zimanan û di gelek mijaran de.
@@ -2263,12 +2260,10 @@ ku-Latn:
         description: Alikariya ji bo şirket û komeleyên ku derbasî nexşe û xizmetên
           din yên bi bingeha OpenStreetMapê dibin.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Ji bo rêxistinan
         description: Tevî sazî an komeleyekê planên te yên ji bo OpenStreetMapê hene?
           Tiştê ku ji te re lazim e di Rûpela Xêrhatinê de peyda bike.
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: Wîkiya OpenStreetMapê
         description: Ji bo belgeyên OpenStreetMapyê yên bi berfirehî binêrin wîkiyê.
     potlatch:
@@ -2429,7 +2424,6 @@ ku-Latn:
     new:
       upload_trace: Şopa GPSê bar bike
       visibility_help: Ev tê çi wateyê?
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
       help: Alîkarî
       help_url: https://wiki.openstreetmap.org/wiki/Upload
     create:
@@ -2448,8 +2442,8 @@ ku-Latn:
           bar nekir, li bendê bimînin ku yên berî van temam bibin.'
     edit:
       cancel: Betal bike
-      title: Şopa %{name} tê guherandin
-      heading: Şopa %{name} tê guherandin
+      title: Şopa %{name} tê guhartin
+      heading: Şopa %{name} tê guhartin
       visibility_help: Ev tê çi maneyê?
     update:
       updated: Şop hate nûkirin
@@ -2497,6 +2491,7 @@ ku-Latn:
       in: di
     index:
       public_traces: Şopên GPSê yên giştî (ji her kesê re vekirî)
+      my_gps_traces: Şopên min ên GPSê
       public_traces_from: Şopên GPSê yên giştî yên ji %{user}
       description: Çavê xwe li nûkirinên şopên GPSê yên dawîn bigerîne
       tagged_with: ' bi %{tags} hate etîketkirin'
@@ -2715,12 +2710,10 @@ ku-Latn:
       consider_pd: Tevî evên li jorê, tu dikarî bibijêrî ku beşdariyên te wek Malê
         Giştî (malê ku ne aîdî şexsekî ye) were qebûlkirin.
       consider_pd_why: Ev çi ye?
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 'Li vir agahiyên alîkar yên ji bo tu van şertan fam bikî hene:
         <a href="%{summary}">kurteyek ku dikare were xwendin</a> û çend <a href="%{translations}">tercumeyên
         nefermî</a>'
       continue: Dewam bike
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Red bike
       you need to accept or decline: Ji bo ku dewam bikî, xêra xwe şertên beşdariyê
         bixwîne û piştre qebûl an jî red bike.
@@ -2733,7 +2726,6 @@ ku-Latn:
       terms_declined_html: Em xengîn bûn ji ber te qerar da ku Şertûmercên Bikaranînê
         qebûl nekî. Ji bo agahiyên zêdetir, ji kerema xwe binêre %{terms_declined_link}.
       terms_declined_link: ev rûpela wîkiyê
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: Bikarhênerek wek vê tine
       heading: Bikarhênerek bi navê %{user} tine
@@ -2743,7 +2735,7 @@ ku-Latn:
     show:
       my diary: Rojnivîska min
       new diary entry: nivîsa nû yê rojane
-      my edits: Guhertinên min
+      my edits: Guhartinên min
       my traces: Şopên min
       my notes: Notên min
       my messages: Peyamên min
@@ -2757,7 +2749,7 @@ ku-Latn:
       edit_profile: Profîlê Biguherîne
       send message: Peyam bişîne
       diary: Rojnivîsk
-      edits: Guherandin
+      edits: Guhartin
       traces: Şop
       notes: Notên nexşeyê
       remove as friend: Ji hevaltiyê derxe
@@ -2879,7 +2871,7 @@ ku-Latn:
       show: Vê astengiyê bibîne
       back: Hemû astengiyan bibîne
     filter:
-      block_expired: Wextê astengiyê derbas bûye û nikare were guherandin.
+      block_expired: Wextê astengiyê derbas bûye û nikare were guhartin.
       block_period: Wextê astengiyê, divê yek ji nirxên vê lîsteya ku dikare were
         vekirin be.
     create:
@@ -3073,6 +3065,9 @@ ku-Latn:
         reactivate: Jinûve bide aktîvkirin
         comment_and_resolve: Şirove û çareserî
         comment: Şîrove
+        report_link_html: Ger ev not agahiyên hesas yên ku divê bên rakirin bihewîne,
+          tu dikarî %{link}. Ji bo hemû problemên din yên bi vê notê, ji kerema xwe
+          bi şîroveyekê tu bixwe wê çareser bike.
     edit_help: Nexşeyê bide hereketkirin û li cihê ku tu dixwazî biguherînî nêzîk
       bike, piştre jî bitikîne ser vir.
     directions:

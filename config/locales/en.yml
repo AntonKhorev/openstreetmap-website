@@ -405,6 +405,7 @@ en:
       wikimedia_commons_link: "The %{page} item on Wikimedia Commons"
       telephone_link: "Call %{phone_number}"
       colour_preview: "Colour %{colour_value} preview"
+      email_link: "Email %{email}"
     note:
       title: "Note: %{id}"
       new_note: "New Note"
@@ -446,6 +447,7 @@ en:
     index:
       title: "Changesets"
       title_user: "Changesets by %{user}"
+      title_user_link_html: "Changesets by %{user_link}"
       title_friend: "Changesets by my friends"
       title_nearby: "Changesets by nearby users"
       empty: "No changesets found."
@@ -1513,6 +1515,7 @@ en:
     help: Help
     about: About
     copyright: Copyright
+    communities: Communities
     community: Community
     community_blogs: "Community Blogs"
     community_blogs_title: "Blogs from members of the OpenStreetMap community"
@@ -1782,7 +1785,6 @@ en:
       create account minute: Create an account. It only takes a minute.
       no account: Don't have an account?
       account not active: "Sorry, your account is not active yet.<br />Please use the link in the account confirmation email to activate your account, or <a href=\"%{reconfirm}\">request a new confirmation email</a>."
-      account is suspended: Sorry, your account has been suspended due to suspicious activity.<br />Please contact <a href="%{webmaster}">support</a> if you wish to discuss this.
       auth failure: "Sorry, could not log in with those details."
       openid_logo_alt: "Log in with an OpenID"
       auth_providers:
@@ -1814,6 +1816,10 @@ en:
       title: "Logout"
       heading: "Logout from OpenStreetMap"
       logout_button: "Logout"
+    suspended_flash:
+      suspended: Sorry, your account has been suspended due to suspicious activity.
+      contact_support_html: Please contact %{support_link} if you wish to discuss this.
+      support: support
   shared:
     markdown_help:
       title_html: Parsed with <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
@@ -1913,13 +1919,13 @@ en:
             <li>Make clear that the data is available under the Open Database License.</li>
           </ul>
         credit_3_1_html: |
-         For the copyright notice, we have different requirements on how this should be 
-         displayed, depending on how you are using our data. For example, different 
-         rules apply on how to show the copyright notice depending on whether you have 
-         created a browsable map, a printed map or a static image. Full details on the 
-         requirements can be found in the 
-         <a href="https://wiki.osmfoundation.org/wiki/Licence/Attribution_Guidelines">Attribution 
-         Guidelines</a>. 
+         For the copyright notice, we have different requirements on how this should be
+         displayed, depending on how you are using our data. For example, different
+         rules apply on how to show the copyright notice depending on whether you have
+         created a browsable map, a printed map or a static image. Full details on the
+         requirements can be found in the
+         <a href="https://wiki.osmfoundation.org/wiki/Licence/Attribution_Guidelines">Attribution
+         Guidelines</a>.
         credit_4_html: |
           To make clear that the data is available under the Open
           Database License, you may link to
@@ -2125,8 +2131,12 @@ en:
         description: Ask a question or discuss interesting matters on a wide range of topical or regional mailing lists.
       forums:
         url: https://forum.openstreetmap.org/
-        title: Forums
+        title: Forums (Legacy)
         description: Questions and discussions for those that prefer a bulletin board style interface.
+      community:
+        url: https://community.openstreetmap.org/
+        title: Community forum
+        description: A shared place for conversations about OpenStreetMap.
       irc:
         url: https://irc.openstreetmap.org/
         title: IRC
@@ -2284,6 +2294,30 @@ en:
           Just go to <a href='%{map_url}'>the map</a> and click the note icon:
           <span class='icon note'></span>. This will add a marker to the map, which you can move
           by dragging. Add your message, then click save, and other mappers will investigate.
+    communities:
+      title: Communities
+      lede_text: |
+        People from all over the world contribute to or use OpenStreetMap.
+        While many participate as individuals, others have formed communities.
+        These groups come in a range of sizes and represent geographies from small towns to large multi-country regions.
+        They can also be formal or informal.
+      local_chapters:
+        title: Local Chapters
+        about_text: |
+          Local Chapters are country-level or region-level groups that have taken the formal step of
+          establishing not-for-profit legal entities. They represent the area's map and mappers when
+          dealing with local government, business, and media. They have also formed an affiliation
+          with the OpenStreetMap Foundation (OSMF), giving them a link to the legal and copyright
+          governing body.
+        list_text: |
+          The following communities are formally established as Local Chapters:
+      other_groups:
+        title: Other Groups
+        about_html: |
+          There is no need to formally establish a group to the same extent as the Local Chapters.
+          Indeed many groups exist very sucessfully as an informal gathering of people or as a
+          community group. Anyone can set up or join these. Read more on the
+          <a href="https://wiki.openstreetmap.org/wiki/User_group">Communities wiki page</a>.
   traces:
     visibility:
       private: "Private (only shared as anonymous, unordered points)"
@@ -2884,7 +2918,10 @@ en:
         reactivate: Reactivate
         comment_and_resolve: Comment & Resolve
         comment: Comment
-        report_link_html: "If this note contains sensitive information that needs to be removed, you can %{link}. For all other problems with the note, please resolve it yourself with a comment."
+        report_link_html: "If this note contains sensitive information that needs to be removed, you can %{link}."
+        other_problems_resolve: "For all other problems with the note, please resolve it yourself with a comment."
+        other_problems_resolved: "For all other problems, resolving is sufficient."
+        disappear_date_html: "This resolved note will disappear from the map in %{disappear_in}."
     edit_help: Move the map and zoom in on a location you want to edit, then click here.
     directions:
       ascend: "Ascend"

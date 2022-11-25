@@ -26,6 +26,7 @@
 # Author: Kocio
 # Author: Krottyianock
 # Author: Krzyz23
+# Author: Kwiatek 123
 # Author: M4sk1n
 # Author: Macofe
 # Author: Maraf24
@@ -63,8 +64,6 @@
 # Author: Łukasz3212
 ---
 pl:
-  html:
-    dir: ltr
   time:
     formats:
       friendly: '%e %B %Y o %H:%M'
@@ -190,7 +189,7 @@ pl:
         description: Opis
       report:
         category: Wybierz powód zgłoszenia
-        details: Opisz, proszę, problem bardziej szczegółowo (wymagane).
+        details: Opisz problem bardziej szczegółowo (wymagane).
       user:
         auth_provider: Dostawca uwierzytelnienia
         auth_uid: UID uwierzytelnienia
@@ -290,7 +289,6 @@ pl:
         other: '%{count} roku temu'
   printable_name:
     with_version: '%{id}, wersja %{version}'
-    with_name_html: '%{name}(%{id})'
   editor:
     default: edytorze domyślnym (obecnie %{name})
     id:
@@ -429,8 +427,6 @@ pl:
     view_history: Wyświetl historię
     view_details: Wyświetl szczegóły
     location: 'Położenie:'
-    common_details:
-      coordinates_html: '%{latitude}, %{longitude}'
     changeset:
       title: 'Zestaw zmian: %{id}'
       belongs_to: Autor
@@ -477,7 +473,6 @@ pl:
         many: '%{count} członów'
         other: '%{count} członu'
     relation_member:
-      entry_html: '%{type} %{name}'
       entry_role_html: '%{type} %{name} jako %{role}'
       type:
         node: Węzeł
@@ -522,13 +517,14 @@ pl:
     tag_details:
       tags: Znaczniki
       wiki_link:
-        key: Strona wiki znacznika %{key}
-        tag: Strona wiki znacznika %{key}=%{value}
+        key: Strona Wiki znacznika %{key}
+        tag: Strona Wiki znacznika %{key}=%{value}
       wikidata_link: '%{page} element na Wikidata'
       wikipedia_link: Artykuł %{page} w Wikipedii
       wikimedia_commons_link: Plik %{page} na Wikimedia Commons
       telephone_link: Zadzwoń pod %{phone_number}
       colour_preview: Podgląd koloru %{colour_value}
+      email_link: E-mail %{email}
     note:
       title: 'Uwaga: %{id}'
       new_note: Nowa uwaga
@@ -546,7 +542,6 @@ pl:
       reopened_by_anonymous_html: Ponownie aktywowana anonimowo <abbr title='%{exact_time}'>%{when}</abbr>
       hidden_by_html: Ukryte przez %{user} <abbr title='%{exact_time}'>%{when}</abbr>
       report: ją zgłosić
-      coordinates_html: '%{latitude}, %{longitude}'
     query:
       title: Dane obiektów
       introduction: Kliknij na mapie, by wyszukać pobliskie obiekty.
@@ -570,6 +565,7 @@ pl:
     index:
       title: Zestawy zmian
       title_user: Zestawy zmian użytkownika %{user}
+      title_user_link_html: Zestawy zmian użytkownika %{user_link}
       title_friend: Zestawy zmian moich znajomych
       title_nearby: Zestawy zmian pobliskich użytkowników
       empty: Nie odnaleziono zestawów zmian.
@@ -672,7 +668,6 @@ pl:
       location: 'Położenie:'
       view: Podgląd
       edit: Edytuj
-      coordinates: '%{latitude}; %{longitude}'
     feed:
       user:
         title: Wpisy użytkownika %{user}
@@ -724,7 +719,6 @@ pl:
           Nominatim</a>
         geonames_reverse_html: Wyniki z <a href="http://www.geonames.org/">GeoNames</a>
     search_osm_nominatim:
-      prefix_format: '%{name}'
       prefix:
         aerialway:
           cable_car: Kolej linowa
@@ -745,8 +739,8 @@ pl:
           hangar: Hangar
           helipad: Lądowisko dla helikopterów
           holding_position: Punkt oczekiwania
-          navigationaid: Stacja wspomagania nawigacji loticzej
-          parking_position: Miejsce parkingowe
+          navigationaid: Lotnicza pomoc nawigacyjna
+          parking_position: Miejsce postojowe
           runway: Pas startowy
           taxilane: Droga na lotnisku
           taxiway: Droga kołowania
@@ -1275,7 +1269,7 @@ pl:
           houses: Zabudowanie
           island: Wyspa
           islet: Wysepka
-          isolated_dwelling: Pojedynczy dom-gospodarstwo
+          isolated_dwelling: Mała osada
           locality: Miejsce nazwane
           municipality: Gmina
           neighbourhood: Sąsiedztwo
@@ -1569,6 +1563,7 @@ pl:
   issue_comments:
     create:
       comment_created: Twój komentarz został pomyślnie utworzony
+      issue_reassigned: Twój komentarz został utworzony, a sprawa ponownie przydzielona
   reports:
     new:
       title_html: Zgłoś użytkownika %{link}
@@ -1592,7 +1587,7 @@ pl:
           threat_label: Ten wpis dziennika zawiera groźbę
           other_label: Inne
         user:
-          spam_label: Profil użytkownika jest/zawiera spam
+          spam_label: Profil użytkownika zawiera spam
           offensive_label: Profil użytkownika jest nieprzyzwoity/obraźliwy
           threat_label: Profil użytkownika zawiera groźbę
           vandal_label: Ten użytkownik jest wandalem
@@ -1606,9 +1601,6 @@ pl:
       successful_report: Twoje zgłoszenie zostało pomyślnie zarejestrowane
       provide_details: Podaj, proszę, wymagane sczegóły
   layouts:
-    project_name:
-      title: OpenStreetMap
-      h1: OpenStreetMap
     logo:
       alt_text: Logo OpenStreetMap
     home: Przejdź do położenia domu
@@ -1631,8 +1623,8 @@ pl:
     edit_with: Edytuj w %{editor}
     tag_line: Wolna wikimapa świata
     intro_header: Witamy w OpenStreetMap!
-    intro_text: OpenStreetMap to mapa świata, stworzona przez ludzi, takich jak ty,
-      i z możliwością użycia pod otwartą licencją.
+    intro_text: OpenStreetMap to mapa świata stworzona przez ludzi takich jak ty i
+      z możliwością użycia pod otwartą licencją.
     intro_2_create_account: Utwórz konto
     hosting_partners_html: Hosting obsługuje %{ucl}, %{fastly}, %{bytemark}, a także
       %{partners}.
@@ -1649,6 +1641,7 @@ pl:
     help: Pomoc
     about: Informacje
     copyright: Prawa autorskie
+    communities: Społeczności
     community: Społeczność
     community_blogs: Blogi społeczności
     community_blogs_title: Blogi członków społeczności OpenStreetMap
@@ -1699,7 +1692,6 @@ pl:
       failed_to_import: 'nie został zaimportowany. Komunikat błędu:'
       more_info_html: Więcej informacji na temat błędów importu plików GPX można znaleźć
         na %{url}.
-      import_failures_url: http://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       subject: '[OpenStreetMap] Nieudane importowanie pliku GPX'
     gpx_success:
       hi: Cześć, %{to_user},
@@ -1906,7 +1898,7 @@ pl:
       destroyed: Wiadomość usunięta
   passwords:
     lost_password:
-      title: zgubione hasło
+      title: Zgubione hasło
       heading: Zapomniałeś hasła?
       email address: 'Adres e-mail:'
       new password button: Wyczyść hasło
@@ -1980,9 +1972,6 @@ pl:
       account not active: Niestety twoje konto nie jest jeszcze aktywne.<br />Otwórz
         link zawarty w mailu potwierdzenia założenia konta, aby je aktywować lub <a
         href="%{reconfirm}">poproś o ponowne przesłanie maila</a>.
-      account is suspended: Twoje konto zostało zawieszone ze względu na podejrzaną
-        działalność.<br />Skontaktuj się z <a href="%{webmaster}">webmasterem</a>,
-        jeśli chcesz to przedyskutować.
       auth failure: Niestety, podane dane nie pozwoliły na zalogowanie.
       openid_logo_alt: Zaloguj się przez OpenID
       auth_providers:
@@ -2014,6 +2003,10 @@ pl:
       title: Wyloguj się
       heading: Wyloguj się z OpenStreetMap
       logout_button: Wyloguj się
+    suspended_flash:
+      suspended: Twoje konto zostało zawieszone ze względu na podejrzaną działalność.
+      contact_support_html: Skontaktuj się z %{support_link}, jeśli chcesz to przedyskutować.
+      support: supportem
   shared:
     markdown_help:
       title_html: Składnia <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>
@@ -2206,7 +2199,6 @@ pl:
       not_public_description_html: W tym trybie nie można już zmieniać mapy. Można
         zmienić je na publiczne na %{user_page}.
       user_page_link: stronie użytkownika
-      anon_edits_html: (%{link})
       anon_edits_link_text: Tu dowiesz się dlaczego.
       id_not_configured: iD nie został skonfigurowany
       no_iframe_support: Używana przeglądarka nie obsługuje HTML iframes, które są
@@ -2244,7 +2236,7 @@ pl:
           description: Wyciągi dużych miast i otaczających je obszarów
         other:
           title: Inne zasoby
-          description: Dodatkowe zasoby wymienione w OpenStreetMap wiki
+          description: Dodatkowe zasoby wymienione w OpenStreetMap Wiki
       options: Opcje
       format: Format
       scale: Skala
@@ -2294,7 +2286,6 @@ pl:
         title: Podręcznik dla początkujących
         description: Podręcznik dla początkujących tworzony przez społeczność.
       help:
-        url: https://help.openstreetmap.org/
         title: Strona Pomocy OpenStreetMap
         description: Zadaj pytanie lub odszukaj odpowiedzi na stronie pytań i odpowiedzi
           OpenStreetMap.
@@ -2305,6 +2296,9 @@ pl:
       forums:
         title: Forum
         description: Pytania, dyskusje w formie internetowego forum dyskusyjnego.
+      community:
+        title: Forum (nowe)
+        description: Wspólne miejsce do rozmów na temat OpenStreetMap.
       irc:
         title: IRC
         description: Interaktywny czat w różnych językach i na różne tematy.
@@ -2313,14 +2307,13 @@ pl:
         description: Pomoc firmom i organizacjom w przejściu do mapy OpenStreetMap
           i inne usługi.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Dla organizacji
         description: Jesteś z organizacji mającej plany wobec OpenStreetMap? Niezbędne
           informacje znajdziesz na stronie powitalnej.
       wiki:
         url: https://wiki.openstreetmap.org/wiki/Pl:Main_Page
         title: Wiki OpenStreetMap
-        description: Zapoznaj się z wiki, aby uzyskać szczegółową dokumentację OpenStreetMap.
+        description: Zapoznaj się z Wiki, aby uzyskać szczegółową dokumentację OpenStreetMap.
     potlatch:
       removed: Twój domyślny edytor OpenStreetMap to Potlatch. Ponieważ Adobe Flash
         Player został wycofany, Potlatch nie jest już dostępny w przeglądarce.
@@ -2425,7 +2418,7 @@ pl:
           które cię interesują.
         off_html: Nie wprowadzamy obiektów nieistniejących, hipotetycznych oraz danych
           ze źródeł objętych prawami autorskimi. Jeśli nie masz zgody, nie kopiuj
-          z innych map (zarówno map papierowych, jak i online).
+          z innych map (zarówno tych papierowych, jak i online).
       basic_terms:
         title: Podstawowe zasady mapowania
         paragraph_1_html: OpenStreetMap ma własny slang. Oto kilka słów, które ci
@@ -2461,6 +2454,29 @@ pl:
           i klikniesz ikonę: <span class=''icon note''></span>. Ta czynność doda znacznik,
           który możesz przesunąć przez przeciągnięcie. Dodaj swoją uwagę i zapisz
           ją – inni mapujący zajmą się twoim zgłoszeniem.'
+    communities:
+      title: Społeczności
+      lede_text: Ludzie z całego świata tworzą lub używają OpenStreetMap. Podczas
+        gdy niektórzy działają sami, inni utworzyli społeczności. Grupy te są różnej
+        wielkości i reprezentują obszary geograficzne od małych miast do dużych regionów.
+        Mogą być również formalne lub nieformalne.
+      local_chapters:
+        title: Oddziały lokalne
+        about_text: Oddziały lokalne to grupy na poziomie kraju lub regionu, które
+          podjęły formalny krok w postaci utworzenia podmiotu prawnego typu non-profit.
+          Reprezentują one mapę i mapujących z danego obszaru w kontaktach z organami
+          samorządowymi, firmami i mediami. Są one również powiązane z OpenStreetMap
+          Foundation (OSMF), co daje im powiązanie z organem zarządzającym prawami
+          autorskimi.
+        list_text: 'Następujące społeczności są formalnie ustanowione jako oddziały
+          lokalne OSMF:'
+      other_groups:
+        title: Inne grupy
+        about_html: Nie ma potrzeby formalnego zakładania grupy w takim samym stopniu,
+          jak w przypadku oddziałów lokalnych. W rzeczywistości wiele grup istnieje
+          z powodzeniem jako nieformalne zgromadzenie ludzi lub jako grupa społeczna.
+          Każdy może je założyć lub do nich dołączyć. Przeczytaj więcej na <a href="https://wiki.openstreetmap.org/wiki/User_group">stronie
+          Wiki</a>.
   traces:
     visibility:
       private: Prywatny (udostępniany jedynie jako anonimowy, nieuporządkowane punkty)
@@ -2764,7 +2780,6 @@ pl:
         formie czytelnego podsumowania</a> oraz <a href="%{translations}">nieoficjalne
         tłumaczenia</a>'
       continue: Dalej
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: Nie akceptuję
       you need to accept or decline: Prosimy przeczytać i następnie przyjąć lub odrzucić
         nowe Warunki uczestnictwa, aby kontynuować.
@@ -2777,7 +2792,6 @@ pl:
       terms_declined_html: Jest nam przykro, że zdecydowałeś się nie przyjmować nowych
         Warunków uczestnictwa. Więcej informacji możesz znaleźć %{terms_declined_link}.
       terms_declined_link: na tej stronie
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: Nie znaleziono użytkownika
       heading: Użytkownik %{user} nie istnieje
@@ -3130,7 +3144,8 @@ pl:
         comment_and_resolve: Skomentuj i rozwiąż
         comment: Dodaj komentarz
         report_link_html: Jeśli ta uwaga zawiera wrażliwe informacje, które należy
-          usunąć, możesz %{link}. W przypadku wszystkich innych problemów z tą uwagą,
+          usunąć, możesz %{link}.
+        other_problems_resolve: W przypadku wszystkich innych problemów z tą uwagą,
           rozwiąż ją z odpowiednim komentarzem.
     edit_help: Proszę przesunąć mapę i przybliżyć modyfikowane położenie, a następnie
       kliknąć tutaj.
@@ -3211,19 +3226,19 @@ pl:
         roundabout_with_exit: Na rondzie zjedź %{exit} zjazdem w %{name}
         roundabout_with_exit_ordinal: Na rondzie zjedź %{exit} zjazdem na %{name}
         exit_roundabout: Zjedź z ronda na %{name}
-        unnamed: bez nazwy
+        unnamed: (bez nazwy)
         courtesy: Wyznaczanie trasy dzięki uprzejmości %{link}
         exit_counts:
-          first: Pierwszy
-          second: Drugi
-          third: Trzeci
-          fourth: Czwarty
-          fifth: Piąty
-          sixth: Szósty
-          seventh: Siódmy
-          eighth: Ósmy
-          ninth: Dziewiąty
-          tenth: Dziesiąty
+          first: "1."
+          second: "2."
+          third: "3."
+          fourth: "4."
+          fifth: "5."
+          sixth: "6."
+          seventh: "7."
+          eighth: "8."
+          ninth: "9."
+          tenth: "10."
       time: Czas
     query:
       node: Węzeł

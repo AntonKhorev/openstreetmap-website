@@ -154,7 +154,7 @@ class GeocoderController < ApplicationController
           prefix_name = t "geocoder.search_osm_nominatim.prefix.place.#{extratag.attributes['value']}", :default => prefix_name if extratag.attributes["key"] == "linked_place" || extratag.attributes["key"] == "place"
         end
       end
-      prefix = t "geocoder.search_osm_nominatim.prefix_format", :name => prefix_name
+      prefix = t ".prefix_format", :name => prefix_name
       object_type = place.attributes["osm_type"]
       object_id = place.attributes["osm_id"]
 
@@ -167,7 +167,8 @@ class GeocoderController < ApplicationController
 
     render :action => "results"
   rescue StandardError => e
-    @error = "Error contacting nominatim.openstreetmap.org: #{e}"
+    host = URI(Settings.nominatim_url).host
+    @error = "Error contacting #{host}: #{e}"
     render :action => "error"
   end
 
@@ -231,7 +232,8 @@ class GeocoderController < ApplicationController
 
     render :action => "results"
   rescue StandardError => e
-    @error = "Error contacting nominatim.openstreetmap.org: #{e}"
+    host = URI(Settings.nominatim_url).host
+    @error = "Error contacting #{host}: #{e}"
     render :action => "error"
   end
 

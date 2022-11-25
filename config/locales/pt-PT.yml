@@ -41,12 +41,9 @@
 # Author: Waldyrious
 ---
 pt-PT:
-  html:
-    dir: ltr
   time:
     formats:
       friendly: '%e %B %Y às %H:%M'
-      blog: '%e %B %Y'
   helpers:
     file:
       prompt: Escolher ficheiro
@@ -243,9 +240,6 @@ pt-PT:
       x_years:
         one: há 1 ano
         other: há %{count} anos
-  printable_name:
-    with_version: '%{id}, v%{version}'
-    with_name_html: '%{name} (%{id})'
   editor:
     default: Padrão (atualmente %{name})
     id:
@@ -320,7 +314,6 @@ pt-PT:
       current email address: E-mail atual
       external auth: Autenticação externa
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: o que é isto?
       public editing:
         heading: Edição pública
@@ -348,7 +341,6 @@ pt-PT:
           os novos Termos de Contribuidor.
         agreed_with_pd: Também declaraste que as tuas edições são disponibilizadas
           em Domínio Público.
-        link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms
         link text: o que é isto?
       save changes button: Gravar alterações
       make edits public button: Tornar todas as minhas edições públicas
@@ -383,8 +375,6 @@ pt-PT:
     view_history: Ver histórico
     view_details: Ver detalhes
     location: 'Localização:'
-    common_details:
-      coordinates_html: '%{latitude}, %{longitude}'
     changeset:
       title: 'Conjunto de alterações: %{id}'
       belongs_to: Autor
@@ -427,7 +417,6 @@ pt-PT:
         one: 1 membro
         other: '%{count} membros'
     relation_member:
-      entry_html: '%{type} %{name}'
       entry_role_html: '%{type} %{name} como %{role}'
       type:
         node: Nó
@@ -496,8 +485,7 @@ pt-PT:
       reopened_by_html: Reaberto por %{user} <abbr title='%{exact_time}'>%{when}</abbr>
       reopened_by_anonymous_html: Reaberto por um anónimo <abbr title='%{exact_time}'>%{when}</abbr>
       hidden_by_html: Ocultada por %{user} <abbr title='%{exact_time}'>%{when}</abbr>
-      report: Denunciar esta nota
-      coordinates_html: '%{latitude}, %{longitude}'
+      report: denunciar esta nota
     query:
       title: Consultar elementos
       introduction: Clica no mapa para descobrir elementos próximos.
@@ -628,7 +616,6 @@ pt-PT:
       location: 'Localização:'
       view: Ver
       edit: Editar
-      coordinates: '%{latitude}; %{longitude}'
     feed:
       user:
         title: Publicações no diário OpenStreetMap de %{user}
@@ -1272,7 +1259,7 @@ pt-PT:
           switch: Agulha ferroviária
           tram: Linha de elétrico
           tram_stop: Paragem de elétrico
-          turntable: Girador ferroviário
+          turntable: Rotunda ferroviária
           yard: Pátio de manobras ferroviário
         shop:
           agrarian: Loja agrícola
@@ -1523,6 +1510,7 @@ pt-PT:
   issue_comments:
     create:
       comment_created: O comentário foi criado com sucesso
+      issue_reassigned: O teu comentário foi criado e o problema foi reatribuído
   reports:
     new:
       title_html: Denunciar %{link}
@@ -1890,7 +1878,7 @@ pt-PT:
       cancel: Cancelar
       image: Imagem
       gravatar:
-        gravatar: Usar imagem Gravatar
+        gravatar: Usar Gravatar
         link: https://wiki.openstreetmap.org/wiki/Gravatar
         what_is_gravatar: O que é o Gravatar?
         disabled: O Gravatar foi desativado.
@@ -1899,7 +1887,7 @@ pt-PT:
       keep image: Manter a imagem atual
       delete image: Remover a imagem atual
       replace image: Substituir a imagem atual
-      image size hint: (as imagens quadradas com pelo menos 100x100 píxeis, funcionam
+      image size hint: (as imagens quadradas com, pelo menos, 100x100 píxeis funcionam
         melhor)
       home location: Localização principal
       no home location: Não definiste a tua localização principal.
@@ -1928,9 +1916,6 @@ pt-PT:
       account not active: Lamentamos, mas a tua conta ainda não foi ativada.<br />Por
         favor, usa a ligação presente no e-mail que te foi enviado para a ativares
         ou <a href="%{reconfirm}">solicita um novo e-mail de confirmação</a>.
-      account is suspended: Lamentamos, mas a tua conta foi suspensa devido a atividades
-        suspeitas.<br />Por favor, contacta o <a href="%{webmaster}">administrador
-        do website</a> para resolver o problema.
       auth failure: Lamentamos, mas não foi possível iniciar sessão com os dados fornecidos.
       openid_logo_alt: Iniciar sessão com um OpenID
       auth_providers:
@@ -2048,24 +2033,19 @@ pt-PT:
         credit_title_html: Como creditar o OpenStreetMap
         credit_1_html: 'Onde usar dados do OpenStreetMap, é necessário fazer as duas
           coisas seguintes:'
-        credit_2_1_html: "<ul>\n<li> Fornecer crédito ao OpenStreetMap exibindo o
-          nosso aviso de direitos autorais.</li> \n<li> Deixar claro que os dados
-          estão disponíveis sob a Open Database License.</li> \n</ul>"
-        credit_3_1_html: "Para o aviso de direitos autorais, temos requisitos diferentes
-          sobre como isso deve ser \nexibido, dependendo de como usa os nossos dados.
-          Por exemplo, diferentes \nregras se aplicam sobre como mostrar o aviso de
-          direitos de autor dependendo se\ncriou um mapa navegável, um mapa impresso
-          ou uma imagem estática. Detalhes completos sobre os requisitos \n podem
-          ser encontrados nas\n <a href=\"https://wiki.osmfoundation.org/wiki/Licence/Attribution_Guidelines\">Diretrizes
-          de atribuição</a> ."
-        credit_4_html: "Para deixar claro que os dados estão disponíveis sob a Licença
-          Open\nDatabase, é possível criar um link para\n <a href=\"https://www.openstreetmap.org/copyright\">esta
-          página de direitos de autor</a>.\nAlternativamente, e como requisito, se
-          estiver distribuindo OSM num\nformato de dados, pode nomear e vincular diretamente
-          à(s) licença(s). Em mídia\nonde ligações não são possíveis (por exemplo,
-          trabalhos impressos), sugerimos que\ndirecione os seus leitores para openstreetmap.org
-          (talvez expandindo\n'OpenStreetMap' para este endereço completo) e para
-          opendatacommons.org. \nNeste exemplo, o crédito aparece no canto do mapa."
+        credit_2_1_html: "<ul>\n<li> Atribuir os créditos ao OpenStreetMap exibindo
+          o nosso aviso de direitos de autor.</li> \n<li> Deixar claro que os dados
+          estão disponíveis sob a Licença Open Database.</li> \n</ul>"
+        credit_3_1_html: Para o aviso de direitos de autor, temos vários requisitos
+          para a sua exibição, dependendo da forma como usa os nossos dados. Por exemplo,
+          aplicam-se regras diferentes para a exibição do aviso de direitos de autor
+          conforme usar um mapa navegável, um mapa impresso ou uma imagem estática.
+          Poderá encontrar toda a informação sobre os requisitos nas <a href="https://wiki.osmfoundation.org/wiki/Licence/Attribution_Guidelines">Diretrizes
+          de Atribuição</a>.
+        credit_4_html: |-
+          Para deixar claro que os dados estão disponíveis sob a Licença Open
+          Database, é possível criar uma ligação para <a href="https://www.openstreetmap.org/copyright">esta página de direitos de autor</a>.
+          Em alternativa, e como requisito, se estiver a distribuir o OSM num formato de dados, pode nomear e ligar diretamente à(s) licença(s). Em plataformas multimédia onde as ligações não são possíveis (por exemplo, trabalhos impressos), sugerimos que direcione os seus utilizadores para openstreetmap.org (talvez expandindo 'OpenStreetMap' para este endereço completo) e para opendatacommons.org. Neste exemplo, os créditos aparecem no canto do mapa.
         attribution_example:
           alt: Exemplo de como indicar os créditos do OpenStreetMap numa página eletrónica
           title: Exemplo de atribuição
@@ -2159,7 +2139,6 @@ pt-PT:
       not_public_description_html: Não podes continuar a editar enquanto não o fizeres.
         Podes definir as tuas edições como públicas na tua %{user_page}.
       user_page_link: página de utilizador
-      anon_edits_html: (%{link})
       anon_edits_link_text: Descobre a que se deve isto.
       id_not_configured: O editor iD não foi configurado
       no_iframe_support: O teu navegador de Internet não suporta iframes HTML, que
@@ -2245,7 +2224,6 @@ pt-PT:
         title: Guia para Principiantes
         description: Guia para principiantes atualizado pela comunidade.
       help:
-        url: https://help.openstreetmap.org/
         title: Fórum de Ajuda
         description: Faz uma pergunta ou procura respostas no fórum de perguntas e
           respostas do OpenStreetMap.
@@ -2265,7 +2243,6 @@ pt-PT:
         description: Ajuda para empresas e organizações que queiram mudar para os
           mapas do OpenStreetMap e outros serviços.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Para Organizações
         description: Pertence a uma organização que está a ponderar usar o OpenStreetMap?
           Descubra o que precisa de saber na Página de Boas-vindas.
@@ -2450,7 +2427,6 @@ pt-PT:
       title: A editar a rota %{name}
       heading: A editar a rota %{name}
       visibility_help: o que significa isto?
-      visibility_help_url: https://wiki.openstreetmap.org/wiki/Visibility_of_GPS_traces
     update:
       updated: Rota atualizada
     trace_optionals:
@@ -2497,7 +2473,7 @@ pt-PT:
       in: em
     index:
       public_traces: Rotas de GPS Públicas
-      my_gps_traces: Meus rastreamentos de GPS
+      my_gps_traces: As minhas rotas GPS
       public_traces_from: Rotas GPS públicas do utilizador %{user}
       description: Explorar as rotas GPS enviadas recentemente
       tagged_with: etiquetada com %{tags}
@@ -2630,7 +2606,6 @@ pt-PT:
       no_applications_html: Tens uma aplicação que queiras registar para ser utilizada
         usando o padrão %{oauth2}? Tens de registar a aplicação antes de poderes fazer
         solicitações OAuth a este serviço.
-      oauth_2: OAuth 2
       new: Registar nova aplicação
       name: Nome
       permissions: Permissões
@@ -2717,7 +2692,6 @@ pt-PT:
       consider_pd: Além do referido anteriormente, considero que as minhas contribuições
         fazem parte âmbito do Domínio Público.
       consider_pd_why: O que é isto?
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 'Informação para ajudar a compreender estes termos: um <a href="%{summary}">resumo
         inteligível</a> e algumas <a href="%{translations}">traduções informais</a>'
       continue: Continuar
@@ -3079,6 +3053,9 @@ pt-PT:
         reactivate: Reabrir
         comment_and_resolve: Comentar e resolver
         comment: Comentar
+        report_link_html: Se esta nota contiver informação sensível que tenha de ser
+          removida, podes %{link}. Para qualquer outro problema com a nota, por favor,
+          resolve-a com um comentário.
     edit_help: Move o mapa, amplia-o no local que pretendes editar e clica aqui.
     directions:
       ascend: Ascenção

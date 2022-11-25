@@ -51,7 +51,6 @@ uk:
   time:
     formats:
       friendly: '%e %B %Y о %H:%M'
-      blog: '%e %B %Y'
   helpers:
     file:
       prompt: Обрати файл
@@ -274,9 +273,6 @@ uk:
         few: '%{count} роки тому'
         many: '%{count} років тому'
         other: ""
-  printable_name:
-    with_version: '%{id}, v%{version}'
-    with_name_html: '%{name} (%{id})'
   editor:
     default: Типовий (зараз %{name})
     id:
@@ -417,8 +413,6 @@ uk:
     view_history: Перегляд історії
     view_details: Поточна інформація
     location: 'Координати:'
-    common_details:
-      coordinates_html: '%{latitude}, %{longitude}'
     changeset:
       title: 'Набір змін: %{id}'
       belongs_to: Автор
@@ -534,7 +528,6 @@ uk:
       reopened_by_anonymous_html: Відновлено анонімом <abbr title='%{exact_time}'>%{when}</abbr>
       hidden_by_html: Приховано %{user} <abbr title='%{exact_time}'>%{when}</abbr>
       report: поскаржитися на цю нотатку
-      coordinates_html: '%{latitude}, %{longitude}'
     query:
       title: Отримати об’єкти
       introduction: Клацніть на мапі, щоб отримати дані про об’єкти поруч.
@@ -661,7 +654,6 @@ uk:
       location: 'Місце:'
       view: Переглянути
       edit: Змінити
-      coordinates: '%{latitude}; %{longitude}'
     feed:
       user:
         title: Записи щоденника OpenStreetMap %{user}
@@ -959,7 +951,7 @@ uk:
           bus_stop: Автобусна зупинка
           construction: Будівництво автомагістралі
           corridor: Коридор
-          crossing: Переправа
+          crossing: Перехід
           cycleway: Велодоріжка
           elevator: Ліфт
           emergency_access_point: Пункт швидкої допомоги
@@ -1559,6 +1551,7 @@ uk:
   issue_comments:
     create:
       comment_created: Коментар створено
+      issue_reassigned: Ваш коментар створено, а питання перепризначено
   reports:
     new:
       title_html: Скарга %{link}
@@ -1687,7 +1680,6 @@ uk:
       failed_to_import: 'не вдалось імпортувати. Сталася помилка:'
       more_info_html: Докладна інформація про проблеми імпорту GPX та шляхи їх вирішення
         знаходяться за посиланням %{url}.
-      import_failures_url: https://wiki.openstreetmap.org/wiki/GPX_Import_Failures
       subject: '[OpenStreetMap] Збій імпорту GPX'
     gpx_success:
       hi: Привіт, %{to_user},
@@ -1970,9 +1962,6 @@ uk:
         його активувати, будь ласка, перевірте вашу поштову скриньку та натисніть
         на посилання в листі з проханням про підтвердження, або <a href="%{reconfirm}">
         запросіть нове підтвердження на електронну пошту</a>.
-      account is suspended: На жаль, ваш обліковий запис було заблоковано через підозрілу
-        діяльність.<br />Будь ласка, зв’яжіться зі <a href="%{webmaster}">службою
-        підтримки</a> для розв’язання цієї проблеми.
       auth failure: Вибачте, вхід з цими ім’ям або паролем неможливий.
       openid_logo_alt: Увійти з допомогою OpenID
       auth_providers:
@@ -2280,7 +2269,6 @@ uk:
         title: Посібник новачка
         description: Посібник для новачків від спільноти.
       help:
-        url: https://help.openstreetmap.org/
         title: Попросити про допомогу
         description: Поставте запитання або знайдіть відповіді на сайті питань-відповідей
           OpenStreetMap.
@@ -2289,9 +2277,12 @@ uk:
         description: Поставте запитання або обговоріть цікаві речі у широкому виборі
           тематичних або регіональних списків розсилки.
       forums:
-        title: Форуми
+        title: Форуми (застаріло)
         description: Запитання та обговорення для тих, хто віддає перевагу інтерфейсу
           дошки обговорень.
+      community:
+        title: Форум спільноти
+        description: Спільне місце для розмов про OpenStreetMap.
       irc:
         title: IRC
         description: Інтерактивний чат багатьма мовами на багато тем.
@@ -2300,12 +2291,10 @@ uk:
         description: Допомога компаніям та організаціям, які переходять на мапи та
           інші послуги OpenStreetMap.
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: Для установ та організацій
         description: Ваша установа має намір почати працювати з OpenStreetMap? Дізнайтесь
           про необхідні речі на Welcome Mat.
       wiki:
-        url: http://wiki.openstreetmap.org/
         title: OpenStreetMap Wiki
         description: Перегляньте вікі щоб отримати докладу документацію OpenStreetMap.
     potlatch:
@@ -2673,7 +2662,6 @@ uk:
       no_applications_html: Чи є у вас програми, які б ви хотіли зареєструвати для
         взаємодії з нами через %{oauth2}? Ви повинні зареєструвати ваш вебзастосунок
         перед тим, як він зможе зробити OAuth-запит до цієї служби.
-      oauth_2: OAuth 2
       new: Зареєструвати новий застосунок
       name: Назва
       permissions: Дозволи
@@ -2759,7 +2747,6 @@ uk:
       read_tou: Я уважно ознайомився та згоден з Умовами використання
       consider_pd: На додачу до зазначеного, прошу вважати мій внесок суспільним надбанням
       consider_pd_why: що це?
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 'Інформація, яка допоможе зрозуміти ці терміни: <a href="%{summary}">скорочений
         опис</a> і деякі <a href="%{translations}">неофіційні переклади</a>'
       continue: Продовжити

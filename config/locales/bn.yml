@@ -3,6 +3,7 @@
 # Export driver: phpyaml
 # Author: Aftabuzzaman
 # Author: Al Riaz Uddin Ripon
+# Author: Anupamdutta73
 # Author: Bellayet
 # Author: Bodhisattwa
 # Author: Ehsanulhb
@@ -169,9 +170,17 @@ bn:
         pass_crypt_confirmation: পাসওয়ার্ড নিশ্চিত করুন
     help:
       doorkeeper/application:
+        confidential: গ্রাহকের গোপনীয়তা গুপ্ত রাখা যেতে পারে এমন জায়গাতে অ্যাপ্লিকেশনটি
+          ব্যবহার করা হবে (স্থানীয় মোবাইল অ্যাপ ও একক পৃষ্ঠার অ্যাপগুলি গুপ্ত নয়)
         redirect_uri: প্রতি ওয়েবঠিকানার জন্য একটি লাইন ব্যবহার করুন
       trace:
         tagstring: কমা দ্বারা বিভাজিত
+      user_block:
+        reason: যে কারণে ব্যবহারকারীকে ব্লক করা হচ্ছে। দয়া করে যতটা সম্ভব শান্ত এবং
+          যুক্তিসঙ্গত হোন, পরিস্থিতি সম্পর্কে যতটা সম্ভব বিস্তারিত জানান, মনে রাখবেন
+          যে বার্তাটি সর্বজনীনভাবে দৃশ্যমান হবে। মনে রাখবেন যে সমস্ত ব্যবহারকারী সম্প্রদায়ের
+          শব্দার্থ বোঝেন না, তাই দয়া করে সাধারণ শব্দ ব্যবহার করার চেষ্টা করুন৷
+        needs_view: এই ব্লকটি উঠে যাবার আগে ব্যবহারকারীকে কি লগ ইন করতে হবে?
       user:
         email_confirmation: আপনার ইমেইল ঠিকানা সবার কাছে দৃশ্যমান হবে না, আরও তথ্য
           জানতে <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" title="ইমেল
@@ -246,8 +255,10 @@ bn:
         reopened_at_by_html: '%{when} %{user} দ্বারা পুনর্সক্রিয়'
       rss:
         title: ওপেনস্ট্রিটম্যাপ টীকা
+        description_item: নোট %{id}-এর জন্য একটি আরএসএস চারণ
         opened: নতুন নোট (%{place}-এর কাছে)
         commented: নতুন মন্তব্য (%{place}-এর কাছে)
+        closed: বন্ধ নোট (%{place} এর কাছে)
         reopened: পুনর্সক্রিয় নোট (%{place}-এর কাছে)
       entry:
         comment: মন্তব্য
@@ -285,19 +296,30 @@ bn:
       current email address: বর্তমান ই-মেইল ঠিকানা
       external auth: বাহ্যিক প্রমাণীকরণ
       openid:
-        link: https://wiki.openstreetmap.org/wiki/OpenID
         link text: এটি কী?
       public editing:
         heading: পাবলিক সম্পাদনা
         enabled: সক্রিয়। বেনামী নয় এবং উপাত্ত সম্পাদনা করতে পারবে।
-        enabled link: https://wiki.openstreetmap.org/wiki/Anonymous_edits
+        enabled link: https://wiki.openstreetmap.org/wiki/বেনামি_সম্পাদনা
         enabled link text: এটি কী?
+        disabled: নিস্ক্রিয় এবং ডেটা সম্পাদনা করতে পারবেন না, সমস্ত পূর্ববর্তী সম্পাদনা
+          বেনামী।
         disabled link text: আমি সম্পাদনা করতে পারছি না কেন?
       public editing note:
         heading: 'সম্পাদনা উন্মুক্ত:'
+        html: বর্তমানে আপনার সম্পাদনাগুলি বেনামী এবং লোকেরা আপনাকে বার্তা পাঠাতে বা
+          আপনার অবস্থান দেখতে পারবে না। আপনি কী সম্পাদনা করেছেন তা দেখাতে এবং ওয়েবসাইটের
+          মাধ্যমে লোকেদের আপনার সাথে যোগাযোগ করার অনুমতি দিতে, নিচের বোতামে ক্লিক
+          করুন। <b>যেহেতু 0.6 API পরিবর্তন হয়েছে, শুধুমাত্র পাবলিক ব্যবহারকারীরা
+          মানচিত্রের উপাত্ত সম্পাদনা করতে পারবে</b>। (<a href="https://wiki.openstreetmap.org/wiki/Anonymous_edits">কারণ
+          দেখুন</a> )।<ul><li> আপনার ইমেল ঠিকানা সর্বজনীনভাবে প্রকাশ করা হবে না।</li><li>এই
+          ক্রিয়াটি পাল্টানো যাবে না এবং সমস্ত নতুন ব্যবহারকারী এখন ডিফল্টরূপে সর্বজনীন।</li></ul>
       contributor terms:
         heading: অবদানকারীর জন্য নিয়মাবলি
         agreed: আপনি নতুন অবদানকারীর শর্তাবলীতে সম্মত।
+        not yet agreed: আপনি নতুন অবদানকারীর শর্তাবলীতে এখনো সম্মত হননি।
+        review link text: অনুগ্রহ করে আপনার সুবিধামত এই লিঙ্কটি অনুসরণ করুন এবং নতুন
+          অবদানকারীর শর্তাবলী পর্যালোচনা করুন এবং তাতে সম্মতি দিন।
         agreed_with_pd: আপনি ঘোষণা করেছেন যে আপনি আপনার সম্পাদনাগুলো পাবলিক ডোমেইনের
           অধীনে প্রকাশ করছেন।
         link: https://wiki.osmfoundation.org/wiki/Licence/Contributor_Terms
@@ -306,6 +328,8 @@ bn:
       make edits public button: সমস্ত সম্পাদনাগুলি উন্মুক্ত করুন
       delete_account: অ্যাকাউন্ট অপসারণ করুন...
     update:
+      success_confirm_needed: ব্যবহারকারীর তথ্য সফলভাবে হালনাগাদ করা হয়েছে। আপনার
+        নতুন ইমেল ঠিকানা নিশ্চিত করতে আপনার ইমেল পরীক্ষা করুন।
       success: ব্যবহারকারীর বিবরণ পরিবর্তন সম্পূর্ণ হয়েছে।
     destroy:
       success: অ্যাকাউন্ট অপসারণ করা হয়েছে।
@@ -333,8 +357,6 @@ bn:
     view_history: ইতিহাস দেখুন
     view_details: বিস্তারিত দেখুন
     location: 'অবস্থান:'
-    common_details:
-      coordinates_html: '%{latitude}, %{longitude}'
     changeset:
       title: 'পরিবর্তনধার্য: %{id}'
       belongs_to: লেখক
@@ -356,6 +378,7 @@ bn:
         title_comment: পরিবর্তনধার্য %{id} - %{comment}
       join_discussion: আলোচনায় যোগ দিতে প্রবেশ করুন
       discussion: আলোচনা
+      still_open: চেঞ্জসেট এখনও খোলা - চেঞ্জসেট বন্ধ হয়ে গেলে আলোচনা খোলা হবে।
     node:
       title_html: 'সংযোগস্থল: %{name}'
       history_title_html: 'সংযোগস্থলের ইতিহাস: %{name}'
@@ -453,7 +476,6 @@ bn:
       hidden_by_html: '%{user} কর্তৃক <abbr title=''%{exact_time}''>%{when}</abbr>
         লুক্কায়িত'
       report: এই নোট সম্পর্কে অভিযোগ জানান
-      coordinates_html: '%{latitude}, %{longitude}'
     query:
       title: বৈশিষ্ট্য অনুসন্ধান করুন
       introduction: নিকটবর্তী বৈশিষ্ট্য খুঁজে পেতে মানচিত্রে ক্লিক করুন।
@@ -517,7 +539,12 @@ bn:
       my friends: আমার বন্ধুগণ
       no friends: আপনি বন্ধুতালিকায় কাউকে যুক্ত করেননি।
       nearby users: কাছাকাছি অন্য ব্যবহারকারী
+      no nearby users: কাছাকাছি কেউ মানচিত্রাঙ্কন করছেন এমন কোনও ব্যবহারকারী এখনো
+        নেই।
+      friends_changesets: বন্ধুদের পরিবর্তন
       friends_diaries: বন্ধুর দিনলিপি ভুক্তি
+      nearby_changesets: কাছাকাছি ব্যবহারকারীদের পরিবর্তনসেট
+      nearby_diaries: কাছাকাছি ব্যবহারকারীর ডায়েরি এন্ট্রি
   diary_entries:
     new:
       title: নতুন দিনলিপির ভুক্তি
@@ -577,7 +604,6 @@ bn:
       location: 'অবস্থান:'
       view: দেখুন
       edit: সম্পাদনা
-      coordinates: '%{latitude}; %{longitude}'
     feed:
       user:
         title: ওপেনস্ট্রিটম্যাপে %{user}-এর দিনলিপির ভুক্তি
@@ -651,6 +677,7 @@ bn:
           hangar: বিমান রাখার স্থান
           helipad: হেলিপ্যাড
           holding_position: হোল্ডিং পজিশন
+          navigationaid: এভিয়েশন নেভিগেশন এইড
           parking_position: পার্কিং-এর স্থান
           runway: রানওয়ে
           taxilane: ট্যাক্সিমার্গ
@@ -658,6 +685,7 @@ bn:
           terminal: বিমান টার্মিনাল
           windsock: উইন্ডসক
         amenity:
+          animal_boarding: পশু অবতরণ করছে
           animal_shelter: পশুদের আশ্রয়স্থল
           arts_centre: শিল্পকলা কেন্দ্র
           atm: এটিএম
@@ -694,6 +722,7 @@ bn:
           drinking_water: পানীয় জল
           driving_school: ড্রাইভিং স্কুল
           embassy: দূতাবাস
+          events_venue: ইভেন্টের স্থান
           fast_food: ফাস্ট ফুড
           ferry_terminal: ফেরিঘাট
           fire_station: অগ্নি নির্বাপন কেন্দ্র
@@ -710,6 +739,7 @@ bn:
           kindergarten: শিশুবিদ্যালয়
           language_school: ভাষা শিখন বিদ্যালয়
           library: পাঠাগার
+          loading_dock: ডক লোড হচ্ছে
           love_hotel: লাভ হোটেল
           marketplace: নগরচত্বর
           mobile_money_agent: মোবাইল মানি এজেন্ট
@@ -772,6 +802,7 @@ bn:
           "yes": সীমানা
         bridge:
           aqueduct: জলপ্রণালী
+          boardwalk: বোর্ডওয়াক
           suspension: ঝুলন্ত সেতু
           swing: দোলনা সেতু
           viaduct: ভায়াডাক্ট
@@ -818,6 +849,7 @@ bn:
           stable: স্থিতিশীল
           static_caravan: কাফেলা
           temple: মন্দির ভবন
+          terrace: টেরেস বিল্ডিং
           train_station: ট্রেন স্টেশন ভবন
           university: বিশ্ববিদ্যালয় ভবন
           warehouse: গুদাম
@@ -1660,11 +1692,9 @@ bn:
         url: /স্বাগতম
         title: ওপেনস্ট্রিটম্যাপে স্বাগতম
       beginners_guide:
-        url: https://wiki.openstreetmap.org/wiki/Beginners%27_guide
         title: আরম্ভকারী সহায়িকা
         description: নতুনদের জন্য সম্প্রদায় পরিচালিত নির্দেশিকা।
       help:
-        url: https://help.openstreetmap.org/
         title: সাহায্য ফোরাম
       mailing_lists:
         title: মেইলিং তালিকা
@@ -1673,10 +1703,8 @@ bn:
       irc:
         title: আইআরসি
       welcomemat:
-        url: https://welcome.openstreetmap.org/
         title: সংস্থার জন্য
       wiki:
-        url: https://wiki.openstreetmap.org/
         title: ওপেনস্ট্রিটম্যাপ উইকি
     sidebar:
       search_results: অনুসন্ধানের ফলাফল
@@ -1877,11 +1905,9 @@ bn:
       read_tou: আমি ব্যবহারের শর্তাবলী পড়েছি এবং সম্মত
       consider_pd: উপরোক্ত ছাড়াও, আমি আমার অবদানগুলিকে পাবলিক ডোমেনে বলে মনে করি৷
       consider_pd_why: এটি কী?
-      consider_pd_why_url: https://wiki.osmfoundation.org/wiki/Licence_and_Legal_FAQ/Why_would_I_want_my_contributions_to_be_public_domain
       guidance_html: 'এই শর্তগুলো বুঝতে সাহায্য করাবে এমন কিছু তথ্য: এটি একটি <a href="%{summary}">মানুষের
         পাঠযোগ্য সারাংশ</a> এবং কিছু <a href="%{translations}">অনানুষ্ঠানিক অনুবাদ</a>'
       continue: অব্যাহত রাখুন
-      declined: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
       decline: প্রত্যাখ্যান করুন
       you need to accept or decline: অনুগ্রহ করে পড়ুন এবং তারপরে চালিয়ে যেতে নতুন
         অবদানকারীর শর্তাবলী স্বীকার করুন বা প্রত্যাখ্যান করুন।
@@ -1894,7 +1920,6 @@ bn:
       terms_declined_html: আমরা দুঃখিত যে আপনি নতুন অবদানকারী শর্তাবলী গ্রহণ না করার
         সিদ্ধান্ত নিয়েছেন। আরও তথ্যের জন্য, অনুগ্রহ করে %{terms_declined_link} দেখুন।
       terms_declined_link: এই উইকি পাতা
-      terms_declined_url: https://wiki.openstreetmap.org/wiki/Contributor_Terms_Declined
     no_such_user:
       title: এরকম কোন ব্যবহারকারী নেই
       heading: ব্যবহারকারী %{user} বিদ্যমান নয়
