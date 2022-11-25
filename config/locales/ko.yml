@@ -1560,7 +1560,7 @@ ko:
       old_messages:
         one: 오래된 메시지 %{count}개
         other: 오래된 메시지 %{count}개
-      from: 보낸이
+      from: 보낸 사람
       subject: 제목
       date: 날짜
       no_messages_yet_html: 아직 메시지가 없습니다. %{people_mapping_nearby_link}에서 마음에 드는 친구를
@@ -1602,7 +1602,7 @@ ko:
         하려면 올바른 사용자로 로그인하세요.'
     show:
       title: 메시지 읽기
-      from: 보낸이
+      from: 보낸 사람
       subject: 제목
       date: 날짜
       reply_button: 답글
@@ -1690,8 +1690,6 @@ ko:
       no account: 계정이 없나요?
       account not active: 죄송합니다, 계정을 아직 활성화하지 않았습니다.<br />계정을 활성화하려면 계정 확인 이메일에 있는
         링크를 사용하거나 <a href="%{reconfirm}">새 확인 이메일을 요청하세요</a>.
-      account is suspended: 죄송합니다, 의심스러운 활동으로 인해 계정이 일시 중지되었습니다.<br />이 문제를 토론하려면
-        <a href="%{webmaster}">웹마스터</a>에게 문의하세요.
       auth failure: 죄송합니다, 입력한 정보로 로그인할 수 없습니다.
       openid_logo_alt: OpenID로 로그인
       auth_providers:
@@ -1723,6 +1721,8 @@ ko:
       title: 로그아웃
       heading: OpenStreetMap에서 로그아웃
       logout_button: 로그아웃
+    suspended_flash:
+      support: 지원
   shared:
     markdown_help:
       title_html: <a href="https://kramdown.gettalong.org/quickref.html">kramdown</a>으로
@@ -2431,7 +2431,7 @@ ko:
       notes: 지도 참고
       remove as friend: 친구 제거
       add as friend: 친구 추가
-      mapper since: '이후 매퍼:'
+      mapper since: '가입일:'
       ct status: '기여자 약관:'
       ct undecided: 정의되지 않음
       ct declined: 거부됨
