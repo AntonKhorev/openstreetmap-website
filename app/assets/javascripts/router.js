@@ -109,64 +109,54 @@ OSM.Router = function (map, rts) {
 
   var router = {};
 
-  if (window.history && window.history.pushState) {
-    $("#sidebar").scroll(function () {
-      var state = window.history.state;
-      if (!state) state = {};
-      state.sidebarScroll = this.scrollTop;
-      window.history.replaceState(state, document.title, window.location); // TODO don't replace state too often, browsers complain about that
-    });
+  $("#sidebar").scroll(function () {
+    var state = window.history.state;
+    if (!state) state = {};
+    state.sidebarScroll = this.scrollTop;
+    window.history.replaceState(state, document.title, window.location); // TODO don't replace state too often, browsers complain about that
+  });
 
-    $(window).on("popstate", function (e) {
-      var state = e.originalEvent.state;
-      if (!state) return; // Is it a real popstate event or just a hash change?
-      var path = window.location.pathname + window.location.search,
-          route = routes.recognize(path);
-      if (path === currentPath) return;
-      currentRoute.run("unload", null, route === currentRoute);
-      currentPath = path;
-      currentRoute = route;
-      currentRoute.run("popstate", currentPath);
-      map.setState(state, { animate: false });
-      if ("sidebarScroll" in state) {
-        $("#sidebar").scrollTop(state.sidebarScroll);
-      }
-    });
+  $(window).on("popstate", function (e) {
+    var state = e.originalEvent.state;
+    if (!state) return; // Is it a real popstate event or just a hash change?
+    var path = window.location.pathname + window.location.search,
+        route = routes.recognize(path);
+    if (path === currentPath) return;
+    currentRoute.run("unload", null, route === currentRoute);
+    currentPath = path;
+    currentRoute = route;
+    currentRoute.run("popstate", currentPath);
+    map.setState(state, { animate: false });
+    if ("sidebarScroll" in state) {
+      $("#sidebar").scrollTop(state.sidebarScroll);
+    }
+  });
 
-    router.route = function (url) {
-      var path = url.replace(/#.*/, ""),
-          route = routes.recognize(path);
-      if (!route) return false;
-      currentRoute.run("unload", null, route === currentRoute);
-      var state = OSM.parseHash(url);
-      map.setState(state);
-      window.history.pushState(state, document.title, url);
-      currentPath = path;
-      currentRoute = route;
-      currentRoute.run("pushstate", currentPath);
-      return true;
-    };
+  router.route = function (url) {
+    var path = url.replace(/#.*/, ""),
+        route = routes.recognize(path);
+    if (!route) return false;
+    currentRoute.run("unload", null, route === currentRoute);
+    var state = OSM.parseHash(url);
+    map.setState(state);
+    window.history.pushState(state, document.title, url);
+    currentPath = path;
+    currentRoute = route;
+    currentRoute.run("pushstate", currentPath);
+    return true;
+  };
 
-    router.replace = function (url) {
-      window.history.replaceState(OSM.parseHash(url), document.title, url);
-    };
+  router.replace = function (url) {
+    window.history.replaceState(OSM.parseHash(url), document.title, url);
+  };
 
-    router.stateChange = function (state) {
-      if (state.center) {
-        window.history.replaceState(state, document.title, OSM.formatHash(state));
-      } else {
-        window.history.replaceState(state, document.title, window.location);
-      }
-    };
-  } else {
-    router.route = router.replace = function (url) {
-      window.location.assign(url);
-    };
-
-    router.stateChange = function (state) {
-      if (state.center) window.location.replace(OSM.formatHash(state));
-    };
-  }
+  router.stateChange = function (state) {
+    if (state.center) {
+      window.history.replaceState(state, document.title, OSM.formatHash(state));
+    } else {
+      window.history.replaceState(state, document.title, window.location);
+    }
+  };
 
   router.updateHash = function () {
     var hash = OSM.formatHash(map);

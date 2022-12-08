@@ -1,6 +1,7 @@
 # Messages for Pashto (پښتو)
 # Exported from translatewiki.net
 # Export driver: phpyaml
+# Author: Af420
 # Author: Ahmed-Najib-Biabani-Ibrahimkhel
 # Author: Ajeje Brazorf
 # Author: Amjad Khan
@@ -9,14 +10,22 @@ ps:
   html:
     dir: rtl
   helpers:
+    file:
+      prompt: فایل غوره کړئ
     submit:
       diary_comment:
         create: خوندي کول
+      diary_entry:
+        create: خپرول
+        update: تازه کول
       message:
         create: لېږل
       client_application:
         create: ثبتول
-        update: سمول
+        update: تازه کول
+      doorkeeper_application:
+        create: ثبتول
+        update: تازه کول
       trace:
         create: پورته کول
         update: بدلونونه خوندي کول

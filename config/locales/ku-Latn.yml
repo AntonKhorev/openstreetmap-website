@@ -1575,6 +1575,7 @@ ku-Latn:
     help: Alîkarî
     about: Derbar
     copyright: Mafê daneriyê
+    communities: Civat
     community: Civak
     community_blogs: Blogên Civakê
     community_blogs_title: Blogên endamên civaka OpenStreetMapê
@@ -2053,8 +2054,15 @@ ku-Latn:
           gerrînbar, nexşeyeke çapkirî an wêneyeke statîk. Temamiya detayên li ser
           pêdiviyan dikarî ji ser <a href="https://wiki.osmfoundation.org/wiki/Licence/Attribution_Guidelines">Rêbernameyên
           Atfkirinê</a> peyda bikî.
-        credit_4_html: "Ji bo nexşeyekî elektronîk yê gerrînbar, çavkanî divê li jêra
-          goşeya alî rastê were xuyan. \nWek nimûne:"
+        credit_4_html: "Ji bo bi eşkereyî zelal bikî ku dane li bin Lîsansa Dabatas
+          ya Vekirî de berdest in, tu dikarî lînk bidî ser <a href=\"https://www.openstreetmap.org/copyright\">vê
+          rûpela mafê telîfê</a>. \nAlternatîven, û wekî hewcehiyekê, ger OSMyê di
+          formeke daneyê de belav bikî, tu dikarî rasterast lînk bikî lîsansê(an)
+          û nav lê bikî. Di wan medyayan de ku lînkkirin nemimkin e (wekî nimûne,
+          xebatên çapkirî), em pêşniyar dikin ku xwînerên xwe ber bi openstreetmap.org-ê
+          ve (belkî jî bi berfirehkirina 'OpenStreetMap'ê li vê adresa temamî) û li
+          openstreetmap.org-ê alî bikî. \nDi vê nimûneyê de, referans li kinarê nexşeyê
+          tê xuyan."
         attribution_example:
           alt: Mînakekê atfkirinê ya OpenSteetMapê yê li ser malperekî înternetê
           title: Mînaka atfkirinê
@@ -2412,6 +2420,15 @@ ku-Latn:
           ser sembola notê: <span class=''icon note''></span>. Wê ev, li nexşeyê nîşankerek
           zêde bike, ê ku tu bikaribî bi kaşkirinê cihê wî biguherînî. Peyamê xwe
           binivîse, dû re li qeydkirin''ê bitikîne. Nexşesazên din wê lê bikolin.'
+    communities:
+      title: Civatên me
+      lede_text: |-
+        Ji temamê dinyayê însan beşdariya OpenStreetMapê dikin an wê bi kar tînin.
+        Hinek kes wek şexsî tevlî dibin, hinek kes jî civatan ava kirine.
+        Ev kom ji mezinehiyên cuda pêk tên û ji qezayên biçûk heya herêmên pir-welatî cografyayên mezin û biçûk temsîl dikin.
+        Herwiha mimkin e ku fermî an nefermî bin.
+      local_chapters:
+        title: Beşên Lokal
   traces:
     visibility:
       private: Xisûsî (tenê wekî nuqteyên anonîm û nerêzkirî tê belavkirin)
@@ -2672,9 +2689,6 @@ ku-Latn:
       title: Xwe Qeyd Bike
       no_auto_account_create: Mixabin, em vêga nikarin bi otomatîkî ji bo we hesabekî
         çêbikin.
-      contact_support_html: Ji bo hesabê ku tu dixwazî çêbikî xêra xwe bi <a href="%{support}">piştgiriyê</a>
-        re têkiliyê deyne - em ê hewl bidin ku daxwaza te di demekî kurt de çareser
-        bikin.
       about:
         header: Belaş e û dikare were sererastkirin
         html: |-
@@ -2808,10 +2822,6 @@ ku-Latn:
       title: Hesab hatiye rawestandin
       heading: Hesab hatiye rawestandin
       support: piştgirî
-      body_html: "<p>\n  Li me bibore, hesabê te ji ber aktîvîteyên gumanbar bi otomatîkî
-        \n  hatiye rawestandin.\n</p>\n<p>\n  Wê ev qerar di demeke kurt de ji aliyê
-        rêvebirek malperê ve  \n  kontrolkirin an jî\n  eger bixwazibî vê gotûbêj
-        bikî bi %{webmaster} re dikarî \n  têkiliyê deynî.\n</p>"
     auth_failure:
       connection_failed: Girêdana bi peydakera teyîdkirina nasnameyê re bi ser neket
       invalid_credentials: Ji bo teyîdkirina nasnameyê agahî nerast in
@@ -3066,8 +3076,12 @@ ku-Latn:
         comment_and_resolve: Şirove û çareserî
         comment: Şîrove
         report_link_html: Ger ev not agahiyên hesas yên ku divê bên rakirin bihewîne,
-          tu dikarî %{link}. Ji bo hemû problemên din yên bi vê notê, ji kerema xwe
-          bi şîroveyekê tu bixwe wê çareser bike.
+          tu dikarî %{link}.
+        other_problems_resolve: Ji bo hemû problemên din yên bi vê notê, ji kerema
+          xwe bi şîroveyekê tu bixwe wê çareser bike.
+        other_problems_resolved: Ji bo hemû pirsgirêkên din, çareserkirin têr dike
+        disappear_date_html: Ev nota çareserkirî wê ser nexşeyê winda bibe di %{disappear_in}
+          de.
     edit_help: Nexşeyê bide hereketkirin û li cihê ku tu dixwazî biguherînî nêzîk
       bike, piştre jî bitikîne ser vir.
     directions:
