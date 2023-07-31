@@ -52,8 +52,10 @@ class Ability
         can [:show, :edit, :update], :preference
         can [:edit, :update], :profile
         can [:new, :create], Report
-        can [:mine, :new, :create, :edit, :update, :destroy], Trace
+        can [:mine], Trace
         can [:account, :go_public], User
+
+        can [:new, :create, :edit, :update, :destroy], Trace if user.blocks.active.empty?
 
         if user.moderator?
           can [:hide, :unhide, :hidecomment, :unhidecomment], DiaryEntry
