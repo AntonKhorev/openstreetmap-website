@@ -96,17 +96,13 @@ header {
   z-index: 1001;
   font-size: 14px;
 
-  h1, nav, nav > ul, nav > ul > li {
+  nav, nav > ul, nav > ul > li {
     display: inline-block;
   }
 
   > * {
     height: 100%;
     padding: $lineheight/2;
-  }
-
-  h1, nav.primary {
-    float: left;
   }
 
   a, a:hover {
@@ -175,9 +171,6 @@ nav.primary {
 }
 
 nav.secondary {
-  position: absolute;
-  right: 0;
-
   .nav-link {
     padding: 0.2rem;
     color: $darkgrey;
@@ -248,13 +241,13 @@ body.small-nav {
 
   nav.primary,
   nav.secondary {
-    float: none !important;
     position: relative;
     display: block;
-    clear: both;
+    width: 100%;
   }
 
   header {
+    flex-wrap: wrap;
     height: auto;
     min-height: $headerHeight;
     background: #fff;
@@ -304,6 +297,8 @@ body.small-nav {
   }
 
   nav.secondary {
+    white-space: unset !important;
+
     .user-menu {
       width: 100%;
     }

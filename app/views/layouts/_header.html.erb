@@ -1,5 +1,5 @@
-<header class="closed clearfix">
-  <h1>
+<header class="closed clearfix d-flex">
+  <h1 class="text-nowrap">
     <a href="<%= root_path %>" class="geolink">
       <picture>
         <source srcset="<%= image_path "osm_logo.svg" %>" type="image/svg+xml" />
@@ -8,8 +8,8 @@
       <%= t "layouts.project_name.h1" %>
     </a>
   </h1>
-  <a href="#" id="menu-icon"></a>
-  <nav class='primary'>
+  <a href="#" id="menu-icon" class="ms-auto"></a>
+  <nav class='primary text-nowrap'>
     <%= content_for :header %>
     <div class="btn-group">
       <div id="edit_tab" class="btn-group <%= current_page_class(edit_path) %>">
@@ -34,7 +34,7 @@
       <%= link_to t("layouts.export"), export_path, :class => "btn btn-outline-primary geolink current_page_class(export_path)", :id => "export_tab" %>
     </div>
   </nav>
-  <nav class='secondary'>
+  <nav class='secondary ms-auto text-nowrap'>
     <ul class='mx-1 px-0'>
       <% if Settings.status != "database_offline" && can?(:index, Issue) %>
         <li class="compact-hide nav-item <%= current_page_class(issues_path) %>">
