@@ -34,8 +34,8 @@
       <%= link_to t("layouts.export"), export_path, :class => "btn btn-outline-primary geolink current_page_class(export_path)", :id => "export_tab" %>
     </div>
   </nav>
-  <nav class='secondary'>
-    <ul class='mx-1 px-0'>
+  <nav class='secondary gap-1 align-items-center'>
+    <ul class='m-0 px-0'>
       <% if Settings.status != "database_offline" && can?(:index, Issue) %>
         <li class="compact-hide nav-item <%= current_page_class(issues_path) %>">
           <%= link_to issues_path(:status => "open"), :class => "nav-link" do %>
@@ -83,8 +83,8 @@
       </li>
     </ul>
     <% if current_user && current_user.id %>
-      <div class='d-inline-flex dropdown user-menu logged-in clearfix'>
-        <button class='dropdown-toggle btn btn-outline-secondary px-2 py-1 flex-grow-1' type='button' data-bs-toggle='dropdown'>
+      <div class='dropdown user-menu logged-in clearfix'>
+        <button class='d-inline-flex justify-content-center align-items-center dropdown-toggle btn btn-outline-secondary w-100 px-2 py-1' type='button' data-bs-toggle='dropdown'>
           <%= user_thumbnail_tiny(current_user, :width => 25, :height => 25, :class => "user_thumbnail_tiny rounded-1") %>
           <%= render :partial => "layouts/inbox" %>
           <span class="user-button">

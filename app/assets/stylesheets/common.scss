@@ -175,6 +175,7 @@ nav.primary {
 }
 
 nav.secondary {
+  display: flex;
   position: absolute;
   right: 0;
 
@@ -201,15 +202,6 @@ nav.secondary {
         border-color: $grey;
       }
     }
-  }
-
-  #inboxanchor {
-    display: inline-block;
-    height: 25px;
-    margin: 3px 0 3px 3px;
-    background-color: lighten($grey, 10%);
-    line-height: 20px;
-    border-radius: 3;
   }
 
   .dropdown-menu {
