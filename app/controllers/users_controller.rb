@@ -52,6 +52,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def show_by_id
+    @user = User.find_by(:id => params[:id])
+
+    if @user &&
+       (@user.visible? || current_user&.administrator?)
+      redirect_to user_path(@user)
+    else
+      render_unknown_user "TODO ID MESSAGE"
+    end
+  end
+
   def new
     @title = t ".title"
     @referer = if params[:referer]
