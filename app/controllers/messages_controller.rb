@@ -1,4 +1,4 @@
-class MessagesController < ApplicationController
+class MessagesController < UserResourcesController
   layout "site"
 
   before_action :authorize_web

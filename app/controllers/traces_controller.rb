@@ -1,4 +1,4 @@
-class TracesController < ApplicationController
+class TracesController < UserResourcesController
   layout "site", :except => :georss
 
   before_action :authorize_web

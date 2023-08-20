@@ -1,4 +1,4 @@
-class FriendshipsController < ApplicationController
+class FriendshipsController < UserResourcesController
   layout "site"
 
   before_action :authorize_web

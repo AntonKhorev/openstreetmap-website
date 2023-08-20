@@ -1,4 +1,4 @@
-class UserBlocksController < ApplicationController
+class UserBlocksController < UserResourcesController
   layout "site"
 
   before_action :authorize_web

@@ -1,4 +1,4 @@
-class ConfirmationsController < ApplicationController
+class ConfirmationsController < UserResourcesController
   include SessionMethods
 
   layout "site"

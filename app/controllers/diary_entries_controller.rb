@@ -1,4 +1,4 @@
-class DiaryEntriesController < ApplicationController
+class DiaryEntriesController < UserResourcesController
   layout "site", :except => :rss
 
   before_action :authorize_web

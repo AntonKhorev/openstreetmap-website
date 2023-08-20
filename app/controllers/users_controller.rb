@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < UserResourcesController
   include SessionMethods
   include UserMethods
 

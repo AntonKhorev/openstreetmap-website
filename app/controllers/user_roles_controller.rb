@@ -1,4 +1,4 @@
-class UserRolesController < ApplicationController
+class UserRolesController < UserResourcesController
   layout "site"
 
   before_action :authorize_web
