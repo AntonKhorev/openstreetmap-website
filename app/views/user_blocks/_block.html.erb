@@ -5,7 +5,7 @@
   <% if show_creator_name %>
   <td><%= link_to block.creator.display_name, user_path(block.creator) %></td>
   <% end %>
-  <td><%= h truncate(block.reason) %></td>
+  <td class="reason text-truncate"><%= h block.reason %></td>
   <td><%= h block_status(block) %></td>
   <td>
     <% if block.revoker_id.nil? %>

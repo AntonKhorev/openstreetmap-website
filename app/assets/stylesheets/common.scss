@@ -974,6 +974,10 @@ tr.turn:hover {
   #content .content-inner {
     max-width: unset;
   }
+
+  #block_list .reason {
+    max-width: 10em;
+  }
 }
 
 /* Overrides for pages that use new layout conventions */
