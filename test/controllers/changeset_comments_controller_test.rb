@@ -15,6 +15,31 @@ class ChangesetCommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   ##
+  # test comments webpage
+  def test_index
+    user = create(:user)
+    other_user = create(:user)
+    changeset = create(:changeset, :closed)
+    create_list(:changeset_comment, 3, :changeset => changeset, :author => user)
+    create_list(:changeset_comment, 2, :changeset => changeset, :author => other_user)
+
+    get changeset_comments_path(user)
+    assert_response :success
+    assert_select "table.table-striped" do
+      assert_select "tr", :count => 4 # header and 3 comments
+    end
+
+    create(:changeset_comment, :changeset => changeset, :author => user)
+    create(:changeset_comment, :changeset => changeset, :author => user, :visible => false)
+
+    get changeset_comments_path(user)
+    assert_response :success
+    assert_select "table.table-striped" do
+      assert_select "tr", :count => 5 # header and 4 visible comments
+    end
+  end
+
+  ##
   # test comments feed
   def test_feed
     changeset = create(:changeset, :closed)
