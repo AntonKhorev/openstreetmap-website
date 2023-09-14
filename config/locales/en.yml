@@ -553,8 +553,9 @@ en:
       heading_html: "%{user}'s Comments"
       for_diary: "For diary"
       for_history: "For map edits"
-      no_comments: "No diary comments"
+      no_comments: "No comments"
       post: Post
+      changeset: Changeset
       when: When
       comment: Comment
       newer_comments: "Newer Comments"
