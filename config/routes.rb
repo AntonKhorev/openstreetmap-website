@@ -114,11 +114,12 @@ OpenStreetMap::Application.routes.draw do
   get "/relation/:id" => "browse#relation", :id => /\d+/, :as => :relation
   get "/relation/:id/history" => "browse#relation_history", :id => /\d+/, :as => :relation_history
   get "/changeset/:id" => "browse#changeset", :as => :changeset, :id => /\d+/
-  get "/changeset/:id/comments/feed" => "changeset_comments#index", :as => :changeset_comments_feed, :id => /\d*/, :defaults => { :format => "rss" }
+  get "/changeset/:id/comments/feed" => "changeset_comments#feed", :as => :changeset_comments_feed, :id => /\d*/, :defaults => { :format => "rss" }
   resources :notes, :path => "note", :only => [:show, :new]
 
   get "/user/:display_name/history" => "changesets#index"
   get "/user/:display_name/history/feed" => "changesets#feed", :defaults => { :format => :atom }
+  resources :changeset_comments, :path => "/user/:display_name/history/comments", :only => [:index]
   get "/user/:display_name/notes" => "notes#index", :as => :user_notes
   get "/history/friends" => "changesets#index", :friends => true, :as => "friend_changesets", :defaults => { :format => :html }
   get "/history/nearby" => "changesets#index", :nearby => true, :as => "nearby_changesets", :defaults => { :format => :html }
@@ -152,7 +153,7 @@ OpenStreetMap::Application.routes.draw do
   get "/communities" => "site#communities"
   get "/history" => "changesets#index"
   get "/history/feed" => "changesets#feed", :defaults => { :format => :atom }
-  get "/history/comments/feed" => "changeset_comments#index", :as => :changesets_comments_feed, :defaults => { :format => "rss" }
+  get "/history/comments/feed" => "changeset_comments#feed", :as => :changesets_comments_feed, :defaults => { :format => "rss" }
   get "/export" => "site#export"
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
