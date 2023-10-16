@@ -93,6 +93,10 @@ header.navbar {
     font-size: 14px;
   }
 
+  .search_forms {
+    background: transparent;
+  }
+
   .btn-group .btn-outline-primary {
     @include button-outline-variant($green, $color-hover: $white, $active-color: $white);
   }
@@ -606,7 +610,6 @@ legend {
 
 /* Rules for the search and direction forms */
 
-header .search_forms,
 .directions_form {
   display: none;
 }
@@ -997,20 +1000,18 @@ tr.turn:hover {
   }
 }
 
-.search_form {
+.search_forms {
   background-color: $lightgrey;
 
-  #query {
-    z-index: 0;
-  }
+  .search_form {
+    #query {
+      z-index: 0;
+    }
 
-  .describe_location {
-    font-size: 10px;
+    .describe_location {
+      font-size: 10px;
+    }
   }
-}
-
-.directions_form {
-  background-color: $lightgrey;
 }
 
 /* Rules for user images */

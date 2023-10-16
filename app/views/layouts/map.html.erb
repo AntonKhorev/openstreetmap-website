@@ -22,7 +22,9 @@
 
 <% content_for :content do %>
   <div id="sidebar">
-    <%= render :partial => "layouts/search", :locals => { :autofocus => true } %>
+    <div class="d-none d-md-block">
+      <%= render :partial => "layouts/search", :locals => { :autofocus => true } %>
+    </div>
 
     <div id="flash">
       <%= render :partial => "layouts/flash" %>
