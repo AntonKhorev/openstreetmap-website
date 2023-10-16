@@ -182,19 +182,6 @@ nav.primary, nav.secondary {
   }
 }
 
-#compact-secondary-nav {
-  display: none;
-}
-
-body.compact-nav {
-  #compact-secondary-nav {
-    display: inline-block;
-  }
-  .compact-hide {
-    display: none;
-  }
-}
-
 body.small-nav {
   #menu-icon {
     display: block;
@@ -255,14 +242,6 @@ body.small-nav {
     .user-menu, .login-menu {
       width: 100%;
     }
-  }
-
-  #compact-secondary-nav {
-    display: none;
-  }
-
-  .compact-hide {
-    display: inline-block;
   }
 
   .overlay-sidebar #sidebar .welcome {

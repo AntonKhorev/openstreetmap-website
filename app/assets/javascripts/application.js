@@ -69,18 +69,15 @@ window.updateLinks = function (loc, zoom, layers, object) {
 };
 
 $(document).ready(function () {
-  var headerWidth = 0,
-      compactWidth = 0;
+  var headerWidth = 0;
 
   function updateHeader() {
     var windowWidth = $(window).width();
 
-    if (windowWidth < compactWidth) {
-      $("body").removeClass("compact-nav").addClass("small-nav");
-    } else if (windowWidth < headerWidth) {
-      $("body").addClass("compact-nav").removeClass("small-nav");
+    if (windowWidth < headerWidth) {
+      $("body").addClass("small-nav");
     } else {
-      $("body").removeClass("compact-nav").removeClass("small-nav");
+      $("body").removeClass("small-nav");
     }
   }
 
@@ -91,17 +88,9 @@ $(document).ready(function () {
    * to defer the measurement slightly as a workaround.
    */
   setTimeout(function () {
-    $("header").children(":visible").each(function (i, e) {
-      headerWidth = headerWidth + $(e).outerWidth();
-    });
-
-    $("body").addClass("compact-nav");
-
-    $("header").children(":visible").each(function (i, e) {
-      compactWidth = compactWidth + $(e).outerWidth();
-    });
-
-    $("body").removeClass("compact-nav");
+    headerWidth = $("header h1").outerWidth() + 
+                  $("header nav.primary").outerWidth() +
+                  $("header nav.secondary").outerWidth();
 
     $("header").removeClass("text-nowrap");
 
