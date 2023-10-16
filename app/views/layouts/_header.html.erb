@@ -1,12 +1,12 @@
 <header class="d-flex text-nowrap closed">
-  <h1 class="m-0 fw-semibold">
+  <h1 class="m-0 fw-semibold text-nowrap">
     <a href="<%= root_path %>" class="text-black text-decoration-none geolink">
       <%= image_tag "osm_logo.png", :srcset => image_path("osm_logo.svg"), :alt => t("layouts.logo.alt_text"), :width => 30, :height => 30, :class => "logo" %>
       <%= t "layouts.project_name.h1" %>
     </a>
   </h1>
   <a href="#" id="menu-icon"></a>
-  <nav class='primary'>
+  <nav class="primary text-nowrap">
     <%= content_for :header %>
     <div class="btn-group">
       <div id="edit_tab" class="btn-group <%= current_page_class(edit_path) %>">
@@ -31,8 +31,8 @@
       <%= link_to t("layouts.export"), export_path, :class => "btn btn-outline-primary geolink current_page_class(export_path)", :id => "export_tab" %>
     </div>
   </nav>
-  <nav class='secondary'>
-    <ul class='mx-1 px-0'>
+  <nav class="secondary text-nowrap">
+    <ul class='list-unstyled mx-1 px-0'>
       <!-- TODO uncompacted menu item:
       <li class="nav-item <%= current_page_class(about_path) %>">
         <%= link_to t("layouts.about"), about_path, :class => "nav-link" %>

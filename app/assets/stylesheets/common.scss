@@ -98,7 +98,7 @@ header {
   z-index: 1001;
   font-size: 14px;
 
-  h1, nav, nav > ul, nav > ul > li {
+  nav, nav > ul, nav > ul > li {
     display: inline-block;
   }
 
@@ -239,6 +239,10 @@ body.small-nav {
   }
 
   nav.secondary {
+    > ul {
+      display: block;
+    }
+
     .user-menu, .login-menu {
       width: 100%;
     }
