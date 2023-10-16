@@ -79,57 +79,23 @@ small, aside {
 
 /* Rules for the header */
 
-#menu-icon {
-  display: none;
-  float: right;
-  background: image-url("menu-icon.png") no-repeat;
-  background-size: 30px 30px;
-  width: 30px;
-  height: 30px;
-  margin: 14px 10px 0 0;
-  opacity: 0.6;
-}
-
-header {
-  height: $headerHeight;
-  position: relative;
+header.navbar {
+  // height: $headerHeight;
   z-index: 1001;
   font-size: 14px;
+  --bs-navbar-padding-y: 7px; // fix to preserve pre-bootstrap navbar height of 55px
 
-  h1, nav, nav > ul, nav > ul > li {
-    display: inline-block;
-  }
-
-  > * {
-    height: 100%;
-    padding: $lineheight * 0.5;
-  }
-
-  h1, nav.primary {
-    float: left;
-  }
-
-  img.logo {
-    margin-top: -2px;
-  }
-
-  h1 {
+  .navbar-brand {
     font-size: 18px;
-    line-height: 1.2;
-    padding-top: 15px;
   }
 
   .btn {
     font-size: 14px;
   }
-}
 
-
-nav.primary {
-  & > .btn-group .btn-outline-primary {
+  .btn-group .btn-outline-primary {
     @include button-outline-variant($green, $color-hover: $white, $active-color: $white);
   }
-
   .disabled {
     .btn-outline-primary {
       color: $grey;
@@ -144,7 +110,10 @@ nav.primary {
       }
     }
   }
+}
 
+/*
+nav.primary {
   // Small tweaks to the toggle to stop the primary colour showing through
   // when the menu is shown
   .show > .btn-outline-primary.dropdown-toggle {
@@ -297,6 +266,7 @@ body.small-nav {
     display: none;
   }
 }
+*/
 
 /* Utility for styling notification numbers */
 

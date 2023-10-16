@@ -116,14 +116,14 @@ $(document).ready(function () {
     $(window).resize(updateHeader);
   }, 0);
 
-  $("#menu-icon").on("click", function (e) {
-    e.preventDefault();
-    $("header").toggleClass("closed");
-  });
+  // $("#menu-icon").on("click", function (e) {
+  //   e.preventDefault();
+  //   $("header").toggleClass("closed");
+  // });
 
-  $("nav.primary li a").on("click", function () {
-    $("header").toggleClass("closed");
-  });
+  // $("nav.primary li a").on("click", function () {
+  //   $("header").toggleClass("closed");
+  // });
 
   var application_data = $("head").data();
 
