@@ -76,9 +76,33 @@ $(document).ready(function () {
 
     if (windowWidth < headerWidth) {
       $("body").addClass("small-nav");
+      expandSecondaryMenu();
     } else {
+      collapseSecondaryMenu();
       $("body").removeClass("small-nav");
     }
+  }
+
+  function expandSecondaryMenu() {
+    $("#compact-secondary-nav > ul").find("li")
+      .addClass("nav-item")
+      .children("a")
+        .removeClass("dropdown-item")
+        .addClass("nav-link")
+      .end()
+      .prependTo("header nav.secondary > ul");
+    $("#compact-secondary-nav").hide();
+  }
+
+  function collapseSecondaryMenu() {
+    $("header nav.secondary > ul").find("li:not(#compact-secondary-nav)")
+      .removeClass("nav-item")
+      .children("a")
+        .addClass("dropdown-item")
+        .removeClass("nav-link")
+      .end()
+      .prependTo("#compact-secondary-nav > ul");
+    $("#compact-secondary-nav").show();
   }
 
   /*
