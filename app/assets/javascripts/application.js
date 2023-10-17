@@ -69,12 +69,10 @@ window.updateLinks = function (loc, zoom, layers, object) {
 };
 
 $(document).ready(function () {
-  var headerWidth = 0;
-
   function updateHeader() {
     var windowWidth = $(window).width();
 
-    if (windowWidth < headerWidth) {
+    if (windowWidth < 768) {
       if (!$("body").hasClass("small-nav")) {
         $("body").addClass("small-nav");
         expandSecondaryMenu();
@@ -109,23 +107,8 @@ $(document).ready(function () {
     $("#compact-secondary-nav").show();
   }
 
-  /*
-   * Chrome 60 and later seem to fire the "ready" callback
-   * before the DOM is fully ready causing us to measure the
-   * wrong sizes for the header elements - use a 0ms timeout
-   * to defer the measurement slightly as a workaround.
-   */
-  setTimeout(function () {
-    headerWidth = $("header h1").outerWidth() + 
-                  $("header nav.primary").outerWidth() +
-                  $("header nav.secondary").outerWidth();
-
-    $("header").removeClass("text-nowrap");
-
-    updateHeader();
-
-    $(window).resize(updateHeader);
-  }, 0);
+  updateHeader();
+  $(window).resize(updateHeader);
 
   $("#menu-icon").on("click", function (e) {
     e.preventDefault();
