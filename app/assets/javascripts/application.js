@@ -75,11 +75,15 @@ $(document).ready(function () {
     var windowWidth = $(window).width();
 
     if (windowWidth < headerWidth) {
-      $("body").addClass("small-nav");
-      expandSecondaryMenu();
+      if (!$("body").hasClass("small-nav")) {
+        $("body").addClass("small-nav");
+        expandSecondaryMenu();
+      }
     } else {
-      collapseSecondaryMenu();
-      $("body").removeClass("small-nav");
+      if ($("body").hasClass("small-nav")) {
+        collapseSecondaryMenu();
+        $("body").removeClass("small-nav");
+      }
     }
   }
 
