@@ -20,22 +20,22 @@ class ApiCapability
         can [:index, :show], UserPreference if scope?(token, :read_prefs)
         can [:update, :update_all, :destroy], UserPreference if scope?(token, :write_prefs)
 
-        if user.terms_agreed?
-          can [:create, :update, :upload, :close, :subscribe, :unsubscribe], Changeset if scope?(token, :write_api)
-          can :create, ChangesetComment if scope?(token, :write_api)
-          can [:create, :update, :delete], Node if scope?(token, :write_api)
-          can [:create, :update, :delete], Way if scope?(token, :write_api)
-          can [:create, :update, :delete], Relation if scope?(token, :write_api)
+        if user.terms_agreed? && scope?(token, :write_api)
+          can [:create, :update, :upload, :close, :subscribe, :unsubscribe], Changeset
+          can :create, ChangesetComment
+          can [:create, :update, :delete], Node
+          can [:create, :update, :delete], Way
+          can [:create, :update, :delete], Relation
         end
 
         if user.moderator?
           can [:destroy, :restore], ChangesetComment if scope?(token, :write_api)
           can :destroy, Note if scope?(token, :write_notes)
           can :create, UserBlock if scope?(token, :write_blocks)
-          if user&.terms_agreed?
-            can :redact, OldNode if scope?(token, :write_api)
-            can :redact, OldWay if scope?(token, :write_api)
-            can :redact, OldRelation if scope?(token, :write_api)
+          if user&.terms_agreed? && scope?(token, :write_api)
+            can :redact, OldNode
+            can :redact, OldWay
+            can :redact, OldRelation
           end
         end
       end
