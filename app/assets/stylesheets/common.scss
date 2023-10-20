@@ -971,10 +971,7 @@ tr.turn:hover {
 /* Rules for the account confirmation page */
 
 .users-terms {
-  .legale {
-    padding: $lineheight;
-    margin-bottom: $lineheight;
-    overflow: auto;
+  #contributorTerms{
     height: 20em;
 
     li {
