@@ -7,6 +7,8 @@ module Account
 
     authorize_resource :class => false
 
-    def show; end
+    def show
+      @allowed_at = current_user.deletion_allowed_at
+    end
   end
 end

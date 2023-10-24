@@ -33,6 +33,10 @@ module ApplicationHelper
     tag.time(time_ago_in_words(date, :scope => :"datetime.distance_in_words_ago"), :title => l(date, :format => :friendly), :datetime => date.xmlschema)
   end
 
+  def friendly_date_time_element(date)
+    tag.time(time_ago_in_words(date), :title => l(date, :format => :friendly), :timestamp => date.xmlschema)
+  end
+
   def body_class
     if content_for? :body_class
       content_for :body_class
