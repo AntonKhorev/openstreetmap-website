@@ -419,6 +419,19 @@ class User < ApplicationRecord
     end
   end
 
+  def deletion_allowed_at
+    last_changeset = changesets.first
+    if last_changeset
+      last_changeset.created_at.utc + Settings.user_account_deletion_delay.hours
+    else
+      creation_time.utc
+    end
+  end
+
+  def deletion_allowed?
+    deletion_allowed_at <= Time.now.utc
+  end
+
   private
 
   def encrypt_password
