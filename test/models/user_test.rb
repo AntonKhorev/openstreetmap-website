@@ -282,4 +282,42 @@ class UserTest < ActiveSupport::TestCase
     oauth_access_token.reload
     assert_predicate oauth_access_token, :revoked?
   end
+
+  def test_deletion_allowed_at_no_changesets
+    with_user_account_deletion_delay(10000) do
+      user = create(:user)
+      assert_nil user.deletion_allowed_at
+    end
+  end
+
+  def test_deletion_allowed_at_no_delay
+    with_user_account_deletion_delay(0) do
+      user = create(:user)
+      create(:changeset, :user => user)
+      user.reload
+      assert_nil user.deletion_allowed_at
+    end
+  end
+
+  def test_deletion_allowed_at_past_delay
+    with_user_account_deletion_delay(48) do
+      user = create(:user)
+      (11..15).reverse_each do |n|
+        create(:changeset, :user => user, :created_at => Time.now.utc - n.days)
+      end
+      user.reload
+      assert_nil user.deletion_allowed_at
+    end
+  end
+
+  def test_deletion_allowed_at_delay
+    with_user_account_deletion_delay(48) do
+      user = create(:user)
+      (1..5).reverse_each do |n|
+        create(:changeset, :user => user, :created_at => Time.now.utc - n.days)
+      end
+      user.reload
+      assert_equal (Time.now.utc + 1.day), user.deletion_allowed_at
+    end
+  end
 end
