@@ -1,5 +1,9 @@
 <h4>
-  <%= t "browse.version" %>
+  <%= if common_details.redacted?
+        t "browse.redacted_version"
+      else
+        t "browse.version"
+      end %>
   #<%= common_details.version %>
 </h4>
 
