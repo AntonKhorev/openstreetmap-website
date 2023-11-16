@@ -128,16 +128,7 @@ OSM.Search = function (map) {
     e.stopPropagation();
   }
 
-  var page = {};
-
-  page.pushstate = page.popstate = function (path) {
-    var params = Qs.parse(path.substring(path.indexOf("?") + 1));
-    $(".search_form input[name=query]").val(params.query);
-    $(".describe_location").hide();
-    OSM.loadSidebarContent(path, page.load);
-  };
-
-  page.load = function () {
+  function runSearch(pan) {
     $(".search_results_entry").each(function (index) {
       var entry = $(this),
           csrf_param = $("meta[name=csrf-param]").attr("content"),
@@ -156,6 +147,9 @@ OSM.Search = function (map) {
         data: params,
         success: function (html) {
           entry.html(html);
+          console.log('no unnecessary pan', !pan) ///
+          console.log('has coords in location', 'center' in OSM.parseHash(window.location.hash)) ///
+          if (!pan && 'center' in OSM.parseHash(window.location.hash)) return;
           // go to first result of first geocoder
           if (index === 0) {
             var firstResult = entry.find("*[data-lat][data-lon]:first").first();
@@ -166,7 +160,32 @@ OSM.Search = function (map) {
         }
       });
     });
+  }
 
+  function loadSidebarAndRunSearch(path, pan) {
+    var params = Qs.parse(path.substring(path.indexOf("?") + 1));
+    $(".search_form input[name=query]").val(params.query);
+    $(".describe_location").hide();
+    OSM.loadSidebarContent(path, function () {
+      runSearch(pan);
+    });
+  }
+
+  var page = {};
+
+  page.pushstate = function (path) {
+    console.log('pushstate',path,OSM.parseHash(window.location.hash)); ///
+    loadSidebarAndRunSearch(path, true); // pushstate: new search from the form, pan to the first result
+  };
+
+  page.popstate = function (path) {
+    console.log('popstate',path,OSM.parseHash(window.location.hash)); ///
+    loadSidebarAndRunSearch(path, false); // back/forward navigation, don't pan to the first result
+  };
+
+  page.load = function (path) {
+    console.log('load',path,OSM.parseHash(window.location.hash)); ///
+    runSearch(false); // the location was fully rewritten, if it contains #map assume it's intentional, don't pan to the first result
     return map.getState();
   };
 
