@@ -1,7 +1,9 @@
 $(document).ready(function () {
   var params = OSM.params();
 
-  if (params.lat && params.lon) {
+  if (params.referer) {
+    // don't write edit link
+  } else if (params.lat && params.lon) {
     params.lat = parseFloat(params.lat);
     params.lon = parseFloat(params.lon);
     params.zoom = params.zoom || 17;

@@ -60,7 +60,11 @@
 </div>
 
 <div class='clearfix text-center'>
-  <p class="display-5"><a href="<%= edit_path %>" class="button start-mapping"><%= t ".start_mapping" %></a></p>
+  <% if params[:referer] %>
+    <p class="display-5"><%= link_to "Continue", params[:referer] %></p>
+  <% else %>
+    <p class="display-5"><a href="<%= edit_path %>" class="button start-mapping"><%= t ".start_mapping" %></a></p>
+  <% end %>
 </div>
 
 <div class='alert alert-primary'>
