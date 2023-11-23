@@ -70,9 +70,9 @@ window.updateLinks = function (loc, zoom, layers, object) {
 
 $(document).ready(function () {
   function updateHeader() {
-    var windowWidth = $(window).width();
+    var inSmallNavMode = $(window).width() < 768;
 
-    if (windowWidth < 768) {
+    if (inSmallNavMode) {
       if (!$("body").hasClass("small-nav")) {
         $("body").addClass("small-nav");
         expandSecondaryMenu(
@@ -87,6 +87,7 @@ $(document).ready(function () {
         $("body").removeClass("small-nav");
       }
     }
+    $("header nav.secondary").toggleClass("text-end", !inSmallNavMode);
   }
 
   function expandSecondaryMenu($items) {
