@@ -86,6 +86,9 @@ $(document).ready(function () {
         );
         $("body").removeClass("small-nav");
       }
+      console.log("secondary width",
+        $("header nav.secondary").width()
+      ) ///
     }
     $("header nav.secondary").toggleClass("text-end", !inSmallNavMode);
   }
