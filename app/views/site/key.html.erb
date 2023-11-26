@@ -4,7 +4,11 @@
       <% data.each do |entry| %>
         <tr class="mapkey-table-entry" data-layer="<%= name %>" data-zoom-min="<%= entry["min_zoom"] %>" data-zoom-max="<%= entry["max_zoom"] %>">
           <td class="mapkey-table-key align-middle">
-            <%= image_tag "key/#{name}/#{entry['image']}" %>
+            <% if entry["source"] %>
+              <%= image_tag entry["source"] %>
+            <% else %>
+              <%= image_tag "key/#{name}/#{entry['image']}" %>
+            <% end %>
           </td>
           <td class="mapkey-table-value">
             <%= Array(t(".table.entry.#{entry['name']}")).to_sentence %>
