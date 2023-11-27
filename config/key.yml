@@ -71,11 +71,20 @@ cyclemap:
   - { min_zoom: 14, max_zoom: 19, name: bicycle_parking, image: bicycle_parking.png }
   - { min_zoom: 16, max_zoom: 19, name: toilets, image: toilets.png }
 opnvkarte:
-  - { min_zoom: 6, name: rail, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%23868686' /></svg>" }
-  - { min_zoom: 6, name: train, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%23ffc366' /></svg>" }
+  - { min_zoom: 6, max_zoom: 7, name: rail, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='1'><rect width='100%' height='100%' fill='%23868686' /></svg>" }
+  - { min_zoom: 8, max_zoom: 10, name: rail, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='2'><rect width='100%' height='100%' fill='%23868686' /></svg>" }
+  - { min_zoom: 11, max_zoom: 14, name: rail, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='3'><rect width='100%' height='100%' fill='%23868686' /></svg>" }
+  - { min_zoom: 15, name: rail, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%23868686' /></svg>" }
+  - { min_zoom: 6, max_zoom: 9, name: train, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='2'><rect width='100%' height='100%' fill='%23ffc366' /></svg>" }
+  - { min_zoom: 10, max_zoom: 11, name: train, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='3'><rect width='100%' height='100%' fill='%23ffc366' /></svg>" }
+  - { min_zoom: 12, name: train, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%23ffc366' /></svg>" }
   - { min_zoom: 10, name: light_rail, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%2366ff66' /></svg>" }
   - { min_zoom: 10, name: tram_only, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%233333fe' /></svg>" }
   - { min_zoom: 10, name: subway, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%2333339f' /></svg>" }
-  - { min_zoom: 9, name: ferry, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%239f339f' /></svg>" }
+  - { min_zoom: 9, max_zoom: 13, name: ferry, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='2'><rect width='100%' height='100%' fill='%239f339f' /></svg>" }
+  - { min_zoom: 14, name: ferry, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='3'><rect width='100%' height='100%' fill='%239f339f' /></svg>" }
   - { min_zoom: 10, name: trolleybus, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%239f3333' /></svg>" }
-  - { min_zoom: 11, name: bus, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%23fe3333' /></svg>" }
+  - { min_zoom: 11, max_zoom: 11, name: bus, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='1'><rect width='100%' height='100%' fill='%23fe3333' /></svg>" }
+  - { min_zoom: 12, max_zoom: 12, name: bus, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='2'><rect width='100%' height='100%' fill='%23fe3333' /></svg>" }
+  - { min_zoom: 13, max_zoom: 13, name: bus, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='3'><rect width='100%' height='100%' fill='%23fe3333' /></svg>" }
+  - { min_zoom: 14, name: bus, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%23fe3333' /></svg>" }
