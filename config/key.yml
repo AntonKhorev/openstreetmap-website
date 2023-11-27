@@ -73,8 +73,8 @@ cyclemap:
 opnvkarte:
   - { min_zoom: 6, max_zoom: 7, name: rail, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='1'><rect width='100%' height='100%' fill='%23868686' /></svg>" }
   - { min_zoom: 8, max_zoom: 10, name: rail, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='2'><rect width='100%' height='100%' fill='%23868686' /></svg>" }
-  - { min_zoom: 11, max_zoom: 14, name: rail, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='3'><rect width='100%' height='100%' fill='%23868686' /></svg>" }
-  - { min_zoom: 15, name: rail, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%23868686' /></svg>" }
+  - { min_zoom: 11, max_zoom: 14, name: rail, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='3'><rect width='100%' height='100%' fill='%23868686' /><line x2='100%' y1='50%' y2='50%' stroke='%23eeeeee' stroke-dasharray='10 10' stroke-dashoffset='9' /></svg>" }
+  - { min_zoom: 15, name: rail, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%23868686' /><line x2='100%' y1='50%' y2='50%' stroke='%23eeeeee' stroke-dasharray='10 10' stroke-dashoffset='9' stroke-width='2' /></svg>" }
   - { min_zoom: 6, max_zoom: 9, name: train, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='2'><rect width='100%' height='100%' fill='%23ffc366' /></svg>" }
   - { min_zoom: 10, max_zoom: 11, name: train, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='3'><rect width='100%' height='100%' fill='%23ffc366' /></svg>" }
   - { min_zoom: 12, name: train, source: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='4'><rect width='100%' height='100%' fill='%23ffc366' /></svg>" }
