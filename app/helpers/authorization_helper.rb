@@ -1,7 +1,7 @@
 module AuthorizationHelper
   include ActionView::Helpers::TranslationHelper
 
-  MODERATOR_SCOPES = %w[].freeze
+  MODERATOR_SCOPES = %w[write_redactions].freeze
 
   def authorization_scope(scope)
     html = []
