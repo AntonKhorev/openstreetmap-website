@@ -28,7 +28,7 @@ mapnik:
   - { name: lake, width: 26, height: 10, fill: "#aad3df" }
   - { name: intermittent_water, image: intermittent_water.svg }
   - { min_zoom:  5, name: glacier, width: 26, height: 10, fill: "#ddecec", stroke: "#9cf" }
-  - { min_zoom: 10, name: glacier, image: glacier10.svg }
+  - { min_zoom: 10, name: glacier, width: 26, height: 10, fill: "#ddecec", stroke: "#9cf", "stroke-dasharray": "4 2" }
   - { min_zoom: 10, name: reef, image: reef.png }
   - { min_zoom: 10, name: wetland, image: wetland.png }
   - { min_zoom:  5, name: forest, width: 26, height: 10, fill: "#bddab1" }
