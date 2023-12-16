@@ -93,7 +93,7 @@ cyclemap:
   - { min_zoom: 12, name: primary, image: primary12.png }
   - { min_zoom:  9, name: secondary, image: secondary.png }
   - { min_zoom: 12, name: secondary, image: secondary12.png }
-  - { min_zoom: 15, name: pedestrian, image: pedestrian.svg }
+  - { min_zoom: 15, name: pedestrian, width: 50, height: 4, fill: "#e2e3e2", stroke: "#9a9a9a", "stroke-direction": "horizontal" }
   - { min_zoom: 13, name: track, image: track.png }
   - { min_zoom:  8, name: cycleway, image: cycleway.png }
   - { min_zoom:  5, name: cycleway_national, image: cycleway_national.png }
@@ -149,15 +149,15 @@ opnvkarte:
   - { min_zoom: 15, name: bus_stop, image: bus_stop15.svg }
   - { min_zoom: 13, name: stop, image: stop13.svg }
   - { min_zoom: 15, name: stop, image: stop15.svg }
-  - { min_zoom:  8, name: motorway, image: motorway8.svg }
-  - { min_zoom: 13, name: motorway, image: motorway13.svg }
+  - { min_zoom:  8, name: motorway, width: 52, height: 4, fill: "#dddddd", stroke: "#6d6d6d", "stroke-direction": "horizontal" }
+  - { min_zoom: 13, name: motorway, width: 52, height: 8, fill: "#dddddd", stroke: "#6d6d6d", "stroke-direction": "horizontal" }
   - { min_zoom: 15, name: motorway, image: motorway15.svg }
   - { min_zoom: 17, name: motorway, image: motorway17.svg }
-  - { min_zoom:  8, name: main_road, width: 52, height: 1, fill: "#5c6d6d88" }
-  - { min_zoom: 11, name: main_road, image: main_road11.svg }
-  - { min_zoom: 13, name: main_road, image: main_road13.svg }
-  - { min_zoom: 15, name: main_road, image: main_road15.svg }
-  - { min_zoom: 17, name: main_road, image: main_road17.svg }
+  - { min_zoom:  8, name: main_road, width: 52, height:  1, fill: "#5c6d6d88" }
+  - { min_zoom: 11, name: main_road, width: 52, height:  4, fill: "#dddddd", stroke: "#a1968b", "stroke-direction": "horizontal" }
+  - { min_zoom: 13, name: main_road, width: 52, height:  8, fill: "#dddddd", stroke: "#a1968b", "stroke-direction": "horizontal" }
+  - { min_zoom: 15, name: main_road, width: 52, height: 13, fill: "#dddddd", stroke: "#a1968b", "stroke-direction": "horizontal" }
+  - { min_zoom: 17, name: main_road, width: 52, height: 17, fill: "#dddddd", stroke: "#a1968b", "stroke-direction": "horizontal" }
   # landcover
   - { min_zoom:  0, name: lake, width: 26, height: 10, fill: "#a1cbea" }
   - { min_zoom:  8, name: lake, width: 26, height: 10, fill: "#bfd3ef" }
