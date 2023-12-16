@@ -4,10 +4,10 @@
       <% layer_data.each do |entry| %>
         <%= tag.tr :class => "mapkey-table-entry", :data => { :layer => layer_name, :zoom_min => entry["min_zoom"], :zoom_max => entry["max_zoom"] } do %>
           <td class="mapkey-table-key align-middle">
-            <% if entry["width"] && entry["height"] && entry["fill"] %>
-              <%= solid_svg_image_tag entry["width"], entry["height"], entry["fill"] %>
-            <% else %>
+            <% if entry["image"] %>
               <%= image_tag "key/#{layer_name}/#{entry['image']}" %>
+            <% else %>
+              <%= svg_image_tag entry["width"], entry["height"], :fill => entry["fill"], :stroke => entry["stroke"] %>
             <% end %>
           </td>
           <td class="mapkey-table-value">
