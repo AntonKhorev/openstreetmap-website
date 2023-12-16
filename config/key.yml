@@ -27,7 +27,7 @@ mapnik:
   # landcover z5: landcover.mss, water.mss
   - { name: lake, width: 26, height: 10, fill: "#aad3df" }
   - { name: intermittent_water, image: intermittent_water.svg }
-  - { min_zoom:  5, name: glacier, image: glacier5.svg }
+  - { min_zoom:  5, name: glacier, width: 26, height: 10, fill: "#ddecec", stroke: "#9cf" }
   - { min_zoom: 10, name: glacier, image: glacier10.svg }
   - { min_zoom: 10, name: reef, image: reef.png }
   - { min_zoom: 10, name: wetland, image: wetland.png }
@@ -71,8 +71,8 @@ mapnik:
   - { min_zoom: 13, name: school, image: school.svg }
   # buildings: buildings.mss
   - { min_zoom: 14, name: building, width: 10, height: 10, fill: "#ab9793" }
-  - { min_zoom: 15, name: building, image: building15.svg }
-  - { min_zoom: 16, name: building, image: building16.svg }
+  - { min_zoom: 15, name: building, width: 10, height: 10, fill: "#b9a99c", stroke: "#a99a8d" }
+  - { min_zoom: 16, name: building, width: 10, height: 10, fill: "#c4b6ab", stroke: "#a99a8d" }
   # stations: stations.mss
   - { min_zoom: 12, name: station, width: 4, height: 4, fill: "#7981b0" }
   - { min_zoom: 13, name: station, width: 6, height: 6, fill: "#7981b0" }
