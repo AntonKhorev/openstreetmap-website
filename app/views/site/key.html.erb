@@ -4,10 +4,14 @@
       <% layer_data.each do |entry| %>
         <%= tag.tr :class => "mapkey-table-entry", :data => { :layer => layer_name, :zoom_min => entry["min_zoom"], :zoom_max => entry["max_zoom"] } do %>
           <td>
-            <% if entry["width"] && entry["height"] && entry["fill"] %>
-              <%= solid_svg_tag entry["width"], entry["height"], entry["fill"], :class => "d-block mx-auto" %>
-            <% else %>
+            <% if entry["image"] %>
               <%= image_tag "key/#{layer_name}/#{entry['image']}", :class => "d-block mx-auto" %>
+            <% elsif entry["geometry"] == "-" %>
+              <%= striked_svg_tag **entry, :class => "d-block mx-auto" %>
+            <% elsif entry["geometry"] == "=" %>
+              <%= cased_svg_tag **entry, :class => "d-block mx-auto" %>
+            <% else %>
+              <%= bordered_svg_tag **entry, :class => "d-block mx-auto" %>
             <% end %>
           </td>
           <td>
