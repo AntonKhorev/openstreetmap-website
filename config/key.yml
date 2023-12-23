@@ -1,6 +1,6 @@
 mapnik:
   # transportation: roads.mss
-  - { min_zoom:  6, name: motorway, image: motorway.png }
+  - { min_zoom:  6, name: motorway, width: 52, height: 5, fill: "#e892a2", stroke: "#dc2a67", geometry: "=" }
   - { min_zoom:  6, name: main_road, image: mainroad.png }
   - { min_zoom:  8, name: main_road, image: mainroad8.png }
   - { min_zoom: 12, name: main_road, image: mainroad12.png }
@@ -82,22 +82,24 @@ mapnik:
   - { min_zoom: 15, name: station, width: 9, height: 9, fill: "#7981b0" }
   # other
   - { min_zoom: 11, name: [summit_only, peak], image: summit.svg } # amenity-points.mss
-  - { min_zoom: 13, name: tunnel, image: tunnel.svg } # roads.mss
-  - { min_zoom: 13, name: bridge, image: bridge.svg } # roads.mss
+  - { min_zoom: 13, name: tunnel, width: 50, height: 5, stroke: grey, stroke-dasharray: "4 2", stroke-dashoffset: 1, geometry: "=" } # roads.mss
+  - { min_zoom: 13, name: bridge, width: 50, height: 5, stroke: black, geometry: "=" } # roads.mss
   - { min_zoom: 15, name: private, image: private.png }
   - { min_zoom: 15, name: destination, image: destination.png }
   - { min_zoom: 12, name: construction, image: construction.png }
 cyclemap:
   - { min_zoom:  5, name: motorway, width: 50, height: 3, fill: "#9a9ab1" }
-  - { min_zoom: 12, name: motorway, image: motorway12.png }
+  - { min_zoom: 12, name: motorway, width: 50, height: 5, fill: "#bdbece", stroke: "#8d95a7", geometry: "=" }
   - { min_zoom:  6, name: trunk, width: 50, height: 2, fill: "#c8d8c8" }
-  - { min_zoom: 12, name: trunk, image: trunk12.png }
+  - { min_zoom: 12, name: trunk, width: 50, height: 5, fill: "#c8d8c8", stroke: "#abb5a4", geometry: "=" }
   - { min_zoom:  8, name: primary, width: 50, height: 2, fill: "#d8c8c8" }
-  - { min_zoom: 12, name: primary, image: primary12.png }
+  - { min_zoom: 12, name: primary, width: 50, height: 4, fill: "#f0e3e3", stroke: "#d4b6b7", geometry: "=" }
   - { min_zoom: 10, name: secondary, width: 50, height: 1, fill: "#dadacc" }
-  - { min_zoom: 12, name: secondary, image: secondary12.png }
-  - { min_zoom: 15, name: pedestrian, image: pedestrian.svg }
-  - { min_zoom: 13, name: track, image: track.png }
+  - { min_zoom: 12, name: secondary, width: 50, height: 4, fill: "#ededc8", stroke: "#c8b48a", geometry: "=" }
+  - { min_zoom: 15, name: pedestrian, width: 50, height: 4, fill: "#e2e3e2", stroke: "#9a9a9a", geometry: "=" }
+  - { min_zoom: 13, name: track, width: 50, height: 3, fill: white, stroke: "#999", stroke-dasharray: "5 3", stroke-dashoffset: 1, geometry: "=" }
+  - { min_zoom: 15, name: track, width: 50, height: 4, fill: white, stroke: "#999", stroke-dasharray: "5 3", stroke-dashoffset: 1, geometry: "=" }
+  - { min_zoom: 17, name: track, width: 50, height: 5, fill: white, stroke: "#999", stroke-dasharray: "5 3", stroke-dashoffset: 1, geometry: "=" }
   - { min_zoom:  8, name: cycleway, image: cycleway.png }
   - { min_zoom:  5, name: cycleway_national, width: 50, height: 2, fill: "#fe0000" }
   - { min_zoom: 13, name: cycleway_national, width: 50, height: 4, fill: "#ffb3b3" }
@@ -154,15 +156,15 @@ opnvkarte:
   - { min_zoom: 15, name: bus_stop, image: bus_stop15.svg }
   - { min_zoom: 13, name: stop, image: stop13.svg }
   - { min_zoom: 15, name: stop, image: stop15.svg }
-  - { min_zoom:  8, name: motorway, image: motorway8.svg }
-  - { min_zoom: 13, name: motorway, image: motorway13.svg }
+  - { min_zoom:  8, name: motorway, width: 52, height: 4, fill: "#dddddd", stroke: "#6d6d6d", geometry: "=" }
+  - { min_zoom: 13, name: motorway, width: 52, height: 8, fill: "#dddddd", stroke: "#6d6d6d", geometry: "=" }
   - { min_zoom: 15, name: motorway, image: motorway15.svg }
   - { min_zoom: 17, name: motorway, image: motorway17.svg }
-  - { min_zoom:  8, name: main_road, width: 52, height: 1, fill: "#5c6d6d88" }
-  - { min_zoom: 11, name: main_road, image: main_road11.svg }
-  - { min_zoom: 13, name: main_road, image: main_road13.svg }
-  - { min_zoom: 15, name: main_road, image: main_road15.svg }
-  - { min_zoom: 17, name: main_road, image: main_road17.svg }
+  - { min_zoom:  8, name: main_road, width: 52, height:  1, fill: "#5c6d6d88" }
+  - { min_zoom: 11, name: main_road, width: 52, height:  4, fill: "#dddddd", stroke: "#a1968b", geometry: "=" }
+  - { min_zoom: 13, name: main_road, width: 52, height:  8, fill: "#dddddd", stroke: "#a1968b", geometry: "=" }
+  - { min_zoom: 15, name: main_road, width: 52, height: 13, fill: "#dddddd", stroke: "#a1968b", geometry: "=" }
+  - { min_zoom: 17, name: main_road, width: 52, height: 17, fill: "#dddddd", stroke: "#a1968b", geometry: "=" }
   # landcover
   - { min_zoom:  0, name: [lake_only, reservoir], width: 26, height: 10, fill: "#a1cbea" }
   - { min_zoom:  8, name: [lake_only, reservoir], width: 26, height: 10, fill: "#bfd3ef" }
