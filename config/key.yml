@@ -4,21 +4,21 @@ mapnik:
   - { min_zoom:  6, name: main_road, image: mainroad.png }
   - { min_zoom:  8, name: main_road, image: mainroad8.png }
   - { min_zoom: 12, name: main_road, image: mainroad12.png }
-  - { min_zoom: 13, name: track, image: track.png }
-  - { min_zoom: 13, name: bridleway, image: bridleway.png }
-  - { min_zoom: 13, name: cycleway, image: cycleway.png }
-  - { min_zoom: 13, name: footway, image: footway.png }
+  - { min_zoom: 13, name: track, width: 52, height: 3, opacity: .8, stroke: "#996600", stroke-width: 1.5, stroke-dasharray: "6 5", geometry: "-" }
+  - { min_zoom: 13, name: bridleway, width: 52, height: 3, stroke: green, stroke-width: 1.25, stroke-dasharray: "4 2", geometry: "-" }
+  - { min_zoom: 13, name: cycleway, width: 52, height: 1, stroke: blue, stroke-dasharray: "3 3.5", geometry: "-" }
+  - { min_zoom: 13, name: footway, width: 52, height: 3, stroke: salmon, stroke-width: 1.3, stroke-dasharray: "3 3.5", geometry: "-" }
   - { min_zoom:  8, name: rail, width: 52, height: 1, fill: "#787878" }
-  - { min_zoom: 12, name: rail, image: rail12.svg }
-  - { min_zoom: 18, name: rail, image: rail18.svg }
+  - { min_zoom: 12, name: rail, width: 52, height: 3, fill: "#707070", stroke: white, stroke-dasharray: 8, stroke-dashoffset: 2, geometry: "-" }
+  - { min_zoom: 18, name: rail, width: 52, height: 4, fill: "#707070", stroke: white, stroke-dasharray: 8, stroke-dashoffset: 2, stroke-width: 2, geometry: "-" }
   - { min_zoom: 12, name: subway, width: 52, height: 2, fill: "#999" }
   - { min_zoom:  8, name: light_rail, width: 52, height: 1, fill: "#ccc" }
   - { min_zoom: 10, name: light_rail, width: 52, height: 1, fill: "#aaa" }
   - { min_zoom: 13, name: light_rail, width: 52, height: 2, fill: "#666" }
-  - { min_zoom: 12, name: tram_only, width: 52, height: 1, fill: "#6e6e6eaa" }
-  - { min_zoom: 14, name: tram_only, width: 52, height: 1, fill: "#6e6e6e" }
-  - { min_zoom: 15, name: tram_only, image: tram15.svg }
-  - { min_zoom: 17, name: tram_only, width: 52, height: 2, fill: "#6e6e6e" }
+  - { min_zoom: 12, name: tram_only, width: 52, height: 1, geometry: "-", stroke: "#6e6e6e", stroke-width: 0.75 }
+  - { min_zoom: 14, name: tram_only, width: 52, height: 3, geometry: "-", stroke: "#6e6e6e", stroke-width: 1 }
+  - { min_zoom: 15, name: tram_only, width: 52, height: 3, geometry: "-", stroke: "#6e6e6e", stroke-width: 1.5 }
+  - { min_zoom: 17, name: tram_only, width: 52, height: 2, geometry: "-", stroke: "#6e6e6e", stroke-width: 2 }
   - { min_zoom: 12, name: [cable_car, chair_lift], image: cable.png }
   - { min_zoom: 11, name: [runway_only, taxiway], image: runway11.svg }
   - { min_zoom: 12, name: [runway_only, taxiway], image: runway12.svg }
@@ -100,16 +100,16 @@ cyclemap:
   - { min_zoom: 13, name: track, width: 50, height: 3, fill: white, stroke: "#999", stroke-dasharray: "5 3", stroke-dashoffset: 1, geometry: "=" }
   - { min_zoom: 15, name: track, width: 50, height: 4, fill: white, stroke: "#999", stroke-dasharray: "5 3", stroke-dashoffset: 1, geometry: "=" }
   - { min_zoom: 17, name: track, width: 50, height: 5, fill: white, stroke: "#999", stroke-dasharray: "5 3", stroke-dashoffset: 1, geometry: "=" }
-  - { min_zoom:  8, name: cycleway, image: cycleway.png }
+  - { min_zoom:  8, name: cycleway, width: 50, height: 3, stroke: "#0100fe", stroke-width: 1.5, stroke-dasharray: "6 2", geometry: "-" }
   - { min_zoom:  5, name: cycleway_national, width: 50, height: 2, fill: "#fe0000" }
   - { min_zoom: 13, name: cycleway_national, width: 50, height: 4, fill: "#ffb3b3" }
   - { min_zoom:  7, name: cycleway_regional, width: 50, height: 2, fill: "#b638fb" }
   - { min_zoom: 13, name: cycleway_regional, width: 50, height: 4, fill: "#ddb5d9" }
   - { min_zoom:  8, name: cycleway_local, width: 50, height: 2, fill: "#0100fe" }
   - { min_zoom: 13, name: cycleway_local, width: 50, height: 4, fill: "#b2b2ff" }
-  - { min_zoom: 13, name: footway, image: footway.svg }
-  - { min_zoom:  7, name: rail, image: rail.png }
-  - { min_zoom: 14, name: rail, image: rail14.png }
+  - { min_zoom: 13, name: footway, width: 50, height: 3, stroke: "#bd6d6e", stroke-width: 1.5, stroke-dasharray: "6 2", geometry: "-" }
+  - { min_zoom:  7, name: rail, width: 50, height: 3, stroke: "#999999", stroke-width: 1.5, geometry: "-" }
+  - { min_zoom: 14, name: rail, width: 50, height: 4, fill: "#999999", stroke: white, stroke-dasharray: 4, stroke-width: 2, geometry: "-" }
   - { min_zoom:  1, name: [lake_only, reservoir], width: 26, height: 10, fill: "#addeff" }
   - { min_zoom:  9, name: [forest_only, wood], width: 26, height: 10, fill: "#b3d6a4" }
   - { min_zoom: 10, name: meadow, width: 26, height: 10, fill: "#c0de9c" }
@@ -121,8 +121,8 @@ cyclemap:
 opnvkarte:
   - { min_zoom:  6, name: rail, width: 52, height: 1, fill: "#868686" }
   - { min_zoom:  8, name: rail, width: 52, height: 2, fill: "#868686" }
-  - { min_zoom: 11, name: rail, image: rail11.svg }
-  - { min_zoom: 15, name: rail, image: rail15.svg }
+  - { min_zoom: 11, name: rail, width: 52, height: 3, fill: "#868686", stroke: "#eeeeee", stroke-dasharray: 10, stroke-dashoffset: 9, geometry: "-" }
+  - { min_zoom: 15, name: rail, width: 52, height: 4, fill: "#868686", stroke: "#eeeeee", stroke-dasharray: 10, stroke-dashoffset: 9, stroke-width: 2, geometry: "-" }
   - { min_zoom: 17, name: rail, image: rail17.svg }
   - { min_zoom:  6, name: train, width: 52, height:  2, fill: "#ffc366" }
   - { min_zoom: 10, name: train, width: 52, height:  3, fill: "#ffc366" }
