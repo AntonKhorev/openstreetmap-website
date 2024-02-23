@@ -41,28 +41,28 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
     end
 
     # Note that the table rows include a header row
-    get user_notes_path(:display_name => first_user.display_name)
+    get user_notes_path(first_user)
     assert_response :success
     check_note_table [note1]
 
-    get user_notes_path(:display_name => second_user.display_name)
+    get user_notes_path(second_user)
     assert_response :success
     check_note_table [note2]
 
-    get user_notes_path(:display_name => "non-existent")
+    get user_notes_path("non-existent")
     assert_response :not_found
 
     session_for(moderator_user)
 
-    get user_notes_path(:display_name => first_user.display_name)
+    get user_notes_path(first_user)
     assert_response :success
     check_note_table [note1]
 
-    get user_notes_path(:display_name => second_user.display_name)
+    get user_notes_path(second_user)
     assert_response :success
     check_note_table [note3, note2]
 
-    get user_notes_path(:display_name => "non-existent")
+    get user_notes_path("non-existent")
     assert_response :not_found
   end
 
@@ -73,7 +73,7 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
       create(:note_comment, :note => note, :author => user)
     end
 
-    next_path = user_notes_path(:display_name => user.display_name)
+    next_path = user_notes_path(user)
 
     get next_path
     assert_response :success
@@ -108,7 +108,7 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
 
   def test_empty_page
     user = create(:user)
-    get user_notes_path(:display_name => user.display_name)
+    get user_notes_path(user)
     assert_response :success
     assert_select "h4", :html => "No notes"
   end
@@ -122,12 +122,12 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
   def test_read_hidden_note
     hidden_note_with_comment = create(:note_with_comments, :status => "hidden")
 
-    get note_path(:id => hidden_note_with_comment)
+    get note_path(hidden_note_with_comment)
     assert_response :not_found
     assert_template "browse/not_found"
     assert_template :layout => "map"
 
-    get note_path(:id => hidden_note_with_comment), :xhr => true
+    get note_path(hidden_note_with_comment), :xhr => true
     assert_response :not_found
     assert_template "browse/not_found"
     assert_template :layout => "xhr"
