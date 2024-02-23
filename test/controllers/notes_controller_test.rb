@@ -30,24 +30,24 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
     second_user = create(:user)
     moderator_user = create(:moderator_user)
 
-    create(:note) do |note|
+    note1 = create(:note) do |note|
       create(:note_comment, :note => note, :author => first_user)
     end
-    create(:note) do |note|
+    note2 = create(:note) do |note|
       create(:note_comment, :note => note, :author => second_user)
     end
-    create(:note, :status => "hidden") do |note|
+    note3 = create(:note, :status => "hidden") do |note|
       create(:note_comment, :note => note, :author => second_user)
     end
 
     # Note that the table rows include a header row
     get user_notes_path(:display_name => first_user.display_name)
     assert_response :success
-    assert_select "table.note_list tr", :count => 2
+    check_note_table [note1]
 
     get user_notes_path(:display_name => second_user.display_name)
     assert_response :success
-    assert_select "table.note_list tr", :count => 2
+    check_note_table [note2]
 
     get user_notes_path(:display_name => "non-existent")
     assert_response :not_found
@@ -56,11 +56,11 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
 
     get user_notes_path(:display_name => first_user.display_name)
     assert_response :success
-    assert_select "table.note_list tr", :count => 2
+    check_note_table [note1]
 
     get user_notes_path(:display_name => second_user.display_name)
     assert_response :success
-    assert_select "table.note_list tr", :count => 3
+    check_note_table [note3, note2]
 
     get user_notes_path(:display_name => "non-existent")
     assert_response :not_found
