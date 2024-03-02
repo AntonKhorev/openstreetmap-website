@@ -54,7 +54,7 @@ class Ability
         can [:index, :create, :destroy], UserMute
 
         if user.moderator?
-          can :show_redactions, [:browse, OldNode, OldWay, OldRelation]
+          can :show_redactions, [:browse, Node, Way, Relation, OldNode, OldWay, OldRelation]
           can [:hide, :unhide, :hidecomment, :unhidecomment], DiaryEntry
           can [:index, :show, :resolve, :ignore, :reopen], Issue
           can :create, IssueComment
