@@ -109,7 +109,7 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
       note
     end
 
-    next_path = user_notes_path(user, :before => "")
+    next_path = user_notes_path(user, :to => "newest")
 
     get next_path
     assert_response :success
@@ -137,7 +137,7 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
       note
     end
 
-    next_path = user_notes_path(user, :after => "")
+    next_path = user_notes_path(user, :from => "oldest")
 
     get next_path
     assert_response :success
