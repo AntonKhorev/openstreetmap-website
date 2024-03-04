@@ -72,8 +72,8 @@ class TracesController < ApplicationController
     @traces = @traces.includes(:user, :tags)
     @traces = @traces.sort.reverse
 
-    @newer_traces = @traces.count.positive? && traces.exists?(["gpx_files.id > ?", @traces.first.id])
-    @older_traces = @traces.count.positive? && traces.exists?(["gpx_files.id < ?", @traces.last.id])
+    @newer_param = { :after => @traces.first.id } if @traces.count.positive? && traces.exists?(["gpx_files.id > ?", @traces.first.id])
+    @older_param = { :before => @traces.last.id } if @traces.count.positive? && traces.exists?(["gpx_files.id < ?", @traces.last.id])
 
     # final helper vars for view
     @target_user = target_user
