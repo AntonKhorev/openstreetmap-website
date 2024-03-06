@@ -15,13 +15,53 @@ class ChangesetElementsTest < ApplicationSystemTestCase
         assert_link :href => way_path(way)
       end
       assert_no_link :href => way_path(ways[element_page_size])
+      assert_no_link "Ways (1-20 of 21)"
       assert_link "Ways (21-21 of 21)"
 
       nodes[0...element_page_size].each do |node|
         assert_link :href => node_path(node)
       end
       assert_no_link :href => node_path(nodes[element_page_size])
+      assert_no_link "Nodes (1-20 of 21)"
       assert_link "Nodes (21-21 of 21)"
+
+      fill_in "text", :with => "Comment text we don't want to lose"
+
+      click_on "Ways (21-21 of 21)"
+
+      ways[0...element_page_size].each do |way|
+        assert_no_link :href => way_path(way)
+      end
+      assert_link :href => way_path(ways[element_page_size])
+      assert_link "Ways (1-20 of 21)"
+      assert_no_link "Ways (21-21 of 21)"
+
+      nodes[0...element_page_size].each do |node|
+        assert_link :href => node_path(node)
+      end
+      assert_no_link :href => node_path(nodes[element_page_size])
+      assert_no_link "Nodes (1-20 of 21)"
+      assert_link "Nodes (21-21 of 21)"
+
+      assert_field "text", :with => "Comment text we don't want to lose"
+
+      click_on "Nodes (21-21 of 21)"
+
+      ways[0...element_page_size].each do |way|
+        assert_no_link :href => way_path(way)
+      end
+      assert_link :href => way_path(ways[element_page_size])
+      assert_link "Ways (1-20 of 21)"
+      assert_no_link "Ways (21-21 of 21)"
+
+      nodes[0...element_page_size].each do |node|
+        assert_no_link :href => node_path(node)
+      end
+      assert_link :href => node_path(nodes[element_page_size])
+      assert_link "Nodes (1-20 of 21)"
+      assert_no_link "Nodes (21-21 of 21)"
+
+      assert_field "text", :with => "Comment text we don't want to lose"
     end
   end
 end
