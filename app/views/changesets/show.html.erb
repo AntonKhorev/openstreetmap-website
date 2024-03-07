@@ -77,21 +77,21 @@
   <% end %>
 
   <% unless @ways.empty? %>
-    <section id="changeset_ways">
+    <%= turbo_frame_tag "changeset_ways" do %>
       <%= render :partial => "elements", :locals => { :type => "way", :elements => @ways, :pages => @way_pages } %>
-    </section>
+    <% end %>
   <% end %>
 
   <% unless @relations.empty? %>
-    <section id="changeset_relations">
+    <%= turbo_frame_tag "changeset_relations" do %>
       <%= render :partial => "elements", :locals => { :type => "relation", :elements => @relations, :pages => @relation_pages } %>
-    </section>
+    <% end %>
   <% end %>
 
   <% unless @nodes.empty? %>
-    <section id="changeset_nodes">
+    <%= turbo_frame_tag "changeset_nodes" do %>
       <%= render :partial => "elements", :locals => { :type => "node", :elements => @nodes, :pages => @node_pages } %>
-    </section>
+    <% end %>
   <% end %>
 </div>
 
