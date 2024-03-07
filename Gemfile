@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 # Require rails
 gem "rails", "~> 7.1.0"
+gem "turbo-rails", "~> 2.0"
 
 # Require json for multi_json
 gem "json"
