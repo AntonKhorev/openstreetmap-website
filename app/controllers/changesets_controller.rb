@@ -78,14 +78,14 @@ class ChangesetsController < ApplicationController
 
   def show
     @changeset = Changeset.find(params[:id])
-    case params[:list]
-    when "nodes"
+    case turbo_frame_request_id
+    when "changeset_nodes"
       @node_pages, @nodes = paginate(:old_nodes, :conditions => { :changeset_id => @changeset.id }, :per_page => 20, :parameter => "node_page")
       render :partial => "elements", :locals => { :type => "node", :elements => @nodes, :pages => @node_pages }
-    when "ways"
+    when "changeset_ways"
       @way_pages, @ways = paginate(:old_ways, :conditions => { :changeset_id => @changeset.id }, :per_page => 20, :parameter => "way_page")
       render :partial => "elements", :locals => { :type => "way", :elements => @ways, :pages => @way_pages }
-    when "relations"
+    when "changeset_relations"
       @relation_pages, @relations = paginate(:old_relations, :conditions => { :changeset_id => @changeset.id }, :per_page => 20, :parameter => "relation_page")
       render :partial => "elements", :locals => { :type => "relation", :elements => @relations, :pages => @relation_pages }
     else
