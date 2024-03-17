@@ -9,10 +9,10 @@ class ChangesetCommentsController < ApplicationController
 
   ##
   # Get a feed of recent changeset comments
-  def index
-    if params[:id]
+  def feed
+    if params[:changeset_id]
       # Extract the arguments
-      id = params[:id].to_i
+      id = params[:changeset_id].to_i
 
       # Find the changeset
       changeset = Changeset.find(id)
