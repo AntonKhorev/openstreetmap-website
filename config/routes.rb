@@ -124,6 +124,9 @@ OpenStreetMap::Application.routes.draw do
       get :feed, :on => :collection, :defaults => { :format => "rss" }
     end
   end
+  resources :changeset_comments, :path => "history/comments", :only => [] do
+    get :feed, :on => :collection, :defaults => { :format => "rss" }
+  end
   resources :notes, :path => "note", :only => [:show, :new]
 
   get "/user/:display_name/history" => "changesets#index"
@@ -161,7 +164,6 @@ OpenStreetMap::Application.routes.draw do
   get "/communities" => "site#communities"
   get "/history" => "changesets#index"
   get "/history/feed" => "changesets#feed", :defaults => { :format => :atom }
-  get "/history/comments/feed" => "changeset_comments#feed", :as => :changesets_comments_feed, :defaults => { :format => "rss" }
   get "/export" => "site#export"
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
