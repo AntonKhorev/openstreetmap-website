@@ -73,15 +73,25 @@ $(document).ready(function () {
       compactWidth = 0;
 
   function updateHeader() {
-    var windowWidth = $(window).width();
+    var windowWidth = $(window).width(),
+        inSmallLayout = $("body").hasClass("small-nav");
 
     if (windowWidth < compactWidth) {
       $("body").removeClass("compact-nav").addClass("small-nav");
+      if (!inSmallLayout) toggleSmallLayout(true);
     } else if (windowWidth < headerWidth) {
       $("body").addClass("compact-nav").removeClass("small-nav");
+      if (inSmallLayout) toggleSmallLayout(false);
     } else {
       $("body").removeClass("compact-nav").removeClass("small-nav");
+      if (inSmallLayout) toggleSmallLayout(false);
     }
+  }
+
+  function toggleSmallLayout(inSmallLayout) {
+    $(".sessions-new .login-menu, .users-new .login-menu")
+      .toggleClass("d-inline-flex", !inSmallLayout)
+      .toggle(!inSmallLayout);
   }
 
   /*
