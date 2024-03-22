@@ -15,8 +15,10 @@ class ChangesetCommentsFeedsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_show
-    changeset = create(:changeset, :closed)
-    create_list(:changeset_comment, 3, :changeset => changeset)
+    changeset1 = create(:changeset, :closed)
+    changeset2 = create(:changeset, :closed)
+    create_list(:changeset_comment, 1, :changeset => changeset1)
+    create_list(:changeset_comment, 2, :changeset => changeset2)
 
     get changeset_comments_feed_path(:format => "rss")
     assert_response :success
@@ -36,16 +38,25 @@ class ChangesetCommentsFeedsControllerTest < ActionDispatch::IntegrationTest
       end
     end
 
-    get changeset_changeset_comments_feed_path(changeset, :format => "rss")
+    get changeset_changeset_comments_feed_path(changeset1, :format => "rss")
     assert_response :success
     assert_equal "application/rss+xml", @response.media_type
-    last_comment_id = -1
     assert_select "rss", :count => 1 do
       assert_select "channel", :count => 1 do
-        assert_select "item", :count => 3 do |items|
+        assert_select "item", :count => 1
+      end
+    end
+
+    last_comment_id = -1
+    get changeset_changeset_comments_feed_path(changeset2, :format => "rss")
+    assert_response :success
+    assert_equal "application/rss+xml", @response.media_type
+    assert_select "rss", :count => 1 do
+      assert_select "channel", :count => 1 do
+        assert_select "item", :count => 2 do |items|
           items.each do |item|
             assert_select item, "link", :count => 1 do |link|
-              match = assert_match(/^#{changeset_url changeset}#c(\d+)$/, link.text)
+              match = assert_match(/^#{changeset_url changeset2}#c(\d+)$/, link.text)
               comment_id = match[1].to_i
               assert_operator comment_id, "<", last_comment_id if last_comment_id != -1
               last_comment_id = comment_id
