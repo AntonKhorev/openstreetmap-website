@@ -257,6 +257,26 @@ class ChangesetsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  def test_index_timeout
+    create_list(:changeset, 30, :num_changes => 1)
+    with_settings(:web_timeout => -1) do
+      get history_path
+    end
+    assert_response :success
+    assert_template :layout => "map"
+    assert_dom "h2", "Timeout Error"
+    assert_dom "p", /the list of changesets/
+  end
+
+  def test_index_list_timeout
+    create_list(:changeset, 30, :num_changes => 1)
+    with_settings(:web_timeout => -1) do
+      get history_path(:list => "1")
+    end
+    assert_response :success
+    assert_dom "p", /the list of changesets/
+  end
+
   def test_show
     changeset = create(:changeset)
     create(:changeset_tag, :changeset => changeset, :k => "comment", :v => "tested-changeset-comment")
