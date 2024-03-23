@@ -328,6 +328,17 @@ class ChangesetsControllerTest < ActionDispatch::IntegrationTest
     assert_dom "a[href='#{changeset_path changesets[2]}']", :count => 1
   end
 
+  def test_show_timeout
+    changeset = create(:changeset)
+    with_settings(:web_timeout => -1) do
+      get changeset_path(changeset)
+    end
+    assert_response :success
+    assert_template :layout => "map"
+    assert_dom "h2", "Timeout Error"
+    assert_dom "p", /#{Regexp.quote("the changeset with the id #{changeset.id}")}/
+  end
+
   ##
   # This should display the last 20 non-empty changesets
   def test_feed

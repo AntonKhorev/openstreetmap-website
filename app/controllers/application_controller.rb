@@ -206,13 +206,13 @@ class ApplicationController < ActionController::Base
     if e.is_a?(Timeout::Error) ||
        (e.is_a?(ActiveRecord::StatementInvalid) && e.message.include?("execution expired"))
       ActiveRecord::Base.connection.raw_connection.cancel
-      render :action => "timeout"
+      render "browse/timeout", :layout => map_layout
     else
       raise
     end
   rescue Timeout::Error
     ActiveRecord::Base.connection.raw_connection.cancel
-    render :action => "timeout"
+    render "browse/timeout", :layout => map_layout
   end
 
   ##
