@@ -145,4 +145,8 @@ $(document).ready(function () {
 
   $("#edit_tab")
     .attr("title", I18n.t("javascripts.site.edit_disabled_tooltip"));
+
+  L.OSM.colorSchemeWatcher.enable({
+    darkFilter: "brightness(.8)"
+  });
 });

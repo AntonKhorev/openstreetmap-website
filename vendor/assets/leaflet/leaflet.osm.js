@@ -1,5 +1,59 @@
 L.OSM = {};
 
+L.OSM.colorSchemeWatcher = {
+  _watchedLayers: [],
+
+  enable: function(options) {
+    var watcher = this;
+    watcher._darkFilter = options.darkFilter || '';
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function() {
+      var prefersDarkScheme = matchMedia("(prefers-color-scheme: dark)").matches;
+      watcher._watchedLayers.forEach(function (watchedLayer) {
+        if (prefersDarkScheme) {
+          watcher._switchLayerToDarkScheme(watchedLayer);
+        } else {
+          watcher._switchLayerToLightScheme(watchedLayer);
+        }
+      });
+    });
+  },
+
+  addLayer: function (layer) {
+    this._watchedLayers.push(layer);
+    var prefersDarkScheme = matchMedia("(prefers-color-scheme: dark)").matches;
+    if (prefersDarkScheme) {
+      this._switchLayerToDarkScheme(layer);
+    }
+  },
+  removeLayer: function (layer) {
+    this._watchedLayers = this._watchedLayers.filter(function (watchedLayer) {
+      return watchedLayer !== layer;
+    });
+    this._switchLayerToLightScheme(layer);
+  },
+
+  _switchLayerToDarkScheme: function (layer) {
+    if (layer.options.darkUrl) {
+      layer.setUrl(layer.options.darkUrl);
+    } else {
+      var container = layer.getContainer();
+      if (container) {
+        container.style.setProperty('filter', this._darkFilter);
+      }
+    }
+  },
+  _switchLayerToLightScheme: function (layer) {
+    if (layer.options.darkUrl) {
+      layer.setUrl(layer.options.url);
+    } else {
+      var container = layer.getContainer();
+      if (container) {
+        layer.getContainer().style.removeProperty('filter');
+      }
+    }
+  }
+};
+
 L.OSM.TileLayer = L.TileLayer.extend({
   options: {
     url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -9,6 +63,11 @@ L.OSM.TileLayer = L.TileLayer.extend({
   initialize: function (options) {
     options = L.Util.setOptions(this, options);
     L.TileLayer.prototype.initialize.call(this, options.url);
+    this.on("add", function() {
+      L.OSM.colorSchemeWatcher.addLayer(this);
+    }).on("remove", function() {
+      L.OSM.colorSchemeWatcher.removeLayer(this);
+    });
   }
 });
 
@@ -39,6 +98,7 @@ L.OSM.CycleMap = L.OSM.TileLayer.extend({
 L.OSM.TransportMap = L.OSM.TileLayer.extend({
   options: {
     url: 'https://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}{r}.png?apikey={apikey}',
+    darkUrl: 'https://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}{r}.png?apikey={apikey}',
     maxZoom: 21,
     attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors. Tiles courtesy of <a href="http://www.thunderforest.com/" target="_blank">Andy Allan</a>'
   }
