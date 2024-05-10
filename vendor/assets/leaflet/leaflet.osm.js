@@ -23,7 +23,8 @@ L.OSM.DarkMode = L.Class.extend({
   },
 
   options: {
-    darkFilter: ''
+    darkFilter: '',
+    darkFilterMenuItems: []
   },
 
   initialize: function (options) {
@@ -31,6 +32,7 @@ L.OSM.DarkMode = L.Class.extend({
     this._darkFilter = this.options.darkFilter;
     this._enabled = false;
     this._prefersDarkQuery = matchMedia("(prefers-color-scheme: dark)");
+    this._contextMenuElements = [];
     L.OSM.DarkMode._darkModes.push(this);
   },
 
@@ -40,6 +42,7 @@ L.OSM.DarkMode = L.Class.extend({
       L.OSM.DarkMode._layers.forEach(function (layer) {
         this._enableLayerDarkVariant(layer);
       }, this);
+      this._updateContextMenuElementsVisibility();
     }
     return this;
   },
@@ -72,6 +75,32 @@ L.OSM.DarkMode = L.Class.extend({
   },
   unwatchPrefersDark: function () {
     L.DomEvent.off(this._prefersDarkQuery, 'change', this._prefersDarkListener, this);
+    return this;
+  },
+
+  // requires Leaflet.contextmenu plugin
+  manageMapContextMenu: function (map) {
+    if (this.options.darkFilterMenuItems.length > 0) {
+      var separator = map.contextmenu.addItem({
+        separator: true
+      });
+      this._contextMenuElements.push(separator);
+    }
+    this.options.darkFilterMenuItems.forEach(function (menuItem) {
+      var menuElement = map.contextmenu.addItem({
+        text: menuItem.text,
+        callback: function () {
+          this._darkFilter = menuItem.filter;
+          if (this._enabled) {
+            L.OSM.DarkMode._layers.forEach(function (layer) {
+              this._enableLayerDarkVariant(layer);
+            }, this);
+          }
+        }.bind(this)
+      })
+      this._contextMenuElements.push(menuElement);
+    }, this);
+    this._updateContextMenuElementsVisibility();
     return this;
   },
 
@@ -120,6 +149,12 @@ L.OSM.DarkMode = L.Class.extend({
     if (container) {
       layer.getContainer().style.removeProperty('filter');
     }
+  },
+
+  _updateContextMenuElementsVisibility: function () {
+    this._contextMenuElements.forEach(function (element) {
+      element.hidden = !this._enabled;
+    }, this);
   }
 });
 
