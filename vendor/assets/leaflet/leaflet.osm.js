@@ -32,7 +32,7 @@ L.OSM.DarkMode = L.Class.extend({
     this._darkFilter = this.options.darkFilter;
     this._enabled = false;
     this._prefersDarkQuery = matchMedia("(prefers-color-scheme: dark)");
-    this._contextMenuElements = [];
+    this._contextMenuUpdateHandlers = [];
     L.OSM.DarkMode._darkModes.push(this);
   },
 
@@ -42,7 +42,9 @@ L.OSM.DarkMode = L.Class.extend({
       L.OSM.DarkMode._layers.forEach(function (layer) {
         this._enableLayerDarkVariant(layer);
       }, this);
-      this._updateContextMenuElementsVisibility();
+      this._contextMenuUpdateHandlers.forEach(function (handler) {
+        handler();
+      });
     }
     return this;
   },
@@ -52,6 +54,9 @@ L.OSM.DarkMode = L.Class.extend({
       L.OSM.DarkMode._layers.forEach(function (layer) {
         this._disableLayerDarkVariant(layer);
       }, this);
+      this._contextMenuUpdateHandlers.forEach(function (handler) {
+        handler();
+      });
     }
     return this;
   },
@@ -80,18 +85,20 @@ L.OSM.DarkMode = L.Class.extend({
 
   // requires Leaflet.contextmenu plugin
   manageMapContextMenu: function (map) {
+    var contextMenuElements = [];
+
     if (this.options.darkFilterMenuItems.length > 0) {
       var separator = map.contextmenu.addItem({
         separator: true
-      });
-      this._contextMenuElements.push(separator);
+      })
+      contextMenuElements.push(separator);
     }
     this.options.darkFilterMenuItems.forEach(function (menuItem) {
       var menuElement = map.contextmenu.addItem({
         text: menuItem.text,
         callback: function () {
           this._darkFilter = menuItem.filter;
-          this._contextMenuElements.forEach(function (menuElement) {
+          contextMenuElements.forEach(function (menuElement) {
             this._updateContextMenuElement(menuElement);
           }, this);
           if (this._enabled) {
@@ -101,11 +108,29 @@ L.OSM.DarkMode = L.Class.extend({
           }
         }.bind(this)
       });
+      contextMenuElements.push(menuElement);
       this._decorateContextMenuElement(menuElement, menuItem);
       this._updateContextMenuElement(menuElement);
-      this._contextMenuElements.push(menuElement);
     }, this);
-    this._updateContextMenuElementsVisibility(); // TODO only apply to newly added elements
+
+    var updateContextMenuElements = function () { // TODO move decoration update here
+      var numberOfLayersWithApplicableFilter = 0;
+      map.eachLayer(function (layer) {
+        if (layer instanceof L.OSM.TileLayer) {
+          if (!layer.options.darkUrl) {
+            numberOfLayersWithApplicableFilter++;
+          }
+        }
+      });
+      contextMenuElements.forEach(function (menuElement) {
+        menuElement.hidden = !this._enabled || numberOfLayersWithApplicableFilter == 0;
+      }, this);
+    }.bind(this);
+    updateContextMenuElements();
+    this._contextMenuUpdateHandlers.push(updateContextMenuElements);
+    map.on("layeradd", updateContextMenuElements);
+    map.on("layerremove", updateContextMenuElements);
+
     return this;
   },
 
@@ -170,11 +195,6 @@ L.OSM.DarkMode = L.Class.extend({
     if ('filter' in menuElement.dataset) {
       menuElement.firstChild.checked = menuElement.dataset.filter === this._darkFilter;
     }
-  },
-  _updateContextMenuElementsVisibility: function () {
-    this._contextMenuElements.forEach(function (element) {
-      element.hidden = !this._enabled;
-    }, this);
   }
 });
 
