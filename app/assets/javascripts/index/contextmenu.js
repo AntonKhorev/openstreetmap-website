@@ -74,7 +74,7 @@ OSM.initializeContextMenu = function (map) {
     }
   });
 
-  L.OSM.colorSchemeWatcher.manageContextMenu(map.contextmenu);
+  L.OSM.colorSchemeWatcher.manageContextMenu(map);
 
   map.on("mousedown", function (e) {
     if (e.originalEvent.shiftKey) map.contextmenu.disable();
