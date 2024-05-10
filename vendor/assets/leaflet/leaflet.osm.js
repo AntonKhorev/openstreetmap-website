@@ -1,13 +1,18 @@
 L.OSM = {};
 
 L.OSM.colorSchemeWatcher = {
+  _managedContextMenuElements: [],
   _watchedLayers: [],
 
   enable: function(options) {
     var watcher = this;
     watcher._darkFilter = options.darkFilter || '';
+    watcher._darkFilterMenuItems = options.darkFilterMenuItems;
     matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function() {
-      var prefersDarkScheme = matchMedia("(prefers-color-scheme: dark)").matches;
+      var prefersDarkScheme = watcher._prefersDarkScheme();
+      watcher._managedContextMenuElements.forEach(function (element) {
+        element.hidden = !prefersDarkScheme;
+      });
       watcher._watchedLayers.forEach(function (watchedLayer) {
         if (prefersDarkScheme) {
           watcher._switchLayerToDarkScheme(watchedLayer);
@@ -18,10 +23,45 @@ L.OSM.colorSchemeWatcher = {
     });
   },
 
+  // requires Leaflet.contextmenu plugin
+  manageContextMenu: function (contextmenu) {
+    var watcher = this;
+    if (!watcher._darkFilterMenuItems) {
+      return;
+    }
+
+    var prefersDarkScheme = watcher._prefersDarkScheme();
+
+    var separator = contextmenu.addItem({
+      separator: true
+    });
+    watcher._managedContextMenuElements.push(separator);
+    if (!prefersDarkScheme) {
+      separator.hidden = true;
+    }
+
+    watcher._darkFilterMenuItems.forEach(function (menuItem) {
+      var menuElement = contextmenu.addItem({
+        text: menuItem.text,
+        callback: function () {
+          watcher._darkFilter = menuItem.filter;
+          if (watcher._prefersDarkScheme()) {
+            watcher._watchedLayers.forEach(function (watchedLayer) {
+              watcher._updateLayerDarkScheme(watchedLayer);
+            });
+          }
+        }
+      });
+      watcher._managedContextMenuElements.push(menuElement);
+      if (!prefersDarkScheme) {
+        menuElement.hidden = true;
+      }
+    });
+  },
+
   addLayer: function (layer) {
     this._watchedLayers.push(layer);
-    var prefersDarkScheme = matchMedia("(prefers-color-scheme: dark)").matches;
-    if (prefersDarkScheme) {
+    if (this._prefersDarkScheme()) {
       this._switchLayerToDarkScheme(layer);
     }
   },
@@ -32,24 +72,40 @@ L.OSM.colorSchemeWatcher = {
     this._switchLayerToLightScheme(layer);
   },
 
+  _prefersDarkScheme: function() {
+    return matchMedia("(prefers-color-scheme: dark)").matches;
+  },
+
   _switchLayerToDarkScheme: function (layer) {
     if (layer.options.darkUrl) {
       layer.setUrl(layer.options.darkUrl);
     } else {
-      var container = layer.getContainer();
-      if (container) {
-        container.style.setProperty('filter', this._darkFilter);
-      }
+      this._setDarkFilterForLayer(layer);
     }
   },
   _switchLayerToLightScheme: function (layer) {
     if (layer.options.darkUrl) {
       layer.setUrl(layer.options.url);
     } else {
-      var container = layer.getContainer();
-      if (container) {
-        layer.getContainer().style.removeProperty('filter');
-      }
+      this._removeDarkFilterFromLayer(layer);
+    }
+  },
+  _updateLayerDarkScheme: function (layer) {
+    if (!layer.options.darkUrl) {
+      this._setDarkFilterForLayer(layer);
+    }
+  },
+
+  _setDarkFilterForLayer: function (layer) {
+    var container = layer.getContainer();
+    if (container) {
+      container.style.setProperty('filter', this._darkFilter);
+    }
+  },
+  _removeDarkFilterFromLayer: function (layer) {
+    var container = layer.getContainer();
+    if (container) {
+      layer.getContainer().style.removeProperty('filter');
     }
   }
 };

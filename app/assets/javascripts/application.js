@@ -147,6 +147,24 @@ $(document).ready(function () {
     .attr("title", I18n.t("javascripts.site.edit_disabled_tooltip"));
 
   L.OSM.colorSchemeWatcher.enable({
-    darkFilter: "brightness(.8)"
+    darkFilter: "brightness(.8)",
+    darkFilterMenuItems: [
+      {
+        text: I18n.t("javascripts.map.filters.brightness100"),
+        filter: ""
+      },
+      {
+        text: I18n.t("javascripts.map.filters.brightness80"),
+        filter: "brightness(.8)"
+      },
+      {
+        text: I18n.t("javascripts.map.filters.brightness60"),
+        filter: "brightness(.6)"
+      },
+      {
+        text: I18n.t("javascripts.map.filters.invert"),
+        filter: "invert(.8) hue-rotate(180deg)"
+      }
+    ]
   });
 });
