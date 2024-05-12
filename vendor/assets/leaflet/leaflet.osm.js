@@ -30,6 +30,7 @@ L.OSM.DarkMode = L.Class.extend({
     L.Util.setOptions(this, options);
     this._darkFilter = this.options.darkFilter;
     this._enabled = false;
+    this._prefersDarkQuery = matchMedia("(prefers-color-scheme: dark)");
     L.OSM.DarkMode._darkModes.push(this);
   },
 
@@ -50,6 +51,36 @@ L.OSM.DarkMode = L.Class.extend({
       }, this);
     }
     return this;
+  },
+
+  enableIfPrefersDark: function () {
+    if (this._prefersDarkQuery.matches) {
+      this.enable();
+    }
+    return this;
+  },
+  disableIfPrefersDark: function () {
+    if (this._prefersDarkQuery.matches) {
+      this.disable();
+    }
+    return this;
+  },
+
+  watchPrefersDark: function () {
+    L.DomEvent.on(this._prefersDarkQuery, 'change', this._prefersDarkListener, this);
+    return this;
+  },
+  unwatchPrefersDark: function () {
+    L.DomEvent.off(this._prefersDarkQuery, 'change', this._prefersDarkListener, this);
+    return this;
+  },
+
+  _prefersDarkListener: function () {
+    if (this._prefersDarkQuery.matches) {
+      this.enable();
+    } else {
+      this.disable();
+    }
   },
 
   _addLayer: function (layer) {
