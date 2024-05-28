@@ -92,13 +92,13 @@ $(document).ready(function () {
   // See https://turbo.hotwired.dev/reference/drive#turbo.session.drive
   Turbo.session.drive = false;
 
-  var headerWidth = 0,
-      compactWidth = 0;
+  let headerWidth = 0;
+  const breakpointWidth = 768;
 
   function updateHeader() {
     var windowWidth = $(window).width();
 
-    if (windowWidth < compactWidth) {
+    if (windowWidth < breakpointWidth) {
       $("body").addClass("small-nav");
       expandSecondaryMenu();
     } else if (windowWidth < headerWidth) {
@@ -142,12 +142,6 @@ $(document).ready(function () {
   setTimeout(function () {
     $("header").children(":visible").each(function (i, e) {
       headerWidth = headerWidth + $(e).outerWidth();
-    });
-
-    collapseSecondaryMenu();
-
-    $("header").children(":visible").each(function (i, e) {
-      compactWidth = compactWidth + $(e).outerWidth();
     });
 
     $("header").removeClass("text-nowrap");
