@@ -71,7 +71,10 @@ $(document).ready(function () {
   // See https://turbo.hotwired.dev/reference/drive#turbo.session.drive
   Turbo.session.drive = false;
 
-  var headerWidth = 0,
+  var $expandedSecondaryMenu = $("header nav.secondary > ul"),
+      $collapsedSecondaryMenu = $("#compact-secondary-nav > ul"),
+      secondaryMenuItems = [],
+      moreItemWidth = 0,
       breakpointWidth = 768;
 
   function updateHeader() {
@@ -79,18 +82,38 @@ $(document).ready(function () {
 
     if (windowWidth < breakpointWidth) {
       $("body").addClass("small-nav");
-      expandSecondaryMenu();
-    } else if (windowWidth < headerWidth) {
-      $("body").removeClass("small-nav");
-      collapseSecondaryMenu();
+      expandAllSecondaryMenuItems();
     } else {
       $("body").removeClass("small-nav");
-      expandSecondaryMenu();
+      var availableWidth = $expandedSecondaryMenu.width();
+      secondaryMenuItems.forEach(function (item) {
+        $(item[0]).remove();
+      });
+      var runningWidth = 0;
+      var i = 0;
+      for (; i < secondaryMenuItems.length; i++) {
+        runningWidth += secondaryMenuItems[i][1];
+        if (i < secondaryMenuItems.length - 1) {
+          if (runningWidth + moreItemWidth > availableWidth) break;
+        } else {
+          if (runningWidth > availableWidth) break;
+        }
+        expandSecondaryMenuItem($(secondaryMenuItems[i][0]));
+      }
+      for (; i < secondaryMenuItems.length; i++) {
+        collapseSecondaryMenuItem($(secondaryMenuItems[i][0]));
+      }
     }
   }
 
-  function expandSecondaryMenu() {
-    $("#compact-secondary-nav > ul").find("li")
+  function expandAllSecondaryMenuItems() {
+    secondaryMenuItems.forEach(function (item) {
+      expandSecondaryMenuItem($(item[0]));
+    });
+  }
+
+  function expandSecondaryMenuItem($item) {
+    $item
       .addClass("nav-item")
       .children("a")
         .removeClass("dropdown-item")
@@ -99,19 +122,25 @@ $(document).ready(function () {
           return $(this).hasClass("active") ? "text-secondary-emphasis" : "text-secondary"
         })
       .end()
-      .prependTo("header nav.secondary > ul");
-    $("#compact-secondary-nav").hide();
+      .insertBefore("#compact-secondary-nav");
+    toggleCompactSecondaryNav();
   }
 
-  function collapseSecondaryMenu() {
-    $("header nav.secondary > ul").find("li:not(#compact-secondary-nav)")
+  function collapseSecondaryMenuItem($item) {
+    $item
       .removeClass("nav-item")
       .children("a")
         .addClass("dropdown-item")
         .removeClass("nav-link text-secondary text-secondary-emphasis")
       .end()
-      .prependTo("#compact-secondary-nav > ul");
-    $("#compact-secondary-nav").show();
+      .appendTo($collapsedSecondaryMenu);
+    toggleCompactSecondaryNav();
+  }
+
+  function toggleCompactSecondaryNav() {
+    $("#compact-secondary-nav").toggle(
+      $collapsedSecondaryMenu.find("li").length > 0
+    );
   }
 
   /*
@@ -121,9 +150,10 @@ $(document).ready(function () {
    * to defer the measurement slightly as a workaround.
    */
   setTimeout(function () {
-    $("header").children(":visible").each(function (i, e) {
-      headerWidth = headerWidth + $(e).outerWidth();
+    $expandedSecondaryMenu.find("li:not(#compact-secondary-nav)").each(function () {
+      secondaryMenuItems.push([this, $(this).width()]);
     });
+    moreItemWidth = $("#compact-secondary-nav").width();
 
     $("header").removeClass("text-nowrap");
     $("header nav.secondary > ul").removeClass("flex-nowrap");
