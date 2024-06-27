@@ -30,7 +30,7 @@ class Ability
 
     if user&.active?
       can :welcome, :site
-      can :read, :deletion
+      can :read, [:deletion, :account_home]
 
       if Settings.status != "database_offline"
         can [:subscribe, :unsubscribe], Changeset
