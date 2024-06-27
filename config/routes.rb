@@ -280,7 +280,10 @@ OpenStreetMap::Application.routes.draw do
   post "/user/:display_name/set_status" => "users#set_status", :as => :set_status_user
 
   resource :account, :only => [:edit, :update, :destroy] do
-    resource :deletion, :module => :accounts, :only => :show
+    scope :module => :accounts do
+      resource :deletion, :only => :show
+      resource :home, :only => :show
+    end
   end
 
   resource :dashboard, :only => [:show]
