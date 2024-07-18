@@ -77,17 +77,17 @@
 
 <%= render "any_questions" %>
 
-<div class='text-center mb-3'>
-<% if params[:oauth_return_url] %>
-  <a class="btn btn-primary" href="<%= params[:oauth_return_url] %>"><%= t ".continue_authorization" %></a>
-<% else %>
-  <a class="btn btn-primary start-mapping" href="<%= edit_path %>"><%= t ".start_mapping" %></a>
-<% end %>
-</div>
-
-<div class='alert alert-primary'>
+<div class='alert alert-primary mb-5'>
   <h2><%= t ".add_a_note.title" %></h2>
   <p><%= t ".add_a_note.para_1" %></p>
   <p><%= t ".add_a_note.para_2_html", :map_link => link_to(t(".add_a_note.the_map"), root_path),
                                       :note_icon => tag.span(:class => "icon note bg-dark rounded-1") %></p>
+</div>
+
+<div class='d-flex justify-content-center align-items-center mw-100 fixed-bottom bg-white py-2 border-top'>
+  <% if params[:oauth_return_url] %>
+    <a class="btn btn-primary d-block d-sm-inline-block" href="<%= params[:oauth_return_url] %>"><%= t ".continue_authorization" %></a>
+  <% else %>
+    <a class="btn btn-primary start-mapping d-block d-sm-inline-block" href="<%= edit_path %>"><%= t ".start_mapping" %></a>
+  <% end %>
 </div>
