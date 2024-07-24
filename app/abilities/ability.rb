@@ -59,9 +59,10 @@ class Ability
           can [:index, :show, :resolve, :ignore, :reopen], Issue
           can :create, IssueComment
           can [:new, :create, :edit, :update, :destroy], Redaction
-          can [:new, :create, :revoke, :revoke_all], UserBlock
+          can [:new, :create, :revoke_all], UserBlock
           can :update, UserBlock, :creator => user
           can :update, UserBlock, :revoker => user
+          can :revoke, UserBlock, :active? => true
         end
 
         if user.administrator?
