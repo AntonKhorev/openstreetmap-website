@@ -47,6 +47,8 @@ $(document).ready(function () {
     }
   });
 
+  $(".richtext_container li.nav-item:has(button[data-bs-target$='_help'])").addClass("d-block d-sm-none");
+
   var updateHelp = function () {
     $(".richtext_container .richtext_help_sidebar:not(:visible):not(:empty)").each(function () {
       var container = $(this).closest(".richtext_container");
