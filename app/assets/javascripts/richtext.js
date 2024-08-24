@@ -4,11 +4,11 @@ $(document).ready(function () {
    * the associated preview pne so that it will be regenerated when
    * the user next switches to it.
    */
-  $(".richtext_container textarea").change(function () {
+  $(document).on("change", ".richtext_container textarea", function () {
     var container = $(this).closest(".richtext_container");
 
     container.find(".tab-pane[id$='_preview']").empty();
-  }).on("invalid", function () {
+  }).on("invalid", ".richtext_container textarea", function () {
     var container = $(this).closest(".richtext_container");
 
     container.find("button[data-bs-target$='_edit']").tab("show");
@@ -18,7 +18,7 @@ $(document).ready(function () {
    * Install a handler to set the minimum preview pane height
    * when switching away from an edit pane
    */
-  $(".richtext_container button[data-bs-target$='_edit']").on("hide.bs.tab", function () {
+  $(document).on("hide.bs.tab", ".richtext_container button[data-bs-target$='_edit']", function () {
     var container = $(this).closest(".richtext_container");
     var editor = container.find("textarea");
     var preview = container.find(".tab-pane[id$='_preview']");
@@ -30,7 +30,7 @@ $(document).ready(function () {
   /*
    * Install a handler to switch to preview mode
    */
-  $(".richtext_container button[data-bs-target$='_preview']").on("show.bs.tab", function () {
+  $(document).on("show.bs.tab", ".richtext_container button[data-bs-target$='_preview']", function () {
     var container = $(this).closest(".richtext_container");
     var editor = container.find("textarea");
     var preview = container.find(".tab-pane[id$='_preview']");
