@@ -11,33 +11,6 @@ module GPX
       @maximum_points = options[:maximum_points] || Float::INFINITY
     end
 
-    def parse_file(reader)
-      point = nil
-
-      while reader.read
-        case reader.node_type
-        when XML::Reader::TYPE_ELEMENT
-          if reader.name == "trkpt"
-            point = TrkPt.new(@tracksegs, reader["lat"].to_f, reader["lon"].to_f)
-            @possible_points += 1
-            raise FileTooBigError if @possible_points > @maximum_points
-          elsif reader.name == "ele" && point
-            point.altitude = reader.read_string.to_f
-          elsif reader.name == "time" && point
-            point.timestamp = Time.parse(reader.read_string).utc
-          end
-        when XML::Reader::TYPE_END_ELEMENT
-          if reader.name == "trkpt" && point && point.valid?
-            point.altitude ||= 0
-            yield point
-            @actual_points += 1
-          elsif reader.name == "trkseg"
-            @tracksegs += 1
-          end
-        end
-      end
-    end
-
     def points(&block)
       return enum_for(:points) unless block
 
@@ -164,6 +137,35 @@ module GPX
       end
 
       StringIO.new(image.gif)
+    end
+
+    private
+
+    def parse_file(reader)
+      point = nil
+
+      while reader.read
+        case reader.node_type
+        when XML::Reader::TYPE_ELEMENT
+          if reader.name == "trkpt"
+            point = TrkPt.new(@tracksegs, reader["lat"].to_f, reader["lon"].to_f)
+            @possible_points += 1
+            raise FileTooBigError if @possible_points > @maximum_points
+          elsif reader.name == "ele" && point
+            point.altitude = reader.read_string.to_f
+          elsif reader.name == "time" && point
+            point.timestamp = Time.parse(reader.read_string).utc
+          end
+        when XML::Reader::TYPE_END_ELEMENT
+          if reader.name == "trkpt" && point && point.valid?
+            point.altitude ||= 0
+            yield point
+            @actual_points += 1
+          elsif reader.name == "trkseg"
+            @tracksegs += 1
+          end
+        end
+      end
     end
   end
 
