@@ -9,16 +9,15 @@ module GPX
     def initialize(file, options = {})
       @file = file
       @maximum_points = options[:maximum_points] || Float::INFINITY
-    end
-
-    def points(&block)
-      return enum_for(:points) unless block
-
       @possible_points = 0
       @actual_points = 0
       @tracksegs = 0
       @lats = []
       @lons = []
+    end
+
+    def points(&block)
+      return enum_for(:points) unless block
 
       begin
         Archive::Reader.open_filename(@file).each_entry_with_data do |entry, data|
