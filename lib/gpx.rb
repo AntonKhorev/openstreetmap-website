@@ -36,13 +36,13 @@ module GPX
       end
     end
 
-    def picture(min_lat, min_lon, max_lat, max_lon, num_points)
+    def picture(min_lat, min_lon, max_lat, max_lon)
       nframes = 10
       width = 250
       height = 250
       delay = 50
 
-      points_per_frame = (num_points.to_f / nframes).ceil
+      points_per_frame = (@actual_points.to_f / nframes).ceil
 
       proj = OSM::Mercator.new(min_lat, min_lon, max_lat, max_lon, width, height)
 
