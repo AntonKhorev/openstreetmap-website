@@ -6,8 +6,7 @@ module GPX
 
     attr_reader :possible_points, :actual_points, :tracksegs
 
-    def initialize(file, options = {})
-      @file = file
+    def initialize(options = {})
       @maximum_points = options[:maximum_points] || Float::INFINITY
       @possible_points = 0
       @actual_points = 0
@@ -16,19 +15,19 @@ module GPX
       @lons = []
     end
 
-    def points(&block)
-      return enum_for(:points) unless block
+    def read(file, &block)
+      return enum_for(:read, file) unless block
 
       begin
-        Archive::Reader.open_filename(@file).each_entry_with_data do |entry, data|
+        Archive::Reader.open_filename(file).each_entry_with_data do |entry, data|
           parse_file(XML::Reader.string(data), &block) if entry.regular?
         end
       rescue Archive::Error
-        io = ::File.open(@file)
+        io = ::File.open(file)
 
         case Marcel::MimeType.for(io)
-        when "application/gzip" then io = Zlib::GzipReader.open(@file)
-        when "application/x-bzip" then io = Bzip2::FFI::Reader.open(@file)
+        when "application/gzip" then io = Zlib::GzipReader.open(file)
+        when "application/x-bzip" then io = Bzip2::FFI::Reader.open(file)
         end
 
         parse_file(XML::Reader.io(io, :options => XML::Parser::Options::NOERROR), &block)

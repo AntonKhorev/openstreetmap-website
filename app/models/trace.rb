@@ -203,7 +203,7 @@ class Trace < ApplicationRecord
     logger.info("GPX Import importing #{name} (#{id}) from #{user.email}")
 
     file.open do |file|
-      gpx = GPX::File.new(file.path, :maximum_points => Settings.max_trace_size)
+      gpx = GPX::File.new(:maximum_points => Settings.max_trace_size)
 
       f_lat = 0
       f_lon = 0
@@ -212,7 +212,7 @@ class Trace < ApplicationRecord
       # If there are any existing points for this trace then delete them
       Tracepoint.where(:trace => id).delete_all
 
-      gpx.points.each_slice(1_000) do |points|
+      gpx.read(file.path).each_slice(1_000) do |points|
         # Gather the trace points together for a bulk import
         tracepoints = []
 
