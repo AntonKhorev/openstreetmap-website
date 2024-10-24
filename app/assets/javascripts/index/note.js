@@ -36,12 +36,37 @@ OSM.Note = function (map) {
   };
 
   function initialize(path, id, callback) {
-    content.find("button[type=submit]").on("click", function (e) {
+    content.find("button.btn[type=button]").on("click", function (e) {
       e.preventDefault();
       var data = $(e.target).data();
       var form = e.target.form;
 
-      $(form).find("button[type=submit]").prop("disabled", true);
+      content.find("button.btn[type=button]").prop("disabled", true);
+      $(form).find("button.btn[type=submit]").prop("disabled", true);
+
+      $.ajax({
+        url: data.url,
+        type: data.method,
+        oauth: true,
+        success: function () {
+          OSM.loadSidebarContent(path, function () {
+            initialize(path, id, moveToNote);
+          });
+        },
+        error: function () {
+          content.find("button.btn[type=button]").prop("disabled", false);
+          updateButtons(form);
+        }
+      });
+    });
+
+    content.find("button.btn[type=submit]").on("click", function (e) {
+      e.preventDefault();
+      var data = $(e.target).data();
+      var form = e.target.form;
+
+      content.find("button.btn[type=button]").prop("disabled", true);
+      $(form).find("button.btn[type=submit]").prop("disabled", true);
 
       $.ajax({
         url: data.url,
@@ -57,6 +82,7 @@ OSM.Note = function (map) {
           $(form).find("#comment-error")
             .text(xhr.responseText)
             .prop("hidden", false);
+          content.find("button.btn[type=button]").prop("disabled", false);
           updateButtons(form);
         }
       });
@@ -83,7 +109,7 @@ OSM.Note = function (map) {
   }
 
   function updateButtons(form) {
-    $(form).find("button[type=submit]").prop("disabled", false);
+    $(form).find("button.btn[type=submit]").prop("disabled", false);
     if ($(form.text).val() === "") {
       $(form.close).text($(form.close).data("defaultActionText"));
       $(form.comment).prop("disabled", true);
