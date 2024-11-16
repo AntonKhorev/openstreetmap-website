@@ -21,7 +21,11 @@ class PreferencesController < ApplicationController
                                     else
                                       params[:user][:preferred_editor]
                                     end
-    if current_user.save
+
+    pref = current_user.preferences.find_or_create_by(:k => "site.color_scheme")
+    pref.v = params[:color_scheme]
+
+    if current_user.save && pref.save
       # Use a partial so that it is rendered during the next page load in the correct language.
       flash[:notice] = { :partial => "preferences/update_success_flash" }
       redirect_to preferences_path

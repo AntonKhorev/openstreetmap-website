@@ -51,4 +51,26 @@ class PreferencesControllerTest < ActionDispatch::IntegrationTest
     assert_select ".alert-success", /^Preferences updated/
     assert_select "dd", "Default (currently iD)"
   end
+
+  def test_update_preferred_color_scheme
+    user = create(:user, :languages => [])
+    session_for(user)
+    assert_nil user.preferences.find_by(:k => "site.color_scheme")
+
+    # Changing when previously not defined
+    put preferences_path, :params => { :user => user.attributes, :color_scheme => "light" }
+    assert_redirected_to preferences_path
+    follow_redirect!
+    assert_template :show
+    assert_select ".alert-success", /^Preferences updated/
+    assert_equal "light", user.preferences.find_by(:k => "site.color_scheme")&.v
+
+    # Changing when previously defined
+    put preferences_path, :params => { :user => user.attributes, :color_scheme => "auto" }
+    assert_redirected_to preferences_path
+    follow_redirect!
+    assert_template :show
+    assert_select ".alert-success", /^Preferences updated/
+    assert_equal "auto", user.preferences.find_by(:k => "site.color_scheme")&.v
+  end
 end
