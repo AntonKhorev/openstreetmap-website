@@ -23,7 +23,7 @@ class PreferencesController < ApplicationController
                                     end
 
     pref = current_user.preferences.find_or_create_by(:k => "site.color_scheme")
-    pref.v = params[:color_scheme]
+    pref.v = params[:color_scheme] if params[:color_scheme]
 
     if current_user.save && pref.save
       # Use a partial so that it is rendered during the next page load in the correct language.
