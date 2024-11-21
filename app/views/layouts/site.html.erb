@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>" dir="<%= dir %>">
   <%= render :partial => "layouts/head" %>
-  <body class="<%= body_class %>">
+  <body class="<%= body_class %>" data-map-layer="mapnik">
     <%= render :partial => "layouts/header" %>
     <%= render :partial => "layouts/content" %>
     <% if defined?(Settings.matomo) -%>
