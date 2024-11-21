@@ -502,9 +502,21 @@ body.small-nav {
 }
 
 @include color-mode(dark) {
+  [data-map-layer="cyclosm"],
+  [data-map-layer="cyclemap"],
+  [data-map-layer="tracestracktopo"] {
+    --map-layer-filter: brightness(.8);
+  }
+
+  [data-map-layer="mapnik"],
+  [data-map-layer="transportmap"],
+  [data-map-layer="hot"] {
+    --map-layer-filter: invert(.9) hue-rotate(180deg);
+  }
+
   .leaflet-tile-container .leaflet-tile,
   .mapkey-table-entry td:first-child > * {
-    filter: brightness(.8);
+    filter: var(--map-layer-filter);
   }
 
   .leaflet-container .leaflet-control-attribution a {
