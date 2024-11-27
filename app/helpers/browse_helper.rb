@@ -19,7 +19,7 @@ module BrowseHelper
 
     image_tag "browse/#{icon_data[:filename]}",
               :size => 20,
-              :class => ["align-bottom object-fit-none", { "browse-icon-invertible" => icon_data[:invert] }],
+              :class => ["align-bottom object-fit-none browse-icon", { "browse-icon-invertible" => icon_data[:invert] }],
               :title => title
   end
 
@@ -32,7 +32,7 @@ module BrowseHelper
   end
 
   def element_list_item(type, object, &)
-    tag.li(tag.div(element_icon(type, object) + tag.div(&), :class => "d-flex gap-1"))
+    tag.li(tag.div(element_icon(type, object) + tag.div(:class => "align-self-center", &), :class => "d-flex gap-1"))
   end
 
   def element_list_item_with_strikethrough(type, object, &)
