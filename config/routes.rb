@@ -88,12 +88,11 @@ OpenStreetMap::Application.routes.draw do
     post "/user/messages/:id" => "messages#update", :as => :api_message_update
 
     post "gpx/create" => "traces#create"
-    delete "gpx/:id" => "traces#destroy", :id => /\d+/
     get "gpx/:id/data" => "traces#data", :as => :api_trace_data
   end
 
   namespace :api, :path => "api/0.6" do
-    resources :traces, :path => "gpx", :only => [:show, :update], :id => /\d+/ do
+    resources :traces, :path => "gpx", :only => [:show, :update, :destroy], :id => /\d+/ do
       resource :details, :module => :traces, :only => :show
     end
 
