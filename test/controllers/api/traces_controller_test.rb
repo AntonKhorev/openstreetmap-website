@@ -21,10 +21,6 @@ module Api
         { :path => "/api/0.6/gpx/1", :method => :delete },
         { :controller => "api/traces", :action => "destroy", :id => "1" }
       )
-      assert_recognizes(
-        { :controller => "api/traces", :action => "show", :id => "1" },
-        { :path => "/api/0.6/gpx/1/details", :method => :get }
-      )
       assert_routing(
         { :path => "/api/0.6/gpx/1/data", :method => :get },
         { :controller => "api/traces", :action => "data", :id => "1" }
