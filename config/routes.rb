@@ -92,9 +92,13 @@ OpenStreetMap::Application.routes.draw do
   end
 
   namespace :api, :path => "api/0.6" do
+    resource :trace, :only => [] do
+      put :create, :as => :create
+    end
     resources :traces, :path => "gpx", :only => [:show, :update, :destroy], :id => /\d+/ do
       resource :details, :module => :traces, :only => :show
     end
+    # resource :create_trace, :path => "gpx/create", :controller => "traces/creates", :only => :create
 
     # Map notes API
     resources :notes, :except => [:new, :edit, :update], :id => /\d+/, :controller => "notes" do
