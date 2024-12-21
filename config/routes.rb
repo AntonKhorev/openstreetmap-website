@@ -66,8 +66,6 @@ OpenStreetMap::Application.routes.draw do
     get "map" => "map#index"
 
     get "trackpoints" => "tracepoints#index"
-
-    get "user/gpx_files" => "users#gpx_files"
   end
 
   namespace :api, :path => "api/0.6" do
@@ -75,6 +73,7 @@ OpenStreetMap::Application.routes.draw do
     resources :users, :path => "user", :id => /\d+/, :only => :show
     scope :module => :users do
       resource :user_details, :path => "user/details", :controller => :details, :only => :show
+      resources :user_traces, :path => "user/gpx_files", :controller => :traces, :only => :index
     end
 
     resources :user_preferences, :except => [:new, :create, :edit], :param => :preference_key, :path => "user/preferences" do
