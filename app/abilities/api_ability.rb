@@ -28,7 +28,7 @@ class ApiAbility
         can :read, Trace if scope?(token, :read_gpx)
         can [:create, :update, :destroy], Trace if scope?(token, :write_gpx)
 
-        can :details, User if scope?(token, :read_prefs)
+        can :read, :user_details if scope?(token, :read_prefs)
         can :gpx_files, User if scope?(token, :read_gpx)
 
         can :read, UserPreference if scope?(token, :read_prefs)
