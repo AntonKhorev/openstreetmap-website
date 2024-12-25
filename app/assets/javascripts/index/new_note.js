@@ -77,12 +77,6 @@ OSM.NewNote = function (map) {
     marker.addTo(noteLayer);
   }
 
-  page.pushstate = page.popstate = function (path) {
-    OSM.loadSidebarContent(path, function () {
-      page.load(path);
-    });
-  };
-
   function newHalo(loc, a) {
     var hasHalo = halo && map.hasLayer(halo);
 
@@ -101,6 +95,12 @@ OSM.NewNote = function (map) {
       map.addLayer(halo);
     }
   }
+
+  page.pushstate = page.popstate = function (path) {
+    OSM.loadSidebarContent(path, function () {
+      page.load(path);
+    });
+  };
 
   page.load = function (path) {
     if (addNoteButton.hasClass("disabled")) return;
