@@ -60,7 +60,6 @@ OSM.NewNote = function (map) {
     function noteCreated(feature) {
       content.find("textarea").val("");
       addCreatedNoteMarker(feature);
-      addNoteButton.removeClass("active");
       OSM.router.route("/note/" + feature.properties.id);
     }
   }
@@ -110,9 +109,7 @@ OSM.NewNote = function (map) {
     newNoteMarker.addTo(map);
     addHalo(newNoteMarker.getLatLng());
 
-    newNoteMarker.on("remove", function () {
-      addNoteButton.removeClass("active");
-    }).on("dragend", function () {
+    newNoteMarker.on("dragend", function () {
       content.find("textarea").focus();
     });
   }
