@@ -35,11 +35,13 @@ OSM.NewNote = function (map) {
     OSM.router.route("/note/new");
   });
 
-  function createNote(marker, form, url) {
-    var location = marker.getLatLng().wrap();
+  function createNote(form, url) {
+    if (!newNoteMarker) return;
 
-    marker.options.draggable = false;
-    marker.dragging.disable();
+    var location = newNoteMarker.getLatLng().wrap();
+
+    newNoteMarker.options.draggable = false;
+    newNoteMarker.dragging.disable();
 
     $(form).find("input[type=submit]").prop("disabled", true);
 
@@ -52,16 +54,14 @@ OSM.NewNote = function (map) {
         lon: location.lng,
         text: $(form.text).val()
       },
-      success: function (feature) {
-        noteCreated(feature, marker);
-      }
+      success: noteCreated
     });
 
-    function noteCreated(feature, marker) {
+    function noteCreated(feature) {
       content.find("textarea").val("");
       updateMarker(feature);
+      noteLayer.removeLayer(newNoteMarker);
       newNoteMarker = null;
-      noteLayer.removeLayer(marker);
       addNoteButton.removeClass("active");
       OSM.router.route("/note/" + feature.properties.id);
     }
@@ -153,7 +153,7 @@ OSM.NewNote = function (map) {
 
     content.find("input[type=submit]").on("click", function (e) {
       e.preventDefault();
-      createNote(newNoteMarker, e.target.form, "/api/0.6/notes.json");
+      createNote(e.target.form, "/api/0.6/notes.json");
     });
 
     return map.getState();
