@@ -59,7 +59,7 @@ OSM.NewNote = function (map) {
 
     function noteCreated(feature) {
       content.find("textarea").val("");
-      updateMarker(feature);
+      addCreatedNoteMarker(feature);
       noteLayer.removeLayer(newNoteMarker);
       newNoteMarker = null;
       addNoteButton.removeClass("active");
@@ -67,7 +67,7 @@ OSM.NewNote = function (map) {
     }
   }
 
-  function updateMarker(feature) {
+  function addCreatedNoteMarker(feature) {
     var marker = L.marker(feature.geometry.coordinates.reverse(), {
       icon: noteIcons[feature.properties.status],
       opacity: 0.9,
