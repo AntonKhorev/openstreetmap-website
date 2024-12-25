@@ -60,7 +60,6 @@ OSM.NewNote = function (map) {
     function noteCreated(feature) {
       content.find("textarea").val("");
       addCreatedNoteMarker(feature);
-      removeNewNoteMarker();
       addNoteButton.removeClass("active");
       OSM.router.route("/note/" + feature.properties.id);
     }
