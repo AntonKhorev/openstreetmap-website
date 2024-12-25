@@ -121,7 +121,7 @@ OSM.NewNote = function (map) {
   }
 
   function updateControls() {
-    const zoomedOut = map.getZoom() < 12;
+    const zoomedOut = map.getZoom() < addNoteButton.data("minZoom");
     const withoutText = content.find("textarea").val() === "";
 
     content.find("#new-note-zoom-warning").prop("hidden", !zoomedOut);
