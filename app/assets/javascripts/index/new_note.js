@@ -120,6 +120,14 @@ OSM.NewNote = function (map) {
     newNoteMarker = null;
   }
 
+  function updateControls() {
+    const zoomedOut = addNoteButton.hasClass("disabled");
+    const withoutText = content.find("textarea").val() === "";
+
+    content.find("#new-note-zoom-warning").prop("hidden", !zoomedOut);
+    content.find("input[type=submit]").prop("disabled", zoomedOut || withoutText);
+  }
+
   page.pushstate = page.popstate = function (path) {
     OSM.loadSidebarContent(path, function () {
       page.load(path);
@@ -127,9 +135,6 @@ OSM.NewNote = function (map) {
   };
 
   page.load = function (path) {
-    if (addNoteButton.hasClass("disabled")) return;
-    if (addNoteButton.hasClass("active")) return;
-
     addNoteButton.addClass("active");
 
     map.addLayer(noteLayer);
@@ -150,22 +155,22 @@ OSM.NewNote = function (map) {
     addNewNoteMarker(markerLatlng);
 
     content.find("textarea")
-      .on("input", disableWhenBlank)
+      .on("input", updateControls)
       .focus();
-
-    function disableWhenBlank(e) {
-      $(e.target.form.add).prop("disabled", $(e.target).val() === "");
-    }
 
     content.find("input[type=submit]").on("click", function (e) {
       e.preventDefault();
       createNote(e.target.form, "/api/0.6/notes.json");
     });
 
+    addNoteButton.on("disabled enabled", updateControls);
+    updateControls();
+
     return map.getState();
   };
 
   page.unload = function () {
+    addNoteButton.off("disabled enabled", updateControls);
     removeNewNoteMarker();
     addNoteButton.removeClass("active");
   };
