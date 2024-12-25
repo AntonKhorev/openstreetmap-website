@@ -24,4 +24,25 @@ class CreateNoteTest < ApplicationSystemTestCase
       end
     end
   end
+
+  test "can open new note page when zoomed out" do
+    visit new_note_path(:anchor => "map=11/0/0")
+
+    within_sidebar do
+      assert_content "Zoom in to add a note"
+      assert_button "Add Note", :disabled => true
+
+      fill_in "text", :with => "Some newly added note description"
+
+      assert_content "Zoom in to add a note"
+      assert_button "Add Note", :disabled => true
+    end
+
+    find(".control-button.zoomin").click
+
+    within_sidebar do
+      assert_no_content "Zoom in to add a note"
+      assert_button "Add Note", :disabled => false
+    end
+  end
 end
