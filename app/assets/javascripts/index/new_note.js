@@ -120,6 +120,12 @@ OSM.NewNote = function (map) {
     newNoteMarker = null;
   }
 
+  function moveNewNotMarkerToClick(e) {
+    if (newNoteMarker) newNoteMarker.setLatLng(e.latlng);
+    if (halo) halo.setLatLng(e.latlng);
+    content.find("textarea").focus();
+  }
+
   function updateControls() {
     const zoomedOut = addNoteButton.hasClass("disabled");
     const withoutText = content.find("textarea").val() === "";
@@ -164,6 +170,7 @@ OSM.NewNote = function (map) {
       createNote(e.target.form, "/api/0.6/notes.json");
     });
 
+    map.on("click", moveNewNotMarkerToClick);
     addNoteButton.on("disabled enabled", updateControls);
     updateControls();
 
@@ -171,6 +178,7 @@ OSM.NewNote = function (map) {
   };
 
   page.unload = function () {
+    map.off("click", moveNewNotMarkerToClick);
     addNoteButton.off("disabled enabled", updateControls);
     removeNewNoteMarker();
     addNoteButton.removeClass("active");
