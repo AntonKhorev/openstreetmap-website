@@ -173,7 +173,7 @@ $(document).ready(function () {
   var expiry = new Date();
   expiry.setYear(expiry.getFullYear() + 10);
 
-  map.on("moveend layeradd layerremove", function () {
+  map.on("moveend baselayerchange overlaylayerchange", function () {
     updateLinks(
       map.getCenter().wrap(),
       map.getZoom(),

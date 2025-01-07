@@ -25,18 +25,14 @@ OSM.initializeDataLayer = function (map) {
     onSelect(e.layer);
   });
 
-  map.on("layeradd", function (e) {
-    if (e.layer === dataLayer) {
-      map.on("moveend", updateData);
-      updateData();
-    }
+  dataLayer.on("add", function () {
+    map.on("moveend", updateData);
+    updateData();
   });
 
-  map.on("layerremove", function (e) {
-    if (e.layer === dataLayer) {
-      map.off("moveend", updateData);
-      $("#browse_status").empty();
-    }
+  dataLayer.on("remove", function () {
+    map.off("moveend", updateData);
+    $("#browse_status").empty();
   });
 
   function updateData() {
