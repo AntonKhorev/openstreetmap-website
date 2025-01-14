@@ -295,6 +295,7 @@ L.OSM.Map = L.Map.extend({
       }
 
       if (callback) callback(this._objectLayer.getBounds());
+      this.fire("overlaylayerchange", { layer: this._objectLayer });
     } else { // element handled by L.OSM.DataLayer
       var map = this;
       this._objectLoader = $.ajax({
@@ -326,6 +327,7 @@ L.OSM.Map = L.Map.extend({
           map._objectLayer.addTo(map);
 
           if (callback) callback(map._objectLayer.getBounds());
+          map.fire("overlaylayerchange", { layer: map._objectLayer });
         }
       });
     }
@@ -335,6 +337,7 @@ L.OSM.Map = L.Map.extend({
     this._object = null;
     if (this._objectLoader) this._objectLoader.abort();
     if (this._objectLayer) this.removeLayer(this._objectLayer);
+    this.fire("overlaylayerchange", { layer: this._objectLayer });
   },
 
   getState: function () {
