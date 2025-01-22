@@ -511,6 +511,7 @@ en:
       closed_ago_by_html: "Closed %{time_ago} by %{user}"
       discussion: Discussion
       join_discussion: "Log in to join the discussion"
+      comments_restricted: "Viewing changeset comments is restricted"
       still_open: "Changeset still open - discussion will open once the changeset is closed."
       subscribe: "Subscribe"
       unsubscribe: "Unsubscribe"

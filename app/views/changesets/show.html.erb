@@ -74,7 +74,11 @@
   <% end %>
 
   <% if current_user %>
-    <% unless @changeset.open? %>
+    <% if !can?(:show, ChangesetComment) %>
+      <p class="alert alert-warning">
+        <%= t(".comments_restricted") %>
+      </p>
+    <% elsif !@changeset.open? %>
       <form action="#" class="mb-3">
         <div class="mb-3">
           <textarea class="form-control" name="text" cols="40" rows="5"></textarea>
