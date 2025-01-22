@@ -87,11 +87,13 @@ class ChangesetsController < ApplicationController
       @relation_pages, @relations = paginate(:old_relations, :conditions => { :changeset_id => @changeset.id }, :order => [:relation_id, :version], :per_page => 20, :parameter => "relation_page")
       render :partial => "elements", :locals => { :type => "relation", :elements => @relations, :pages => @relation_pages }
     else
-      @comments = if current_user&.moderator?
-                    @changeset.comments.unscope(:where => :visible).includes(:author)
-                  else
-                    @changeset.comments.includes(:author)
-                  end
+      if can? :show, ChangesetComment
+        @comments = if current_user&.moderator?
+                      @changeset.comments.unscope(:where => :visible).includes(:author)
+                    else
+                      @changeset.comments.includes(:author)
+                    end
+      end
       @node_pages, @nodes = paginate(:old_nodes, :conditions => { :changeset_id => @changeset.id }, :order => [:node_id, :version], :per_page => 20, :parameter => "node_page")
       @way_pages, @ways = paginate(:old_ways, :conditions => { :changeset_id => @changeset.id }, :order => [:way_id, :version], :per_page => 20, :parameter => "way_page")
       @relation_pages, @relations = paginate(:old_relations, :conditions => { :changeset_id => @changeset.id }, :order => [:relation_id, :version], :per_page => 20, :parameter => "relation_page")
