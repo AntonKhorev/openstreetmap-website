@@ -86,5 +86,8 @@ Config.setup do |config|
     required(:trace_file_storage).filled(:str?)
     required(:trace_image_storage).filled(:str?)
     required(:trace_icon_storage).filled(:str?)
+    required(:data_restrictions).array(:hash) do
+      required(:type).value(:included_in? => [:hide_changeset_comments])
+    end
   end
 end
