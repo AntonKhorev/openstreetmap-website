@@ -297,6 +297,28 @@ class ChangesetsControllerTest < ActionDispatch::IntegrationTest
     changeset = create(:changeset, :closed)
 
     sidebar_browse_check :changeset_path, changeset.id, "changesets/show"
+    assert_dom "textarea", :count => 0
+    assert_dom "button[name='comment']", :count => 0
+  end
+
+  def test_show_closed_changeset_controls_when_logged_in
+    changeset = create(:changeset, :closed)
+    session_for(create(:user))
+
+    sidebar_browse_check :changeset_path, changeset.id, "changesets/show"
+    assert_dom "textarea"
+    assert_dom "button[name='comment']"
+  end
+
+  def test_show_controls_when_logged_in_with_restricted_changeset_comments
+    changeset = create(:changeset, :closed)
+    session_for(create(:user))
+
+    with_settings(:data_restrictions => [{ :type => :hide_changeset_comments }]) do
+      sidebar_browse_check :changeset_path, changeset.id, "changesets/show"
+      assert_dom "textarea", :count => 0
+      assert_dom "button[name='comment']", :count => 0
+    end
   end
 
   def test_show_private_changeset
