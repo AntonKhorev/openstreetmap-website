@@ -129,6 +129,8 @@ default_editor: "id"
 #id_application: ""
 # Imagery to return in capabilities as blacklisted
 imagery_blacklist: []
+# Restrictions on webpages and API output for privacy regulations compliance
+data_restrictions: []
 # URL of Overpass instance to use for feature queries
 overpass_url: "https://overpass-api.de/api/interpreter"
 overpass_credentials: false
