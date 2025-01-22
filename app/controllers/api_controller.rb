@@ -68,7 +68,7 @@ class ApiController < ApplicationController
       ApiAbility.new(doorkeeper_token)
     else
       ApiAbility.new(nil)
-    end
+    end.merge(TouAbility.new)
   end
 
   def deny_access(_exception)

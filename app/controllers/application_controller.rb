@@ -300,7 +300,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_ability
-    Ability.new(current_user)
+    Ability.new(current_user).merge(TouAbility.new)
   end
 
   def deny_access(_exception)
