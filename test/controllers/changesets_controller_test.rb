@@ -281,6 +281,18 @@ class ChangesetsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  def test_show_with_restricted_changeset_comments
+    changeset = create(:changeset)
+    commenting_user = create(:user)
+    changeset_comment = create(:changeset_comment, :changeset => changeset, :author => commenting_user, :body => "Unwanted comment")
+
+    with_settings(:data_restrictions => [{ :type => :hide_changeset_comments }]) do
+      sidebar_browse_check :changeset_path, changeset.id, "changesets/show"
+      assert_dom "li#c#{changeset_comment.id}", :count => 0
+      assert_dom "a[href='#{user_path(commenting_user)}']", :count => 0
+    end
+  end
+
   def test_show_closed_changeset
     changeset = create(:changeset, :closed)
 
