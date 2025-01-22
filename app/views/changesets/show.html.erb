@@ -36,7 +36,7 @@
     <% end %>
   </div>
 
-  <% if @comments.length > 0 %>
+  <% unless @comments.blank? %>
     <ul class="list-unstyled">
       <% @comments.each do |comment| %>
         <% next unless comment.visible || current_user&.moderator? %>
