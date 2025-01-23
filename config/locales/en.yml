@@ -2969,10 +2969,11 @@ en:
         summary_html: "%{name} created from %{ip_address} on %{date}"
         summary_no_ip_html: "%{name} created on %{date}"
     comments:
-      index:
+      heading:
         heading_html: "%{user}'s Comments"
         changesets: "Changesets"
         diary_entries: "Diary Entries"
+      index:
         no_comments: "No comments"
     changeset_comments:
       index:
