@@ -88,6 +88,7 @@ Config.setup do |config|
     required(:trace_icon_storage).filled(:str?)
     required(:data_restrictions).array(:hash) do
       required(:type).value(:included_in? => [:hide_changeset_comments])
+      optional(:activates_on).value(:time?)
     end
   end
 end
