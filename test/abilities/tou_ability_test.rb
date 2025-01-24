@@ -28,4 +28,26 @@ class TouAbilityTest < ActiveSupport::TestCase
       end
     end
   end
+
+  test "read changeset comments with a restriction that activates in the future" do
+    with_settings(:data_restrictions => [{ :type => :hide_changeset_comments,
+                                           :activates_on => 20.hours.from_now }]) do
+      ability = PermittingAbility.new.merge(TouAbility.new(nil))
+
+      [:index, :show].each do |act|
+        assert ability.can? act, ChangesetComment
+      end
+    end
+  end
+
+  test "read changeset comments with a restriction that activates in the past" do
+    with_settings(:data_restrictions => [{ :type => :hide_changeset_comments,
+                                           :activates_on => 20.hours.ago }]) do
+      ability = PermittingAbility.new.merge(TouAbility.new(nil))
+
+      [:index, :show].each do |act|
+        assert ability.cannot? act, ChangesetComment
+      end
+    end
+  end
 end
