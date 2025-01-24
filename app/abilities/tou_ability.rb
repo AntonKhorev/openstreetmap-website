@@ -11,6 +11,7 @@ class TouAbility
       next if subject.nil?
       next if restriction.activates_on && restriction.activates_on > now
       next if restriction.unless_tou_accepted && user&.tou_agreed
+      next if restriction.unless_tou_accepted_after && user&.tou_agreed && user.tou_agreed > restriction.unless_tou_accepted_after
 
       cannot :manage, subject
     end

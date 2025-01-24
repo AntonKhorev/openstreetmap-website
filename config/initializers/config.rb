@@ -90,6 +90,7 @@ Config.setup do |config|
       required(:type).value(:included_in? => [:hide_changeset_comments])
       optional(:activates_on).value(:time?)
       optional(:unless_tou_accepted).value(:bool?)
+      optional(:unless_tou_accepted_after).value(:time?)
     end
   end
 end
