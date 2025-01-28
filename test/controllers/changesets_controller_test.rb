@@ -300,6 +300,23 @@ class ChangesetsControllerTest < ActionDispatch::IntegrationTest
 
     with_settings(:data_restrictions => [{ :type => :hide_changeset_comments }]) do
       sidebar_browse_check :changeset_path, changeset.id, "changesets/show"
+      assert_dom "button[name='subscribe']", :count => 0
+      assert_dom "button[name='unsubscribe']", :count => 0
+      assert_dom "textarea", :count => 0
+      assert_dom "button[name='comment']", :count => 0
+    end
+  end
+
+  def test_show_controls_when_logged_in_and_subscribed_with_restricted_changeset_comments
+    user = create(:user)
+    changeset = create(:changeset, :closed)
+    changeset.subscribe(user)
+    session_for(user)
+
+    with_settings(:data_restrictions => [{ :type => :hide_changeset_comments }]) do
+      sidebar_browse_check :changeset_path, changeset.id, "changesets/show"
+      assert_dom "button[name='subscribe']", :count => 0
+      assert_dom "button[name='unsubscribe']", :count => 1
       assert_dom "textarea", :count => 0
       assert_dom "button[name='comment']", :count => 0
     end
