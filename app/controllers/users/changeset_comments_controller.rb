@@ -10,5 +10,11 @@ module Users
 
       @comments, @newer_comments_id, @older_comments_id = get_page_items(comments, :includes => [:author, :changeset])
     end
+
+    private
+
+    def deny_access(_exception)
+      render :action => :restricted, :status => :forbidden
+    end
   end
 end
