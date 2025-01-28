@@ -52,6 +52,26 @@ class ChangesetSubscriptionsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  def test_show_when_not_subscribed_and_restricted
+    user = create(:user)
+    other_user = create(:user)
+    changeset = create(:changeset, :user => user)
+
+    session_for(other_user)
+
+    with_settings(:data_restrictions => [{ :type => :hide_changeset_comments }]) do
+      get changeset_subscription_path(changeset)
+    end
+
+    assert_response :success
+    assert_dom ".content-body" do
+      assert_dom "a[href='#{changeset_path(changeset)}']", :text => "Changeset #{changeset.id}"
+      assert_dom "a[href='#{user_path(user)}']", :text => user.display_name
+      assert_dom "form", :count => 0
+      assert_dom ".alert", :text => /Terms of Use/
+    end
+  end
+
   def test_show_when_subscribed
     user = create(:user)
     other_user = create(:user)
@@ -60,6 +80,31 @@ class ChangesetSubscriptionsControllerTest < ActionDispatch::IntegrationTest
 
     session_for(other_user)
     get changeset_subscription_path(changeset)
+
+    assert_response :success
+    assert_dom ".content-body" do
+      assert_dom "a[href='#{changeset_path(changeset)}']", :text => "Changeset #{changeset.id}"
+      assert_dom "a[href='#{user_path(user)}']", :text => user.display_name
+      assert_dom "form" do
+        assert_dom "> @action", changeset_subscription_path(changeset)
+        assert_dom "input[type=submit]" do
+          assert_dom "> @value", "Unsubscribe from discussion"
+        end
+      end
+    end
+  end
+
+  def test_show_when_subscribed_and_restricted
+    user = create(:user)
+    other_user = create(:user)
+    changeset = create(:changeset, :user => user)
+    changeset.subscribers << other_user
+
+    session_for(other_user)
+
+    with_settings(:data_restrictions => [{ :type => :hide_changeset_comments }]) do
+      get changeset_subscription_path(changeset)
+    end
 
     assert_response :success
     assert_dom ".content-body" do
