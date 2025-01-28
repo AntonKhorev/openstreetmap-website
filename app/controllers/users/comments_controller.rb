@@ -8,10 +8,9 @@ module Users
     before_action :authorize_web
     before_action :set_locale
     before_action :check_database_readable
+    before_action :lookup_user
 
     authorize_resource
-
-    before_action :lookup_user
 
     allow_thirdparty_images
   end
