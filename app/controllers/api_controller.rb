@@ -67,7 +67,7 @@ class ApiController < ApplicationController
   end
 
   def current_ability
-    ApiAbility.new(current_user, current_scopes)
+    ApiAbility.new(current_user, current_scopes).merge(TouAbility.new(current_user))
   end
 
   def deny_access(_exception)
