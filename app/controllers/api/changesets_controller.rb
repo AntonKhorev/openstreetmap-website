@@ -59,7 +59,7 @@ module Api
     # return anything about the nodes, ways and relations in the changeset.
     def show
       @changeset = Changeset.find(params[:id])
-      if params[:include_discussion].presence
+      if params[:include_discussion].presence && can?(:show, ChangesetComment)
         @comments = @changeset.comments
         @comments = @comments.unscope(:where => :visible) if params[:show_hidden_comments].presence && can?(:restore, ChangesetComment)
         @comments = @comments.includes(:author)

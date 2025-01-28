@@ -233,6 +233,18 @@ module Api
       assert_select "osm>changeset>discussion>comment:nth-child(3)>@visible", "true"
     end
 
+    def test_show_comments_restricted
+      changeset = create(:changeset, :closed)
+      create(:changeset_comment, :changeset => changeset)
+
+      with_settings(:data_restrictions => [{ :type => :hide_changeset_comments }]) do
+        get changeset_show_path(changeset, :include_discussion => true)
+      end
+
+      assert_response :success, "cannot get closed changeset with comments"
+      assert_select "osm>changeset>discussion", 0
+    end
+
     def test_show_json
       changeset = create(:changeset)
 
@@ -339,6 +351,19 @@ module Api
       assert_not js["changeset"]["comments"][1]["visible"]
       assert_equal comment2.id, js["changeset"]["comments"][2]["id"]
       assert js["changeset"]["comments"][2]["visible"]
+    end
+
+    def test_show_comments_restricted_json
+      changeset = create(:changeset, :closed)
+      create(:changeset_comment, :changeset => changeset)
+
+      with_settings(:data_restrictions => [{ :type => :hide_changeset_comments }]) do
+        get changeset_show_path(changeset, :format => "json", :include_discussion => true)
+      end
+
+      assert_response :success, "cannot get closed changeset with comments"
+      js = ActiveSupport::JSON.decode(@response.body)
+      assert_nil js["changeset"]["comments"]
     end
 
     def test_show_tag_and_discussion_json
