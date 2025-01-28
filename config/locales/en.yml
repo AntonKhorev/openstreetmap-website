@@ -2889,6 +2889,8 @@ en:
         changesets: "Changesets"
         diary_entries: "Diary entries"
         no_comments: "No comments"
+      restricted:
+        warning: Viewing comments is restricted
     changeset_comments:
       index:
         title: "Changeset Comments added by %{user}"
