@@ -3,12 +3,10 @@
 class ApiAbility
   include CanCan::Ability
 
-  def initialize(token)
+  def initialize(user, token)
     can :read, [:version, :capability, :permission, :map]
 
     if Settings.status != "database_offline"
-      user = User.find(token.resource_owner_id) if token
-
       can [:read, :feed, :search], Note
       can :create, Note unless token
 
