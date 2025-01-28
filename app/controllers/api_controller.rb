@@ -70,10 +70,15 @@ class ApiController < ApplicationController
     ApiAbility.new(current_user, current_scopes).merge(TouAbility.new(current_user))
   end
 
-  def deny_access(_exception)
+  def deny_access(exception)
     if doorkeeper_token
       set_locale
-      report_error t("oauth.permissions.missing"), :forbidden
+      user_ability_without_tou_restrictions = ApiAbility.new(current_user, current_scopes)
+      if user_ability_without_tou_restrictions.can? exception.action, exception.subject
+        report_error t("oauth.permissions.tou_restricted"), :forbidden
+      else
+        report_error t("oauth.permissions.missing"), :forbidden
+      end
     else
       head :unauthorized
     end
