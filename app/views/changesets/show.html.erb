@@ -25,7 +25,7 @@
                          :name => "unsubscribe",
                          :data => { :method => "DELETE",
                                     :url => api_changeset_subscription_path(@changeset) } %>
-        <% else %>
+        <% elsif can? :show, ChangesetComment %>
           <%= tag.button t(".subscribe"),
                          :class => "btn btn-sm btn-primary",
                          :name => "subscribe",
