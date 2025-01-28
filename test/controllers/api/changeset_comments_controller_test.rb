@@ -251,6 +251,25 @@ module Api
       assert_equal "[OpenStreetMap] #{commenter_user.display_name} has commented on a changeset you are interested in", email.subject
     end
 
+    def test_create_on_changeset_with_restricted_subscribers
+      user = create(:user, :tou_agreed => Time.now.utc)
+      user_tou_not_agreed = create(:user, :tou_agreed => nil)
+      changeset = create(:changeset, :closed, :user => user)
+      changeset.subscribers.push(user)
+      changeset.subscribers.push(user_tou_not_agreed)
+
+      auth_header = bearer_authorization_header user
+
+      with_settings(:data_restrictions => [{ :type => :hide_changeset_comments,
+                                             :unless_tou_accepted => true }]) do
+        assert_no_difference "ActionMailer::Base.deliveries.size" do
+          perform_enqueued_jobs do
+            post changeset_comment_path(changeset, :text => "This is a comment"), :headers => auth_header
+          end
+        end
+      end
+    end
+
     ##
     # create comment rate limit for new users
     def test_create_by_new_user_with_rate_limit
