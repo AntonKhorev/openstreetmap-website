@@ -43,7 +43,10 @@ module Api
 
       # Notify current subscribers of the new comment
       changeset.subscribers.visible.each do |user|
-        UserMailer.changeset_comment_notification(comment, user).deliver_later if current_user != user
+        next if current_user == user
+
+        user_ability = Ability.new(user).merge(TouAbility.new(user))
+        UserMailer.changeset_comment_notification(comment, user).deliver_later if user_ability.can? :show, ChangesetComment
       end
 
       # Add the commenter to the subscribers if necessary
