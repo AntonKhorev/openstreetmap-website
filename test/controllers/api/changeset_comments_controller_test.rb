@@ -109,6 +109,21 @@ module Api
       end
     end
 
+    def test_create_when_restricted
+      auth_header = bearer_authorization_header
+
+      with_settings(:data_restrictions => [{ :type => :hide_changeset_comments }]) do
+        assert_no_difference "ChangesetComment.count" do
+          post changeset_comment_path(create(:changeset), :text => "This is a comment"), :headers => auth_header
+        end
+      end
+
+      assert_response :forbidden
+      assert_equal "text/plain", @response.media_type
+      assert_no_match(/You have not permitted/, @response.body)
+      assert_match(/Terms of Use/, @response.body)
+    end
+
     def test_create_without_required_scope
       user = create(:user)
       auth_header = bearer_authorization_header user, :scopes => %w[read_prefs]
@@ -118,6 +133,10 @@ module Api
         post api_changeset_changeset_comments_path(changeset), :params => { :text => "This is a comment" }, :headers => auth_header
         assert_response :forbidden
       end
+
+      assert_equal "text/plain", @response.media_type
+      assert_match(/You have not permitted/, @response.body)
+      assert_no_match(/Terms of Use/, @response.body)
     end
 
     def test_create_with_write_changeset_comments_scope

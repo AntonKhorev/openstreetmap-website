@@ -2757,6 +2757,7 @@ en:
   oauth:
     permissions:
       missing: "You have not permitted the application access to this facility"
+      tou_restricted: "Your access to this facility is restricted by Terms of Use acceptance requirements"
     scopes:
       openid: Sign in using OpenStreetMap
       read_prefs: Read user preferences
