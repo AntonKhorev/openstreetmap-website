@@ -33,5 +33,17 @@ module Users
         assert_select "tr", :count => 4
       end
     end
+
+    def test_index_restricted
+      user = create(:user)
+      changeset = create(:changeset, :closed)
+      create(:changeset_comment, :changeset => changeset, :author => user)
+
+      with_settings(:data_restrictions => [{ :type => :hide_changeset_comments }]) do
+        get user_changeset_comments_path(user)
+        assert_response :forbidden
+        assert_select "table", :count => 0
+      end
+    end
   end
 end
