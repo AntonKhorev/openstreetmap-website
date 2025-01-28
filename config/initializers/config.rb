@@ -89,6 +89,7 @@ Config.setup do |config|
     required(:data_restrictions).array(:hash) do
       required(:type).value(:included_in? => [:hide_changeset_comments])
       optional(:activates_on).value(:time?)
+      optional(:unless_tou_accepted).value(:bool?)
     end
   end
 end
