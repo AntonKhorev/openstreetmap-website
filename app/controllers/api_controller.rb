@@ -72,10 +72,16 @@ class ApiController < ApplicationController
     end
   end
 
-  def deny_access(_exception)
+  def deny_access(exception)
     if doorkeeper_token
       set_locale
-      report_error t("oauth.permissions.missing"), :forbidden
+      user = User.find(doorkeeper_token.resource_owner_id)
+      user_ability_without_tou_restrictions = ApiAbility.new(user, doorkeeper_token)
+      if user_ability_without_tou_restrictions.can? exception.action, exception.subject
+        report_error t("oauth.permissions.tou_restricted"), :forbidden
+      else
+        report_error t("oauth.permissions.missing"), :forbidden
+      end
     elsif current_user
       head :forbidden
     else

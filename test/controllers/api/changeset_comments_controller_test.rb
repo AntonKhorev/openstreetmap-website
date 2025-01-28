@@ -151,6 +151,34 @@ module Api
       assert_response :bad_request
     end
 
+    def test_create_comment_fail_no_scope
+      auth_header = bearer_authorization_header :scopes => %w[]
+
+      assert_no_difference "ChangesetComment.count" do
+        post changeset_comment_path(create(:changeset), :text => "This is a comment"), :headers => auth_header
+      end
+
+      assert_response :forbidden
+      assert_equal "text/plain", @response.media_type
+      assert_match(/You have not permitted/, @response.body)
+      assert_no_match(/Terms of Use/, @response.body)
+    end
+
+    def test_create_comment_fail_restricted
+      auth_header = bearer_authorization_header
+
+      with_settings(:data_restrictions => [{ :type => :hide_changeset_comments }]) do
+        assert_no_difference "ChangesetComment.count" do
+          post changeset_comment_path(create(:changeset), :text => "This is a comment"), :headers => auth_header
+        end
+      end
+
+      assert_response :forbidden
+      assert_equal "text/plain", @response.media_type
+      assert_no_match(/You have not permitted/, @response.body)
+      assert_match(/Terms of Use/, @response.body)
+    end
+
     ##
     # create comment rate limit for new users
     def test_create_comment_new_user_rate_limit
