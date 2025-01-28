@@ -1,0 +1,9 @@
+<% content_for :heading do %>
+  <h1><%= @subscribed ? t("changeset_subscriptions.show.unsubscribe.heading") : t("changeset_subscriptions.show.subscribe.heading") %></h1>
+<% end %>
+
+<%= render :partial => "heading", :object => @changeset, :as => "changeset" %>
+
+<p class="alert alert-warning">
+  <%= t(".warning") %>
+</p>

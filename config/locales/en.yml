@@ -547,6 +547,8 @@ en:
     no_such_entry:
       heading: "No entry with the id: %{id}"
       body: "Sorry, there is no changeset with the id %{id}. Please check your spelling, or maybe the link you clicked is wrong."
+    restricted:
+      warning: You can't receive changeset comment notifications until you agree to the Terms of Use.
   dashboards:
     contact:
       km away: "%{count}km away"

@@ -12,6 +12,7 @@ class ChangesetSubscriptionsController < ApplicationController
   def show
     @changeset = Changeset.find(params[:changeset_id])
     @subscribed = @changeset.subscribers.include?(current_user)
+    render :action => "restricted" unless @subscribed || can?(:show, ChangesetComment)
   rescue ActiveRecord::RecordNotFound
     render :action => "no_such_entry", :status => :not_found
   end
