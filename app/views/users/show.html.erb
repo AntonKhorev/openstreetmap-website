@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag "heatmap" %>
+  <%= javascript_include_tag "heatmap" %>
+<% end %>
 <% content_for :heading do %>
   <div class="row">
     <div class="col-sm-auto">
@@ -232,6 +236,30 @@
 <% end %>
 
 <div class="richtext text-break clearfix"><%= @user.description.to_html %></div>
+
+<div class="small">
+  <div class="row">
+    <div class="col overflow-auto">
+      <div id="cal-heatmap-wrapper" class="heatmap-wrapper">
+        <!-- Labels -->
+        <ul class="list-unstyled d-flex flex-column justify-content-between ch-domain-text heatmap-labels">
+          <li>&nbsp;</li>
+          <li><%= t("date.abbr_day_names")[1] %></li>
+          <li>&nbsp;</li>
+          <li><%= t("date.abbr_day_names")[3] %></li>
+          <li>&nbsp;</li>
+          <li><%= t("date.abbr_day_names")[5] %></li>
+          <li>&nbsp;</li>
+        </ul>
+        <!-- Heatmap -->
+        <div id="cal-heatmap" class="heatmap"
+          data-heatmap="<%= @heatmap_data.to_json %>"
+          data-site_color_scheme="<%= preferred_color_scheme(:site) %>">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <% if current_user and @user.id == current_user.id %>
   <div class="my-3">

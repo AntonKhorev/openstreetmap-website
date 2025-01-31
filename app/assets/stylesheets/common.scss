@@ -1011,3 +1011,23 @@ img.trace_image {
     }
   }
 }
+
+.heatmap-wrapper {
+  position: relative;
+  height: 130px;
+}
+
+.heatmap-labels {
+position: absolute;
+  top: 2px;
+  left: 17px;
+  padding-top: 21px;
+  z-index: 1;
+  overflow-y: hidden;
+}
+
+.heatmap {
+  margin-left: 50px;
+  height: 100%;
+  z-index: 0;
+}
