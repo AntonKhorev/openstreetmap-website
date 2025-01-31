@@ -1,7 +1,7 @@
-//= require d3
-//= require cal-heatmap
+//= require d3/dist/d3
+//= require cal-heatmap/dist/cal-heatmap
 //= require popper
-//= require tooltip
+//= require cal-heatmap/dist/plugins/Tooltip
 
 
 /* global CalHeatmap, Tooltip */
