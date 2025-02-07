@@ -8,7 +8,7 @@
       </tr>
     </thead>
     <% @discussions.each do |changeset_id, comments| -%>
-      <% comments.each_with_index do |comment, i| %>
+      <% comments.reverse.each_with_index do |comment, i| %>
         <tr>
           <td class="<%= "text-muted" unless comment.visible? %>">
             <% if i == 0 %>
