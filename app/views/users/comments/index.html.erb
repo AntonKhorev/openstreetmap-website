@@ -12,7 +12,7 @@
   </ul>
 <% end %>
 
-<% if (@comments || @discussions).empty? %>
+<% if @comments.empty? %>
   <h4><%= t ".no_comments" %></h4>
 <% else %>
   <%= render :partial => "page" %>

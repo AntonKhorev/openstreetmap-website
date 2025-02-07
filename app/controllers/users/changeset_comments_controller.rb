@@ -28,21 +28,12 @@ module Users
         @older_comments_id = older_comment_id if comments.exists?(["changeset_comments.id < ?", older_comment_id])
       end
 
-      @selected_comment_ids_for_changeset_ids = {}
-      selected_comment_and_changeset_ids.each do |id, changeset_id|
-        @selected_comment_ids_for_changeset_ids[changeset_id] ||= Set.new
-        @selected_comment_ids_for_changeset_ids[changeset_id].add(id)
-      end
+      @selected_comment_ids = Set.new selected_comment_and_changeset_ids.map(&:first)
+      selected_changeset_ids = Set.new selected_comment_and_changeset_ids.map(&:last)
 
-      context_comments = ChangesetComment.where(:changeset => @selected_comment_ids_for_changeset_ids.keys)
-      context_comments = context_comments.visible unless current_user&.moderator?
-      context_comments = context_comments.order(:id => :desc)
-
-      @discussions = {}
-      context_comments.each do |comment|
-        @discussions[comment.changeset_id] ||= []
-        @discussions[comment.changeset_id] << comment
-      end
+      @comments = ChangesetComment.where(:changeset => selected_changeset_ids)
+      @comments = @comments.visible unless current_user&.moderator?
+      @comments = @comments.order(:id => :desc)
     end
   end
 end
