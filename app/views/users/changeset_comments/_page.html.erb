@@ -8,10 +8,12 @@
       </tr>
     </thead>
     <% @discussions.each do |changeset_id, comments| -%>
-      <% comments.each do |comment| %>
+      <% comments.each_with_index do |comment, i| %>
         <tr>
           <td class="<%= "text-muted" unless comment.visible? %>">
-            <%= link_to changeset_id, changeset_path(changeset_id) %>
+            <% if i == 0 %>
+              <%= link_to changeset_id, changeset_path(changeset_id) %>
+            <% end %>
           </td>
           <% if comment.author == @user %>
             <td></td>
