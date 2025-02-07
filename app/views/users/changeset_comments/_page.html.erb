@@ -29,7 +29,7 @@
                       comment.visible ? t("changesets.show.comment_by_html", **comment_by_options) : t("changesets.show.hidden_comment_by_html", **comment_by_options) %>
                 </small>
               </div>
-              <div class="richtext text-break">
+              <div class="richtext text-break mb-n3">
                 <%= comment.body.to_html %>
               </div>
             <% end %>
