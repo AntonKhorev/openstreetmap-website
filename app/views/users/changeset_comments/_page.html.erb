@@ -2,16 +2,27 @@
   <table class="table table-striped" width="100%">
     <thead>
       <tr>
-        <th width="25%"><%= t ".changeset" %></th>
-        <th width="25%"><%= t ".when" %></th>
-        <th width="50%"><%= t ".comment" %></th>
+        <th><%= t ".changeset" %></th>
+        <th><%= t ".comment" %></th>
       </tr>
     </thead>
     <% @comments.each do |comment| -%>
     <tr>
-      <td width="25%" class="<%= "text-muted" unless comment.visible? %>"><%= link_to comment.changeset.id, changeset_path(comment.changeset) %></td>
-      <td width="25%" class="<%= "text-muted" unless comment.visible? %>"><span title="<%= l comment.created_at, :format => :friendly %>"><%= time_ago_in_words(comment.created_at, :scope => :"datetime.distance_in_words_ago") %></span></td>
-      <td width="50%" class="richtext text-break<%= " text-muted" unless comment.visible? %>"><%= comment.body.to_html %></td>
+      <td class="<%= "text-muted" unless comment.visible? %>">
+        <%= link_to comment.changeset.id, changeset_path(comment.changeset) %>
+      </td>
+      <td class="<%= " text-muted" unless comment.visible? %>">
+        <div class="text-body-secondary">
+          <small>
+            <%= comment_by_options = { :time_ago => friendly_date_ago(comment.created_at),
+                                       :user => link_to(comment.author.display_name, comment.author) }
+                comment.visible ? t("changesets.show.comment_by_html", **comment_by_options) : t("changesets.show.hidden_comment_by_html", **comment_by_options) %>
+          </small>
+        </div>
+        <div class="richtext text-break">
+          <%= comment.body.to_html %>
+        </div>
+      </td>
     </tr>
     <% end -%>
   </table>
