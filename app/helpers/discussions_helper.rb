@@ -10,35 +10,51 @@ module DiscussionsHelper
 
     all_comments_collected_for_discussions.transform_values do |all_comments|
       discussion_items = []
-      skipped_before = false
-      can_keep_after = 0
       context_buffer = []
 
       all_comments.each do |comment|
         if selected_comment_ids.include?(comment[:id])
-          if skipped_before
-            discussion_items << {}
-            skipped_before = false
-          end
-          discussion_items.concat(context_buffer)
-          context_buffer = []
-          discussion_items << { :comment => comment, :selected => true }
-          can_keep_after = CONTEXT_SIZE
-        elsif can_keep_after.positive?
-          discussion_items << { :comment => comment, :selected => false }
-          can_keep_after -= 1
+          discussion_items.concat flush_buffer(context_buffer, !discussion_items.empty?, true)
+          discussion_items << { :comment => comment }
         else
-          context_buffer << { :comment => comment, :selected => false }
-          if context_buffer.size > CONTEXT_SIZE
-            skipped_before = true
-            context_buffer.shift
-          end
+          context_buffer << comment
         end
       end
 
-      discussion_items << {} if context_buffer.size.positive?
+      discussion_items.concat flush_buffer(context_buffer, !discussion_items.empty?, false)
+    end
+  end
 
-      discussion_items
+  private
+
+  def flush_buffer(buffer, with_start, with_end)
+    skipped = false
+    result = []
+
+    buffer.each_with_index do |comment, i|
+      start_distance = with_start ? i + 1 : Float::INFINITY
+      end_distance = with_end ? buffer.size - i : Float::INFINITY
+      distance = [start_distance, end_distance].min
+      if distance > CONTEXT_SIZE
+        result << {} unless skipped
+        skipped = true
+      else
+        result << { :comment => comment, :class => opacity_for_distance(distance) }
+      end
+    end
+    buffer.clear
+
+    result
+  end
+
+  def opacity_for_distance(n)
+    case n
+    in 1
+      "opacity-75"
+    in 2
+      "opacity-50"
+    else
+      "opacity-25"
     end
   end
 end

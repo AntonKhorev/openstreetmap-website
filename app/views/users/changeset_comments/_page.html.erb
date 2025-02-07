@@ -1,5 +1,5 @@
 <turbo-frame id="pagination" target="_top" data-turbo="false">
-  <table class="table table-striped" width="100%">
+  <table class="table" width="100%">
     <thead>
       <tr>
         <th width="20%"><%= t ".changeset" %></th>
@@ -10,7 +10,7 @@
     <% discussions_with_selected_comments(@comments, @selected_comment_ids, :changeset_id).each do |changeset_id, comments| -%>
       <% comments.reverse.each_with_index do |item, i| %>
         <%= tag.tr :class => [("border-top-0 border-start-0 border-end-0 border-secondary border-2" if i == comments.count - 1),
-                              ("table-primary" if item[:selected])] do %>
+                              item[:class]] do %>
           <td>
             <% if i == 0 %>
               <%= link_to changeset_id, changeset_path(changeset_id) %>
@@ -37,7 +37,7 @@
               <td></td>
             <% end %>
           <% else %>
-            <td colspan="2" class="text-center">. . .</td>
+            <td colspan="2" class="text-center opacity-25">. . .</td>
           <% end %>
         <% end %>
       <% end %>
