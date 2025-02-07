@@ -10,6 +10,13 @@ module Users
       @params = params.permit(:display_name, :before, :after)
 
       @comments, @newer_comments_id, @older_comments_id = get_page_items(comments, :includes => [:author, :changeset])
+
+      @discussions = {}
+
+      @comments.each do |comment|
+        @discussions[comment.changeset_id] ||= []
+        @discussions[comment.changeset_id] << comment
+      end
     end
   end
 end

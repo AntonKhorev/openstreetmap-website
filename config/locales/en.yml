@@ -2898,6 +2898,8 @@ en:
         changeset: Changeset
         when: When
         comment: Comment
+        comment_on: Incoming comment
+        comment_by: Comment by User
     diary_comments:
       index:
         title: "Diary Comments added by %{user}"
