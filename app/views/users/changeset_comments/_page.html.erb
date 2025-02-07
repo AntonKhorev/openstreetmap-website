@@ -9,7 +9,8 @@
     </thead>
     <% @discussions.each do |changeset_id, comments| -%>
       <% comments.reverse.each_with_index do |comment, i| %>
-        <%= tag.tr :class => ("border-top-0 border-start-0 border-end-0 border-secondary border-2" if i == comments.count - 1) do %>
+        <%= tag.tr :class => [("border-top-0 border-start-0 border-end-0 border-secondary border-2" if i == comments.count - 1),
+                              ("table-primary" if @selected_comment_ids_for_changeset_ids[changeset_id].include?(comment.id))] do %>
           <td class="<%= "text-muted" unless comment.visible? %>">
             <% if i == 0 %>
               <%= link_to changeset_id, changeset_path(changeset_id) %>
