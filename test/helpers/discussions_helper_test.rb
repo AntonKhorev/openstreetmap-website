@@ -13,7 +13,7 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [12], discussions.keys
-    expected_discussions = { 12 => [{ :comment => { :id => 42, :discussion_id => 12, :text => "test 42" } }] }
+    expected_discussions = { 12 => [{ :comment => { :id => 42, :discussion_id => 12, :text => "test 42" }, :distance => 0 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -25,8 +25,8 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [12], discussions.keys
-    expected_discussions = { 12 => [{ :comment => { :id => 42, :discussion_id => 12, :text => "test 42" } },
-                                    { :comment => { :id => 41, :discussion_id => 12, :text => "test 41" } }] }
+    expected_discussions = { 12 => [{ :comment => { :id => 42, :discussion_id => 12, :text => "test 42" }, :distance => 0 },
+                                    { :comment => { :id => 41, :discussion_id => 12, :text => "test 41" }, :distance => 0 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -38,8 +38,8 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [12, 11], discussions.keys
-    expected_discussions = { 12 => [{ :comment => { :id => 42, :discussion_id => 12, :text => "test 42" } }],
-                             11 => [{ :comment => { :id => 41, :discussion_id => 11, :text => "test 41" } }] }
+    expected_discussions = { 12 => [{ :comment => { :id => 42, :discussion_id => 12, :text => "test 42" }, :distance => 0 }],
+                             11 => [{ :comment => { :id => 41, :discussion_id => 11, :text => "test 41" }, :distance => 0 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -51,8 +51,8 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [12], discussions.keys
-    expected_discussions = { 12 => [{ :comment => { :id => 42, :discussion_id => 12 }, :class => "opacity-75" },
-                                    { :comment => { :id => 41, :discussion_id => 12 } }] }
+    expected_discussions = { 12 => [{ :comment => { :id => 42, :discussion_id => 12 }, :distance => 1 },
+                                    { :comment => { :id => 41, :discussion_id => 12 }, :distance => 0 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -66,10 +66,10 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [23], discussions.keys
-    expected_discussions = { 23 => [{ :comment => { :id => 153, :discussion_id => 23 }, :class => "opacity-25" },
-                                    { :comment => { :id => 152, :discussion_id => 23 }, :class => "opacity-50" },
-                                    { :comment => { :id => 151, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 150, :discussion_id => 23 } }] }
+    expected_discussions = { 23 => [{ :comment => { :id => 153, :discussion_id => 23 }, :distance => 3 },
+                                    { :comment => { :id => 152, :discussion_id => 23 }, :distance => 2 },
+                                    { :comment => { :id => 151, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 150, :discussion_id => 23 }, :distance => 0 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -84,11 +84,11 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [23], discussions.keys
-    expected_discussions = { 23 => [{},
-                                    { :comment => { :id => 153, :discussion_id => 23 }, :class => "opacity-25" },
-                                    { :comment => { :id => 152, :discussion_id => 23 }, :class => "opacity-50" },
-                                    { :comment => { :id => 151, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 150, :discussion_id => 23 } }] }
+    expected_discussions = { 23 => [{ :distance => 4 },
+                                    { :comment => { :id => 153, :discussion_id => 23 }, :distance => 3 },
+                                    { :comment => { :id => 152, :discussion_id => 23 }, :distance => 2 },
+                                    { :comment => { :id => 151, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 150, :discussion_id => 23 }, :distance => 0 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -100,8 +100,8 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [12], discussions.keys
-    expected_discussions = { 12 => [{ :comment => { :id => 42, :discussion_id => 12 } },
-                                    { :comment => { :id => 41, :discussion_id => 12 }, :class => "opacity-75" }] }
+    expected_discussions = { 12 => [{ :comment => { :id => 42, :discussion_id => 12 }, :distance => 0 },
+                                    { :comment => { :id => 41, :discussion_id => 12 }, :distance => 1 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -115,10 +115,10 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [23], discussions.keys
-    expected_discussions = { 23 => [{ :comment => { :id => 153, :discussion_id => 23 } },
-                                    { :comment => { :id => 152, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 151, :discussion_id => 23 }, :class => "opacity-50" },
-                                    { :comment => { :id => 150, :discussion_id => 23 }, :class => "opacity-25"}] }
+    expected_discussions = { 23 => [{ :comment => { :id => 153, :discussion_id => 23 }, :distance => 0 },
+                                    { :comment => { :id => 152, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 151, :discussion_id => 23 }, :distance => 2 },
+                                    { :comment => { :id => 150, :discussion_id => 23 }, :distance => 3 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -133,11 +133,11 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [23], discussions.keys
-    expected_discussions = { 23 => [{ :comment => { :id => 154, :discussion_id => 23 } },
-                                    { :comment => { :id => 153, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 152, :discussion_id => 23 }, :class => "opacity-50" },
-                                    { :comment => { :id => 151, :discussion_id => 23 }, :class => "opacity-25" },
-                                    {}] }
+    expected_discussions = { 23 => [{ :comment => { :id => 154, :discussion_id => 23 }, :distance => 0 },
+                                    { :comment => { :id => 153, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 152, :discussion_id => 23 }, :distance => 2 },
+                                    { :comment => { :id => 151, :discussion_id => 23 }, :distance => 3 },
+                                    { :distance => 4 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -150,9 +150,9 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [23], discussions.keys
-    expected_discussions = { 23 => [{ :comment => { :id => 152, :discussion_id => 23 } },
-                                    { :comment => { :id => 151, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 150, :discussion_id => 23 } }] }
+    expected_discussions = { 23 => [{ :comment => { :id => 152, :discussion_id => 23 }, :distance => 0 },
+                                    { :comment => { :id => 151, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 150, :discussion_id => 23 }, :distance => 0 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -166,10 +166,10 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [23], discussions.keys
-    expected_discussions = { 23 => [{ :comment => { :id => 153, :discussion_id => 23 } },
-                                    { :comment => { :id => 152, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 151, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 150, :discussion_id => 23 } }] }
+    expected_discussions = { 23 => [{ :comment => { :id => 153, :discussion_id => 23 }, :distance => 0 },
+                                    { :comment => { :id => 152, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 151, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 150, :discussion_id => 23 }, :distance => 0 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -186,13 +186,13 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [23], discussions.keys
-    expected_discussions = { 23 => [{ :comment => { :id => 156, :discussion_id => 23 } },
-                                    { :comment => { :id => 155, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 154, :discussion_id => 23 }, :class => "opacity-50" },
-                                    { :comment => { :id => 153, :discussion_id => 23 }, :class => "opacity-25" },
-                                    { :comment => { :id => 152, :discussion_id => 23 }, :class => "opacity-50" },
-                                    { :comment => { :id => 151, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 150, :discussion_id => 23 } }] }
+    expected_discussions = { 23 => [{ :comment => { :id => 156, :discussion_id => 23 }, :distance => 0 },
+                                    { :comment => { :id => 155, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 154, :discussion_id => 23 }, :distance => 2 },
+                                    { :comment => { :id => 153, :discussion_id => 23 }, :distance => 3 },
+                                    { :comment => { :id => 152, :discussion_id => 23 }, :distance => 2 },
+                                    { :comment => { :id => 151, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 150, :discussion_id => 23 }, :distance => 0 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -210,14 +210,14 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [23], discussions.keys
-    expected_discussions = { 23 => [{ :comment => { :id => 157, :discussion_id => 23 } },
-                                    { :comment => { :id => 156, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 155, :discussion_id => 23 }, :class => "opacity-50" },
-                                    { :comment => { :id => 154, :discussion_id => 23 }, :class => "opacity-25" },
-                                    { :comment => { :id => 153, :discussion_id => 23 }, :class => "opacity-25" },
-                                    { :comment => { :id => 152, :discussion_id => 23 }, :class => "opacity-50" },
-                                    { :comment => { :id => 151, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 150, :discussion_id => 23 } }] }
+    expected_discussions = { 23 => [{ :comment => { :id => 157, :discussion_id => 23 }, :distance => 0 },
+                                    { :comment => { :id => 156, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 155, :discussion_id => 23 }, :distance => 2 },
+                                    { :comment => { :id => 154, :discussion_id => 23 }, :distance => 3 },
+                                    { :comment => { :id => 153, :discussion_id => 23 }, :distance => 3 },
+                                    { :comment => { :id => 152, :discussion_id => 23 }, :distance => 2 },
+                                    { :comment => { :id => 151, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 150, :discussion_id => 23 }, :distance => 0 }] }
     assert_equal expected_discussions, discussions
   end
 
@@ -236,15 +236,15 @@ class DiscussionsHelperTest < ActionView::TestCase
     discussions = discussions_with_selected_comments(context_comments, selected_comment_ids, :discussion_id)
 
     assert_equal [23], discussions.keys
-    expected_discussions = { 23 => [{ :comment => { :id => 158, :discussion_id => 23 } },
-                                    { :comment => { :id => 157, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 156, :discussion_id => 23 }, :class => "opacity-50" },
-                                    { :comment => { :id => 155, :discussion_id => 23 }, :class => "opacity-25" },
-                                    {},
-                                    { :comment => { :id => 153, :discussion_id => 23 }, :class => "opacity-25" },
-                                    { :comment => { :id => 152, :discussion_id => 23 }, :class => "opacity-50" },
-                                    { :comment => { :id => 151, :discussion_id => 23 }, :class => "opacity-75" },
-                                    { :comment => { :id => 150, :discussion_id => 23 } }] }
+    expected_discussions = { 23 => [{ :comment => { :id => 158, :discussion_id => 23 }, :distance => 0 },
+                                    { :comment => { :id => 157, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 156, :discussion_id => 23 }, :distance => 2 },
+                                    { :comment => { :id => 155, :discussion_id => 23 }, :distance => 3 },
+                                    { :distance => 4 },
+                                    { :comment => { :id => 153, :discussion_id => 23 }, :distance => 3 },
+                                    { :comment => { :id => 152, :discussion_id => 23 }, :distance => 2 },
+                                    { :comment => { :id => 151, :discussion_id => 23 }, :distance => 1 },
+                                    { :comment => { :id => 150, :discussion_id => 23 }, :distance => 0 }] }
     assert_equal expected_discussions, discussions
   end
 end
