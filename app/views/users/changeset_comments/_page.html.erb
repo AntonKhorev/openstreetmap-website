@@ -3,15 +3,15 @@
     <thead>
       <tr>
         <th width="20%"><%= t ".changeset" %></th>
-        <th width="40%"><%= t ".comment_on" %></th>
-        <th width="40%"><%= t ".comment_by" %></th>
+        <th width="30%"><%= t ".comment_on" %></th>
+        <th width="50%" colspan="2"><%= t ".comment_by" %></th>
       </tr>
     </thead>
     <% discussions_with_selected_comments(@comments, @selected_comment_ids, :changeset_id).each do |changeset_id, comments| -%>
       <% comments.reverse.each_with_index do |item, i| %>
         <%= tag.tr :class => [("border-top-0 border-start-0 border-end-0 border-secondary border-2" if i == comments.count - 1),
                               item[:class]] do %>
-          <td>
+          <td width="20%">
             <% if i == 0 %>
               <%= link_to changeset_id, changeset_path(changeset_id) %>
             <% end %>
@@ -19,9 +19,9 @@
           <% case item %>
           <% in comment: %>
             <% if comment.author == @user %>
-              <td></td>
+              <td width="30%"></td>
             <% end %>
-            <%= tag.td :class => ("text-muted" unless comment.visible?) do %>
+            <%= tag.td :width => "50%", :colspan => 2, :class => ("text-muted" unless comment.visible?) do %>
               <div class="text-body-secondary">
                 <small>
                   <%= comment_by_options = { :time_ago => friendly_date_ago(comment.created_at),
@@ -34,10 +34,10 @@
               </div>
             <% end %>
             <% unless comment.author == @user %>
-              <td></td>
+              <td width="30%"></td>
             <% end %>
           <% else %>
-            <td colspan="2" class="text-center opacity-25">. . .</td>
+            <td width="80%" colspan="3" class="text-center opacity-25">. . .</td>
           <% end %>
         <% end %>
       <% end %>
