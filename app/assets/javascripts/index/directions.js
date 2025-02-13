@@ -4,6 +4,8 @@
 
 OSM.Directions = function (map) {
   let controller = null; // the AbortController for the current route request if a route request is in progress
+  let lastFoundLocation = null;
+  let setStartingEndpointToNextFoundLocation = false;
   var chosenEngine;
 
   var popup = L.popup({ autoPanPadding: [100, 100] });
@@ -246,6 +248,21 @@ OSM.Directions = function (map) {
     }
   });
 
+  map.on("locationfound", (e) => {
+    lastFoundLocation = e.latlng;
+    if (setStartingEndpointToNextFoundLocation) {
+      setStartingEndpointToNextFoundLocation = false;
+      setStartingEndpointToLastFoundLocation();
+    }
+  }).on("locateactivate", () => {
+    setStartingEndpointToNextFoundLocation = true;
+  });
+
+  function setStartingEndpointToLastFoundLocation() {
+    if (!lastFoundLocation || endpoints[0].value) return;
+    endpoints[0].setValue(`${lastFoundLocation.lat}, ${lastFoundLocation.lng}`);
+  }
+
   var page = {};
 
   page.pushstate = page.popstate = function () {
@@ -285,6 +302,10 @@ OSM.Directions = function (map) {
     endpoints[0].setValue(params.get("from") || route[0] || "");
     endpoints[1].setValue(params.get("to") || route[1] || "");
 
+    if (!params.get("route")) {
+      setStartingEndpointToLastFoundLocation();
+    }
+
     map.setSidebarOverlaid(!endpoints[0].latlng || !endpoints[1].latlng);
   };
 
@@ -299,6 +320,8 @@ OSM.Directions = function (map) {
 
     endpoints[0].disable();
     endpoints[1].disable();
+
+    setStartingEndpointToNextFoundLocation = false;
 
     map
       .removeLayer(popup)
