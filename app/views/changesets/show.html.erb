@@ -3,14 +3,18 @@
 <%= render "sidebar_header", :title => t(".title", :id => @changeset.id) %>
 
 <div class="browse-section">
-  <p class="fs-6 overflow-x-auto">
-    <%= linkify(@changeset.tags["comment"].to_s.presence || t("browse.no_comment")) %>
-  </p>
+  <% if can? :show, ChangesetTag %>
+    <p class="fs-6 overflow-x-auto">
+      <%= linkify(@changeset.tags["comment"].to_s.presence || t("browse.no_comment")) %>
+    </p>
+  <% end %>
   <%= tag.p :class => "details", :data => { :changeset => changeset_data(@changeset) } do %>
     <%= changeset_details(@changeset) %>
   <% end %>
 
-  <%= render :partial => "browse/tag_details", :object => @changeset.tags.except("comment") %>
+  <% if can? :show, ChangesetTag %>
+    <%= render :partial => "browse/tag_details", :object => @changeset.tags.except("comment") %>
+  <% end %>
 
   <div class="row">
     <div class="col">
