@@ -250,6 +250,28 @@ class ChangesetsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  def test_index_comment_tag
+    changeset = create(:changeset, :num_changes => 1)
+    create(:changeset_tag, :changeset => changeset, :k => "comment", :v => "tested-changeset-comment")
+
+    get history_path(:format => "html", :list => "1", :max_id => changeset.id + 1), :xhr => true
+
+    assert_response :success
+    assert_dom "a", :text => "tested-changeset-comment", :count => 1
+  end
+
+  def test_index_comment_tag_with_restricted_changeset_tags
+    changeset = create(:changeset, :num_changes => 1)
+    create(:changeset_tag, :changeset => changeset, :k => "comment", :v => "tested-changeset-comment")
+
+    with_settings(:data_restrictions => [{ :type => :hide_changeset_tags }]) do
+      get history_path(:format => "html", :list => "1", :max_id => changeset.id + 1), :xhr => true
+
+      assert_response :success
+      assert_dom "a", :text => "tested-changeset-comment", :count => 0
+    end
+  end
+
   def test_show
     changeset = create(:changeset)
     create(:changeset_tag, :changeset => changeset, :k => "comment", :v => "tested-changeset-comment")
@@ -472,11 +494,13 @@ class ChangesetsControllerTest < ActionDispatch::IntegrationTest
   ##
   # check the result of a index
   def check_index_result(changesets)
-    assert_select "ol.changesets", :count => [changesets.size, 1].min do
-      assert_select "li", :count => changesets.size
+    assert_dom "ol.changesets", :count => [changesets.size, 1].min do
+      assert_dom "li", :count => changesets.size
 
       changesets.each do |changeset|
-        assert_select "li#changeset_#{changeset.id}", :count => 1
+        assert_dom "li#changeset_#{changeset.id}", :count => 1 do
+          assert_dom "a[href='#{changeset_path changeset}']", :text => changeset.tags["comment"]
+        end
       end
     end
   end
