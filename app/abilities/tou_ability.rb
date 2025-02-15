@@ -6,7 +6,12 @@ class TouAbility
   def initialize(user)
     now = Time.zone.now
     Settings.data_restrictions.each do |restriction|
-      subject = ChangesetComment if restriction.type == :hide_changeset_comments
+      subject = case restriction.type
+                when :hide_changeset_comments
+                  ChangesetComment
+                when :hide_changeset_tags
+                  ChangesetTag
+                end
 
       next if subject.nil?
       next if restriction.activates_on && restriction.activates_on > now
