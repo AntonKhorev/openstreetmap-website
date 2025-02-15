@@ -5,6 +5,10 @@ class ApiController < ApplicationController
 
   around_action :api_call_handle_error, :api_call_timeout
 
+  attr_accessor :current_scopes
+
+  prepend_before_action -> { self.current_scopes = Set.new }
+
   private
 
   ##
@@ -63,19 +67,7 @@ class ApiController < ApplicationController
   end
 
   def current_ability
-    # Use capabilities from the oauth token if it exists and is a valid access token
-    if doorkeeper_token&.accessible?
-      user = User.find(doorkeeper_token.resource_owner_id)
-      scopes = Set.new doorkeeper_token.scopes
-      if scopes.include?("write_api")
-        scopes.add("write_map")
-        scopes.add("write_changeset_comments")
-        scopes.delete("write_api")
-      end
-      ApiAbility.new(user, scopes)
-    else
-      ApiAbility.new(nil, Set.new)
-    end
+    ApiAbility.new(current_user, current_scopes)
   end
 
   def deny_access(_exception)
@@ -100,7 +92,16 @@ class ApiController < ApplicationController
   def setup_user_auth(skip_blocks: false, skip_terms: false)
     logger.info " setup_user_auth"
     # try and setup using OAuth
-    self.current_user = User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token&.accessible?
+    if doorkeeper_token&.accessible?
+      self.current_user = User.find(doorkeeper_token.resource_owner_id)
+      scopes = Set.new doorkeeper_token.scopes
+      if scopes.include?("write_api")
+        scopes.add("write_map")
+        scopes.add("write_changeset_comments")
+        scopes.delete("write_api")
+      end
+      self.current_scopes = scopes
+    end
 
     # have we identified the user?
     if current_user
