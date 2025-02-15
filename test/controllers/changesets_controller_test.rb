@@ -275,15 +275,33 @@ class ChangesetsControllerTest < ActionDispatch::IntegrationTest
   def test_show
     changeset = create(:changeset)
     create(:changeset_tag, :changeset => changeset, :k => "comment", :v => "tested-changeset-comment")
+    create(:changeset_tag, :changeset => changeset, :k => "some-tag-key", :v => "some-tag-value")
     commenting_user = create(:user)
     changeset_comment = create(:changeset_comment, :changeset => changeset, :author => commenting_user, :body => "Unwanted comment")
 
     sidebar_browse_check :changeset_path, changeset.id, "changesets/show"
     assert_dom "h2", :text => "Changeset: #{changeset.id}"
-    assert_dom "p", :text => "tested-changeset-comment"
+    assert_dom "p", :text => "tested-changeset-comment", :count => 1
+    assert_dom "table", :count => 1 do
+      assert_dom "th", :text => "some-tag-key"
+      assert_dom "td", :text => "some-tag-value"
+    end
     assert_dom "li#c#{changeset_comment.id}" do
       assert_dom "> small", :text => /^Comment from #{commenting_user.display_name}/
       assert_dom "a[href='#{user_path(commenting_user)}']"
+    end
+  end
+
+  def test_show_with_restricted_changeset_tags
+    changeset = create(:changeset)
+    create(:changeset_tag, :changeset => changeset, :k => "comment", :v => "tested-changeset-comment")
+    create(:changeset_tag, :changeset => changeset, :k => "some-tag-key", :v => "some-tag-value")
+
+    with_settings(:data_restrictions => [{ :type => :hide_changeset_tags }]) do
+      sidebar_browse_check :changeset_path, changeset.id, "changesets/show"
+      assert_dom "h2", :text => "Changeset: #{changeset.id}"
+      assert_dom "p", :text => "tested-changeset-comment", :count => 0
+      assert_dom "table", :count => 0
     end
   end
 
