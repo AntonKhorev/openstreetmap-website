@@ -82,8 +82,8 @@ module Accounts
       user = create(:user, :terms_seen => false, :terms_agreed => nil)
       session_for(user)
 
-      get edit_account_path
-      assert_redirected_to account_terms_path(:referer => "/account/edit")
+      get account_path
+      assert_redirected_to account_terms_path(:referer => account_path)
     end
   end
 end

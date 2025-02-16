@@ -25,7 +25,7 @@ class UserEmailChangeTest < ApplicationSystemTestCase
 
     if email.parts[0].parts[0].decoded =~ %r{(/user/confirm-email\?confirm_string=[A-Za-z0-9\-_%]+)\s}
       visit Regexp.last_match(1)
-      assert page.has_css?("body.accounts-edit")
+      assert page.has_css?("body.accounts-show")
     end
 
     assert_equal "new_tester@example.com", user.reload.email
