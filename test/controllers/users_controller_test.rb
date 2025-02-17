@@ -249,7 +249,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       assert_select "a[href='/user/#{ERB::Util.u(moderator_user.display_name)}/traces']", 1
       assert_select "a[href='/user/#{ERB::Util.u(moderator_user.display_name)}/diary']", 1
       assert_select "a[href='/user/#{ERB::Util.u(moderator_user.display_name)}/diary_comments']", 1
-      assert_select "a[href='/user/#{ERB::Util.u(moderator_user.display_name)}/account']", 0
+      assert_select "a[href='/account']", 0
       assert_select "a[href='/user/#{ERB::Util.u(moderator_user.display_name)}/blocks']", 0
       assert_select "a[href='/user/#{ERB::Util.u(moderator_user.display_name)}/blocks_by']", 1
       assert_select "a[href='/user_blocks/new/#{ERB::Util.u(moderator_user.display_name)}']", 0
@@ -266,7 +266,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       assert_select "a[href='/traces/mine']", 1
       assert_select "a[href='/user/#{ERB::Util.u(user.display_name)}/diary']", 1
       assert_select "a[href='/user/#{ERB::Util.u(user.display_name)}/diary_comments']", 1
-      assert_select "a[href='/account/edit']", 1
+      assert_select "a[href='/account']", 1
       assert_select "a[href='/user/#{ERB::Util.u(user.display_name)}/blocks']", 0
       assert_select "a[href='/user/#{ERB::Util.u(user.display_name)}/blocks_by']", 0
       assert_select "a[href='/user_blocks/new/#{ERB::Util.u(user.display_name)}']", 0
@@ -284,7 +284,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       assert_select "a[href='/user/#{ERB::Util.u(user.display_name)}/traces']", 1
       assert_select "a[href='/user/#{ERB::Util.u(user.display_name)}/diary']", 1
       assert_select "a[href='/user/#{ERB::Util.u(user.display_name)}/diary_comments']", 1
-      assert_select "a[href='/account/edit']", 0
+      assert_select "a[href='/account']", 0
       assert_select "a[href='/user/#{ERB::Util.u(user.display_name)}/blocks']", 0
       assert_select "a[href='/user/#{ERB::Util.u(user.display_name)}/blocks_by']", 0
       assert_select "a[href='/user_blocks/new/#{ERB::Util.u(user.display_name)}']", 1
