@@ -305,7 +305,7 @@ OpenStreetMap::Application.routes.draw do
       resource :home, :only => :show
     end
   end
-  get "/account/edit", :to => redirect(:path => "/account"), :as => :edit_account
+  get "/account/edit", :to => redirect(:path => "/account"), :as => nil
 
   resource :dashboard, :only => [:show]
   resource :preferences, :only => [:show, :update]
