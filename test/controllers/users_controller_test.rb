@@ -195,7 +195,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     post user_go_public_path
 
-    assert_redirected_to edit_account_path
+    assert_redirected_to account_path
     assert User.find(user.id).data_public
   end
 
