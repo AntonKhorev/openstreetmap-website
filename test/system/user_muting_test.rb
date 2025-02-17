@@ -13,7 +13,7 @@ class UserMutingTest < ApplicationSystemTestCase
     click_on "Mute this User"
     assert_content "You muted #{other_user.display_name}"
 
-    visit edit_account_path
+    visit account_path
     assert_content "Muted Users"
     click_on "Muted Users"
     assert_content "You have muted 1 User"
