@@ -19,7 +19,7 @@ if changeset.user.data_public?
   json.user changeset.user.display_name
 end
 
-json.tags changeset.tags unless changeset.tags.empty?
+json.tags changeset.tags unless changeset.tags.empty? || cannot?(:show, ChangesetTag)
 
 if @comments
   json.comments(@comments) do |comment|

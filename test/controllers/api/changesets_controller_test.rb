@@ -512,6 +512,22 @@ module Api
       end
     end
 
+    def test_show_tags_restricted
+      changeset = create(:changeset, :closed)
+      create(:changeset_tag, :changeset => changeset, :k => "created_by", :v => "JOSM/1.5 (18364)")
+      create(:changeset_tag, :changeset => changeset, :k => "comment", :v => "changeset comment")
+
+      with_settings(:data_restrictions => [{ :type => :hide_changeset_tags }]) do
+        get api_changeset_path(changeset)
+      end
+
+      assert_response :success
+      assert_dom "osm[version='#{Settings.api_version}'][generator='#{Settings.generator}']", 1
+      assert_single_changeset changeset do
+        assert_dom "> tag", 0
+      end
+    end
+
     def test_show_json
       changeset = create(:changeset)
 
@@ -649,6 +665,24 @@ module Api
       assert_equal 2, js["changeset"]["tags"].count
       assert_equal "JOSM/1.5 (18364)", js["changeset"]["tags"]["created_by"]
       assert_equal "changeset comment", js["changeset"]["tags"]["comment"]
+    end
+
+    def test_show_tags_restricted_json
+      changeset = create(:changeset, :closed)
+      create(:changeset_tag, :changeset => changeset, :k => "created_by", :v => "JOSM/1.5 (18364)")
+      create(:changeset_tag, :changeset => changeset, :k => "comment", :v => "changeset comment")
+
+      with_settings(:data_restrictions => [{ :type => :hide_changeset_tags }]) do
+        get api_changeset_path(changeset, :format => "json")
+      end
+
+      assert_response :success
+      js = ActiveSupport::JSON.decode(@response.body)
+      assert_not_nil js
+      assert_equal Settings.api_version, js["version"]
+      assert_equal Settings.generator, js["generator"]
+      assert_single_changeset_json changeset, js
+      assert_nil js["changeset"]["tags"]
     end
 
     def test_show_bbox_json
