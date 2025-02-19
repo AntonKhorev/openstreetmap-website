@@ -10,7 +10,7 @@ class ApiAbility
       can [:read, :feed, :search], Note
       can :create, Note unless user
 
-      can :read, [Changeset, ChangesetTag, ChangesetComment]
+      can :read, [Changeset, ChangesetTag, ChangesetComment, :changeset_user]
       can :read, Tracepoint
       can :read, User
       can :read, [Node, Way, Relation, OldNode, OldWay, OldRelation]
