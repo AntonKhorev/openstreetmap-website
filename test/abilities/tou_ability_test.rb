@@ -165,4 +165,15 @@ class TouAbilityTest < ActiveSupport::TestCase
       end
     end
   end
+
+  test "read changeset comments and users with a restriction on users" do
+    with_settings(:data_restrictions => [{ :type => :hide_changeset_users }]) do
+      ability = PermittingAbility.new.merge(TouAbility.new(nil))
+
+      [:index, :show].each do |act|
+        assert ability.cannot? act, :changeset_user
+        assert ability.cannot? act, ChangesetComment # :hide_changeset_users implies hiding comments
+      end
+    end
+  end
 end
