@@ -18,8 +18,10 @@ if changeset.user.data_public?
 end
 
 xml.changeset(attrs) do |changeset_xml_node|
-  changeset.tags.each do |k, v|
-    changeset_xml_node.tag(:k => k, :v => v)
+  if can? :show, ChangesetTag
+    changeset.tags.each do |k, v|
+      changeset_xml_node.tag(:k => k, :v => v)
+    end
   end
 
   # include discussion if requested
