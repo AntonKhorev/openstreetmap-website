@@ -399,19 +399,23 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_empty assigns(:heatmap_data)
   end
 
-  def test_heatmap_rendering
-    # Test user with no changesets
-    user_without_changesets = create(:user)
-    get user_path(user_without_changesets)
+  def test_show_heatmap_rendering_of_user_with_no_changesets
+    user = create(:user)
+
+    get user_path(user)
+
     assert_response :success
     assert_select "div#cal-heatmap", 0
+  end
 
-    # Test user with changesets
-    user_with_changesets = create(:user)
-    changeset39 = create(:changeset, :user => user_with_changesets, :created_at => 4.months.ago.beginning_of_day, :num_changes => 39)
-    _changeset5 = create(:changeset, :user => user_with_changesets, :created_at => 3.months.ago.beginning_of_day, :num_changes => 5)
-    changeset11 = create(:changeset, :user => user_with_changesets, :created_at => 3.months.ago.beginning_of_day, :num_changes => 11)
-    get user_path(user_with_changesets)
+  def test_show_heatmap_rendering_of_user_with_changesets
+    user = create(:user)
+    changeset39 = create(:changeset, :user => user, :created_at => 4.months.ago.beginning_of_day, :num_changes => 39)
+    _changeset5 = create(:changeset, :user => user, :created_at => 3.months.ago.beginning_of_day, :num_changes => 5)
+    changeset11 = create(:changeset, :user => user, :created_at => 3.months.ago.beginning_of_day, :num_changes => 11)
+
+    get user_path(user)
+
     assert_response :success
     assert_select "div#cal-heatmap[data-heatmap]" do |elements|
       # Check the data-heatmap attribute is present and contains expected JSON
