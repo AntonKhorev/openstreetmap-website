@@ -343,7 +343,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     heatmap_data = assigns(:heatmap_data)
     # The data should be in the right format
-    assert(heatmap_data.all? { |entry| entry[:date] && entry[:total_changes] }, "Heatmap data should have :date and :total_changes keys")
+    assert(heatmap_data.all? { |entry| entry[:date] && entry[:total_changes] && entry[:max_id] }, "Heatmap data should have :date, :total_changes and :max_id keys")
   end
 
   def test_show_heatmap_data_caching
