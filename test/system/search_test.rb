@@ -29,4 +29,16 @@ class SearchTest < ApplicationSystemTestCase
 
     assert_field "Search", :with => "4.321, 9.876"
   end
+
+  test "search adds viewbox to Nominatim link" do
+    stub_request(:get, %r{^https://nominatim\.openstreetmap\.org/search\?})
+      .to_return(:status => 404)
+
+    visit "/"
+
+    fill_in "query", :with => "paris"
+    click_on "Go"
+
+    assert_link "OpenStreetMap Nominatim", :href => /&viewbox=/
+  end
 end
