@@ -30,6 +30,11 @@
         </svg>
       <% end %>
     </div>
+    <input type="hidden" name="zoom" autocomplete="off">
+    <input type="hidden" name="minlon" autocomplete="off">
+    <input type="hidden" name="minlat" autocomplete="off">
+    <input type="hidden" name="maxlon" autocomplete="off">
+    <input type="hidden" name="maxlat" autocomplete="off">
   </form>
 
   <form method="GET" action="<%= directions_path %>" class="directions_form bg-body-secondary p-2">

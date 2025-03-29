@@ -1,4 +1,7 @@
 OSM.Search = function (map) {
+  map.on("moveend", updateSearchFormHiddenInputs);
+  updateSearchFormHiddenInputs();
+
   $(".search_form input[name=query]").on("input", function (e) {
     if ($(e.target).val() === "") {
       $(".describe_location").fadeIn(100);
@@ -18,9 +21,14 @@ OSM.Search = function (map) {
   $(".search_form").on("submit", function (e) {
     e.preventDefault();
     $("header").addClass("closed");
-    const query = $(this).find("input[name=query]").val();
-    let search = "/";
-    if (query) search = "/search?" + new URLSearchParams({ query });
+    const params = new URLSearchParams;
+    for (const paramName of ["query", "zoom", "minlon", "minlat", "maxlon", "maxlat"]) {
+      const paramValue = this.elements[paramName].value;
+      if (paramValue) {
+        params.set(paramName, paramValue);
+      }
+    }
+    const search = params.get("query") ? `/search?${params}` : "/";
     OSM.router.route(search + OSM.formatHash(map));
   });
 
@@ -39,6 +47,16 @@ OSM.Search = function (map) {
     .on("mouseout", "li.search_results_entry:has(a.set_position)", hideSearchResult);
 
   const markers = L.layerGroup().addTo(map);
+
+  function updateSearchFormHiddenInputs() {
+    $(".search_form").each(function () {
+      this.elements.zoom.value = map.getZoom();
+      this.elements.minlon.value = map.getBounds().getWest();
+      this.elements.minlat.value = map.getBounds().getSouth();
+      this.elements.maxlon.value = map.getBounds().getEast();
+      this.elements.maxlat.value = map.getBounds().getNorth();
+    });
+  }
 
   function clickSearchMore(e) {
     e.preventDefault();
@@ -118,14 +136,7 @@ OSM.Search = function (map) {
       const entry = $(this);
       fetch(entry.data("href"), {
         method: "POST",
-        body: new URLSearchParams({
-          zoom: map.getZoom(),
-          minlon: map.getBounds().getWest(),
-          minlat: map.getBounds().getSouth(),
-          maxlon: map.getBounds().getEast(),
-          maxlat: map.getBounds().getNorth(),
-          ...OSM.csrf
-        })
+        body: new URLSearchParams(OSM.csrf)
       })
         .then(response => response.text())
         .then(function (html) {
