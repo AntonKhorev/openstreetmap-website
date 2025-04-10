@@ -45,14 +45,29 @@ OSM.DirectionsRouteOutput = function (map) {
   function formatStepDistance(m) {
     if (m < 5) {
       return "";
-    } else if (m < 200) {
-      return OSM.i18n.t("javascripts.directions.distance_m", { distance: String(Math.round(m / 10) * 10) });
-    } else if (m < 1500) {
-      return OSM.i18n.t("javascripts.directions.distance_m", { distance: String(Math.round(m / 100) * 100) });
-    } else if (m < 5000) {
-      return OSM.i18n.t("javascripts.directions.distance_km", { distance: String(Math.round(m / 100) / 10) });
+    } else if (distanceUnits === "km") {
+      const km = m / 1000;
+      if (m < 200) {
+        return OSM.i18n.t("javascripts.directions.distance_m", { distance: Math.round(m / 10) * 10 });
+      } else if (m < 1500) {
+        return OSM.i18n.t("javascripts.directions.distance_m", { distance: Math.round(m / 100) * 100 });
+      } else if (km < 5) {
+        return OSM.i18n.t("javascripts.directions.distance_km", { distance: km.toFixed(1) });
+      } else {
+        return OSM.i18n.t("javascripts.directions.distance_km", { distance: Math.round(km) });
+      }
     } else {
-      return OSM.i18n.t("javascripts.directions.distance_km", { distance: String(Math.round(m / 1000)) });
+      const ft = m / ftSize;
+      const mi = m / miSize;
+      if (ft < 200) {
+        return OSM.i18n.t("javascripts.directions.distance_ft", { distance: Math.round(ft / 10) * 10 });
+      } else if (ft < 1500) {
+        return OSM.i18n.t("javascripts.directions.distance_ft", { distance: Math.round(ft / 100) * 100 });
+      } else if (mi < 5) {
+        return OSM.i18n.t("javascripts.directions.distance_mi", { distance: mi.toFixed(1) });
+      } else {
+        return OSM.i18n.t("javascripts.directions.distance_mi", { distance: Math.round(mi) });
+      }
     }
   }
 
@@ -132,10 +147,12 @@ OSM.DirectionsRouteOutput = function (map) {
     $("#directions_distance_units_km").off().on("change", () => {
       distanceUnits = "km";
       writeSummary(route);
+      writeSteps(route);
     });
     $("#directions_distance_units_mi").off().on("change", () => {
       distanceUnits = "mi";
       writeSummary(route);
+      writeSteps(route);
     });
 
     const blob = new Blob([JSON.stringify(polyline.toGeoJSON())], { type: "application/json" });
