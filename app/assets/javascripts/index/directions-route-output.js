@@ -13,15 +13,32 @@ OSM.DirectionsRouteOutput = function (map) {
     weight: 12
   });
 
+  let distanceUnits = "km";
   let downloadURL = null;
 
+  const miSize = 1609.344;
+  const ftSize = 0.3048;
+
   function formatTotalDistance(m) {
-    if (m < 1000) {
-      return OSM.i18n.t("javascripts.directions.distance_m", { distance: Math.round(m) });
-    } else if (m < 10000) {
-      return OSM.i18n.t("javascripts.directions.distance_km", { distance: (m / 1000.0).toFixed(1) });
+    if (distanceUnits === "km") {
+      const km = m / 1000;
+      if (m < 1000) {
+        return OSM.i18n.t("javascripts.directions.distance_m", { distance: Math.round(m) });
+      } else if (km < 10) {
+        return OSM.i18n.t("javascripts.directions.distance_km", { distance: km.toFixed(1) });
+      } else {
+        return OSM.i18n.t("javascripts.directions.distance_km", { distance: Math.round(km) });
+      }
     } else {
-      return OSM.i18n.t("javascripts.directions.distance_km", { distance: Math.round(m / 1000) });
+      const ft = m / ftSize;
+      const mi = m / miSize;
+      if (ft < 1000) {
+        return OSM.i18n.t("javascripts.directions.distance_ft", { distance: Math.round(ft) });
+      } else if (mi < 10) {
+        return OSM.i18n.t("javascripts.directions.distance_mi", { distance: mi.toFixed(1) });
+      } else {
+        return OSM.i18n.t("javascripts.directions.distance_mi", { distance: Math.round(mi) });
+      }
     }
   }
 
@@ -40,7 +57,12 @@ OSM.DirectionsRouteOutput = function (map) {
   }
 
   function formatHeight(m) {
-    return OSM.i18n.t("javascripts.directions.distance_m", { distance: Math.round(m) });
+    if (distanceUnits === "km") {
+      return OSM.i18n.t("javascripts.directions.distance_m", { distance: Math.round(m) });
+    } else {
+      const ft = m / ftSize;
+      return OSM.i18n.t("javascripts.directions.distance_ft", { distance: Math.round(ft) });
+    }
   }
 
   function formatTime(s) {
@@ -107,6 +129,15 @@ OSM.DirectionsRouteOutput = function (map) {
     writeSummary(route);
     writeSteps(route);
 
+    $("#directions_distance_units_km").off().on("change", () => {
+      distanceUnits = "km";
+      writeSummary(route);
+    });
+    $("#directions_distance_units_mi").off().on("change", () => {
+      distanceUnits = "mi";
+      writeSummary(route);
+    });
+
     const blob = new Blob([JSON.stringify(polyline.toGeoJSON())], { type: "application/json" });
     URL.revokeObjectURL(downloadURL);
     downloadURL = URL.createObjectURL(blob);
@@ -129,6 +160,9 @@ OSM.DirectionsRouteOutput = function (map) {
     map
       .removeLayer(popup)
       .removeLayer(polyline);
+
+    $("#directions_distance_units_km").off();
+    $("#directions_distance_units_mi").off();
 
     $("#directions_route_steps").empty();
 

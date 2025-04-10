@@ -3298,6 +3298,8 @@ en:
     directions:
       distance_m: "%{distance}m"
       distance_km: "%{distance}km"
+      distance_ft: "%{distance}ft"
+      distance_mi: "%{distance}mi"
       errors:
         no_route: "Couldn't find a route between those two places."
         no_place: "Sorry - couldn't locate '%{place}'."
