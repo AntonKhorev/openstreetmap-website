@@ -20,57 +20,45 @@ OSM.DirectionsRouteOutput = function (map) {
   const ftSize = 0.3048;
 
   function formatTotalDistance(m) {
-    const scope = "javascripts.directions.distance_in_units";
-
     if (distanceUnits === "km") {
-      const km = m / 1000;
-      if (m < 1000) {
-        return OSM.i18n.t("m", { scope, distance: Math.round(m) });
-      } else if (km < 10) {
-        return OSM.i18n.t("km", { scope, distance: km.toFixed(1) });
-      } else {
-        return OSM.i18n.t("km", { scope, distance: Math.round(km) });
-      }
+      return format(m, "m", m / 1000, "km");
     } else {
-      const ft = m / ftSize;
-      const mi = m / miSize;
-      if (ft < 1000) {
-        return OSM.i18n.t("ft", { scope, distance: Math.round(ft) });
-      } else if (mi < 10) {
-        return OSM.i18n.t("mi", { scope, distance: mi.toFixed(1) });
+      return format(m / ftSize, "ft", m / miSize, "mi");
+    }
+
+    function format(minorValue, minorName, majorValue, majorName) {
+      const scope = "javascripts.directions.distance_in_units";
+
+      if (minorValue < 1000) {
+        return OSM.i18n.t(minorName, { scope, distance: Math.round(minorValue) });
+      } else if (majorValue < 10) {
+        return OSM.i18n.t(majorName, { scope, distance: majorValue.toFixed(1) });
       } else {
-        return OSM.i18n.t("mi", { scope, distance: Math.round(mi) });
+        return OSM.i18n.t(majorName, { scope, distance: Math.round(majorValue) });
       }
     }
   }
 
   function formatStepDistance(m) {
-    const scope = "javascripts.directions.distance_in_units";
-
     if (m < 5) {
       return "";
     } else if (distanceUnits === "km") {
-      const km = m / 1000;
-      if (m < 200) {
-        return OSM.i18n.t("m", { scope, distance: Math.round(m / 10) * 10 });
-      } else if (m < 1500) {
-        return OSM.i18n.t("m", { scope, distance: Math.round(m / 100) * 100 });
-      } else if (km < 5) {
-        return OSM.i18n.t("km", { scope, distance: km.toFixed(1) });
-      } else {
-        return OSM.i18n.t("km", { scope, distance: Math.round(km) });
-      }
+      return format(m, "m", m / 1000, "km");
     } else {
-      const ft = m / ftSize;
-      const mi = m / miSize;
-      if (ft < 200) {
-        return OSM.i18n.t("ft", { scope, distance: Math.round(ft / 10) * 10 });
-      } else if (ft < 1500) {
-        return OSM.i18n.t("ft", { scope, distance: Math.round(ft / 100) * 100 });
-      } else if (mi < 5) {
-        return OSM.i18n.t("mi", { scope, distance: mi.toFixed(1) });
+      return format(m / ftSize, "ft", m / miSize, "mi");
+    }
+
+    function format(minorValue, minorName, majorValue, majorName) {
+      const scope = "javascripts.directions.distance_in_units";
+
+      if (minorValue < 200) {
+        return OSM.i18n.t(minorName, { scope, distance: Math.round(minorValue / 10) * 10 });
+      } else if (minorValue < 1500) {
+        return OSM.i18n.t(minorName, { scope, distance: Math.round(minorValue / 100) * 100 });
+      } else if (majorValue < 5) {
+        return OSM.i18n.t(majorName, { scope, distance: majorValue.toFixed(1) });
       } else {
-        return OSM.i18n.t("mi", { scope, distance: Math.round(mi) });
+        return OSM.i18n.t(majorName, { scope, distance: Math.round(majorValue) });
       }
     }
   }
