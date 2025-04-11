@@ -1,12 +1,25 @@
 OSM.HistoryChangesetsLayer = L.FeatureGroup.extend({
+  newerColor: "#CC7755",
+  olderColor: "#8888AA",
+
   _changesets: new Map,
 
-  _getChangesetStyle: function ({ isHighlighted }) {
+  _getChangesetStyle: function ({ isHighlighted, sidebarRelativePosition }) {
+    let color;
+
+    if (sidebarRelativePosition > 0) {
+      color = this.newerColor;
+    } else if (sidebarRelativePosition < 0) {
+      color = this.olderColor;
+    } else {
+      color = isHighlighted ? "#FF6600" : "#FF9500";
+    }
+
     return {
       weight: isHighlighted ? 3 : 2,
-      color: isHighlighted ? "#FF6600" : "#FF9500",
+      color,
       opacity: 1,
-      fillColor: "#FFFFAF",
+      fillColor: sidebarRelativePosition ? "#888888" : "#FFFFAF",
       fillOpacity: isHighlighted ? 0.3 : 0
     };
   },
@@ -83,6 +96,14 @@ OSM.HistoryChangesetsLayer = L.FeatureGroup.extend({
     if (!changeset) return;
 
     changeset.isHighlighted = state;
+    this._updateChangesetStyle(changeset);
+  },
+
+  setChangesetSidebarRelativePosition: function (id, state) {
+    const changeset = this._changesets.get(id);
+    if (!changeset) return;
+
+    changeset.sidebarRelativePosition = state;
     this._updateChangesetStyle(changeset);
   },
 
