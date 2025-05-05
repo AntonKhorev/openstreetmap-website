@@ -89,9 +89,16 @@ OSM.HistoryChangesetsLayer = L.FeatureGroup.extend({
   },
 
   updateChangesetsGeometry: function (map) {
-    const changesetSizeLowerBound = 20; // Min width/height of changeset in pixels
+    const changesetSizeLowerBound = 20, // Min width/height of changeset in pixels
+          mapViewExpansion = 2; // Half of bbox border+outline width in pixels
 
-    const mapViewCenterLng = map.getCenter().lng;
+    const mapViewCenterLng = map.getCenter().lng,
+          { min: mapViewMinCorner, max: mapViewMaxCorner } = map.getPixelBounds();
+
+    mapViewMinCorner.x -= mapViewExpansion;
+    mapViewMinCorner.y -= mapViewExpansion;
+    mapViewMaxCorner.x += mapViewExpansion;
+    mapViewMaxCorner.y += mapViewExpansion;
 
     for (const changeset of this._changesets.values()) {
       const changesetNorthWestLatLng = L.latLng(changeset.bbox.maxlat, changeset.bbox.minlon),
@@ -121,6 +128,16 @@ OSM.HistoryChangesetsLayer = L.FeatureGroup.extend({
 
       changeset.bounds = L.latLngBounds(map.unproject(changesetMinCorner),
                                         map.unproject(changesetMaxCorner));
+
+      const changesetMinEdgeInsideMapViewSpanX = changesetMinCorner.x >= mapViewMinCorner.x && changesetMinCorner.x <= mapViewMaxCorner.x,
+            changesetMaxEdgeInsideMapViewSpanX = changesetMaxCorner.x >= mapViewMinCorner.x && changesetMaxCorner.x <= mapViewMaxCorner.x,
+            changesetSpanIntersectMapViewSpanX = changesetMaxCorner.x >= mapViewMinCorner.x && changesetMinCorner.x <= mapViewMaxCorner.x,
+            changesetMinEdgeInsideMapViewSpanY = changesetMinCorner.y >= mapViewMinCorner.y && changesetMinCorner.y <= mapViewMaxCorner.y,
+            changesetMaxEdgeInsideMapViewSpanY = changesetMaxCorner.y >= mapViewMinCorner.y && changesetMaxCorner.y <= mapViewMaxCorner.y,
+            changesetSpanIntersectMapViewSpanY = changesetMaxCorner.y >= mapViewMinCorner.y && changesetMinCorner.y <= mapViewMaxCorner.y;
+
+      changeset.hasEdgesInMapView = ((changesetMinEdgeInsideMapViewSpanX || changesetMaxEdgeInsideMapViewSpanX) && changesetSpanIntersectMapViewSpanY) ||
+                                    ((changesetMinEdgeInsideMapViewSpanY || changesetMaxEdgeInsideMapViewSpanY) && changesetSpanIntersectMapViewSpanX);
     }
 
     this.updateChangesetsOrder();
@@ -136,13 +153,13 @@ OSM.HistoryChangesetsLayer = L.FeatureGroup.extend({
     }
 
     for (const changeset of this._changesets.values()) {
-      if (changeset.sidebarRelativePosition !== 0) {
+      if (changeset.sidebarRelativePosition !== 0 && changeset.hasEdgesInMapView) {
         this._areaLayer.addChangesetLayer(changeset);
       }
     }
 
     for (const changeset of this._changesets.values()) {
-      if (changeset.sidebarRelativePosition === 0) {
+      if (changeset.sidebarRelativePosition === 0 && changeset.hasEdgesInMapView) {
         this._areaLayer.addChangesetLayer(changeset);
       }
     }
