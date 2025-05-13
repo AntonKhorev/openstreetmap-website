@@ -45,3 +45,35 @@ Rails.configuration.after_initialize do
 
   I18n.available_locales
 end
+
+AVAILABLE_LANGUAGES = Rails.root.glob("config/locales/*.yml").map do |filename|
+  code = File.basename(filename, ".yml")
+  native_name = case code
+                when "en"
+                  "English"
+                when "en-GB"
+                  "English (United Kingdom)"
+                else
+                  line = File.open(filename, &:readline)
+                  line.match(/\(([^(]*\([^(]*\))\)$/) do |match_data|
+                    match_data[1]
+                  end || line.match(/\(([^(]*)\)$/) do |match_data|
+                    match_data[1]
+                  end || code
+                end
+
+  {
+    :code => code,
+    :native_name => native_name
+  }
+end
+
+AVAILABLE_LANGUAGES.sort_by! do |entry|
+  # https://stackoverflow.com/a/74029319
+  diactrics = [*0x1DC0..0x1DFF, *0x0300..0x036F, *0xFE20..0xFE2F].pack("U*")
+  entry[:native_name]
+    .downcase
+    .unicode_normalize(:nfd)
+    .tr(diactrics, "")
+    .unicode_normalize(:nfc)
+end
