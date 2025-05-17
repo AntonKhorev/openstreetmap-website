@@ -1958,6 +1958,9 @@ en:
           light: Light
           dark: Dark
         save: Update Preferences
+    advanced_preferences:
+      show:
+        title: My Advanced Preferences
   profiles:
     edit:
       title: Edit Profile
