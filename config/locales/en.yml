@@ -1964,6 +1964,7 @@ en:
     advanced_preferences:
       show:
         title: My Advanced Preferences
+        save: Update Preferences
   profiles:
     edit:
       title: Edit Profile
