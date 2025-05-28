@@ -12,26 +12,31 @@ $(function () {
   let map, marker, deleted_lat, deleted_lon, deleted_home_name, homeLocationNameGeocoder, savedLat, savedLon;
 
   if ($("#social_links").length) {
-    $("#add-social-link").click(function () {
+    $("#add-social-link").on("click", function () {
       const newIndex = -Date.now();
 
       $("#social_links template").contents().clone().appendTo("#social_links")
-        .find("input").attr("name", `user[social_links_attributes][${newIndex}][url]`).trigger("focus")
-        .end().find("button").on("click", function () {
-          $(this).parent().remove();
-          renumberSocialLinks();
-        });
+        .find("input").attr("name", `user[social_links_attributes][${newIndex}][url]`).trigger("focus");
 
       renumberSocialLinks();
     });
 
-    $(".social_link_destroy input[type='checkbox']").change(function () {
-      $(this).parent().parent().addClass("d-none");
+    $("#social_links").on("click", "button", function () {
+      const row = $(this).closest(".row");
+      const [destroyCheckbox] = row.find(".social_link_destroy input[type='checkbox']");
+
+      if (destroyCheckbox) {
+        destroyCheckbox.checked = true;
+        row.addClass("d-none");
+      } else {
+        row.remove();
+      }
+
       renumberSocialLinks();
     });
 
     $(".social_link_destroy input[type='checkbox']:checked").each(function () {
-      $(this).parent().parent().addClass("d-none");
+      $(this).closest(".row").addClass("d-none");
     });
 
     renumberSocialLinks();
@@ -40,7 +45,7 @@ $(function () {
   function renumberSocialLinks() {
     $("#social_links .row:not(.d-none)").each(function (i) {
       $(this).find(":text").attr("placeholder", OSM.i18n.t("javascripts.profile.social_link_n", { n: i + 1 }));
-      $(this).find("label, button").attr("title", OSM.i18n.t("javascripts.profile.remove_social_link_n", { n: i + 1 }));
+      $(this).find("button").attr("title", OSM.i18n.t("javascripts.profile.remove_social_link_n", { n: i + 1 }));
     });
   }
 
