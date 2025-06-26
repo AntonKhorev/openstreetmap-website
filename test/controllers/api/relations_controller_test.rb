@@ -67,7 +67,6 @@ module Api
       relation2 = create(:relation, :deleted)
       relation3 = create(:relation, :with_history, :version => 2)
       relation4 = create(:relation, :with_history, :version => 2)
-      relation4.old_relations.find_by(:version => 1).redact!(create(:redaction))
 
       get api_relations_path(:relations => "#{relation1.id},#{relation2.id},#{relation3.id},#{relation4.id}")
 
@@ -86,7 +85,6 @@ module Api
       relation2 = create(:relation, :deleted)
       relation3 = create(:relation, :with_history, :version => 2)
       relation4 = create(:relation, :with_history, :version => 2)
-      relation4.old_relations.find_by(:version => 1).redact!(create(:redaction))
 
       get api_relations_path(:relations => "#{relation1.id},#{relation2.id},#{relation3.id},#{relation4.id}", :format => "json")
 
@@ -153,6 +151,24 @@ module Api
         assert_dom "relation[id='#{relation.id}'][version='1']", :count => 1
         assert_dom "relation[id='#{relation.id}'][version='2']", :count => 1
       end
+    end
+
+    def test_index_redacted_version
+      relation = create(:relation, :with_history, :version => 2)
+      relation.old_relations.find_by(:version => 1).redact!(create(:redaction))
+
+      get api_relations_path(:relations => "#{relation.id}v1")
+
+      assert_response :not_found
+    end
+
+    def test_index_redacted_and_visible_version
+      relation = create(:relation, :with_history, :version => 2)
+      relation.old_relations.find_by(:version => 1).redact!(create(:redaction))
+
+      get api_relations_path(:relations => "#{relation.id}v1,#{relation.id}v2")
+
+      assert_response :not_found
     end
 
     # -------------------------------------

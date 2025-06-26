@@ -150,6 +150,24 @@ module Api
       end
     end
 
+    def test_index_redacted_version
+      node = create(:node, :with_history, :version => 2)
+      node.old_nodes.find_by(:version => 1).redact!(create(:redaction))
+
+      get api_nodes_path(:nodes => "#{node.id}v1")
+
+      assert_response :not_found
+    end
+
+    def test_index_redacted_and_visible_version
+      node = create(:node, :with_history, :version => 2)
+      node.old_nodes.find_by(:version => 1).redact!(create(:redaction))
+
+      get api_nodes_path(:nodes => "#{node.id}v1,#{node.id}v2")
+
+      assert_response :not_found
+    end
+
     def test_create
       private_user = create(:user, :data_public => false)
       private_changeset = create(:changeset, :user => private_user)
