@@ -168,6 +168,39 @@ module Api
       assert_response :not_found
     end
 
+    def test_index_redacted_version_with_show_redactions_when_unauthorized
+      node = create(:node, :with_history, :version => 2)
+      node.old_nodes.find_by(:version => 1).redact!(create(:redaction))
+
+      get api_nodes_path(:nodes => "#{node.id}v1", :show_redactions => "true")
+
+      assert_response :not_found
+    end
+
+    def test_index_redacted_version_with_show_redactions_for_regular_user
+      node = create(:node, :with_history, :version => 2)
+      node.old_nodes.find_by(:version => 1).redact!(create(:redaction))
+      auth_header = bearer_authorization_header
+
+      get api_nodes_path(:nodes => "#{node.id}v1", :show_redactions => "true"), :headers => auth_header
+
+      assert_response :not_found
+    end
+
+    def test_index_redacted_version_with_show_redactions_for_moderator
+      node = create(:node, :with_history, :version => 2)
+      node.old_nodes.find_by(:version => 1).redact!(create(:redaction))
+      auth_header = bearer_authorization_header create(:moderator_user)
+
+      get api_nodes_path(:nodes => "#{node.id}v1", :show_redactions => "true"), :headers => auth_header
+
+      assert_response :success
+      assert_dom "osm" do
+        assert_dom "node", :count => 1
+        assert_dom "node[id='#{node.id}'][version='1']", :count => 1
+      end
+    end
+
     def test_create
       private_user = create(:user, :data_public => false)
       private_changeset = create(:changeset, :user => private_user)
