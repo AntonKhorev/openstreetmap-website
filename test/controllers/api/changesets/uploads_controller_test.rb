@@ -239,6 +239,11 @@ module Api
           end
         end
 
+        changeset.reload
+        assert_equal 1, changeset.num_changes
+        assert_predicate changeset, :num_type_changes_in_sync?
+        assert_equal 1, changeset.num_created_nodes
+
         assert_equal 1, node.version
         assert_equal changeset, node.changeset
         assert_predicate node, :visible?
