@@ -57,6 +57,19 @@ There are two built-in applications which communicate via the API, and therefore
 * iD
 * The website itself (for the Notes functionality)
 
+You can register them by running a script and copying its output to `config/settings.local.yml`:
+
+```
+./script/register-oauth-apps "My New User Name"
+```
+
+This registers the applications with the "My New User Name" user as the owner.
+When logged in, this user should be able to see the apps on the [OAuth 2 applications](http://127.0.0.1:3000/oauth2/applications) page.
+
+Alternatively you can register the applications manually, as described in the next section.
+
+### Manually registering the build-in OAuth applications
+
 For iD, do the following:
 
 * Go to "[OAuth 2 applications](http://localhost:3000/oauth2/applications)" on the My settings page.

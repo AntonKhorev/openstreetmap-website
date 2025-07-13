@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+display_name, = ARGV
+
+unless display_name
+  puts <<~CUT
+    Configures the built-in openstreetmap-website applications.
+    See <https://github.com/openstreetmap/openstreetmap-website/blob/master/CONFIGURE.md#oauth-consumer-keys>.
+
+    Usage: #{$PROGRAM_NAME} display_name
+  CUT
+
+  exit 1
+end
+
+require_relative File.join("..", "config", "environment")
+
+user = User.find_by! :display_name => display_name
+
+model = Doorkeeper.config.application_model
+
+id_application = model.create :name => "Local iD",
+                              :redirect_uri => "http://localhost:3000",
+                              :scopes => %w[read_prefs write_prefs write_api read_gpx write_gpx write_notes],
+                              :confidential => false,
+                              :owner => user
+
+web_application = model.create :name => "OpenStreetMap Web Site",
+                               :redirect_uri => "http://localhost:3000",
+                               :scopes => %w[write_api write_notes],
+                               :owner => user
+
+puts <<~CUT
+  Copy the following to your config/settings.local.yml
+
+  # OAuth 2 Client ID for iD
+  id_application: "#{id_application.uid}"
+  # OAuth 2 Client ID for the web site
+  oauth_application: "#{web_application.uid}"
+  # OAuth 2 Client Secret for the web site
+  oauth_key: "#{web_application.plaintext_secret}"
+CUT
