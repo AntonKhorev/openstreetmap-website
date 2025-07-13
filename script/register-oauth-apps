@@ -13,7 +13,32 @@ unless display_name
   exit 1
 end
 
+require "pathname"
 require_relative File.join("..", "config", "environment")
+
+settings_filename = File.join(File.dirname(__FILE__), "..", "config", "settings.local.yml")
+settings_filename = Pathname.new(settings_filename).cleanpath
+settings_file_missing = false
+settings = {}
+
+begin
+  settings = YAML.load_file settings_filename, :permitted_classes => [Symbol, Time], :fallback => {}
+rescue Errno::ENOENT
+  settings_file_missing = true
+end
+
+already_defined_keys = %w[id_application oauth_application oauth_key] & settings.keys
+
+unless already_defined_keys.empty?
+  puts "The following options are already defined in your #{settings_filename}:"
+  already_defined_keys.each do |key|
+    puts "- #{key}"
+  end
+  puts ""
+  puts "Delete or comment them out to proceed."
+
+  exit 1
+end
 
 user = User.find_by! :display_name => display_name
 
@@ -30,8 +55,13 @@ web_application = model.create :name => "OpenStreetMap Web Site",
                                :scopes => %w[write_api write_notes],
                                :owner => user
 
+if settings_file_missing
+  puts "Create #{settings_filename} with the following content:"
+else
+  puts "Copy the following to your #{settings_filename}:"
+end
+
 puts <<~CUT
-  Copy the following to your config/settings.local.yml
 
   # OAuth 2 Client ID for iD
   id_application: "#{id_application.uid}"
